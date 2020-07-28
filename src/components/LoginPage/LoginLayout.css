@@ -1,0 +1,31 @@
+
+        .heading{
+            position: relative;
+           
+
+        }
+
+        .welcometosignin{
+            position: relative;
+           line-height: 3;
+           
+            font-size: small;
+        }
+
+        .userinput{
+            position: relative;
+           
+            
+        }
+        .passwordinput{
+            position: relative; ;
+            
+            
+        }
+        .middleLocation{
+            position: absolute;
+            left: 50%;
+            top: 40%;
+            transform: translate(-50%, -50%);
+        }
+    

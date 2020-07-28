@@ -1,0 +1,20 @@
+.projectMainLayout{
+    position : absolute;
+    top: 15%;
+    left: 25%;
+   
+} 
+.profileLayout{
+    position : relative;
+   
+    left: 70%;
+    top:20%;
+    transform: translate(-50%, -120%);
+    font-size: medium;
+} 
+.activityCard{
+    font-weight: bold;
+    font-size:x-large;
+   position: relative;
+   line-height: 3;
+}
