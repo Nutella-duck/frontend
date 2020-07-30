@@ -5,7 +5,7 @@ const Team = () => {
   return (
       <div>
     <div className = "activityCard">
-    <text>Team</text>
+    <h2>Team</h2>
 </div>
 <TeamCard></TeamCard>
 </div>

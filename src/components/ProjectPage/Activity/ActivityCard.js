@@ -2,17 +2,20 @@
 import React from "react";
 import { Card,Button} from "react-bootstrap";
 const ActivityCard = () => {
+    const state = "Crash";
+    const projectName = " nutella project"
   return (
     <div>
-<Card style={{ width: '18rem' }}>
+<Card style={{ width: '25rem' }}>
 <Card.Body>
-<Card.Title>ActivityCard</Card.Title>
-<Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
+   
+<Card.Title>{state}</Card.Title>{''}
+<Card.Text >{projectName}</Card.Text>
+
 <Card.Text>
-Some quick example text to build on the card title and make up the bulk of
-the card's content.
+액티비티 카드 
 </Card.Text>
-<Card.Link href="/">Card Link</Card.Link>
+<Card.Link href="/">Card Link</Card.Link> 
 
 </Card.Body>
 </Card>

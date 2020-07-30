@@ -3,11 +3,11 @@ import ActivityCard from './ActivityCard';
 import { Card,Button} from "react-bootstrap";
 const Activity = () => {
   return (
-      <div>
+<div>
     <div className = "activityCard">
-    <text>Activity</text>
-</div>
-<ActivityCard></ActivityCard>
+        < h2>Activity</h2>
+    </div>
+    <ActivityCard></ActivityCard>
 </div>
   );
 };

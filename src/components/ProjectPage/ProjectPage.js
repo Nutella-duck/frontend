@@ -14,7 +14,7 @@ import Profile from './Profile';
 
 const ProjectPage = () => {
     return(
-      <div>
+      <div className = "projectMainLayout">
           <Profile></Profile>
           <Activity></Activity>
           <Project></Project>
