@@ -1,10 +1,19 @@
 import React from "react";
-import { Table } from "react-bootstrap";
+import { Table, Form } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const TableComponent = () => {
-  const tableHeads = ["STATE", "CREATED", "CREATEDBY", "RUNTIME", "ACCURACY"];
+  const tableHeads = [
+    "NAME",
+    "STATE",
+    "CREATED",
+    "CREATEDBY",
+    "RUNTIME",
+    "ACCURACY",
+  ];
   const tableRows = [
     {
+      NAME: "MODEL 1",
       STATE: "Finished",
       CREATED: "3 m ago",
       CREATEDBY: "User A",
@@ -12,6 +21,7 @@ const TableComponent = () => {
       ACCURACY: "0.293",
     },
     {
+      NAME: "MODEL 2",
       STATE: "Crashed",
       CREATED: "5 m ago",
       CREATEDBY: "User A",
@@ -19,6 +29,7 @@ const TableComponent = () => {
       ACCURACY: "0.293",
     },
     {
+      NAME: "MODEL 3",
       STATE: "Finished",
       CREATED: "7 m ago",
       CREATEDBY: "User A",
@@ -26,6 +37,7 @@ const TableComponent = () => {
       ACCURACY: "0.293",
     },
     {
+      NAME: "MODEL 4",
       STATE: "Crashed",
       CREATED: "3 m ago",
       CREATEDBY: "User A",
@@ -33,6 +45,7 @@ const TableComponent = () => {
       ACCURACY: "0.293",
     },
     {
+      NAME: "MODEL 5",
       STATE: "Crashed",
       CREATED: "3 m ago",
       CREATEDBY: "User A",
@@ -41,9 +54,12 @@ const TableComponent = () => {
     },
   ];
   return (
-    <Table striped bordered hover>
+    <Table bordered hover size="sm">
       <thead>
         <tr>
+          <th style={{ width: "1.5rem" }}>
+            <Form.Check type="checkbox" />
+          </th>
           {tableHeads.map((tableHead, index) => (
             <th key={index}>{tableHead}</th>
           ))}
@@ -52,6 +68,10 @@ const TableComponent = () => {
       <tbody>
         {tableRows.map((tableRow, index) => (
           <tr key={index}>
+            <td>
+              <Form.Check type="checkbox" />
+            </td>
+            <td>{tableRow.NAME}</td>
             <td>{tableRow.STATE}</td>
             <td>{tableRow.CREATED}</td>
             <td>{tableRow.CREATEDBY}</td>

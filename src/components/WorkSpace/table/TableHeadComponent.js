@@ -17,26 +17,26 @@ import {
 const TableHeadComponent = () => {
   return (
     <Navbar bg="light" variant="light">
-      <Navbar.Brand href="#home">Runs</Navbar.Brand>
+      <Navbar.Brand href="#home">5 Runs</Navbar.Brand>
       <Form inline>
         <FormControl type="text" placeholder="Search" className="mr-sm-2" />
       </Form>
       <Nav className="mr-auto">
         <ButtonGroup aria-label="Basic example">
           <Button variant="light">
-            <BsFunnel />
+            <BsFunnel style={{ marginRight: "1rem" }} />
             Filter
           </Button>
           <Button variant="light">
-            <BsFillGridFill />
+            <BsFillGridFill style={{ marginRight: "1rem" }} />
             Group
           </Button>
           <Button variant="light">
-            <BsArrowUpDown />
+            <BsArrowUpDown style={{ marginRight: "1rem" }} />
             Sort
           </Button>
           <Button variant="light">
-            <BsColumnsGap />
+            <BsColumnsGap style={{ marginRight: "1rem" }} />
             Columns
           </Button>
         </ButtonGroup>

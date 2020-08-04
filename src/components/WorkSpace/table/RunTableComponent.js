@@ -4,7 +4,7 @@ import TableComponent from "./TableComponent";
 
 const RunTableComponent = () => {
   return (
-    <div>
+    <div className="border-top border-bottom border-grey">
       <TableHeadComponent></TableHeadComponent>
       <TableComponent></TableComponent>
     </div>
