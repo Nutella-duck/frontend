@@ -5,16 +5,23 @@ import * as Actions from "../../../store/actions";
 
 const SectionHeadComponent = () => {
   const dispatch = useDispatch();
-  const card = useSelector((state) => state.section.cards);
+  const cards = useSelector((state) => state.section.cards);
+  const addSectionsOnclick = () => {
+    let len = cards.length;
+    cards.push(len + 1);
+    dispatch(Actions.fectchCardData(cards));
+    console.log(cards);
+  };
 
-  console.log(card);
   return (
     <div>
       <Navbar className="border-bottom border-grey">
         <Navbar.Brand style={{ fontWeight: "bold" }}>SECTIONS</Navbar.Brand>
         <Navbar.Collapse>
           <Nav className="ml-auto">
-            <Button variant="primary">NEW SECTION</Button>
+            <Button variant="primary" onClick={addSectionsOnclick}>
+              NEW SECTION
+            </Button>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

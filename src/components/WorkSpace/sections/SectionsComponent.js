@@ -1,13 +1,16 @@
 import React from "react";
 import SectionHeadComponent from "./SectionHeadComponent";
 import SectionsComponents from "./SectionComponents";
+import { useSelector } from "react-redux";
 
 const SectionsComponent = () => {
-  const sectoions = [];
+  const sectoions = useSelector((state) => state.section.cards);
   return (
     <div>
       <SectionHeadComponent></SectionHeadComponent>
-      <SectionsComponents></SectionsComponents>
+      {sectoions.map((section, index) => (
+        <SectionsComponents key={index}></SectionsComponents>
+      ))}
     </div>
   );
 };

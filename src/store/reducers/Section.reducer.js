@@ -9,7 +9,7 @@ const SectionReducer = (state = initialState, action) => {
     case Actions.FETCH_CARD_DATA: {
       return {
         ...state,
-        cards: action.cards,
+        cards: action.card,
       };
     }
 
