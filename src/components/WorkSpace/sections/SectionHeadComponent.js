@@ -1,7 +1,13 @@
 import React from "react";
 import { Navbar, Nav, Button } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import * as Actions from "../../../store/actions";
 
 const SectionHeadComponent = () => {
+  const dispatch = useDispatch();
+  const card = useSelector((state) => state.section.cards);
+
+  console.log(card);
   return (
     <div>
       <Navbar className="border-bottom border-grey">

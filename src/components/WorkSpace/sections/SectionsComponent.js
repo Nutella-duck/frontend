@@ -3,6 +3,7 @@ import SectionHeadComponent from "./SectionHeadComponent";
 import SectionsComponents from "./SectionComponents";
 
 const SectionsComponent = () => {
+  const sectoions = [];
   return (
     <div>
       <SectionHeadComponent></SectionHeadComponent>

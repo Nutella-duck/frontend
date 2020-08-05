@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Navbar,
-  Nav,
-  Button,
-  Card,
-  Container,
-  Row,
-  Col,
-} from "react-bootstrap";
+import { Navbar, Nav, Button, Card, Row, Col } from "react-bootstrap";
 import logo from "../../../logo.svg";
 
 const ItemHead = () => {
