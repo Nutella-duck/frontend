@@ -6,16 +6,16 @@ const ProjectListTemplate = ({form, children}) => {
   return (
       <Container>
       <Row>
-        <Col md={4}>
+        <Col sm={4}>
       <h2>Project</h2></Col>
-      <Col md={{ span: 4, offset: 4 }}>
+      <Col >
       <section >
         {form}
       </section>
       </Col>
       </Row>
       <Row>
-      <Col >
+      <Col sm = {12} >
       <section className = "projects-wrapper">
         { children }
       </section>

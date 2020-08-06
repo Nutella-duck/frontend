@@ -16,7 +16,7 @@ const ProjectPage = () => {
     return(
       <div className = "projectMainLayout">
           <Profile></Profile>
-          <Activity></Activity>
+         
           <Project></Project>
           <Team></Team>
           <Run></Run>

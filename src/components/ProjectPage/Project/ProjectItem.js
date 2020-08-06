@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './ProjectItem.css';
-import { Conta,Col,Card,Button} from "react-bootstrap";
+import { Conta,Col,Card,Button,Row} from "react-bootstrap";
 class ProjectItem extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -10,29 +10,38 @@ class ProjectItem extends Component {
   render() {
     //const { name,users,runs,created,explanation,open ,id} = this.props;
     const { name,id} = this.props;
-
-    return (
-      <div  >
-       
-<Card style={{ width: '25rem' }}>
-<Card.Body>
    
-<Card.Title>{name}</Card.Title>
-{/* <Card.Text >{explanation}</Card.Text> */}
+     
+    
+    
+    return (
+      <div>
+        <Row>
 
-{/* <Card.Button>  {open}
-</Card.Button> */}
-
-<Card.Link href="/">go to the {name}</Card.Link> 
-
-</Card.Body>
-</Card>
-
-
+       
+        <Col   >
+        <Card style={{ width: '18rem' }} >
+        <Card.Body>
+           
+        <Card.Title>{name}</Card.Title>
+        {/* <Card.Text >{explanation}</Card.Text> */}
+        {/* <Card.Button>  {open}
+        </Card.Button> */}
+        
+        <Card.Link href="/workspace">go to the {name}</Card.Link> 
+        
+        </Card.Body>
+        </Card>
+        </Col>
+       
+</Row>
 </div>
 
+
+
+
     );
-  }
+  };
 }
 
 export default ProjectItem;

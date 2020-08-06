@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import ProjectItem from './ProjectItem';
-
+import { Conta,Col,Card,Button,Row} from "react-bootstrap";
 class ProjectItemList extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -11,8 +11,10 @@ class ProjectItemList extends Component {
   render() {
     const { projects } = this.props;
     
+    
     const projectList = projects.map(
       ({id, name}) => (
+        <Col sm = {4}>
         <ProjectItem
           
           key={id}
@@ -23,12 +25,15 @@ class ProjectItemList extends Component {
         //   explanation=''
         //   open=''
         />
+        </Col>
       )
     );
 
     return (
       <div>
-        {projectList}    
+        <Row>
+        {projectList}   
+        </Row> 
       </div>
     );
   }

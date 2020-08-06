@@ -1,6 +1,7 @@
 import React from "react";
 import './LoginLayout.css';
 import { Link, Route, BrowserRouter as Router } from "react-router-dom";
+import { Container,Row,Col,Image } from "react-bootstrap";
 
 
 const LoginPage = () => {
@@ -34,6 +35,11 @@ const LoginPage = () => {
     </div>
     </div>
     
+    <Container >
+      <Row>
+        
+      </Row>
+    </Container>
    
   </>
   )
