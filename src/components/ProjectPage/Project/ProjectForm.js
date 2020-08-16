@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import './ProjectForm.css';
-import { Modal,Button, Container,Col,Row} from "react-bootstrap";
+import { Modal,Button, Container,Col,Row,Nav,Navbar,Form,FormControl} from "react-bootstrap";
 import { Link, Route, BrowserRouter as Router } from "react-router-dom";
 
 const ProjectForm = ({value,onChange,  onCreate}) => {
@@ -14,13 +14,25 @@ const ProjectForm = ({value,onChange,  onCreate}) => {
   const handleClose2 = () =>{ setShow2(false); setShow(false);onCreate();}
 
   return (
-    <div className="form"  >
-      {/* <input  /> */}
-      <>
-  
-      <Button  variant="primary" size ="sm" onClick={handleShow} >
-        NewProject
-      </Button>
+    
+     
+      
+     <>
+
+      <Navbar style={{marginLeft:"16rem",marginRight:"16rem",padding:"0" }}>
+        <Navbar.Brand style={{ fontWeight: "bold",fontSize:"2rem" }}>Project</Navbar.Brand>
+        <Navbar.Collapse>
+          <Nav className="ml-auto">
+            <Form inline>
+            <FormControl type="text" placeholder="Search" className=" mr-sm-2" />
+            <Button variant="dark" onClick={handleShow}>
+              New Project
+            </Button>
+            </Form>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+
 
       <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
@@ -95,10 +107,10 @@ const ProjectForm = ({value,onChange,  onCreate}) => {
       </Modal.Footer>
 
     </Modal>
-    </>
+    
+      </>
       
-      
-    </div>
+   
   );
 };
 

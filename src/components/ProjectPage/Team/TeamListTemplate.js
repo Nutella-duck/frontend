@@ -1,8 +1,8 @@
 import React from 'react';
-import './ProjectListTemplate.css';
+
 import { Container,Row,Col} from "react-bootstrap";
 import { Route } from 'react-router-dom';
-const ProjectListTemplate = ({form, children}) => {
+const TeamListTemplate = ({form, children}) => {
   return (
       
         <>
@@ -19,4 +19,4 @@ const ProjectListTemplate = ({form, children}) => {
   );
 };
 
-export default ProjectListTemplate;
+export default TeamListTemplate;

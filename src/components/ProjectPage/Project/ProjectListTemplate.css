@@ -1,16 +1,10 @@
-.todo-list-template {
-  background: white;
-  width: 512px;
-  
-  margin: 0 auto; /* 페이지 중앙 정렬 */
-  margin-top: 4rem;
-}
+/* 
 
 .title {
   padding: 1rem;
   font-size: 2.5rem;
   
-  
+  margin-top: 1rem;
   color: black;
 }
 
@@ -24,3 +18,17 @@
  
 
 }
+.heading{
+ 
+  width: 4.3rem;
+  height: 1.2rem;
+  font-family: Lato;
+  font-size: 2rem;
+  font-weight: 900;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #2d2d30;
+  margin-bottom: 1rem;
+}  */

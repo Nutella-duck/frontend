@@ -14,6 +14,8 @@ import ProjectItemList from './ProjectItemList';
           input: '',
           projects: [
             { id: 0, name:'1번 프로젝트' },
+            {id :1, name :'2번 프로젝트'},
+            {id : 2, name:'3번 프로젝트'}
            
           ]
         }

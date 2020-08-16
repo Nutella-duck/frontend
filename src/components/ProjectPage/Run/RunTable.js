@@ -1,22 +1,69 @@
-
 import React from "react";
-import { Card,Button} from "react-bootstrap";
-const RunTable = () => {
-  return (
-    <div>
-<Card style={{ width: '18rem' }}>
-<Card.Body>
-<Card.Title>RunTable</Card.Title>
-<Card.Subtitle className="mb-2 h2-muted">Card Subtitle</Card.Subtitle>
-<Card.Text>
-Some quick example h2 to build on the card title and make up the bulk of
-the card's content.
-</Card.Text>
-<Card.Link href="/">Card Link</Card.Link>
 
-</Card.Body>
-</Card>
-</div>
+import { Table, Form } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+const RunTable = () => {
+  const tableHeads = [
+    "NAME",
+    "PROJECT",
+    "STATE",
+    "CREATED",
+  
+  ];
+  const tableRows = [
+    {
+      NAME: "Model-Name-A-002",
+      PROJECT: "NutellaCoder",
+      STATE: "Crashed",
+      CREATED: "3 m ago",
+      
+    },
+    {
+      NAME: "Model-Name-A-003",
+      PROJECT: "NutellaCoder",
+      STATE: "Finished",
+      CREATED: "8 hours ago",
+      
+    },
+    {
+      NAME: "Model-Name-A-004",
+      PROJECT: "NutellaCoder",
+      STATE: "Crashed",
+      CREATED: "3 m ago",
+      
+    },
+    {
+      NAME: "Model-Name-A-005",
+      PROJECT: "NutellaCoder",
+      STATE: "Finished",
+      CREATED: "8 hours ago",
+      
+    },
+  ];
+  return (
+    <Table striped borderless hover size="sm" style={{textAlign:"center",backgroundColor:"white",borderRadius:"0.7rem"}}>
+      <thead >
+        <tr >
+          
+          {tableHeads.map((tableHead, index) => (
+            <th key={index}>{tableHead}</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {tableRows.map((tableRow, index) => (
+          <tr key={index}>
+            
+            <td>{tableRow.NAME}</td>
+            <td>{tableRow.PROJECT}</td>
+            <td style={tableRow.STATE ==="Crashed" ? {color:"red"} : {color:"#1ddd89"} }>{tableRow.STATE}</td>
+            <td>{tableRow.CREATED}</td>
+    
+          </tr>
+        ))}
+      </tbody>
+    </Table>
   );
 };
 

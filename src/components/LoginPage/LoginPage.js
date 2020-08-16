@@ -1,5 +1,6 @@
 import React from "react";
 import './LoginLayout.css';
+import logo from './logo@3x.png';
 import { Link, Route, BrowserRouter as Router } from "react-router-dom";
 import { Container,Row,Col,Image } from "react-bootstrap";
 
@@ -8,18 +9,26 @@ const LoginPage = () => {
   return (
   <>
   <div className  = "middleLocation">
-  <h1 className = "heading">Nutella</h1>
+  <Col >
+                <Image className = "logo" src={logo} width="127" height="140" thumbnail style={{ marginRight: "4.8rem", marginLeft: "4.8rem" }} />
+            </Col>
   
   <div className = "welcometosignin" >
-    welcome back! and sign in our page!! plz!~~
+  
+  -
+Welcom back! Sign in to access the Nutella Web.
+Did you forget your password?
+
   </div>
     
   <div>
-      <input
+      <input className = "userinput"
         type = "text"
-        className = "userinput"
-        placeholder = "username"
         
+       
+        
+        placeholder = "username"
+       
       />
    </div>
       <input
@@ -30,7 +39,7 @@ const LoginPage = () => {
         />
         <div>
           <Link to ="/project">
-      <button> Sign in </button>
+      <button className = "SigninButton" font-color = "#fffffff"> Sign in </button>
       </Link>
     </div>
     </div>

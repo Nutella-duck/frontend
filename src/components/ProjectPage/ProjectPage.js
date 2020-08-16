@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Link, Route, BrowserRouter as Router } from "react-router-dom";
 
 
-import Activity from './Activity/ActivityMain';
+import Header from './ProjectPageHeader';
 import Project from './Project/ProjectMain';
 import Run from './Run/RunMain';
 import Team from './Team/TeamMain';
@@ -15,10 +15,11 @@ import Profile from './Profile';
 const ProjectPage = () => {
     return(
       <div className = "projectMainLayout">
+          <Header></Header>
           <Profile></Profile>
          
           <Project></Project>
-          <Team></Team>
+           <Team></Team> 
           <Run></Run>
       </div>
     )
