@@ -1,0 +1,71 @@
+  /* .projectMainLayout{
+    position : absolute;
+     top: 15%;
+    left: 10%; 
+   
+}   */
+.Profile{
+    background-color: #f5f6fa;
+}
+.activityCard{
+    font-weight: bold;
+    font-size:x-large;
+   position: relative;
+   line-height: 3;
+}
+.profileImage{
+    
+    width: 7.6rem;
+    height: 7.6rem;
+   object-fit: contain;
+    margin:3rem;
+}
+.nopadding {
+    padding: 0 ;
+    margin: 0 ;
+   
+    
+ }
+ /* .name{
+     position: absolute;
+    left:22.2%;
+    top:7%; 
+    margin:auto;
+    width: 8rem;
+    height: 2rem;
+    font-family: Lato;
+    font-size: 1.6rem;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #2a2a2d;
+
+}  */
+/* .id{
+
+    width: 3.68rem;
+  height: 1.1rem;
+  font-family: Lato;
+  font-size: 1rem;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #2a2a2d;
+} */
+/* .text{
+    
+    width: 28rem;
+    height: 1.2rem;
+    font-family: Lato;
+    font-size: 1rem;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #b7b7b7;
+}  */

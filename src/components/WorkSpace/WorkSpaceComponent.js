@@ -1,10 +1,12 @@
 import React from "react";
 import RunTableComponent from "./table/RunTableComponent";
+import Header from "./WorkSpaceHeader";
 import SectionsComponent from "./sections/SectionsComponent";
 const WorkSpaceComponent = () => {
   return (
     <div>
-      <RunTableComponent></RunTableComponent>
+      <Header></Header>
+      <RunTableComponent ></RunTableComponent>
       <SectionsComponent></SectionsComponent>
     </div>
   );

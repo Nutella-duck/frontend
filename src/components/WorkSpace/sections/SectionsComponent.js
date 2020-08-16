@@ -6,10 +6,10 @@ import { useSelector } from "react-redux";
 const SectionsComponent = () => {
   const sectoions = useSelector((state) => state.section.cards);
   return (
-    <div>
+    <div style={{paddingBottom:"3rem"}}> 
       <SectionHeadComponent></SectionHeadComponent>
       {sectoions.map((section, index) => (
-        <SectionsComponents key={index}></SectionsComponents>
+        <SectionsComponents key={index} ></SectionsComponents>
       ))}
     </div>
   );

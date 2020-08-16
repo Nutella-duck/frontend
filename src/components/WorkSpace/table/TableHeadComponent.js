@@ -12,13 +12,15 @@ import {
   BsFillGridFill,
   BsArrowUpDown,
   BsColumnsGap,
+  BsGear
 } from "react-icons/bs";
 
 const TableHeadComponent = () => {
   return (
-    <Navbar bg="light" variant="light">
-      <Navbar.Brand href="#home">5 Runs</Navbar.Brand>
+    <Navbar bg="light" variant="light" style={{borderRadius:"0.7rem"}}>
+      <Navbar.Brand href="#home" style={{fontWeight: "bold"}}>5 Runs</Navbar.Brand>
       <Form inline>
+        <Button variant="light"><BsGear/></Button>
         <FormControl type="text" placeholder="Search" className="mr-sm-2" />
       </Form>
       <Nav className="mr-auto">

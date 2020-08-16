@@ -10,6 +10,10 @@ const TableComponent = () => {
     "CREATEDBY",
     "RUNTIME",
     "ACCURACY",
+    "HPO",
+    "COMPRESSED",
+    "EPOCH"
+    
   ];
   const tableRows = [
     {
@@ -19,6 +23,9 @@ const TableComponent = () => {
       CREATEDBY: "User A",
       RUNTIME: "11s",
       ACCURACY: "0.293",
+      HPO:"dkanakf",
+    COMPRESSED:"cnrth",
+    EPOCH:"10"
     },
     {
       NAME: "MODEL 2",
@@ -27,6 +34,9 @@ const TableComponent = () => {
       CREATEDBY: "User A",
       RUNTIME: "11s",
       ACCURACY: "0.293",
+      HPO:"dkanakf",
+    COMPRESSED:"cnrth",
+    EPOCH:"10"
     },
     {
       NAME: "MODEL 3",
@@ -35,6 +45,9 @@ const TableComponent = () => {
       CREATEDBY: "User A",
       RUNTIME: "11s",
       ACCURACY: "0.293",
+      HPO:"dkanakf",
+    COMPRESSED:"cnrth",
+    EPOCH:"10"
     },
     {
       NAME: "MODEL 4",
@@ -43,6 +56,9 @@ const TableComponent = () => {
       CREATEDBY: "User A",
       RUNTIME: "11s",
       ACCURACY: "0.293",
+      HPO:"dkanakf",
+    COMPRESSED:"cnrth",
+    EPOCH:"10"
     },
     {
       NAME: "MODEL 5",
@@ -51,10 +67,13 @@ const TableComponent = () => {
       CREATEDBY: "User A",
       RUNTIME: "11s",
       ACCURACY: "0.293",
+      HPO:"dkanakf",
+    COMPRESSED:"cnrth",
+    EPOCH:"10"
     },
   ];
   return (
-    <Table bordered hover size="sm">
+    <Table responsive striped hover borderless style={{textAlign:"center"}}>
       <thead>
         <tr>
           <th style={{ width: "1.5rem" }}>
@@ -72,11 +91,14 @@ const TableComponent = () => {
               <Form.Check type="checkbox" />
             </td>
             <td>{tableRow.NAME}</td>
-            <td>{tableRow.STATE}</td>
+            <td style={tableRow.STATE ==="Crashed" ? {color:"red"} : {color:"blue"} }>{tableRow.STATE}</td>
             <td>{tableRow.CREATED}</td>
             <td>{tableRow.CREATEDBY}</td>
             <td>{tableRow.RUNTIME}</td>
             <td>{tableRow.ACCURACY}</td>
+            <td>{tableRow.HPO}</td>
+            <td>{tableRow.COMPRESSED}</td>
+            <td>{tableRow.EPOCH}</td>
           </tr>
         ))}
       </tbody>

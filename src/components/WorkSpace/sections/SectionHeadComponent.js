@@ -1,5 +1,6 @@
 import React from "react";
-import { Navbar, Nav, Button } from "react-bootstrap";
+import { Navbar, Nav, Button,Form } from "react-bootstrap";
+import {BsGear} from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import * as Actions from "../../../store/actions";
 
@@ -15,11 +16,14 @@ const SectionHeadComponent = () => {
 
   return (
     <div>
-      <Navbar className="border-bottom border-grey">
-        <Navbar.Brand style={{ fontWeight: "bold" }}>SECTIONS</Navbar.Brand>
+      <Navbar  style={{marginTop:"3rem" , backgroundColor:"white",marginLeft:"2rem",marginRight:"2rem",borderRadius:"0.7rem"}} >
+        <Form inline>
+        <Navbar.Brand style={{ fontWeight: "bold" }} >SECTIONS</Navbar.Brand>
+        <Button variant="light"><BsGear/></Button>
+        </Form>
         <Navbar.Collapse>
           <Nav className="ml-auto">
-            <Button variant="primary" onClick={addSectionsOnclick}>
+            <Button variant="dark" onClick={addSectionsOnclick}>
               NEW SECTION
             </Button>
           </Nav>
