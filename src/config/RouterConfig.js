@@ -3,7 +3,7 @@ import HomeComponent from "../components/HomeComponent";
 
 import LoginPage from "../components/LoginPage/LoginPage";
 import ProjectPage from "../components/ProjectPage/ProjectPage";
-
+import Reactvistest from "../components/reactvistest";
 
 
 import WorkSpaceComponent from "../components/WorkSpace/WorkSpaceComponent";
@@ -34,6 +34,12 @@ export const RouterConfig = [
     path: "/workspace",
     exact: true,
     component: () => <WorkSpaceComponent></WorkSpaceComponent>,
+  },
+
+  {
+    path: "/chart",
+    exact: true,
+    component: () => <Reactvistest></Reactvistest>,
   },
 
 ];

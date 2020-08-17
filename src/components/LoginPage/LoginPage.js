@@ -38,7 +38,7 @@ Did you forget your password?
         name = "pass"
         />
         <div>
-          <Link to ="/project">
+          <Link to ="/chart">
       <button className = "SigninButton" font-color = "#fffffff"> Sign in </button>
       </Link>
     </div>

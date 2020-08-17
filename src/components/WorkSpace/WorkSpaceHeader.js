@@ -3,6 +3,8 @@ import logo from './logo-nutella-s@3x.jpg';
 import { Navbar, Nav,Image,NavDropdown ,Container} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import profileImage from '../ProjectPage/bitmap-big@3x.png';
+import "./navbar.css"
+import { Link, Route, BrowserRouter as Router } from "react-router-dom";
 const WorkSpaceHeader = () => {
   return (
     
@@ -26,7 +28,7 @@ const WorkSpaceHeader = () => {
       </Navbar.Brand>
 
 
-      <Nav className="col-sm-9 justify-content-center" activeKey="/workspace" style={{fontWeight:"bold"}}>
+      <Nav className="topnav col-sm-9 justify-content-center" activeKey="/workspace" style={{fontWeight:"bold", }}>
     <Nav.Item>
       <Nav.Link eventKey="link-1" href="/home" >OVERVIEW</Nav.Link>
     </Nav.Item>
@@ -34,7 +36,7 @@ const WorkSpaceHeader = () => {
       <Nav.Link  href="/workspace">WORKSPACE</Nav.Link>
     </Nav.Item>
     <Nav.Item>
-      <Nav.Link eventKey="link-2">REPORTS</Nav.Link>
+      <Nav.Link eventKey="/chart">REPORTS</Nav.Link>
     </Nav.Item>
     <Nav.Item>
       <Nav.Link eventKey="link-2">HPO</Nav.Link>

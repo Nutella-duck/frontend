@@ -17,7 +17,7 @@ class TeamItemList extends Component {
         <Col sm= {4} style={{padding:"0"}}>
         <TeamItem
           
-          key={id}
+          id={id}
           name={name}
         //   users=''
         //   runs=''

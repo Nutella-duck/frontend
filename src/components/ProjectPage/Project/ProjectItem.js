@@ -36,11 +36,11 @@ Cras accumsan enim vel vulputate condimentum.
 
         
           
-            <Table borderless style={{color:"#8a8a8a"}}>
+            <Table borderless style={{color:"#8a8a8a",borderTop:"0.06rem solid #ededed"}}>
             <thead style={{textAlign:"center"}}>
-    <tr>
-      <th >100user</th>
-      <th>100 Runs</th>
+    <tr >
+      <th style={{borderRight:"0.06rem solid #ededed"}} >100user</th>
+      <th style={{borderRight:"0.06rem solid #ededed"}}>100 Runs</th>
       <th>8 hours ago</th>
       
     </tr>

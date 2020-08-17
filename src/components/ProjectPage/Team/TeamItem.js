@@ -27,18 +27,17 @@ class TeamItem extends Component {
         
         
         
-        <Card.Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-Cras accumsan enim vel vulputate condimentum. 
+        <Card.Text>{id}
 </Card.Text>
         
         
         
           
-            <Table borderless style={{color:"#8a8a8a"}}>
+            <Table borderless style={{color:"#8a8a8a",borderTop:" 0.06rem solid #ededed"}}>
             <thead style={{textAlign:"center"}}>
     <tr>
-      <th >100user</th>
-      <th>100 Projects</th>
+      <th  style={{borderRight:"0.06rem solid #ededed"}} >100user</th>
+      <th  style={{borderRight:"0.06rem solid #ededed"}}>100 Projects</th>
       <th>8 hours ago</th>
       
     </tr>
