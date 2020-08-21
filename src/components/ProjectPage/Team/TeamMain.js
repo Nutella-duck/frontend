@@ -8,7 +8,7 @@ import TeamItemList from './TeamItemList';
 
     class Team extends Component {
 
-        id = 1 // 이미 0,1,2 가 존재하므로 3으로 설정
+        id = 3 // 이미 0,1,2 가 존재하므로 3으로 설정
       
         state = {
           input: '',
@@ -58,10 +58,11 @@ import TeamItemList from './TeamItemList';
               />
             )}>
               <TeamItemList 
-              
-              projects={projects} />
+              projects={projects}
+              />
             </TeamListTemplate>
           );
         }
       }
 export default Team;
+// projects={projects.filter((projects)=>projects.name.indexOf(search)!==-1)}

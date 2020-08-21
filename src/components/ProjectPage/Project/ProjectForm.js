@@ -24,7 +24,7 @@ const ProjectForm = ({value,onChange,  onCreate}) => {
         <Navbar.Collapse>
           <Nav className="ml-auto">
             <Form inline>
-            <FormControl type="text" placeholder="Search" className=" mr-sm-2" />
+            <FormControl type="text" placeholder="Search" className=" mr-sm-2"/>
             <Button variant="dark" onClick={handleShow}>
               New Project
             </Button>

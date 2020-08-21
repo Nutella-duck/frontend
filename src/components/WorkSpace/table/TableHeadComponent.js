@@ -1,4 +1,7 @@
 import React from "react";
+import TableComponent from "./TableComponent";
+
+import { useSelector } from "react-redux";
 import {
   Navbar,
   Form,
@@ -16,12 +19,17 @@ import {
 } from "react-icons/bs";
 
 const TableHeadComponent = () => {
+  const search =''
+  const numberOfIndex = useSelector((state)=>state.model.index);
+
   return (
+    
+    <>
     <Navbar bg="light" variant="light" style={{borderRadius:"0.7rem"}}>
-      <Navbar.Brand href="#home" style={{fontWeight: "bold"}}>5 Runs</Navbar.Brand>
+      <Navbar.Brand href="#home" style={{fontWeight: "bold"}}>{numberOfIndex}Runs</Navbar.Brand>
       <Form inline>
         <Button variant="light"><BsGear/></Button>
-        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+        <FormControl type="text" placeholder="Search" className="mr-sm-2" value={search} />
       </Form>
       <Nav className="mr-auto">
         <ButtonGroup aria-label="Basic example">
@@ -42,8 +50,10 @@ const TableHeadComponent = () => {
             Columns
           </Button>
         </ButtonGroup>
-      </Nav>
+        </Nav>
     </Navbar>
+     <TableComponent ></TableComponent>
+     </>
   );
 };
 

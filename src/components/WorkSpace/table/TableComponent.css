@@ -1,0 +1,11 @@
+.workspaceTable{
+    
+  max-height: 30rem;
+  overflow: auto;
+  display: block;
+  height: 18rem;
+border-spacing: 10rem;
+border-spacing: separate;
+border-collapse: collapse;
+resize: both ;
+}
