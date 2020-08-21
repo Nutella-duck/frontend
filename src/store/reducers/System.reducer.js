@@ -1,23 +1,22 @@
 import * as Actions from "../actions";
 
 const initialState = {
-  index:1,
   cards: [1],
 };
 
-const SectionReducer = (state = initialState, action) => {
+const SystemReducer = (state = initialState, action) => {
   switch (action.type) {
-    case Actions.FETCH_CARD_DATA: {
+    case Actions.SYSTEM_CARD: {
       return {
-        ...state.cards,
+        ...state,
         cards: action.card,
       };
     }
-    
+
     default: {
       return state;
     }
   }
 };
 
-export default SectionReducer;
+export default SystemReducer;

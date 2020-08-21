@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {useSelector} from 'react-redux';
+
 import 'react-vis/dist/style.css';
 import {  XYPlot,
     XAxis,
@@ -98,9 +98,9 @@ class Graph extends Component {
     render() {
        
         const Line = LineSeries;
-        //const modelName  = useSelector((state) => state.map(state.model.models.NAME));
+        const modelName = ["Model 1","Model 2","Model 3","Model 4","Model 5"]
        
-       const modelName = [1,2,3,4,5]
+       
         
         return (
           <div>

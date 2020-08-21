@@ -1,67 +1,53 @@
-import React,{Component} from "react";
+import React from "react";
 //import ProjectCard from './ProjectCard';
 //import { Card,Button} from "react-bootstrap";
 import ProjectListTemplate from './ProjectListTemplate';
 import ProjectForm from './ProjectForm';
 import ProjectItemList from './ProjectItemList';
+import {useSelector,useDispatch} from "react-redux";
 
 
-    class Project extends Component {
+import * as Actions from "../../../store/actions";
+    const Project=() => {
+      const dispatch = useDispatch();
+     const  state = useSelector((state) => state.project);
+     
+     
+     
+      
+    /* const onCreate = () => {
+      
+      const len = state.projects.length;
+      state.projects.push(len+1);
+      dispatch(Actions.addProject(state.input));
 
-        id = 1 // 이미 0,1,2 가 존재하므로 3으로 설정
-      
-        state = {
-          input: '',
-          projects: [
-            { id: 0, name:'1번 프로젝트' },
-            {id :1, name :'2번 프로젝트'},
-            {id : 2, name:'3번 프로젝트'}
-           
-          ]
-        }
-      
-        
-      
-        handleCreate = () => {
-          const { input, projects } = this.state;
-          this.setState({
-            input: '', // 인풋 비우고
-            // concat 을 사용하여 배열에 추가
-            projects: projects.concat({
-              id: this.id++,
-              name: input
-            })
-          });
-        }
-       
-        handleChange = (e) => {
+     
+    };*/
+  
+       const  handleChange = (e) => {
             this.setState({
               input: e.target.value // input 의 다음 바뀔 값
             });
           }
-    
-        render() {
-          const { input, projects } = this.state;
-          const {
-            
-            handleCreate,
-            handleChange
-            
-          } = this;
+         
+      const onCreate = (input)=>{
+        return;
+      } 
+          
       
           return (
             <ProjectListTemplate form={(
               <ProjectForm 
-                value={input}
+                value={state.input}
                 onChange={handleChange}
-                onCreate={handleCreate}
+                onCreate={onCreate(state.input)}
               />
             )}>
               <ProjectItemList 
               
-              projects={projects} />
+              projects={state.projects} />
             </ProjectListTemplate>
           );
-        }
+        
       }
 export default Project;

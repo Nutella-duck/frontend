@@ -1,19 +1,18 @@
 import * as Actions from "../actions";
-
 const initialState = {
-  index:1,
-  cards: [1],
-};
 
-const SectionReducer = (state = initialState, action) => {
+}
+
+
+const SectionReducer = (state = "", action) => {
   switch (action.type) {
-    case Actions.FETCH_CARD_DATA: {
+    case Actions.SEARCH_SPACE: {
       return {
-        ...state.cards,
-        cards: action.card,
+        ...state,
+        input:action.input
       };
     }
-    
+
     default: {
       return state;
     }
