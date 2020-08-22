@@ -1,6 +1,6 @@
 import React from "react";
 import TableHeadComponent from "./TableHeadComponent";
-import TableComponent from "./TableComponent";
+
 import "./TableComponent.css";
 const RunTableComponent = () => {
   return (

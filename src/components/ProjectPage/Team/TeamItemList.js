@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import TeamItem from './TeamItem';
-import { Conta,Col,Card,Button,Row} from "react-bootstrap";
+import { Col,Row} from "react-bootstrap";
 class TeamItemList extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {

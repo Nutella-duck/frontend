@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './ProjectItem.css';
 import { Card,Badge,Form, Button,Table} from "react-bootstrap";
-import { Link, Route, BrowserRouter as Router } from "react-router-dom";
+
 import {
   BsGear
 } from "react-icons/bs";
@@ -30,8 +30,7 @@ class ProjectItem extends Component {
           <BsGear/>
         </Button>
         </Form>
-        <Card.Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-Cras accumsan enim vel vulputate condimentum. 
+        <Card.Text>{id}
 </Card.Text>
 
         

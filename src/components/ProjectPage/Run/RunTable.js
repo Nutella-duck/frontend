@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Table, Form } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useSelector } from "react-redux";
 
@@ -28,7 +28,7 @@ const RunTable = () => {
         {tableRows.map((tableRow, index) => (
           <tr key={index}>
             
-            <td>{tableRow.index}</td>
+            <td>{tableRow.NAME}</td>
             <td>{tableRow.PROJECT}</td>
             <td style={tableRow.STATE ==="Crashed" ? {color:"red"} : {color:"#1ddd89"} }>{tableRow.STATE}</td>
             <td>{tableRow.CREATED}</td>

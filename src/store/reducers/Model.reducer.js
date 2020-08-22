@@ -33,13 +33,24 @@ const initialState = {
       },]
 };
 
-const SectionReducer = (state = initialState, action) => {
+const ModelReducer = (state = initialState, action) => {
   switch (action.type) {
     case Actions.MODEL_DATA: {
       return {
         ...state.models
         
       };
+    }
+    case Actions.ADD_MODEL:{
+      const {models} = state;
+      const model = {};
+      model.id = 1;
+      model.name = action.name;
+      models.concat(model);
+        return {
+          ...state,
+          models:models.concat(model),
+        }
     }
    
 
@@ -49,4 +60,4 @@ const SectionReducer = (state = initialState, action) => {
   }
 };
 
-export default SectionReducer;
+export default ModelReducer;

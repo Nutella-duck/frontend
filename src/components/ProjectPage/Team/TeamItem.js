@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import './TeamItem.css';
-import { Card,Badge,Form, Button,Table} from "react-bootstrap";
-import {
-  BsGear
-} from "react-icons/bs";
+import { Card,Table} from "react-bootstrap";
+
 class TeamItem extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {

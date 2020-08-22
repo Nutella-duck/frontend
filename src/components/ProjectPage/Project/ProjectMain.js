@@ -10,10 +10,10 @@ import {useSelector,useDispatch} from "react-redux";
 import * as Actions from "../../../store/actions";
     const Project=() => {
       const dispatch = useDispatch();
-     const  state = useSelector((state) => state.project);
+     const  state = useSelector((state) => state.project.projects);
      
      
-     
+     const input = '';
       
     /* const onCreate = () => {
       
@@ -23,29 +23,33 @@ import * as Actions from "../../../store/actions";
 
      
     };*/
+    const handleCreate = () => {
+      const {input} = this.state;
+      dispatch(Actions.addProject(input));
+      };
+    
+
   
-       const  handleChange = (e) => {
-            this.setState({
-              input: e.target.value // input 의 다음 바뀔 값
-            });
+      const  handleChange = (e) => {
+           this.setState({
+             input: e.target.value // input 의 다음 바뀔 값
+           });
           }
          
-      const onCreate = (input)=>{
-        return;
-      } 
+  
           
       
           return (
             <ProjectListTemplate form={(
               <ProjectForm 
-                value={state.input}
+                value={input}
                 onChange={handleChange}
-                onCreate={onCreate(state.input)}
+                onCreate={handleCreate}
               />
             )}>
               <ProjectItemList 
               
-              projects={state.projects} />
+              projects={state} />
             </ProjectListTemplate>
           );
         

@@ -3,7 +3,7 @@ import { Table, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {useSelector} from "react-redux";
 import "./TableComponent.css";
-import { Resizable, ResizableBox } from 'react-resizable';
+
 const TableComponent = () => {
  
 const ResizableBox = require('react-resizable').ResizableBox;

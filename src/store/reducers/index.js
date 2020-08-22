@@ -8,7 +8,7 @@ const rootReducer = combineReducers({
   section,
   search,
   system,
-  model,
+ model,
   project
 });
 

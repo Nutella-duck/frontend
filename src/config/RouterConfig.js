@@ -35,6 +35,8 @@ export const RouterConfig = [
     exact: true,
     component: () => <WorkSpaceComponent></WorkSpaceComponent>,
   },
+  
+
 
  
 ];
