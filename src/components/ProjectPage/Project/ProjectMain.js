@@ -1,6 +1,4 @@
 import React from "react";
-//import ProjectCard from './ProjectCard';
-//import { Card,Button} from "react-bootstrap";
 import ProjectListTemplate from './ProjectListTemplate';
 import ProjectForm from './ProjectForm';
 import ProjectItemList from './ProjectItemList';
@@ -24,7 +22,7 @@ import * as Actions from "../../../store/actions";
      
     };*/
     const handleCreate = () => {
-      const {input} = this.state;
+      
       dispatch(Actions.addProject(input));
       };
     
@@ -35,7 +33,6 @@ import * as Actions from "../../../store/actions";
              input: e.target.value // input 의 다음 바뀔 값
            });
           }
-         
   
           
       

@@ -12,12 +12,12 @@ class ProjectItemList extends Component {
     const { projects } = this.props;
     
     const projectList = projects.map(
-      ({id, name}) => (
-        <Col sm= {4} style={{padding:"0"}}>
+      ({id, name},index) => (
+        <Col sm= {4} style={{padding:"0"}} key={index}>
         <ProjectItem className="col-md-4" 
        
           
-          key={id}
+          key={index}
           name={name}
        
         />

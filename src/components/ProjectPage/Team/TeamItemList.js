@@ -13,10 +13,10 @@ class TeamItemList extends Component {
     
     
     const projectList = projects.map(
-      ({id, name}) => (
-        <Col sm= {4} style={{padding:"0"}}>
+      ({id, name},index) => (
+        <Col sm= {4} style={{padding:"0"}} key={index}>
         <TeamItem
-          
+          key={index}
           id={id}
           name={name}
         //   users=''
