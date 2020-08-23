@@ -13,7 +13,7 @@ class ProjectItem extends Component {
   
   render() {
     //const { name,users,runs,created,explanation,open ,id} = this.props;
-    const { name,id} = this.props;
+    const { name,id,description} = this.props;
    
 
     
@@ -30,7 +30,7 @@ class ProjectItem extends Component {
           <BsGear/>
         </Button>
         </Form>
-        <Card.Text>{id}
+        <Card.Text>{description}
 </Card.Text>
 
         

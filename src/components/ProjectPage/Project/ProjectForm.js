@@ -3,7 +3,7 @@ import './ProjectForm.css';
 import { Modal,Button, Container,Col,Row,Nav,Navbar,Form,FormControl} from "react-bootstrap";
 
 
-const ProjectForm = ({value,onChange,  onCreate}) => {
+const ProjectForm = ({projectName,onChange,  onCreate,description}) => {
   const [show, setShow] = useState(false);
   const [show2,setShow2] = useState(false);
 
@@ -49,10 +49,10 @@ const ProjectForm = ({value,onChange,  onCreate}) => {
       <Container>
           <Row>
             <Col>
-             <p>project Name</p>
+             <p>Project Name</p>
             </Col>
             <Col>
-              <input onChange={onChange} value={value} />
+              <input  name="projectName"onChange={onChange} value={projectName}  />
             </Col>
           </Row>
           <Row>
@@ -60,7 +60,7 @@ const ProjectForm = ({value,onChange,  onCreate}) => {
              <p>Description</p>
             </Col>
             <Col>
-              <input  />
+              <input   name="description"onChange={onChange} value={description}/>
             </Col>
           </Row>
         </Container>
