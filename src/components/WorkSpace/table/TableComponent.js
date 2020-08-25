@@ -1,12 +1,10 @@
 import React from "react";
 import { Table, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 import "./TableComponent.css";
 
 const TableComponent = () => {
- 
-const ResizableBox = require('react-resizable').ResizableBox;
   const tableHeads = [
     "NAME",
     "STATE",
@@ -17,17 +15,13 @@ const ResizableBox = require('react-resizable').ResizableBox;
     "HPO",
     "COMPRESSED",
     "EPOCH",
-   
-    
   ];
-  const tableRows = useSelector(state =>state.model.models);
+
+  const tableRows = useSelector((state) => state.model.models);
+
   return (
-    
-    <ResizableBox handleStyle={"bottom"} style={{width:"fit-content" }} axis="y">
-    
-  
-    <Table className="workspaceTable"  striped  hover borderless style={{textAlign:"center" }}>
-      <thead >
+    <Table striped hover borderless style={{ textAlign: "center" }}>
+      <thead>
         <tr>
           <th style={{ width: "1.5rem" }}>
             <Form.Check type="checkbox" />
@@ -37,14 +31,22 @@ const ResizableBox = require('react-resizable').ResizableBox;
           ))}
         </tr>
       </thead>
-      <tbody  >
+      <tbody>
         {tableRows.map((tableRow, index) => (
           <tr key={index}>
             <td>
               <Form.Check type="checkbox" />
             </td>
             <td>{tableRow.NAME}</td>
-            <td style={tableRow.STATE ==="Crashed" ? {color:"red"} : {color:"blue"} }>{tableRow.STATE}</td>
+            <td
+              style={
+                tableRow.STATE === "Crashed"
+                  ? { color: "red" }
+                  : { color: "blue" }
+              }
+            >
+              {tableRow.STATE}
+            </td>
             <td>{tableRow.CREATED}</td>
             <td>{tableRow.CREATEDBY}</td>
             <td>{tableRow.RUNTIME}</td>
@@ -56,8 +58,6 @@ const ResizableBox = require('react-resizable').ResizableBox;
         ))}
       </tbody>
     </Table>
-    </ResizableBox>
-    
   );
 };
 
