@@ -6,12 +6,12 @@ import './App.css';
 
 const App = () => {
   return (
-    /*<div className="App">
+    <div className="App">
       <BrowserRouter>
         <MainLayout></MainLayout>
       </BrowserRouter>
-    </div>*/
-<API/>
+    </div>
+
   );
 };
 
