@@ -7,9 +7,9 @@ const WorkSpaceComponent = () => {
   return (
     <div>
       <Header></Header>
-      <RunTableComponent ></RunTableComponent>
+      <RunTableComponent></RunTableComponent>
       <SectionsComponent></SectionsComponent>
-     <SystemComponent></SystemComponent>
+      <SystemComponent></SystemComponent>
     </div>
   );
 };

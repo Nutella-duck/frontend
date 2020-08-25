@@ -18,7 +18,7 @@ import {
 } from "react-icons/bs";
 
 const TableHeadComponent = () => {
-  const search = "";
+  let search = "";
   const numberOfIndex = useSelector((state) => state.model.index);
 
   return (
@@ -31,12 +31,7 @@ const TableHeadComponent = () => {
           <Button variant="light">
             <BsGear />
           </Button>
-          <FormControl
-            type="text"
-            placeholder="Search"
-            className="mr-sm-2"
-            value={search}
-          />
+          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
         </Form>
         <Nav className="mr-auto">
           <ButtonGroup aria-label="Basic example">

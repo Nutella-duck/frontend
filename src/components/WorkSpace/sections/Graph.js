@@ -1,18 +1,13 @@
 import React, { Component } from "react";
-import { useSelector } from "react-redux";
 import "react-vis/dist/style.css";
 import {
-  XYPlot,
   XAxis,
   YAxis,
-  ChartLabel,
   HorizontalGridLines,
   VerticalGridLines,
-  FlexibleXYPlot,
   FlexibleWidthXYPlot,
   Crosshair,
   LineSeries,
-  MarkSeriesCanvas,
   DiscreteColorLegend,
 } from "react-vis";
 
@@ -98,9 +93,13 @@ class Graph extends Component {
 
   render() {
     const Line = LineSeries;
-    //const modelName  = useSelector((state) => state.map(state.model.models.NAME));
-
-    const modelName = [1, 2, 3, 4, 5];
+    const modelName = [
+      { title: "1" },
+      { title: "2" },
+      { title: "3" },
+      { title: "4" },
+      { title: "5" },
+    ];
 
     return (
       <div>
