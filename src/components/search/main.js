@@ -1,39 +1,48 @@
-import React, { Component } from 'react';
-import ToDoForm from './component/ToDoForm';
-import ToDoList from './component/ToDoList';
-import './App.css';
-class Main extends Component {
-  id = 4;
-  state = {
-    toDoList: [
-      {
-        id: 1,
-        text: '러닝 뛰기',
-      },
-      {
-        id: 2,
-        text: '공부하기',
-      },
-      {
-        id: 3,
-        text: '독서하기',
-      },
-    ],
-    search: '',
-  };
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-  handleCreate = () => {};
-  handleUpdate = (id, data) => {};
-  handleRemove = (id) => {};
-  render() {
-    const { toDoList } = this.state;
-    return (
-      <div>
-        <ToDoForm onCreate={this.handleCreate} />
-        <ToDoList data={toDoList} onUpdate={this.handleUpdate} onRemove={this.handleRemove} />
-      </div>
-    );
-  }
+function Users() {
+  const [users, setUsers] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        // 요청이 시작 할 때에는 error 와 users 를 초기화하고
+        setError(null);
+        setUsers(null);
+        // loading 상태를 true 로 바꿉니다.
+        setLoading(true);
+        const response = await axios.get(
+          'http://localhost:7000/admin/project'
+        );
+        setUsers(response.data); // 데이터는 response.data 안에 들어있습니다.
+      
+      } catch (e) {
+        setError(e);
+      }
+      setLoading(false);
+   
+    };
+
+    fetchUsers();
+  }, []);
+  console.log(users);
+  if (loading) return <div>로딩중..</div>;
+  if (error) return <div>에러가 발생했습니다</div>;
+  if (!users) return null;
+  
+  return (
+  
+    <ul>
+      {users.map(user => (
+        <li key={user.project_id}>
+          {user.project_name} ({user.createdAt})
+        </li>
+      ))}
+    </ul>
+  );
 }
 
-export default Main;
+export default Users;

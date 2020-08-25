@@ -1,6 +1,5 @@
 import React,{Component} from "react";
-//import ProjectCard from './ProjectCard';
-//import { Card,Button} from "react-bootstrap";
+
 import TeamListTemplate from './TeamListTemplate';
 import TeamForm from './TeamForm';
 import TeamItemList from './TeamItemList';

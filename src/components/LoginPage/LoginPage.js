@@ -1,7 +1,7 @@
 import React from "react";
 import './LoginLayout.css';
 import logo from './logo@3x.png';
-import { Link, Route, BrowserRouter as Router } from "react-router-dom";
+import { Link, BrowserRouter as Router } from "react-router-dom";
 import { Container,Row,Col,Image } from "react-bootstrap";
 
 

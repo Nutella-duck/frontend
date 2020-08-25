@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import ProjectItem from './ProjectItem';
-import { Conta,Col,Card,Button,Row} from "react-bootstrap";
+import { Col,Row} from "react-bootstrap";
 class ProjectItemList extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -11,20 +11,15 @@ class ProjectItemList extends Component {
   render() {
     const { projects } = this.props;
     
-    
     const projectList = projects.map(
-      ({id, name}) => (
-        <Col sm= {4} style={{padding:"0"}}>
+      ({id, name,description},index) => (
+        <Col sm= {4} style={{padding:"0"}} key={index}>
         <ProjectItem className="col-md-4" 
-       
+        description={description}
           
-          key={id}
+          key={index}
           name={name}
-        //   users=''
-        //   runs=''
-        //   created=''
-        //   explanation=''
-        //   open=''
+       
         />
         </Col>
       )

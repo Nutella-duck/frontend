@@ -1,9 +1,9 @@
 import React,{useState} from 'react';
 import './ProjectForm.css';
 import { Modal,Button, Container,Col,Row,Nav,Navbar,Form,FormControl} from "react-bootstrap";
-import { Link, Route, BrowserRouter as Router } from "react-router-dom";
 
-const ProjectForm = ({value,onChange,  onCreate}) => {
+
+const ProjectForm = ({projectName,onChange,  onCreate,description}) => {
   const [show, setShow] = useState(false);
   const [show2,setShow2] = useState(false);
 
@@ -19,7 +19,7 @@ const ProjectForm = ({value,onChange,  onCreate}) => {
       
      <>
 
-      <Navbar style={{marginLeft:"16rem",marginRight:"16rem",padding:"0" }}>
+      <Navbar style={{marginLeft:"16rem",marginRight:"16rem",padding:"x0" }}>
         <Navbar.Brand style={{ fontWeight: "bold",fontSize:"2rem" }}>Project</Navbar.Brand>
         <Navbar.Collapse>
           <Nav className="ml-auto">
@@ -49,10 +49,10 @@ const ProjectForm = ({value,onChange,  onCreate}) => {
       <Container>
           <Row>
             <Col>
-             <p>project Name</p>
+             <p>Project Name</p>
             </Col>
             <Col>
-              <input onChange={onChange} value={value} />
+              <input  name="projectName"onChange={onChange} value={projectName}  />
             </Col>
           </Row>
           <Row>
@@ -60,7 +60,7 @@ const ProjectForm = ({value,onChange,  onCreate}) => {
              <p>Description</p>
             </Col>
             <Col>
-              <input  />
+              <input   name="description"onChange={onChange} value={description}/>
             </Col>
           </Row>
         </Container>

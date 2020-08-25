@@ -4,7 +4,7 @@ import HomeComponent from "../components/HomeComponent";
 import LoginPage from "../components/LoginPage/LoginPage";
 import ProjectPage from "../components/ProjectPage/ProjectPage";
 
-
+import API from "../components/search/main";
 
 import WorkSpaceComponent from "../components/WorkSpace/WorkSpaceComponent";
 
@@ -34,6 +34,13 @@ export const RouterConfig = [
     path: "/workspace",
     exact: true,
     component: () => <WorkSpaceComponent></WorkSpaceComponent>,
+  },
+  
+
+  {
+    path: "/api",
+    exact: true,
+    component: () => <API></API>,
   },
 
  
