@@ -34,6 +34,7 @@ const ItemHead = () => {
 
 const SectionsComponents = () => {
   const cards = [1, 2, 3];
+  const name = ["accuracy", "loss", "val_acc"];
 
   return (
     <div style={{ borderRadius: "0.7rem" }}>
@@ -56,8 +57,8 @@ const SectionsComponents = () => {
             <Card
               style={{ height: "20rem", width: "auto", borderColor: "white" }}
             >
-              <h5>ACCURRUCY{card}</h5>
-              <Graph />
+              <h5>{name[index]}</h5>
+              <Graph index={index} />
             </Card>
           </Col>
         ))}

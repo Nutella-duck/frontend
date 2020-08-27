@@ -2,29 +2,28 @@ import React from "react";
 import logo from "./logo-nutella-s@3x.jpg";
 import { Navbar, Nav, Image, NavDropdown, Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import profileImage from "../ProjectPage/bitmap-big@3x.png";
+import profileImage from "../ProjectPage/profile.png";
 import "./navbar.css";
 
 const WorkSpaceHeader = () => {
   return (
     <Navbar style={{ backgroundColor: "white" }}>
       <Navbar.Brand href="/"></Navbar.Brand>
-      <Container>
-        {" "}
-        <Image
-          src={logo}
-          width="45rem"
-          height="auto"
-          className="d-inline-block align-top"
-        />
-        <NavDropdown title="Nutella Project" id="nav-dropdown">
-          <NavDropdown.Item></NavDropdown.Item>
-          <NavDropdown.Item>Another action</NavDropdown.Item>
-          <NavDropdown.Item>Something else here</NavDropdown.Item>
-          <NavDropdown.Divider />
-          <NavDropdown.Item>Separated link</NavDropdown.Item>
-        </NavDropdown>
-      </Container>
+
+      <Image
+        src={logo}
+        width="45rem"
+        height="auto"
+        className="d-inline-block align-top"
+      />
+      <NavDropdown title="Nutella Project" id="nav-dropdown">
+        <NavDropdown.Item></NavDropdown.Item>
+        <NavDropdown.Item>Another action</NavDropdown.Item>
+        <NavDropdown.Item>Something else here</NavDropdown.Item>
+        <NavDropdown.Divider />
+        <NavDropdown.Item>Separated link</NavDropdown.Item>
+      </NavDropdown>
+
       <Nav
         className="topnav col-sm-9 justify-content-center"
         activeKey="/workspace"

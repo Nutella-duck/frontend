@@ -77,6 +77,7 @@ const data = [
     { x: 10, y: 85.49485 },
   ],
 ];
+
 class Graph extends Component {
   constructor(props) {
     super(props);
@@ -94,11 +95,11 @@ class Graph extends Component {
   render() {
     const Line = LineSeries;
     const modelName = [
-      { title: "1" },
-      { title: "2" },
-      { title: "3" },
-      { title: "4" },
-      { title: "5" },
+      { title: "project_test" },
+      { title: "Model-Name-A-002" },
+      { title: "Model-Name-A-003" },
+      { title: "Model-Name-A-004" },
+      { title: "Model-Name" },
     ];
 
     return (

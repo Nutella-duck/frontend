@@ -12,8 +12,8 @@ const TableComponent = () => {
     "CREATEDBY",
     "RUNTIME",
     "ACCURACY",
-    "HPO",
-    "COMPRESSED",
+    "LOSS",
+    "VAL_ACCURACY",
     "EPOCH",
   ];
 
@@ -51,8 +51,8 @@ const TableComponent = () => {
             <td>{tableRow.CREATEDBY}</td>
             <td>{tableRow.RUNTIME}</td>
             <td>{tableRow.ACCURACY}</td>
-            <td>{tableRow.HPO}</td>
-            <td>{tableRow.COMPRESSED}</td>
+            <td>{tableRow.LOSS}</td>
+            <td>{tableRow.VAL_ACCURACY}</td>
             <td>{tableRow.EPOCH}</td>
           </tr>
         ))}

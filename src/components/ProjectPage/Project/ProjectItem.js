@@ -4,13 +4,14 @@ import { Card, Badge, Form, Button, Table } from "react-bootstrap";
 
 import { BsGear } from "react-icons/bs";
 class ProjectItem extends Component {
-  shouldComponentUpdate(nextProps, nextState) {
-    return this.props.checked !== nextProps.checked;
-  }
-
   render() {
-    //const { name,users,runs,created,explanation,open ,id} = this.props;
-    const { name, description } = this.props;
+    const {
+      name,
+      description,
+      userNumber,
+      runsNumber,
+      hoursNumber,
+    } = this.props;
 
     return (
       <div>
@@ -34,12 +35,12 @@ class ProjectItem extends Component {
                 <thead style={{ textAlign: "center" }}>
                   <tr>
                     <th style={{ borderRight: "0.06rem solid #ededed" }}>
-                      100user
+                      {userNumber} user
                     </th>
                     <th style={{ borderRight: "0.06rem solid #ededed" }}>
-                      100 Runs
+                      {runsNumber} runs
                     </th>
-                    <th>8 hours ago</th>
+                    <th> {hoursNumber} hours</th>
                   </tr>
                 </thead>
               </Table>

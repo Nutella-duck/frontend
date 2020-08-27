@@ -1,29 +1,25 @@
-
-.card{
+.card {
   position: left;
-  width:auto;
+  width: auto;
   height: 12rem;
   border-radius: 0.7rem;
- margin-left: 0.7rem;
- padding:0.7rem;
+  margin-left: 0.7rem;
+  padding: 0.7rem;
   margin-bottom: 0.7rem;
   background-color: #ffffff;
-  
-  
-
 }
-.badge{
+.badge {
   width: 5rem;
   height: 1.3rem;
   border-radius: 0.6rem;
   background-color: #268ef7;
   margin-left: 0;
-  padding : 0;
-  color :#ffffff;
+  padding: 0;
+  color: #ffffff;
   font-size: 1rem;
   font-family: Lato;
 }
-.title{
+.title {
   width: auto;
   height: 1.3rem;
   font-family: Lato;
@@ -34,7 +30,7 @@
   line-height: normal;
   letter-spacing: normal;
   color: #080808;
-  padding : 0;
+  padding: 0;
   margin-right: 1rem;
   margin-top: 0rem;
-}  
+}

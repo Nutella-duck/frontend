@@ -4,21 +4,21 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
-import { createStore } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "./store/reducers";
+import ReduxThunk from "redux-thunk";
 
+const composeEnhancer = window.__REDUX__DEVTOOLS_EXTENSION_COMPOSE || compose;
 const store = createStore(
   rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeEnhancer(applyMiddleware(ReduxThunk))
 );
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById("root")
 );
 

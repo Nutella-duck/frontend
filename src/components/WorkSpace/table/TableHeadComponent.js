@@ -25,7 +25,7 @@ const TableHeadComponent = () => {
     <>
       <Navbar bg="light" variant="light" style={{ borderRadius: "0.7rem" }}>
         <Navbar.Brand href="#home" style={{ fontWeight: "bold" }}>
-          {numberOfIndex}Runs
+          {numberOfIndex} Runs
         </Navbar.Brand>
         <Form inline>
           <Button variant="light">
