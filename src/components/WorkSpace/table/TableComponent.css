@@ -1,11 +1,16 @@
-.workspaceTable{
-    
-  max-height: 30rem;
+.scrollbar {
+  position: relative;
+  height: 370px;
   overflow: auto;
   display: block;
-  height: 18rem;
-border-spacing: 10rem;
-border-spacing: separate;
-border-collapse: collapse;
-resize: both ;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 20px;
+  height: 20px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
 }

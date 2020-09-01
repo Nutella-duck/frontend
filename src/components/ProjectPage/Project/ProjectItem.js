@@ -1,61 +1,55 @@
-import React, { Component } from 'react';
-import './ProjectItem.css';
-import { Card,Badge,Form, Button,Table} from "react-bootstrap";
+import React, { Component } from "react";
+import "./ProjectItem.css";
+import { Card, Badge, Form, Button, Table } from "react-bootstrap";
 
-import {
-  BsGear
-} from "react-icons/bs";
+import { BsGear } from "react-icons/bs";
 class ProjectItem extends Component {
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return this.props.checked !== nextProps.checked;
-  }
-  
   render() {
-    //const { name,users,runs,created,explanation,open ,id} = this.props;
-    const { name,id,description} = this.props;
-   
+    const {
+      name,
+      description,
+      userNumber,
+      runsNumber,
+      hoursNumber,
+    } = this.props;
 
-    
     return (
       <div>
-      <a href="/workspace">
-        <Card className = "card">
-        <Card.Body>
-          <Form inline>
-        <Card.Title className = "title">{name}</Card.Title>
-        
-        <Badge className = "badge">Public</Badge>
-        <Button variant="light" className="ml-auto">
-          <BsGear/>
-        </Button>
-        </Form>
-        <Card.Text>{description}
-</Card.Text>
+        <a href="/workspace">
+          <Card className="card">
+            <Card.Body>
+              <Form inline>
+                <Card.Title className="title">{name}</Card.Title>
 
-        
-          
-            <Table borderless style={{color:"#8a8a8a",borderTop:"0.06rem solid #ededed"}}>
-            <thead style={{textAlign:"center"}}>
-    <tr >
-      <th style={{borderRight:"0.06rem solid #ededed"}} >100user</th>
-      <th style={{borderRight:"0.06rem solid #ededed"}}>100 Runs</th>
-      <th>8 hours ago</th>
-      
-    </tr>
-  </thead>
-            </Table> 
-         
+                <Badge className="badge">Public</Badge>
+                <Button variant="light" className="ml-auto">
+                  <BsGear />
+                </Button>
+              </Form>
+              <Card.Text>{description}</Card.Text>
+
+              <Table
+                borderless
+                style={{ color: "#8a8a8a", borderTop: "0.06rem solid #ededed" }}
+              >
+                <thead style={{ textAlign: "center" }}>
+                  <tr>
+                    <th style={{ borderRight: "0.06rem solid #ededed" }}>
+                      {userNumber} user
+                    </th>
+                    <th style={{ borderRight: "0.06rem solid #ededed" }}>
+                      {runsNumber} runs
+                    </th>
+                    <th> {hoursNumber} hours</th>
+                  </tr>
+                </thead>
+              </Table>
             </Card.Body>
-        </Card>
+          </Card>
         </a>
-</div>
-
-
-
-
+      </div>
     );
-  };
+  }
 }
 
 export default ProjectItem;

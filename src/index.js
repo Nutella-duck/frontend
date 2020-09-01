@@ -7,21 +7,18 @@ import * as serviceWorker from "./serviceWorker";
 import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "./store/reducers";
-import{composeWithDevTools} from'redux-devtools-extension';
-import thunk from "redux-thunk";
+import ReduxThunk from "redux-thunk";
 
 const composeEnhancer = window.__REDUX__DEVTOOLS_EXTENSION_COMPOSE || compose;
 const store = createStore(
   rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeEnhancer(applyMiddleware(ReduxThunk))
 );
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById("root")
 );
 

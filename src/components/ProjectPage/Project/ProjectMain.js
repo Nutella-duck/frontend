@@ -1,81 +1,81 @@
-import React,{useState,useEffect} from "react";
-import ProjectListTemplate from './ProjectListTemplate';
-import ProjectForm from './ProjectForm';
-import ProjectItemList from './ProjectItemList';
-import {useSelector,useDispatch,} from "react-redux";
-import axios from 'axios';
-
+import React, { useState, useEffect } from "react";
+import ProjectListTemplate from "./ProjectListTemplate";
+import ProjectForm from "./ProjectForm";
+import ProjectItemList from "./ProjectItemList";
+import { useSelector, useDispatch } from "react-redux";
 
 import * as Actions from "../../../store/actions";
-    const Project=() => {
+import axios from "axios";
 
-      const dispatch = useDispatch();
-     const  state = useSelector((state) => state.project.projects);
-     
-     const [inputs,setInputs] = useState({
-      projectName:''
-      ,description:''
-     });
-     
+const Project = () => {
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.project.projects);
 
-      
-        
-    
+  const [apiKey, setApiKey] = useState("");
+  const [inputs, setInputs] = useState({
+    projectName: "",
+    description: "",
+  });
 
-      
+  const { projectName, description } = inputs;
 
+  useEffect(() => {
+    dispatch(Actions.getAllPorject());
+  }, []);
 
-
-
-
-      
-    /* const onCreate = () => { 
-      const len = state.projects.length;
-      state.projects.push(len+1);
-      dispatch(Actions.addProject(state.input));
-    
-    };*/
-
-    const {projectName,description} = inputs;
-    const handleCreate = () => {
-      
-      setInputs({
-        projectName:'',
-        description:''
-     
+  const getKey = () => {
+    console.log("getkey");
+    axios
+      .get("http://localhost:7000/admin/project/key")
+      .then((resonse) => {
+        setApiKey(resonse.data);
+      })
+      .catch((error) => {
+        console.log("error getKey");
       });
-      dispatch(Actions.addProject(inputs.projectName,inputs.description));
-    }
-    //dispatch(Actions.addProject(inputs));
-  
-      const  handleChange = (e) => {
-         const {name,value} = e.target;
-         setInputs({
-           ...inputs,
-           [name]:value
-         });
-          };
+  };
 
-          
-          
-  
-          return (
-            <>
-           
-            <ProjectListTemplate form={(
-              <ProjectForm 
-              projectName={projectName}
-              description={description}
-                onChange={handleChange}
-                onCreate={handleCreate}
-              />
-            )}>
-              <ProjectItemList 
-              
-              projects={state} />
-            </ProjectListTemplate>
-            </>
-          );
-        
-      }
+  const handleCreate = () => {
+    setInputs({
+      projectName: "",
+      description: "",
+    });
+    let projectInfoData = {
+      projectName: inputs.projectName,
+      description: inputs.description,
+      api_key: apiKey,
+    };
+
+    dispatch(Actions.addProject(projectInfoData));
+
+    state.push(projectInfoData);
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value,
+    });
+  };
+
+  return (
+    <>
+      <ProjectListTemplate
+        form={
+          <ProjectForm
+            projectName={projectName}
+            description={description}
+            apiKey={apiKey}
+            onChange={handleChange}
+            onCreate={handleCreate}
+            getKey={getKey}
+          />
+        }
+      >
+        <ProjectItemList projects={state} />
+      </ProjectListTemplate>
+    </>
+  );
+};
 export default Project;
