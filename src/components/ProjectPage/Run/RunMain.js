@@ -1,20 +1,26 @@
-import React from "react";
+import React,{useEffect} from "react";
 import RunTable from './RunTable';
-
 import {
   Navbar,
   Form,
   FormControl,
   Nav,
-  
   Button,
 
 } from "react-bootstrap";
-import {
-  BsFunnel,
-  
-} from "react-icons/bs";
+import { BsFunnel,} from "react-icons/bs";
+import { useSelector, useDispatch } from "react-redux";
+
+import * as Actions from "../../../store/actions";
+import axios from "axios";
+
 const Run = () => {
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.model.models);
+
+  useEffect(() => {
+    dispatch(Actions.getAllModelData());
+  }, []);
   return (
       <div style={{marginLeft:"16rem",marginRight:"16rem",paddingBottom:"7rem" }}>
     <div className = "form">
@@ -36,7 +42,7 @@ const Run = () => {
     
     
 </div>
-<RunTable ></RunTable>
+<RunTable tableRows={state}></RunTable>
 </div>
   );
 };

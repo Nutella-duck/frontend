@@ -4,9 +4,10 @@ import { Table } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useSelector } from "react-redux";
 
-const RunTable = () => {
+const RunTable = ({tableRows}) => {
   const tableHeads = ["NAME", "PROJECT", "STATE", "CREATED"];
-  const tableRows = useSelector((state) => state.model.models);
+ 
+
   return (
     <Table
       striped
@@ -29,18 +30,18 @@ const RunTable = () => {
       <tbody>
         {tableRows.map((tableRow, index) => (
           <tr key={index}>
-            <td>{tableRow.NAME}</td>
-            <td>{tableRow.PROJECT}</td>
+            <td>{tableRow.run_name}</td>
+            <td>{tableRow.project_id}</td>
             <td
               style={
-                tableRow.STATE === "Crashed"
+                tableRow.state === "Crashed"
                   ? { color: "red" }
                   : { color: "#1ddd89" }
               }
             >
-              {tableRow.STATE}
+              {tableRow.state}
             </td>
-            <td>{tableRow.CREATED}</td>
+            <td>{tableRow.created_by}</td>
           </tr>
         ))}
       </tbody>

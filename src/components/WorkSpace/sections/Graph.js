@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import "react-vis/dist/style.css";
 import {
   XAxis,
@@ -77,7 +78,6 @@ const data = [
     { x: 10, y: 85.49485 },
   ],
 ];
-
 class Graph extends Component {
   constructor(props) {
     super(props);
@@ -94,13 +94,7 @@ class Graph extends Component {
 
   render() {
     const Line = LineSeries;
-    const modelName = [
-      { title: "project_test" },
-      { title: "Model-Name-A-002" },
-      { title: "Model-Name-A-003" },
-      { title: "Model-Name-A-004" },
-      { title: "Model-Name" },
-    ];
+    const modelName = ["Model 1", "Model 2", "Model 3", "Model 4", "Model 5"];
 
     return (
       <div>

@@ -104,11 +104,7 @@ const initialState = {
 
 const ModelReducer = (state = initialState, action) => {
   switch (action.type) {
-    case Actions.MODEL_DATA: {
-      return {
-        ...state.models,
-      };
-    }
+   
     case Actions.ADD_MODEL: {
       const { models } = state;
       const model = {};
@@ -120,7 +116,12 @@ const ModelReducer = (state = initialState, action) => {
         models: models.concat(model),
       };
     }
-
+    case Actions.FETCH_ALL_MODEL_DATA: {
+      return {
+        ...state,
+        models: action.modelData,
+      };
+    }
     default: {
       return state;
     }

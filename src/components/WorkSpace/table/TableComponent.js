@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useSelector } from "react-redux";
 import "./TableComponent.css";
 
-const TableComponent = () => {
+const TableComponent = ({tableRows}) => {
   const tableHeads = [
     "NAME",
     "STATE",
@@ -17,7 +17,7 @@ const TableComponent = () => {
     "EPOCH",
   ];
 
-  const tableRows = useSelector((state) => state.model.models);
+  
 
   return (
     <Table striped hover borderless style={{ textAlign: "center" }}>
@@ -37,23 +37,23 @@ const TableComponent = () => {
             <td>
               <Form.Check type="checkbox" />
             </td>
-            <td>{tableRow.NAME}</td>
+            <td>{tableRow.run_name}</td>
             <td
               style={
-                tableRow.STATE === "Crashed"
+                tableRow.state === "Crashed"
                   ? { color: "red" }
                   : { color: "blue" }
               }
             >
-              {tableRow.STATE}
+              {tableRow.state}
             </td>
-            <td>{tableRow.CREATED}</td>
-            <td>{tableRow.CREATEDBY}</td>
-            <td>{tableRow.RUNTIME}</td>
-            <td>{tableRow.ACCURACY}</td>
-            <td>{tableRow.LOSS}</td>
-            <td>{tableRow.VAL_ACCURACY}</td>
-            <td>{tableRow.EPOCH}</td>
+            <td>{tableRow.createdAt}</td>
+            <td>{tableRow.created_by}</td>
+            <td>{tableRow.run_time}</td>
+            <td>ACCURACY</td>
+            <td>LOSS</td>
+            <td>VAL_ACCURACY</td>
+            <td>EPOCH</td>
           </tr>
         ))}
       </tbody>
