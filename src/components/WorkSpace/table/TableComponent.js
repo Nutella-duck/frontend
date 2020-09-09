@@ -1,64 +1,69 @@
-import React from "react";
-import { Table, Form } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { useSelector } from "react-redux";
-import "./TableComponent.css";
+import React, { Component } from 'react';
+//import { render } from 'react-dom';
+import { AgGridReact } from 'ag-grid-react';
 
-const TableComponent = ({tableRows}) => {
-  const tableHeads = [
-    "NAME",
-    "STATE",
-    "CREATED",
-    "CREATEDBY",
-    "RUNTIME",
-    "ACCURACY",
-    "LOSS",
-    "VAL_ACCURACY",
-    "EPOCH",
-  ];
-
-  
-
-  return (
-    <Table striped hover borderless style={{ textAlign: "center" }}>
-      <thead>
-        <tr>
-          <th style={{ width: "1.5rem" }}>
-            <Form.Check type="checkbox" />
-          </th>
-          {tableHeads.map((tableHead, index) => (
-            <th key={index}>{tableHead}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {tableRows.map((tableRow, index) => (
-          <tr key={index}>
-            <td>
-              <Form.Check type="checkbox" />
-            </td>
-            <td>{tableRow.run_name}</td>
-            <td
-              style={
-                tableRow.state === "Crashed"
-                  ? { color: "red" }
-                  : { color: "blue" }
-              }
-            >
-              {tableRow.state}
-            </td>
-            <td>{tableRow.createdAt}</td>
-            <td>{tableRow.created_by}</td>
-            <td>{tableRow.run_time}</td>
-            <td>ACCURACY</td>
-            <td>LOSS</td>
-            <td>VAL_ACCURACY</td>
-            <td>EPOCH</td>
-          </tr>
-        ))}
-      </tbody>
-    </Table>
-  );
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import {
+  Navbar,
+  Form,
+  FormControl,
+  Nav,
+  ButtonGroup,
+  Button,
+} from "react-bootstrap";
+class table extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      quickFilterText: null,
+      columnDefs: [
+        {hederName:" ",field:" ",checkboxSelection: true },
+        { headerName: "NAME", field: "run_name", sortable: true, filter: true,},
+        { headerName: "STATE", field: "state", sortable: true, filter: true},
+        { headerName: "CREATED", field: "createdAt", sortable: true, filter: true},
+        { headerName: "CREATEDBY", field: "created_by", sortable: true, filter: true},
+        { headerName: "RUNTIME", field: "run_time", sortable: true, filter: true},
+        
+        ],
+   
+  }
+}
+  componentDidMount() {
+    fetch('http://localhost:7000/admin/run')
+  .then(result => result.json())
+  .then(rowData => this.setState({rowData}))
+  }
+  onQuickFilterText = (event) => {
+    this.setState({quickFilterText: event.target.value});
 };
 
-export default TableComponent;
+  render() {
+    return (
+      <>
+       <Navbar bg="light" variant="light" style={{ borderRadius: "0.7rem" }}>
+       <Navbar.Brand href="#home" style={{ fontWeight: "bold" }}>
+         8 Runs
+        </Navbar.Brand>
+      <Form inline>
+      
+      <FormControl type="text" id="quickFilter" onChange={this.onQuickFilterText}
+                                   placeholder="Search" className="mr-sm-2" />
+    </Form>
+    </Navbar>
+      <div className="ag-theme-alpine"  style={ {height: '600px', width: '1200px'} }>
+     
+                           
+
+        <AgGridReact 
+           quickFilterText={this.state.quickFilterText}
+        columnDefs={this.state.columnDefs}
+            rowData={this.state.rowData}>
+        </AgGridReact>
+      </div>
+      </>
+    );
+  }
+}
+
+export default table;

@@ -19,7 +19,7 @@ const RunTableComponent = ({models}) => {
         borderRadius: "0.7rem",
       }}
     >
-      <TableHeadComponent ></TableHeadComponent>
+       {/* <TableHeadComponent ></TableHeadComponent>  */}
       <TableComponent tableRows={models}></TableComponent>
     </div>
   );
