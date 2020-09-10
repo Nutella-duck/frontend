@@ -29,16 +29,17 @@ class table extends Component {
    
   }
 }
-  componentDidMount() {
-    fetch('http://localhost:7000/admin/run')
-  .then(result => result.json())
-  .then(rowData => this.setState({rowData}))
-  }
+  // componentDidMount() {
+  //   fetch('http://localhost:7000/admin/run')
+  // .then(result => result.json())
+  // .then(rowData => this.setState({rowData}))
+  // }
   onQuickFilterText = (event) => {
     this.setState({quickFilterText: event.target.value});
 };
 
   render() {
+    const {tableRows} = this.props;
     return (
       <>
        <Navbar bg="light" variant="light" style={{ borderRadius: "0.7rem" }}>
@@ -58,7 +59,7 @@ class table extends Component {
         <AgGridReact 
            quickFilterText={this.state.quickFilterText}
         columnDefs={this.state.columnDefs}
-            rowData={this.state.rowData}>
+            rowData={tableRows}>
         </AgGridReact>
       </div>
       </>

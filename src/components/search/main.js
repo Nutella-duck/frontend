@@ -9,6 +9,7 @@ class table extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      
       quickFilterText: null,
       columnDefs: [
         { headerName: "NAME", field: "run_name", sortable: true, filter: true},
@@ -21,19 +22,18 @@ class table extends Component {
    
   }
 }
-  componentDidMount() {
-    fetch('http://localhost:7000/admin/run')
-  .then(result => result.json())
-  .then(rowData => this.setState({rowData}))
-  }
+ 
   onQuickFilterText = (event) => {
+  
     this.setState({quickFilterText: event.target.value});
 };
   render() {
+    const {tableRow,haein} = this.props;
+    console.log(haein);
     return (
       <div className="ag-theme-alpine" style={ {height: '600px', width: '1200px'} }>
        <div style={{float: "right", marginLeft: 20}}>
-                            <label htmlFor="quickFilter">Quick Filter:&nbsp;</label>
+                            <label htmlFor="quickFilter">{haein}&nbsp;</label>
                             <input type="text" id="quickFilter" onChange={this.onQuickFilterText}
                                    placeholder="Type text to filter..."/>
                         </div>
@@ -41,7 +41,7 @@ class table extends Component {
         <AgGridReact
            quickFilterText={this.state.quickFilterText}
         columnDefs={this.state.columnDefs}
-            rowData={this.state.rowData}>
+            rowData={tableRow}>
         </AgGridReact>
       </div>
     );

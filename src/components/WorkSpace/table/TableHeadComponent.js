@@ -18,7 +18,7 @@ import {
 } from "react-icons/bs";
 
 const TableHeadComponent = () => {
-  let search = "";
+
   const numberOfIndex = useSelector((state) => state.model.index);
 
   return (

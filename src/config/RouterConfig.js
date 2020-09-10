@@ -3,7 +3,7 @@ import HomeComponent from "../components/HomeComponent";
 
 import LoginPage from "../components/LoginPage/LoginPage";
 import ProjectPage from "../components/ProjectPage/ProjectPage";
-import Table from "../components/search/main";
+import Table from "../components/search/home";
 import API from "../components/search/main";
 
 import WorkSpaceComponent from "../components/WorkSpace/WorkSpaceComponent";
