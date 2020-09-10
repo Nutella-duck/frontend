@@ -1,6 +1,7 @@
 import * as Actions from "../actions";
 
 const initialState = {
+  totalRun:[{total_run:"0"}],
   index: 8,
   models: [
     {
@@ -120,6 +121,13 @@ const ModelReducer = (state = initialState, action) => {
       return {
         ...state,
         models: action.modelData,
+      };
+    }
+    case Actions.FETCH_NUMBER_OF_MODEL:{
+      
+      return {
+        ...state,
+       totalRun: action.totalRun,
       };
     }
     default: {

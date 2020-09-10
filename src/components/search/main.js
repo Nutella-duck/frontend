@@ -4,8 +4,13 @@ import { AgGridReact } from 'ag-grid-react';
 
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import {useDispatch,useSelector} from 'react-redux';
+import * as Actions from "../../store/actions";
+import axios from 'axios';
+
 
 class table extends Component {
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -22,14 +27,25 @@ class table extends Component {
    
   }
 }
- 
+
+componentDidMount() {
+  fetch('http://localhost:7000/admin/project/key')
+.then(result => result)
+.then(total => this.setState({total}))
+};
+
   onQuickFilterText = (event) => {
   
     this.setState({quickFilterText: event.target.value});
 };
+
   render() {
+    
+ 
     const {tableRow,haein} = this.props;
-    console.log(haein);
+    
+ console.log(this.state.total)
+
     return (
       <div className="ag-theme-alpine" style={ {height: '600px', width: '1200px'} }>
        <div style={{float: "right", marginLeft: 20}}>

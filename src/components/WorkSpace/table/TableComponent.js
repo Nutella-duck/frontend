@@ -17,6 +17,7 @@ class table extends Component {
     super(props);
     this.state = {
       quickFilterText: null,
+      totalRuns:0,
       columnDefs: [
         {hederName:" ",field:" ",checkboxSelection: true },
         { headerName: "NAME", field: "run_name", sortable: true, filter: true,},
@@ -29,22 +30,22 @@ class table extends Component {
    
   }
 }
-  // componentDidMount() {
-  //   fetch('http://localhost:7000/admin/run')
-  // .then(result => result.json())
-  // .then(rowData => this.setState({rowData}))
-  // }
+  //   componentDidMount() {
+  //     fetch('http://localhost:7000/admin/project/key')
+  //   .then(result => result.json())
+  //   .then(totalRuns => this.setState({totalRuns}))
+  //  }
   onQuickFilterText = (event) => {
     this.setState({quickFilterText: event.target.value});
 };
 
   render() {
-    const {tableRows} = this.props;
+    const {tableRows,totalRuns} = this.props;
     return (
       <>
        <Navbar bg="light" variant="light" style={{ borderRadius: "0.7rem" }}>
        <Navbar.Brand href="#home" style={{ fontWeight: "bold" }}>
-         8 Runs
+        {totalRuns} Runs
         </Navbar.Brand>
       <Form inline>
       

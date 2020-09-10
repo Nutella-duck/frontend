@@ -6,8 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 import * as Actions from "../../../store/actions";
 
-const RunTableComponent = ({models}) => {
-  
+const RunTableComponent = ({models,totalRuns}) => {
+console.log(models);
   return (
     <div
       className="scrollbar"
@@ -20,7 +20,7 @@ const RunTableComponent = ({models}) => {
       }}
     >
        {/* <TableHeadComponent ></TableHeadComponent>  */}
-      <TableComponent tableRows={models}></TableComponent>
+      <TableComponent tableRows={models} totalRuns={totalRuns}></TableComponent>
     </div>
   );
 };

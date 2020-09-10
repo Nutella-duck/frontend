@@ -5,6 +5,7 @@ import LoginPage from "../components/LoginPage/LoginPage";
 import ProjectPage from "../components/ProjectPage/ProjectPage";
 import Table from "../components/search/home";
 import API from "../components/search/main";
+import Main from "../components/search/main";
 
 import WorkSpaceComponent from "../components/WorkSpace/WorkSpaceComponent";
 
@@ -46,6 +47,12 @@ export const RouterConfig = [
     path: "/table",
     exact: true,
     component: () => <Table></Table>,
+  },
+ 
+  {
+    path: "/main",
+    exact: true,
+    component: () => <Main></Main>,
   },
  
 ];
