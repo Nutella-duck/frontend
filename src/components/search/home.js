@@ -7,20 +7,33 @@ const WorkSpaceComponent = () => {
   const dispatch = useDispatch();
   const models = useSelector((state) => state.model.models);
   const total = useSelector((state)=>state.model.totalRun);
- 
+ const graph = useSelector((state)=>state.model.graphData);
 
   
   useEffect(() => {
    dispatch(Actions.getAllModelData());
     dispatch(Actions.getNumberOfModel());
+    dispatch(Actions.getGraphData());
   }, []);
-console.log(total[0].total_run);
-console.log(models);
-const runs = total[0].total_run;
-
+console.log(graph)
+const runs = total[0].totalRun;
+console.log(graph[0]);
+const a = graph.map(a=>a.accuracy)
+console.log(a)
+ const data = [];
+  // for(let i= 0; i<3;i++)
+  // {
+  //   data.push({x:graph[i].runName})
+  // }
+  for(let i=1;i<4;i++)
+  {
+    data.push({x:i,y:a[i-1]})
+  }
+//arr.push({title:modelname[i]})
+ console.log(data)
   return ( 
     <div>
-      <Table tableRow={models} haein={runs}/>
+      <Table tableRow={models} haein={runs} graph={graph}/>
     </div>
   );
 };

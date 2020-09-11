@@ -24,7 +24,7 @@ const SystemItemHead = () => {
   );
 };
 
-const SystemComponents = () => {
+const SystemComponents = ({models,graph}) => {
   const cards = ["GPU","CPU"];
  
 
@@ -37,7 +37,7 @@ const SystemComponents = () => {
           <Col  key={index} sm={4} style={{ paddingTop: "1rem",paddingBottom:"1rem",}}>
             <Card  style={{height:"20rem",width:"auto",borderColor:"white"}}>
               <h5>{card}</h5>
-              <Graph/>
+              <Graph models={models} graph={graph}/>
             </Card>
           </Col>
         ))}

@@ -3,6 +3,7 @@ import * as Actions from "../actions";
 const initialState = {
   totalRun:[{total_run:"0"}],
   index: 8,
+  graphData:["1"],
   models: [
     {
       NAME: "project_test",
@@ -128,6 +129,13 @@ const ModelReducer = (state = initialState, action) => {
       return {
         ...state,
        totalRun: action.totalRun,
+      };
+    }
+    case Actions.FETCH_GRAPH_DATA:{
+      
+      return {
+        ...state,
+        graphData: action.graphData,
       };
     }
     default: {

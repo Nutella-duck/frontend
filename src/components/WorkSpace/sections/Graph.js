@@ -12,18 +12,7 @@ import {
 } from "react-vis";
 
 const data = [
-  [
-    { x: 1, y: 80.503808 },
-    { x: 2, y: 80.66784 },
-    { x: 3, y: 82.772867 },
-    { x: 4, y: 85.488935 },
-    { x: 5, y: 87.417615 },
-    { x: 6, y: 87.586675 },
-    { x: 7, y: 91.09568 },
-    { x: 8, y: 91.302217 },
-    { x: 9, y: 92.551648 },
-    { x: 10, y: 97.978953 },
-  ],
+ 
   [
     { x: 0, y: 67.8 },
     { x: 1, y: 74.031472 },
@@ -94,14 +83,18 @@ class Graph extends Component {
 
   render() {
     const Line = LineSeries;
-    const modelName = [
-      { title: "project_test" },
-      { title: "Model-Name-A-002" },
-      { title: "Model-Name-A-003" },
-      { title: "Model-Name-A-004" },
-      { title: "Model-Name" },
-    ];
-
+      const modelName = [
+      "run1"
+      ]
+    const {models} = this.props;
+    
+     //const model = models.models.models.map(model=>model.runName);
+     console.log(models)
+    // for(let i=0; i<1; i++)
+    // {
+    //     modelName[i].title=model[i];
+    // }
+    
     return (
       <div>
         <FlexibleWidthXYPlot onMouseLeave={this._onMouseLeave} height={250}>
@@ -112,10 +105,10 @@ class Graph extends Component {
 
           <Line onNearestX={this._onNearestX} data={data[0]} />
           <Line onNearestX={this._onNearestX} data={data[1]} />
-          <Line onNearestX={this._onNearestX} data={data[2]} />
+          {/* <Line onNearestX={this._onNearestX} data={data[2]} />
           <Line onNearestX={this._onNearestX} data={data[3]} />
-          <Line onNearestX={this._onNearestX} data={data[4]} />
-          <DiscreteColorLegend orientation="horizontal" items={modelName} />
+          <Line onNearestX={this._onNearestX} data={data[4]} /> */}
+          <DiscreteColorLegend orientation="horizontal" items={models} />
           <Crosshair
             values={this.state.crosshairValues}
             className={"test-class-name"}

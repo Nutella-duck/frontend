@@ -20,9 +20,9 @@ class table extends Component {
       totalRuns:0,
       columnDefs: [
         {hederName:" ",field:" ",checkboxSelection: true },
-        { headerName: "NAME", field: "run_name", sortable: true, filter: true,},
+        { headerName: "NAME", field: "runName", sortable: true, filter: true,},
         { headerName: "STATE", field: "state", sortable: true, filter: true},
-        { headerName: "CREATED", field: "createdAt", sortable: true, filter: true},
+        { headerName: "CREATED", field: "updated_at", sortable: true, filter: true},
         { headerName: "CREATEDBY", field: "created_by", sortable: true, filter: true},
         { headerName: "RUNTIME", field: "run_time", sortable: true, filter: true},
         
@@ -41,6 +41,8 @@ class table extends Component {
 
   render() {
     const {tableRows,totalRuns} = this.props;
+    console.log(tableRows);
+    const data = tableRows.models;
     return (
       <>
        <Navbar bg="light" variant="light" style={{ borderRadius: "0.7rem" }}>

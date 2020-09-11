@@ -5,14 +5,14 @@ import { useSelector } from "react-redux";
 
 
 
-const SystemComponent = () => {
+const SystemComponent = ({models,graph}) => {
   const systems = useSelector((state) => state.system.cards);
   return (
     <div style={{paddingBottom:"3rem"}}> 
      
     
       {systems.map((system, index) => (
-        <SystemComponents key={index} ></SystemComponents>
+        <SystemComponents key={index} models={models} graph={graph} ></SystemComponents>
       ))}
       
       

@@ -29,7 +29,7 @@ class table extends Component {
 }
 
 componentDidMount() {
-  fetch('http://localhost:7000/admin/project/key')
+  fetch('http://localhost:7000/admin/graph/1?index=accuracy')
 .then(result => result)
 .then(total => this.setState({total}))
 };
@@ -42,7 +42,7 @@ componentDidMount() {
   render() {
     
  
-    const {tableRow,haein} = this.props;
+    const {tableRow,haein,graph} = this.props;
     
  console.log(this.state.total)
 

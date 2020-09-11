@@ -94,8 +94,31 @@ class Graph extends Component {
 
   render() {
     const Line = LineSeries;
-    const modelName = ["Model 1", "Model 2", "Model 3", "Model 4", "Model 5"];
+   const modelName = ["run1","run2"]; 
+    const {models,graph} = this.props
+    console.log(modelName);
+    //const modelName = models.map(model=>model.runName);
+    console.log(models)
+    const modelname = models.map(model=>model.runName);
+    console.log(modelname)
+    console.log(modelName.constructor)
+    console.log(models.constructor)
+    console.log(modelname.constructor)
+    console.log(typeof modelname[0])
 
+///////////////////////////////////////////////////////////////////
+ 
+console.log(graph[0])
+
+
+
+
+    const arr=[{title:"r1"}];
+    for(let i = 0;i<1;i++)
+    {
+      arr.push({title:modelname[i]})
+    }
+    console.log(typeof arr[1].title)
     return (
       <div>
         <FlexibleWidthXYPlot onMouseLeave={this._onMouseLeave} height={250}>
@@ -105,10 +128,10 @@ class Graph extends Component {
           <YAxis />
 
           <Line onNearestX={this._onNearestX} data={data[0]} />
-          <Line onNearestX={this._onNearestX} data={data[1]} />
+          {/* <Line onNearestX={this._onNearestX} data={data[1]} />
           <Line onNearestX={this._onNearestX} data={data[2]} />
           <Line onNearestX={this._onNearestX} data={data[3]} />
-          <Line onNearestX={this._onNearestX} data={data[4]} />
+          <Line onNearestX={this._onNearestX} data={data[4]} /> */}
           <DiscreteColorLegend orientation="horizontal" items={modelName} />
           <Crosshair
             values={this.state.crosshairValues}
