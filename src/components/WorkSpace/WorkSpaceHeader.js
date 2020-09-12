@@ -34,7 +34,8 @@ const WorkSpaceHeader = () => {
     }
   ]
   const selectProject = (projectId) => {
-    const title = menu.find(v => v.projectId === projectId)
+    console.log(projectId)
+    const title = menu.find(v => v.projectId === Number(projectId))
     console.log(title)
     setTitle(title.projectName)
   }

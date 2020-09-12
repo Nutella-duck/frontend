@@ -21,25 +21,25 @@ const WorkSpaceComponent = () => {
   useEffect(() => {
     dispatch(Actions.getAllModelData(id));
     dispatch(Actions.getNumberOfModel(id));
-    dispatch(Actions.getGraphData());
+    dispatch(Actions.getGraphData(id,"accuracy"));
   }, []);
 
 
 console.log(graph);
 const runs = totalRun[0].totalRun;
 const a = graph.map(a=>a.accuracy)
-console.log(a)
+console.log("a",a)
  const data = [];
   // for(let i= 0; i<3;i++)
   // {
   //   data.push({x:graph[i].runName})
   // }
-  for(let i=1;i<2;i++)
+  for(var i=1;i<4;i++)
   {
-    parseInt(a[i-1],10)
+    console.log(i,"번째" ,a[i-1])
     data.push({x:i,y:a[i-1]})
   }
-  console.log(data)
+  console.log("data",data)
 // console.log(totalRun);
 
 

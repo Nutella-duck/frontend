@@ -111,8 +111,8 @@ class Graph extends Component {
  
 
 
-for(let i= 0;i<10;i++)
-graph.push({x: i, y: 1.2})
+// for(let i= 0;i<10;i++)
+// graph.push({x: i, y: 1.2})
 
 console.log("graph",graph)
     // const arr=[{title:"r1"}];

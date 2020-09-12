@@ -55,11 +55,11 @@ export const getNumberOfModel = (id) =>
   };
 }
 
-export const getGraphData = () =>
+export const getGraphData = (id,index) =>
 {
   return (dispatch) => {
     return axios
-      .get("http://localhost:7000/admin/graph/1?index=accuracy", {
+      .get(`http://localhost:7000/admin/graph/${id}/?index=${index}`, {
         headers: { "Content-Type": "application/json" },
       })
       .then((response) => {
