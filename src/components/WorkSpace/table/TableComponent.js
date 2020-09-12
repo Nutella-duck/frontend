@@ -22,19 +22,15 @@ class table extends Component {
         {hederName:" ",field:" ",checkboxSelection: true },
         { headerName: "NAME", field: "runName", sortable: true, filter: true,},
         { headerName: "STATE", field: "state", sortable: true, filter: true},
-        { headerName: "CREATED", field: "updated_at", sortable: true, filter: true},
+        { headerName: "CREATED", field: "created_at", sortable: true, filter: true},
         { headerName: "CREATEDBY", field: "created_by", sortable: true, filter: true},
-        { headerName: "RUNTIME", field: "run_time", sortable: true, filter: true},
+        { headerName: "RUNTIME", field: "runTime", sortable: true, filter: true},
         
         ],
    
   }
 }
-  //   componentDidMount() {
-  //     fetch('http://localhost:7000/admin/project/key')
-  //   .then(result => result.json())
-  //   .then(totalRuns => this.setState({totalRuns}))
-  //  }
+
   onQuickFilterText = (event) => {
     this.setState({quickFilterText: event.target.value});
 };

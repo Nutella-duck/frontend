@@ -19,7 +19,7 @@ const WorkSpaceComponent = () => {
   const graph = useSelector((state)=>state.model.graphData);
 
   useEffect(() => {
-    dispatch(Actions.getAllModelData(id));
+    dispatch(Actions.getSelectedModelData(id));
     dispatch(Actions.getNumberOfModel(id));
     dispatch(Actions.getGraphData(id,"accuracy"));
   }, []);

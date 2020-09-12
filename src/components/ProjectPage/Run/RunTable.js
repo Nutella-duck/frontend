@@ -30,8 +30,8 @@ const RunTable = ({tableRows}) => {
       <tbody>
         {tableRows.map((tableRow, index) => (
           <tr key={index}>
-            <td>{tableRow.run_name}</td>
-            <td>{tableRow.project_id}</td>
+            <td>{tableRow.runName}</td>
+            <td>{tableRow.projectName}</td>
             <td
               style={
                 tableRow.state === "Crashed"
@@ -41,7 +41,7 @@ const RunTable = ({tableRows}) => {
             >
               {tableRow.state}
             </td>
-            <td>{tableRow.created_by}</td>
+            <td>{tableRow.updated_at}</td>
           </tr>
         ))}
       </tbody>

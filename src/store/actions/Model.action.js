@@ -25,6 +25,21 @@ export const fetchGraphData = (graphData) => {
 export const getAllModelData = (id) => {
   return (dispatch) => {
     return axios
+      .get(`http://localhost:7000/admin/run?page=${id}`, {
+        headers: { "Content-Type": "application/json" },
+      })
+      .then((response) => {
+        dispatch(fetchAllModelData(response.data));
+      })
+      .catch((error) => {
+        console.log("error read model");
+        throw error;
+      });
+  };
+};
+export const getSelectedModelData = (id) => {
+  return (dispatch) => {
+    return axios
       .get(`http://localhost:7000/admin/run/${id}`, {
         headers: { "Content-Type": "application/json" },
       })

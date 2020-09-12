@@ -10,7 +10,7 @@ import {
 } from "react-bootstrap";
 import { BsFunnel,} from "react-icons/bs";
 import { useSelector, useDispatch } from "react-redux";
-
+import Footer from "./RunFooter";
 import * as Actions from "../../../store/actions";
 import axios from "axios";
 
@@ -19,9 +19,12 @@ const Run = () => {
   const state = useSelector((state) => state.model.models);
 
   useEffect(() => {
-    dispatch(Actions.getAllModelData(""));
+    dispatch(Actions.getAllModelData());
   }, []);
+
+  console.log(state)
   return (
+    <>
       <div style={{marginLeft:"16rem",marginRight:"16rem",paddingBottom:"7rem" }}>
     <div className = "form">
     <Navbar style={{padding:"0"}} >
@@ -44,6 +47,8 @@ const Run = () => {
 </div>
 <RunTable tableRows={state}></RunTable>
 </div>
+<Footer/>
+</>
   );
 };
 

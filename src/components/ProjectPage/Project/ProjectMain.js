@@ -3,7 +3,7 @@ import ProjectListTemplate from "./ProjectListTemplate";
 import ProjectForm from "./ProjectForm";
 import ProjectItemList from "./ProjectItemList";
 import { useSelector, useDispatch } from "react-redux";
-
+import ProjectFooter from "./ProjectFooter";
 import * as Actions from "../../../store/actions";
 import axios from "axios";
 
@@ -73,8 +73,9 @@ const Project = () => {
           />
         }
       >
-        <ProjectItemList projects={state} />
+        <ProjectItemList projects={state}  />
       </ProjectListTemplate>
+      <ProjectFooter></ProjectFooter>
     </>
   );
 };

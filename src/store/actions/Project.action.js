@@ -10,10 +10,10 @@ export const fetchAllProjectData = (projectData) => {
   };
 };
 
-export const getAllPorject = () => {
+export const getAllPorject = (id) => {
   return (dispatch) => {
     return axios
-      .get(`http://localhost:7000/admin/project/`, {
+      .get(`http://localhost:7000/admin/project?page=${id}`, {
         headers: { "Content-Type": "application/json" },
       })
       .then((response) => {
