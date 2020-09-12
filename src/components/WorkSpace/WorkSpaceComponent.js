@@ -50,7 +50,7 @@ console.log("a",a)
 
   return (
     <div>
-      <Header></Header>
+      <Header projectId ={id}></Header>
       <RunTableComponent models={model} totalRuns={runs} ></RunTableComponent>
       <SectionsComponent  models={model}></SectionsComponent>
       <SystemComponent  models={model} graph={data}></SystemComponent>
