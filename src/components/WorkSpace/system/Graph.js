@@ -94,31 +94,33 @@ class Graph extends Component {
 
   render() {
     const Line = LineSeries;
-   const modelName = ["run1","run2"]; 
+    const modelName = ["run1","run2"]; 
     const {models,graph} = this.props
-    console.log(modelName);
+   
     //const modelName = models.map(model=>model.runName);
-    console.log(models)
-    const modelname = models.map(model=>model.runName);
-    console.log(modelname)
-    console.log(modelName.constructor)
-    console.log(models.constructor)
-    console.log(modelname.constructor)
-    console.log(typeof modelname[0])
+    // console.log("models", models)
+    const model_name = models.map(model=>model.runName);
+    console.log("m_name", model_name);
+    // console.log(modelname)
+    // console.log(modelName.constructor)
+    // console.log(models.constructor)
+    // console.log(modelname.constructor)
+    // console.log(typeof modelname[0])
 
 ///////////////////////////////////////////////////////////////////
  
-console.log(graph[0])
 
 
+for(let i= 0;i<10;i++)
+graph.push({x: i, y: 1.2})
 
-
-    const arr=[{title:"r1"}];
-    for(let i = 0;i<1;i++)
-    {
-      arr.push({title:modelname[i]})
-    }
-    console.log(typeof arr[1].title)
+console.log("graph",graph)
+    // const arr=[{title:"r1"}];
+    // for(let i = 0;i<1;i++)
+    // {
+    //   arr.push({title:model_name[i]})
+    // }
+    // console.log(typeof arr[1].title)
     return (
       <div>
         <FlexibleWidthXYPlot onMouseLeave={this._onMouseLeave} height={250}>
@@ -127,12 +129,12 @@ console.log(graph[0])
           <XAxis />
           <YAxis />
 
-          <Line onNearestX={this._onNearestX} data={data[0]} />
+          <Line onNearestX={this._onNearestX} data={graph} />
           {/* <Line onNearestX={this._onNearestX} data={data[1]} />
           <Line onNearestX={this._onNearestX} data={data[2]} />
           <Line onNearestX={this._onNearestX} data={data[3]} />
           <Line onNearestX={this._onNearestX} data={data[4]} /> */}
-          <DiscreteColorLegend orientation="horizontal" items={modelName} />
+          <DiscreteColorLegend orientation="horizontal" items={model_name} />
           <Crosshair
             values={this.state.crosshairValues}
             className={"test-class-name"}

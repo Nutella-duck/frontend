@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./ProjectItem.css";
 import { Card, Badge, Form, Button, Table } from "react-bootstrap";
-
+import {Link} from "react-router-dom"
 import { BsGear } from "react-icons/bs";
 class ProjectItem extends Component {
   render() {
@@ -11,11 +11,12 @@ class ProjectItem extends Component {
       userNumber,
       runsNumber,
       hoursNumber,
+      id
     } = this.props;
 
     return (
       <div>
-        <a href="/workspace">
+        <Link to = {`/workspace/${id}`}>
           <Card className="card">
             <Card.Body>
               <Form inline>
@@ -46,7 +47,7 @@ class ProjectItem extends Component {
               </Table>
             </Card.Body>
           </Card>
-        </a>
+        </Link>
       </div>
     );
   }

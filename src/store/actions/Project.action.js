@@ -13,10 +13,12 @@ export const fetchAllProjectData = (projectData) => {
 export const getAllPorject = () => {
   return (dispatch) => {
     return axios
-      .get("http://localhost:7000/admin/project", {
+      .get(`http://localhost:7000/admin/project/`, {
         headers: { "Content-Type": "application/json" },
       })
       .then((response) => {
+        console.log(response.data)
+        console.log("hi")
         dispatch(fetchAllProjectData(response.data));
       })
       .catch((error) => {

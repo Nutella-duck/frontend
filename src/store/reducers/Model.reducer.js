@@ -3,7 +3,7 @@ import * as Actions from "../actions";
 const initialState = {
   totalRun:[{total_run:"0"}],
   index: 8,
-  graphData:["1"],
+  graphData:[{"stepId":1,"runName":"r1","stepNumber":1,"accuracy":1.2}],
   models: [
     {
       NAME: "project_test",
@@ -16,6 +16,7 @@ const initialState = {
       LOSS: "2.8553",
       VAL_ACCURACY: "0.5333",
       EPOCH: "50",
+      runName:"run1"
     },
     {
       NAME: "Model-Name-A-002",
@@ -28,6 +29,7 @@ const initialState = {
       LOSS: "1.2758",
       VAL_ACCURACY: "0.5333",
       EPOCH: "30",
+      runName:"run1"
     },
     {
       NAME: "Model-Name-A-003",
@@ -40,6 +42,7 @@ const initialState = {
       LOSS: "1.0030",
       VAL_ACCURACY: "0.7152",
       EPOCH: "35",
+      runName:"run1"
     },
     {
       NAME: "Model-Name-A-004",
@@ -52,6 +55,7 @@ const initialState = {
       LOSS: "0.8505",
       VAL_ACCURACY: "0.7438",
       EPOCH: "10",
+      runName:"run1"
     },
     {
       NAME: "Model-Name-A-005",
@@ -64,6 +68,7 @@ const initialState = {
       LOSS: "0.7329",
       VAL_ACCURACY: "0.7645",
       EPOCH: "25",
+      runName:"run1"
     },
     {
       NAME: "Model-Name-A-005",
@@ -76,6 +81,7 @@ const initialState = {
       LOSS: "0.6694",
       VAL_ACCURACY: "0.7603",
       EPOCH: "27",
+      runName:"run1"
     },
     {
       NAME: "Model-Name-A-005",
@@ -88,6 +94,7 @@ const initialState = {
       LOSS: "0.6172",
       VAL_ACCURACY: "0.7720",
       EPOCH: "35",
+      runName:"run1"
     },
     {
       NAME: "Model-Name-A-005",
@@ -100,6 +107,7 @@ const initialState = {
       LOSS: "0.5701",
       VAL_ACCURACY: "0.7830",
       EPOCH: "37",
+      runName:"run1"
     },
   ],
 };

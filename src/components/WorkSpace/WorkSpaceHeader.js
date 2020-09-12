@@ -6,8 +6,40 @@ import profileImage from "../ProjectPage/profile.png";
 import "./navbar.css";
 
 const WorkSpaceHeader = () => {
+  const [title, setTitle] = React.useState("Nutella Project");
+  const menu = [
+    {
+      "projectId": 1,
+      "projectName": "pj1",
+      "description": null,
+      "privacy": null,
+      "created_at": "2020-09-11T10:22:43.000Z",
+      "totalRun": 3
+    },
+    {
+      "projectId": 2,
+      "projectName": "pj2",
+      "description": null,
+      "privacy": null,
+      "created_at": "2020-09-11T10:22:43.000Z",
+      "totalRun": 0
+    },
+    {
+      "projectId": 3,
+      "projectName": "pj3",
+      "description": null,
+      "privacy": null,
+      "created_at": "2020-09-11T10:22:43.000Z",
+      "totalRun": 0
+    }
+  ]
+  const selectProject = (projectId) => {
+    const title = menu.find(v => v.projectId === projectId)
+    console.log(title)
+    setTitle(title.projectName)
+  }
   return (
-    <Navbar style={{ backgroundColor: "white" }}>
+    <Navbar style={{ backgroundColor: "white" }} onSelect={selectProject}>
       <Navbar.Brand href="/"></Navbar.Brand>
 
       <Image
@@ -16,12 +48,11 @@ const WorkSpaceHeader = () => {
         height="auto"
         className="d-inline-block align-top"
       />
-      <NavDropdown title="Nutella Project" id="nav-dropdown">
-        <NavDropdown.Item></NavDropdown.Item>
-        <NavDropdown.Item>Another action</NavDropdown.Item>
-        <NavDropdown.Item>Something else here</NavDropdown.Item>
-        <NavDropdown.Divider />
-        <NavDropdown.Item>Separated link</NavDropdown.Item>
+      
+      <NavDropdown title={title} id="nav-dropdown">
+        {
+          menu.map(v => (<NavDropdown.Item key={v.projectId} eventKey={v.projectId}>{v.projectName}</NavDropdown.Item>))
+        }
       </NavDropdown>
 
       <Nav

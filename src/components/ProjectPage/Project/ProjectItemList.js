@@ -17,6 +17,7 @@ class ProjectItemList extends Component {
           userNumber={userNumber[index]}
           runsNumber={runsNumber[index]}
           hoursNumber={hoursNumber[index]}
+          id={project.projectId}
         />
       </Col>
     ));

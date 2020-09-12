@@ -1,6 +1,6 @@
 import React from "react";
 import HomeComponent from "../components/HomeComponent";
-
+import { Route, Link } from 'react-router-dom';
 import LoginPage from "../components/LoginPage/LoginPage";
 import ProjectPage from "../components/ProjectPage/ProjectPage";
 import Table from "../components/search/home";
@@ -32,7 +32,7 @@ export const RouterConfig = [
 
 
   {
-    path: "/workspace",
+    path: "/workspace/:id",
     exact: true,
     component: () => <WorkSpaceComponent></WorkSpaceComponent>,
   },

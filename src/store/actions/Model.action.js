@@ -22,10 +22,10 @@ export const fetchGraphData = (graphData) => {
     graphData,
   };
 };
-export const getAllModelData = () => {
+export const getAllModelData = (id) => {
   return (dispatch) => {
     return axios
-      .get("http://localhost:7000/admin/run/1", {
+      .get(`http://localhost:7000/admin/run/${id}`, {
         headers: { "Content-Type": "application/json" },
       })
       .then((response) => {
@@ -38,11 +38,11 @@ export const getAllModelData = () => {
   };
 };
 
-export const getNumberOfModel = () =>
+export const getNumberOfModel = (id) =>
 {
   return (dispatch) => {
     return axios
-      .get("http://localhost:7000/admin/project/1", {
+      .get(`http://localhost:7000/admin/project/${id}`, {
         headers: { "Content-Type": "application/json" },
       })
       .then((response) => {
@@ -63,8 +63,7 @@ export const getGraphData = () =>
         headers: { "Content-Type": "application/json" },
       })
       .then((response) => {
-        console.log(response.data)
-        console.log("hi")
+        
         dispatch(fetchGraphData(response.data));
       })
       .catch((error) => {

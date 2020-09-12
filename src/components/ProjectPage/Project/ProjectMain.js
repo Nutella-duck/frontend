@@ -20,7 +20,7 @@ const Project = () => {
   const { projectName, description } = inputs;
 
   useEffect(() => {
-    dispatch(Actions.getAllPorject());
+    dispatch(Actions.getAllPorject(1));
   }, []);
 
   const getKey = () => {
