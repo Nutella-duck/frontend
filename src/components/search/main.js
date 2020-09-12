@@ -1,67 +1,116 @@
-import React, { Component } from 'react';
-//import { render } from 'react-dom';
-import { AgGridReact } from 'ag-grid-react';
+// import React from "react";
+// import logo from "./logo-nutella-s@3x.jpg";
+// import { Navbar, Nav, Image, NavDropdown, Container } from "react-bootstrap";
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import profileImage from "../ProjectPage/profile.png";
+// import "./navbar.css";
 
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-import {useDispatch,useSelector} from 'react-redux';
-import * as Actions from "../../store/actions";
-import axios from 'axios';
+// const WorkSpaceHeader = () => {
+//   const [title, setTitle] = React.useState("Nutella Project");
+//   const menu = [
+//     {
+//       "projectId": 1,
+//       "projectName": "pj1",
+//       "description": null,
+//       "privacy": null,
+//       "created_at": "2020-09-11T10:22:43.000Z",
+//       "totalRun": 3
+//     },
+//     {
+//       "projectId": 2,
+//       "projectName": "pj2",
+//       "description": null,
+//       "privacy": null,
+//       "created_at": "2020-09-11T10:22:43.000Z",
+//       "totalRun": 0
+//     },
+//     {
+//       "projectId": 3,
+//       "projectName": "pj3",
+//       "description": null,
+//       "privacy": null,
+//       "created_at": "2020-09-11T10:22:43.000Z",
+//       "totalRun": 0
+//     }
+//   ]
+//   const selectProject = (projectId) => {
+//     console.log(projectId)
+//     const title = menu.find(v => v.projectId === Number(projectId))
+//     console.log(title)
+//     setTitle(title.projectName)
+//   }
+//   return (
+//     <Navbar style={{ backgroundColor: "white" }} onSelect={selectProject}>
+//       <Navbar.Brand href="/"></Navbar.Brand>
 
-
-class table extends Component {
-  
-  constructor(props) {
-    super(props);
-    this.state = {
+//       <Image
+//         src={logo}
+//         width="45rem"
+//         height="auto"
+//         className="d-inline-block align-top"
+//       />
       
-      quickFilterText: null,
-      columnDefs: [
-        { headerName: "NAME", field: "run_name", sortable: true, filter: true},
-        { headerName: "STATE", field: "state", sortable: true, filter: true},
-        { headerName: "CREATED", field: "createdAt", sortable: true, filter: true},
-        { headerName: "CREATEDBY", field: "created_by", sortable: true, filter: true},
-        { headerName: "RUNTIME", field: "run_time", sortable: true, filter: true},
-        
-        ],
-   
-  }
-}
+//       <NavDropdown title={title} id="nav-dropdown">
+//         {
+//           menu.map(v => (<NavDropdown.Item key={v.projectId} eventKey={v.projectId}>{v.projectName}</NavDropdown.Item>))
+//         }
+//       </NavDropdown>
 
-componentDidMount() {
-  fetch('http://localhost:7000/admin/graph/1?index=accuracy')
-.then(result => result)
-.then(total => this.setState({total}))
-};
+//       <Nav
+//         className="topnav col-sm-9 justify-content-center"
+//         activeKey="/workspace"
+//         style={{ fontWeight: "bold" }}
+//       >
+//         <Nav.Item>
+//           <Nav.Link eventKey="link-1" href="/home">
+//             OVERVIEW
+//           </Nav.Link>
+//         </Nav.Item>
+//         <Nav.Item>
+//           <Nav.Link href="/workspace">WORKSPACE</Nav.Link>
+//         </Nav.Item>
+//         <Nav.Item>
+//           <Nav.Link eventKey="/chart">REPORTS</Nav.Link>
+//         </Nav.Item>
+//         <Nav.Item>
+//           <Nav.Link eventKey="link-2">HPO</Nav.Link>
+//         </Nav.Item>
+//         <Nav.Item>
+//           <Nav.Link eventKey="link-2">COMPRESSION</Nav.Link>
+//         </Nav.Item>
+//       </Nav>
 
-  onQuickFilterText = (event) => {
-  
-    this.setState({quickFilterText: event.target.value});
-};
+//       <Navbar.Collapse>
+//         <Nav className="ml-auto">
+//           <Nav.Link
+//             href="/project"
+//             style={{
+//               fontWeight: "bold",
+//               color: "#000000",
+//               marginRight: "0.2rem",
+//             }}
+//           >
+//             <Image
+//               src={profileImage}
+//               width="40rem"
+//               height="auto"
+//               className="d-inline-block align-top"
+//             />
+//           </Nav.Link>
+//           <Nav.Link
+//             href="/project"
+//             style={{
+//               fontWeight: "bold",
+//               color: "black",
+//               marginTop: "0.7rem",
+//             }}
+//           >
+//             이해인{" "}
+//           </Nav.Link>
+//         </Nav>
+//       </Navbar.Collapse>
+//     </Navbar>
+//   );
+// };
 
-  render() {
-    
- 
-    const {tableRow,haein,graph} = this.props;
-    
- console.log(this.state.total)
-
-    return (
-      <div className="ag-theme-alpine" style={ {height: '600px', width: '1200px'} }>
-       <div style={{float: "right", marginLeft: 20}}>
-                            <label htmlFor="quickFilter">{haein}&nbsp;</label>
-                            <input type="text" id="quickFilter" onChange={this.onQuickFilterText}
-                                   placeholder="Type text to filter..."/>
-                        </div>
-
-        <AgGridReact
-           quickFilterText={this.state.quickFilterText}
-        columnDefs={this.state.columnDefs}
-            rowData={tableRow}>
-        </AgGridReact>
-      </div>
-    );
-  }
-}
-
-export default table;
+// export default WorkSpaceHeader;

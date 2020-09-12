@@ -19,7 +19,7 @@ const Run = () => {
   const state = useSelector((state) => state.model.models);
 
   useEffect(() => {
-    dispatch(Actions.getAllModelData());
+    dispatch(Actions.getAllModelData(""));
   }, []);
   return (
       <div style={{marginLeft:"16rem",marginRight:"16rem",paddingBottom:"7rem" }}>

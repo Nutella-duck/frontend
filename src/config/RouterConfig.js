@@ -49,10 +49,10 @@ export const RouterConfig = [
     component: () => <Table></Table>,
   },
  
-  {
-    path: "/main",
-    exact: true,
-    component: () => <Main></Main>,
-  },
+  // {
+  //   path: "/main",
+  //   exact: true,
+  //   component: () => <Main></Main>,
+  // },
  
 ];

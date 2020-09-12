@@ -52,7 +52,7 @@ const WorkSpaceHeader = () => {
       
       <NavDropdown title={title} id="nav-dropdown">
         {
-          menu.map(v => (<NavDropdown.Item key={v.projectId} eventKey={v.projectId}>{v.projectName}</NavDropdown.Item>))
+          menu.map(v => (<NavDropdown.Item key={v.projectId} eventKey={v.projectId}href={`/workspace/${v.projectId}`}>{v.projectName}</NavDropdown.Item>))
         }
       </NavDropdown>
 
