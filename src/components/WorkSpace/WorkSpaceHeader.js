@@ -36,9 +36,11 @@ const WorkSpaceHeader = () => {
   const selectProject = (projectId) => {
     console.log(projectId)
     const title = menu.find(v => v.projectId === Number(projectId))
-    console.log(title)
+    
     setTitle(title.projectName)
+    console.log(title)
   }
+  const name = "project"
   return (
     <Navbar style={{ backgroundColor: "white" }} onSelect={selectProject}>
       <Navbar.Brand href="/"></Navbar.Brand>

@@ -1,50 +1,37 @@
-import React from "react";
+import React, { useState, useEffect }  from "react";
 // import logo from "./logo-nutella-s@3x.jpg";
 import { Navbar, Nav, Image, NavDropdown, Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import profileImage from "../ProjectPage/profile.png";
 // import "./navbar.css";
 import Main from "./main"
-const Home = () => {
-  const [title, setTitle] = React.useState();
-  const menu = [
-    {
-      "projectId": 1,
-      "projectName": "pj1",
-      "description": null,
-      "privacy": null,
-      "created_at": "2020-09-11T10:22:43.000Z",
-      "totalRun": 3
-    },
-    {
-      "projectId": 2,
-      "projectName": "pj2",
-      "description": null,
-      "privacy": null,
-      "created_at": "2020-09-11T10:22:43.000Z",
-      "totalRun": 0
-    },
-    {
-      "projectId": 3,
-      "projectName": "pj3",
-      "description": null,
-      "privacy": null,
-      "created_at": "2020-09-11T10:22:43.000Z",
-      "totalRun": 0
-    }
-  ]
-  const selectProject = (projectId) => {
-    console.log(projectId)
-    const title = menu.find(v => v.projectId === Number(projectId))
+import * as Actions from "../../store/actions";
+import { useSelector, useDispatch } from "react-redux";
+const Home = ({projectId}) => {
+  const dispatch = useDispatch();
+  const menu = useSelector((state) => state.project.projects);
+const [title,setTitle] = useState("test")
+const [id,setId] = useState(projectId)
+  useEffect(() => {
+    dispatch(Actions.getAllPorject(id));
+  }, []);
+console.log(menu)
+  const handleSelect=(id)=>{
+    console.log(id)
+    // setTitle(dispatch(Actions.selectProject(id)))
     
-    setTitle(title.projectName)
-   
-    console.log(title.projectName)
+    const first = menu.find(v => v.projectId === Number(id))
     
+    setTitle(first.projectName)
+   setId(id-1)
+    console.log("titles",title)
+  
   }
+ 
+
   return (
     <>
-    <Navbar style={{ backgroundColor: "white" }} onSelect={selectProject}>
+    <Navbar style={{ backgroundColor: "white" }} onSelect={handleSelect }>
       <Navbar.Brand href="/"></Navbar.Brand>
 
       <Image
@@ -53,11 +40,11 @@ const Home = () => {
         height="auto"
         className="d-inline-block align-top"
       />
-      
-      <NavDropdown title={"title"} id="nav-dropdown">
+      {/* href={`/main/:${v.projectId}`} */}
+      <NavDropdown title={menu[id].projectName} id="nav-dropdown">
         
         {
-          menu.map(v => (<NavDropdown.Item key={v.projectId} eventKey={v.projectId}href={`/workspace/${v.projectId}`}>{v.projectName} </NavDropdown.Item>))
+          menu.map(v => (<NavDropdown.Item key={v.projectId} eventKey={v.projectId}>{v.projectName} </NavDropdown.Item>))
         }
       </NavDropdown>
 

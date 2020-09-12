@@ -2,14 +2,20 @@ import axios from "axios";
 
 export const FETCH_ALL_PROJECT_DATA = "project/FETCH_ALL_PROJECT_DATA";
 export const ADD_PROJECT = "project/ADD_PROJECT";
-
+export const SELECT_POJECT ="project/SELECT_POJECT";
 export const fetchAllProjectData = (projectData) => {
   return {
     type: FETCH_ALL_PROJECT_DATA,
     projectData,
   };
 };
-
+export const selectProject= (projectId) => {
+ return {
+   type:SELECT_POJECT,
+   projectId
+ }
+  
+}
 export const getAllPorject = (id) => {
   return (dispatch) => {
     return axios

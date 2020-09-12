@@ -3,7 +3,7 @@ import HomeComponent from "../components/HomeComponent";
 import { Route, Link } from 'react-router-dom';
 import LoginPage from "../components/LoginPage/LoginPage";
 import ProjectPage from "../components/ProjectPage/ProjectPage";
-import Table from "../components/search/home";
+import Table from "../components/search/index";
 import API from "../components/search/main";
 import Main from "../components/search/main";
 
@@ -49,10 +49,10 @@ export const RouterConfig = [
     component: () => <Table></Table>,
   },
  
-  // {
-  //   path: "/main",
-  //   exact: true,
-  //   component: () => <Main></Main>,
-  // },
+  {
+    path: "/main/:id",
+    exact: true,
+    component: () => <Main></Main>,
+  },
  
 ];
