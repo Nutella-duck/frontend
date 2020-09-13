@@ -44,6 +44,7 @@ class Graph extends Component {
 // graph.push({x: i, y: 1.2})
 
 console.log("graph",graph)
+
     // const arr=[{title:"r1"}];
     // for(let i = 0;i<1;i++)
     // {
@@ -57,11 +58,11 @@ console.log("graph",graph)
           <VerticalGridLines />
           <XAxis />
           <YAxis />
-
+          
           <Line onNearestX={this._onNearestX} data={graph} />
-          {/* <Line onNearestX={this._onNearestX} data={data[1]} />
-          <Line onNearestX={this._onNearestX} data={data[2]} />
-          <Line onNearestX={this._onNearestX} data={data[3]} />
+          {/* <Line onNearestX={this._onNearestX} data={graph.length>=2 ? graph[1]:graph[0]} />
+          <Line onNearestX={this._onNearestX} data={graph.length>2 ? graph[2]:graph[0]} /> */}
+          {/* <Line onNearestX={this._onNearestX} data={data[3]} />
           <Line onNearestX={this._onNearestX} data={data[4]} /> */}
           <DiscreteColorLegend orientation="horizontal" items={model_name} />
           {/* <Crosshair

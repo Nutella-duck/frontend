@@ -17,17 +17,18 @@ const WorkSpaceComponent = () => {
   const model = useSelector((state) => state.model.models);
   const modelOfTheProject = useSelector((state)=>state.model.totalRun);
   const graph = useSelector((state)=>state.model.graphData);
-
+  const totalRun = modelOfTheProject[0].totalRun;
+  const ProjectName = modelOfTheProject[0].projectName;
   useEffect(() => {
     dispatch(Actions.getSelectedModelData(id));
     dispatch(Actions.getNumberOfModel(id));
-    dispatch(Actions.getGraphData(id,"accuracy"));
+    { for(let i=1;i<=totalRun;i++)
+    dispatch(Actions.getGraphData(i,"accuracy"));}
   }, []);
 
 
-console.log(graph);
-const totalRun = modelOfTheProject[0].totalRun;
-const ProjectName = modelOfTheProject[0].projectName;
+console.log("maingraph",graph);
+
 const a = graph.map(a=>a.accuracy)
 console.log("a",ProjectName)
  const data = [];
@@ -35,9 +36,9 @@ console.log("a",ProjectName)
   // {
   //   data.push({x:graph[i].runName})
   // }
-  for(var i=1;i<4;i++)
+  for(var i=1;i<graph.length+1;i++)
   {
-    console.log(i,"번째" ,a[i-1])
+    // console.log(i,"번째" ,a[i-1])
     data.push({x:i,y:a[i-1]})
   }
   console.log("data",data)

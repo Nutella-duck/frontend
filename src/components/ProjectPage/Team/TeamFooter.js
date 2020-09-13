@@ -5,13 +5,12 @@ import {
   import * as Actions from "../../../store/actions";
   import { useSelector, useDispatch } from "react-redux";
   
-const ProjectFooter = () =>
+const TeamFooter = () =>
 {
-  const dispatch = useDispatch();
-  const state = useSelector((state) => state.project.projects);
+  
   const [select,setSelect] = useState(1);
   const handleClick=(id)=>{
-    dispatch(Actions.getAllPorject(id));
+    
     setSelect(id)
   }
 
@@ -33,4 +32,4 @@ for (let number = 1; number <= 5; number++) {
     )
 
 };
-export default ProjectFooter;
+export default TeamFooter;

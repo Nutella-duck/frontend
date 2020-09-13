@@ -3,7 +3,7 @@ import React,{Component} from "react";
 import TeamListTemplate from './TeamListTemplate';
 import TeamForm from './TeamForm';
 import TeamItemList from './TeamItemList';
-
+import TeamFooter from './TeamFooter';
 
     class Team extends Component {
 
@@ -49,6 +49,7 @@ import TeamItemList from './TeamItemList';
           } = this;
       
           return (
+            <>
             <TeamListTemplate form={(
               <TeamForm 
                 value={input}
@@ -60,6 +61,8 @@ import TeamItemList from './TeamItemList';
               projects={projects}
               />
             </TeamListTemplate>
+            <TeamFooter/>
+            </>
           );
         }
       }

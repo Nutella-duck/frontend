@@ -28,7 +28,7 @@ console.log("mene",menu)
     console.log("first" ,first)
  
    setId(id-1)
-    console.log("titles",title)
+    
   
   }
 
