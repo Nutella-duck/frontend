@@ -86,7 +86,12 @@ class Graph extends Component {
       const modelName = [
       "run1"
       ]
-    const {models} = this.props;
+      const {models,graph} = this.props
+   
+      //const modelName = models.map(model=>model.runName);
+      // console.log("models", models)
+      const model_name = models.map(model=>model.runName);
+      console.log("m_name", model_name);
     
      //const model = models.models.models.map(model=>model.runName);
      console.log(models)
@@ -108,7 +113,7 @@ class Graph extends Component {
           {/* <Line onNearestX={this._onNearestX} data={data[2]} />
           <Line onNearestX={this._onNearestX} data={data[3]} />
           <Line onNearestX={this._onNearestX} data={data[4]} /> */}
-          <DiscreteColorLegend orientation="horizontal" items={models} />
+          <DiscreteColorLegend orientation="horizontal" items={model_name} />
           <Crosshair
             values={this.state.crosshairValues}
             className={"test-class-name"}

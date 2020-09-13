@@ -22,8 +22,8 @@ const WorkSpaceComponent = () => {
   useEffect(() => {
     dispatch(Actions.getSelectedModelData(id));
     dispatch(Actions.getNumberOfModel(id));
-    { for(let i=1;i<=totalRun;i++)
-    dispatch(Actions.getGraphData(i,"accuracy"));}
+    // for(let i=1;i<=totalRun;i++)
+    dispatch(Actions.getGraphData(id,"accuracy"));
   }, []);
 
 
@@ -54,7 +54,7 @@ console.log("a",ProjectName)
     <div>
       <Header projectId ={id}  ProjectName={ProjectName} ></Header>
       <RunTableComponent models={model} totalRuns={totalRun} ></RunTableComponent>
-      <SectionsComponent  models={model}></SectionsComponent>
+      <SectionsComponent  models={model} graph={data}></SectionsComponent>
       <SystemComponent  models={model} graph={data}></SystemComponent>
     </div>
   );

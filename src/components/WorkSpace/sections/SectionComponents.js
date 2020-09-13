@@ -32,7 +32,7 @@ const ItemHead = () => {
   );
 };
 
-const SectionsComponents = (models) => {
+const SectionsComponents = ({models,graph}) => {
   const cards = [1, 2, 3];
   const name = ["accuracy", "loss", "val_acc"];
 const run = ["r1","r2"]
@@ -58,7 +58,7 @@ const run = ["r1","r2"]
               style={{ height: "20rem", width: "auto", borderColor: "white" }}
             >
               <h5>{name[index]}</h5>
-              <Graph index={index} models={run}/>
+              <Graph index={index} models={models} graph={graph}/>
             </Card>
           </Col>
         ))}

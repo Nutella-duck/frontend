@@ -51,7 +51,7 @@ class table extends Component {
                                    placeholder="Search" className="mr-sm-2" />
     </Form>
     </Navbar>
-      <div className="ag-theme-alpine"  style={ {height: '600px', width: '1200px'} }>
+      <div className="ag-theme-alpine"  style={ {height: '200px', width: '1200px'} }>
      
                            
 

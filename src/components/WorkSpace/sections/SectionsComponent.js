@@ -3,7 +3,7 @@ import SectionHeadComponent from "./SectionHeadComponent";
 import SectionComponents from "./SectionComponents";
 import { useSelector } from "react-redux";
 
-const SectionsComponent = (models) => {
+const SectionsComponent = ({models,graph}) => {
   const sectoions = useSelector((state) => state.section.cards);
 
   return (
@@ -11,7 +11,7 @@ const SectionsComponent = (models) => {
       <SectionHeadComponent></SectionHeadComponent>
 
       {sectoions.map((section, index) => (
-        <SectionComponents models={models} key={index}></SectionComponents>
+        <SectionComponents models={models} key={index} graph={graph}></SectionComponents>
       ))}
     </div>
   );

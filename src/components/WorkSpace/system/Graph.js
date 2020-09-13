@@ -35,7 +35,7 @@ class Graph extends Component {
     //const modelName = models.map(model=>model.runName);
     // console.log("models", models)
     const model_name = models.map(model=>model.runName);
-    console.log("m_name", model_name);
+    console.log("system m_name", model_name);
 
  
 
