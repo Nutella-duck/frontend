@@ -6,27 +6,32 @@ import profileImage from "../ProjectPage/profile.png";
 import "./navbar.css";
 import { useSelector, useDispatch } from "react-redux";
 import * as Actions from "../../store/actions";
-const WorkSpaceHeader = ({projectId}) => {
+const WorkSpaceHeader = ({projectId,ProjectName}) => {
   const dispatch = useDispatch();
   const menu = useSelector((state) => state.project.projects);
 const [title,setTitle] = useState("test")
 const [id,setId] = useState(projectId)
+const currentTitle = ProjectName
+console.log(currentTitle)
+console.log(id)
   useEffect(() => {
-    dispatch(Actions.getAllPorject(id));
+    
+    dispatch(Actions.getAllPorject(1));
   }, []);
 console.log("dropdownid",id)
+console.log("mene",menu)
   const handleSelect=(id)=>{
     console.log(id)
     // setTitle(dispatch(Actions.selectProject(id)))
     
     const first = menu.find(v => v.projectId === Number(id))
-    
-    setTitle(first.projectName)
+    console.log("first" ,first)
+ 
    setId(id-1)
     console.log("titles",title)
   
   }
- 
+
   return (
     <Navbar style={{ backgroundColor: "white" }} onSelect={handleSelect}>
       <Navbar.Brand href="/"></Navbar.Brand>
@@ -38,7 +43,7 @@ console.log("dropdownid",id)
         className="d-inline-block align-top"
       />
       
-      <NavDropdown title={menu[id-1].projectName} id="nav-dropdown">
+      <NavDropdown title={currentTitle} id="nav-dropdown">
         {
           menu.map(v => (<NavDropdown.Item key={v.projectId} eventKey={v.projectId}href={`/workspace/${v.projectId}`}>{v.projectName}</NavDropdown.Item>))
         }

@@ -15,7 +15,7 @@ const WorkSpaceComponent = () => {
 
   const dispatch = useDispatch();
   const model = useSelector((state) => state.model.models);
-  const totalRun = useSelector((state)=>state.model.totalRun);
+  const modelOfTheProject = useSelector((state)=>state.model.totalRun);
   const graph = useSelector((state)=>state.model.graphData);
 
   useEffect(() => {
@@ -26,9 +26,10 @@ const WorkSpaceComponent = () => {
 
 
 console.log(graph);
-const runs = totalRun[0].totalRun;
+const totalRun = modelOfTheProject[0].totalRun;
+const ProjectName = modelOfTheProject[0].projectName;
 const a = graph.map(a=>a.accuracy)
-console.log("a",a)
+console.log("a",ProjectName)
  const data = [];
   // for(let i= 0; i<3;i++)
   // {
@@ -50,8 +51,8 @@ console.log("a",a)
 
   return (
     <div>
-      <Header projectId ={id}></Header>
-      <RunTableComponent models={model} totalRuns={runs} ></RunTableComponent>
+      <Header projectId ={id}  ProjectName={ProjectName} ></Header>
+      <RunTableComponent models={model} totalRuns={totalRun} ></RunTableComponent>
       <SectionsComponent  models={model}></SectionsComponent>
       <SystemComponent  models={model} graph={data}></SystemComponent>
     </div>
