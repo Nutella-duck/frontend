@@ -79,7 +79,7 @@ const Project = () => {
           />
         }
       >
-        <ProjectItemList projects={ search ? state.filter(v=>(v.projectName==search)):state}  />
+        <ProjectItemList projects={ search ? state.filter(v=>(v.projectName.includes(search))):state}  />
       </ProjectListTemplate>
       <ProjectFooter></ProjectFooter>
     </>
