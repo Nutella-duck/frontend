@@ -19,6 +19,7 @@ const ProjectForm = ({
   description,
   apiKey,
   getKey,
+  handleSearch 
 }) => {
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
@@ -51,6 +52,7 @@ const ProjectForm = ({
                 type="text"
                 placeholder="Search"
                 className=" mr-sm-2"
+                onChange ={handleSearch}
               />
               <Button variant="dark" onClick={handleShow}>
                 New Project

@@ -10,8 +10,8 @@ import axios from "axios";
 const Project = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.project.projects);
-
-  const [apiKey, setApiKey] = useState("");
+ 
+  const [apiKey, setApiKey] = useState(null);
   const [inputs, setInputs] = useState({
     projectName: "",
     description: "",
@@ -22,7 +22,8 @@ const Project = () => {
   useEffect(() => {
     dispatch(Actions.getAllPorject(1));
   }, []);
-
+  const [search,setSearch] = useState("")
+  
   const getKey = () => {
     console.log("getkey");
     axios
@@ -58,7 +59,11 @@ const Project = () => {
       [name]: value,
     });
   };
-
+  const handleSearch = (e) => {
+    const { name, value } = e.target;
+  
+    setSearch(value)
+  };
   return (
     <>
       <ProjectListTemplate
@@ -70,10 +75,11 @@ const Project = () => {
             onChange={handleChange}
             onCreate={handleCreate}
             getKey={getKey}
+            handleSearch ={handleSearch}
           />
         }
       >
-        <ProjectItemList projects={state}  />
+        <ProjectItemList projects={ search ? state.filter(v=>(v.projectName==search)):state}  />
       </ProjectListTemplate>
       <ProjectFooter></ProjectFooter>
     </>
