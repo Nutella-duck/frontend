@@ -12,6 +12,11 @@ import {
   ButtonGroup,
   Button,
 } from "react-bootstrap";
+function isFirstColumn(params) {
+  var displayedColumns = params.columnApi.getAllDisplayedColumns();
+  var thisIsFirstColumn = displayedColumns[0] === params.column;
+  return thisIsFirstColumn;
+}
 class table extends Component {
   constructor(props) {
     super(props);
@@ -19,14 +24,23 @@ class table extends Component {
       quickFilterText: null,
       totalRuns:0,
       columnDefs: [
-        {hederName:" ",field:" ",checkboxSelection: true },
-        { headerName: "NAME", field: "runName", sortable: true, filter: true,},
+       
+        { headerName: "NAME", field: "runName", sortable: true, filter: true },
         { headerName: "STATE", field: "state", sortable: true, filter: true},
         { headerName: "CREATED", field: "created_at", sortable: true, filter: true},
         { headerName: "CREATEDBY", field: "created_by", sortable: true, filter: true},
         { headerName: "RUNTIME", field: "runTime", sortable: true, filter: true},
         
         ],
+        defaultColDef: {
+          flex: 1,
+          minWidth: 100,
+          resizable: true,
+          headerCheckboxSelection: isFirstColumn,
+          checkboxSelection: isFirstColumn,
+        },
+        rowSelection: 'multiple',
+        rowData: [],
    
   }
 }
@@ -35,10 +49,12 @@ class table extends Component {
     this.setState({quickFilterText: event.target.value});
 };
 
+
   render() {
     const {tableRows,totalRuns} = this.props;
     console.log(tableRows);
     const data = tableRows.models;
+    
     return (
       <>
        <Navbar bg="light" variant="light" style={{ borderRadius: "0.7rem" }}>
@@ -56,8 +72,15 @@ class table extends Component {
                            
 
         <AgGridReact 
-           quickFilterText={this.state.quickFilterText}
+        modules={this.state.modules}
         columnDefs={this.state.columnDefs}
+        defaultColDef={this.state.defaultColDef}
+        suppressRowClickSelection={true}
+        rowSelection={this.state.rowSelection}
+        onGridReady={this.onGridReady}
+        
+           quickFilterText={this.state.quickFilterText}
+        
             rowData={tableRows}>
         </AgGridReact>
       </div>
