@@ -15,9 +15,10 @@ class ProjectItemList extends Component {
           description={project.description}
           name={project.projectName}
           userNumber={userNumber[index]}
-          runsNumber={runsNumber[index]}
+          runsNumber={project.totalRun}
           hoursNumber={hoursNumber[index]}
           id={project.projectId}
+          privacy ={project.privacy}
         />
       </Col>
     ));

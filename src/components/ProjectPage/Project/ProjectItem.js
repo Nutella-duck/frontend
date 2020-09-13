@@ -11,7 +11,8 @@ class ProjectItem extends Component {
       userNumber,
       runsNumber,
       hoursNumber,
-      id
+      id,
+      privacy
     } = this.props;
 
     return (
@@ -22,7 +23,7 @@ class ProjectItem extends Component {
               <Form inline>
                 <Card.Title className="title">{name}</Card.Title>
 
-                <Badge className="badge">Public</Badge>
+                <Badge className="badge">{privacy ? <p>privacy</p> : <p>public</p>}</Badge>
                 <Button variant="light" className="ml-auto">
                   <BsGear />
                 </Button>
