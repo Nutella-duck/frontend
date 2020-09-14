@@ -25,7 +25,7 @@ for (let number = 1; number <= 5; number++) {
   );
 }
     return(
-        <Pagination  className="ml-auto">
+        <Pagination  className="ml-auto" style={{paddingLeft:"100rem"}}>
      {items}
      
     

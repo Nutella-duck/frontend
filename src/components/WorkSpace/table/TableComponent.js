@@ -17,6 +17,14 @@ function isFirstColumn(params) {
   var thisIsFirstColumn = displayedColumns[0] === params.column;
   return thisIsFirstColumn;
 }
+function getSelectedRows() {
+  
+  // var rowCount = event.api.getSelectedNodes()
+  // console.log('selection changed, ' + rowCount + ' rows selected');
+  
+  let rowsSelection = this.gridOptions.api.getSelectedRows();
+        console.info(rowsSelection);
+};
 class table extends Component {
   constructor(props) {
     super(props);
@@ -41,6 +49,7 @@ class table extends Component {
         },
         rowSelection: 'multiple',
         rowData: [],
+        getSelectedRows :getSelectedRows
    
   }
 }
@@ -48,9 +57,18 @@ class table extends Component {
   onQuickFilterText = (event) => {
     this.setState({quickFilterText: event.target.value});
 };
+onSelectionChanged = (event) => {
+  
+  // var rowCount = event.api.getSelectedNodes()
+  // console.log('selection changed, ' + rowCount + ' rows selected');
+  
+  // var selectedRows = this.mgrid.ag.this.gridOptions.getSelectedRows();
+  // console.log(selectedRows);
+};
 
 
   render() {
+    console.log("테이블 렌더링 중...")
     const {tableRows,totalRuns} = this.props;
     console.log(tableRows);
     const data = tableRows.models;
@@ -69,7 +87,7 @@ class table extends Component {
     </Navbar>
       <div className="ag-theme-alpine"  style={ {height: '200px', width: '1200px'} }>
      
-                           
+    {/* <p>{data[0].runName.isSelected() ? "true" : "false"}</p>                     */}
 
         <AgGridReact 
         modules={this.state.modules}
@@ -80,7 +98,7 @@ class table extends Component {
         onGridReady={this.onGridReady}
         
            quickFilterText={this.state.quickFilterText}
-        
+           onSelectionChanged={this.onSelectionChanged.bind(this)}
             rowData={tableRows}>
         </AgGridReact>
       </div>

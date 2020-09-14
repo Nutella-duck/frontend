@@ -9,7 +9,7 @@ import {
  useParams
 } from "react-router-dom";
 const WorkSpaceComponent = () => {
-  
+  console.log("워크스페이스 렌더링 중...")
   const {id} =useParams()
   console.log(id)
 
@@ -22,11 +22,20 @@ const WorkSpaceComponent = () => {
   useEffect(() => {
     dispatch(Actions.getSelectedModelData(id));
     dispatch(Actions.getNumberOfModel(id));
-    // for(let i=1;i<=totalRun;i++)
-    dispatch(Actions.getGraphData(id,"accuracy"));
-  }, []);
-
-
+  getGraph(totalRun);
+  console.log("유즈이펙트!")
+  }, [totalRun]);
+const graphDatas =[];
+const getGraph=(totalRun)=>
+{
+console.log("안에들어왔어요!",totalRun)
+for(let i=0;i<=totalRun;i++)
+{
+  dispatch(Actions.getGraphData(i,"accuracy"));
+ graphDatas.push(graph)
+  console.log("graphDatas",i,":",graphDatas)
+}
+}
 console.log("maingraph",graph);
 
 const a = graph.map(a=>a.accuracy)

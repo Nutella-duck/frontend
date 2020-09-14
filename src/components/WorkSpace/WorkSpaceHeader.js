@@ -7,6 +7,7 @@ import "./navbar.css";
 import { useSelector, useDispatch } from "react-redux";
 import * as Actions from "../../store/actions";
 const WorkSpaceHeader = ({projectId,ProjectName}) => {
+  console.log("헤더 렌더링 중...")
   const dispatch = useDispatch();
   const menu = useSelector((state) => state.project.projects);
 const [title,setTitle] = useState("test")
@@ -19,7 +20,7 @@ console.log(id)
     dispatch(Actions.getAllPorject(1));
   }, []);
 console.log("dropdownid",id)
-console.log("mene",menu)
+console.log("menu",menu)
   const handleSelect=(id)=>{
     console.log(id)
     // setTitle(dispatch(Actions.selectProject(id)))
@@ -43,12 +44,13 @@ console.log("mene",menu)
         className="d-inline-block align-top"
       />
       
-      <NavDropdown title={currentTitle} id="nav-dropdown">
+     
+      <NavDropdown title={currentTitle ? currentTitle : "nutella"} id="nav-dropdown">
         {
           menu.map(v => (<NavDropdown.Item key={v.projectId} eventKey={v.projectId}href={`/workspace/${v.projectId}`}>{v.projectName}</NavDropdown.Item>))
         }
       </NavDropdown>
-
+      
       <Nav
         className="topnav col-sm-9 justify-content-center"
         activeKey="/workspace"

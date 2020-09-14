@@ -28,6 +28,7 @@ class Graph extends Component {
   // };
 
   render() {
+    console.log("시스템 렌더링 중...")
     const Line = LineSeries;
     
     const {models,graph} = this.props
@@ -43,7 +44,7 @@ class Graph extends Component {
 // for(let i= 0;i<10;i++)
 // graph.push({x: i, y: 1.2})
 
-console.log("graph",graph)
+console.log("graph system ",graph)
 
     // const arr=[{title:"r1"}];
     // for(let i = 0;i<1;i++)
