@@ -49,6 +49,8 @@ const initialState = {
 const ProjectReducer = (state = initialState, action) => {
   switch (action.type) {
     case Actions.FETCH_ALL_PROJECT_DATA: {
+      console.log(action.projectData)
+      console.log("hi")
       return {
         ...state,
         projects: action.projectData,

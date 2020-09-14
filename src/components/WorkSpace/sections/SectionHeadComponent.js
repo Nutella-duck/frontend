@@ -13,7 +13,7 @@ const SectionHeadComponent = () => {
     dispatch(Actions.fectchCardData(cards));
     console.log(cards);
   };
-
+  console.log("차트1 렌더링 중...")
   return (
     <div>
       <Navbar  style={{marginTop:"3rem" , backgroundColor:"white",marginLeft:"2rem",marginRight:"2rem",borderRadius:"0.7rem"}} >

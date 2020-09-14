@@ -68,7 +68,7 @@ onSelectionChanged = (event) => {
 
 
   render() {
-    console.log("테이블 렌더링 중...")
+    console.log("테이블2 렌더링 중...")
     const {tableRows,totalRuns} = this.props;
     console.log(tableRows);
     const data = tableRows.models;

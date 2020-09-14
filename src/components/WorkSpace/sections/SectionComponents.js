@@ -33,6 +33,7 @@ const ItemHead = () => {
 };
 
 const SectionsComponents = ({models,graph}) => {
+  console.log("차트 2렌더링 중...")
   const cards = [1, 2, 3];
   const name = ["accuracy", "loss", "val_acc"];
 const run = ["r1","r2"]

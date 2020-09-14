@@ -18,7 +18,7 @@ import {
 } from "react-icons/bs";
 
 const TableHeadComponent = () => {
-
+  console.log("테이블 1렌더링 중...")
   const numberOfIndex = useSelector((state) => state.model.index);
 
   return (

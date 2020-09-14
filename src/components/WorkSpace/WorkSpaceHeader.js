@@ -7,7 +7,7 @@ import "./navbar.css";
 import { useSelector, useDispatch } from "react-redux";
 import * as Actions from "../../store/actions";
 const WorkSpaceHeader = ({projectId,ProjectName}) => {
-  console.log("헤더 렌더링 중...")
+  console.log("헤더 렌더링 중...",projectId,ProjectName)
   const dispatch = useDispatch();
   const menu = useSelector((state) => state.project.projects);
 const [title,setTitle] = useState("test")

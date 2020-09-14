@@ -28,7 +28,7 @@ class Graph extends Component {
   // };
 
   render() {
-    console.log("시스템 렌더링 중...")
+    console.log("시스템 2렌더링 중...")
     const Line = LineSeries;
     
     const {models,graph} = this.props

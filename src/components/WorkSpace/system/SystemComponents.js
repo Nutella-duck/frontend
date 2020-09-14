@@ -8,7 +8,7 @@ import 'react-vis/dist/style.css';
 
 const SystemItemHead = () => {
   
-
+  console.log("시스템1 렌더링 중...")
   return (
     <div>
       <Navbar  style={{marginTop:"2rem" , backgroundColor:"white",marginLeft:"2rem",marginRight:"2rem",borderTopRightRadius:"0.7rem",borderTopLeftRadius:"0.7rem"}}>

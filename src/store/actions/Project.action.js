@@ -23,8 +23,7 @@ export const getAllPorject = (id) => {
         headers: { "Content-Type": "application/json" },
       })
       .then((response) => {
-        console.log(response.data)
-        console.log("hi")
+      
         dispatch(fetchAllProjectData(response.data));
       })
       .catch((error) => {

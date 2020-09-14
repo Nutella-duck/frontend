@@ -155,7 +155,7 @@ class Graph extends Component {
   // };
 
   render() {
-    console.log("차트 렌더링 중...")
+    console.log("차트2->1 렌더링 중...")
     const Line = LineSeries;
     
     const {models,graph} = this.props

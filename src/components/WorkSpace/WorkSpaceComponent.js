@@ -19,11 +19,13 @@ const WorkSpaceComponent = () => {
   const graph = useSelector((state)=>state.model.graphData);
   const totalRun = modelOfTheProject[0].totalRun;
   const ProjectName = modelOfTheProject[0].projectName;
+  console.log("ProjectName",ProjectName)
   useEffect(() => {
+    console.log("유즈이펙트!")
     dispatch(Actions.getSelectedModelData(id));
     dispatch(Actions.getNumberOfModel(id));
   getGraph(totalRun);
-  console.log("유즈이펙트!")
+
   }, [totalRun]);
 const graphDatas =[];
 const getGraph=(totalRun)=>
@@ -36,7 +38,7 @@ for(let i=0;i<=totalRun;i++)
   console.log("graphDatas",i,":",graphDatas)
 }
 }
-console.log("maingraph",graph);
+console.log("model",model,"modelOfTheProject",modelOfTheProject,"maingraph",graph);
 
 const a = graph.map(a=>a.accuracy)
 console.log("a",ProjectName)
