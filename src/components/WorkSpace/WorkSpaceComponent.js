@@ -14,48 +14,62 @@ const WorkSpaceComponent = () => {
   console.log(id)
 
   const dispatch = useDispatch();
-  const model = useSelector((state) => state.model.models);
   const modelOfTheProject = useSelector((state)=>state.model.totalRun);
   const graph = useSelector((state)=>state.model.graphData);
+  const model = useSelector((state) => state.model.models);
+  const graphDatas=[]
   const totalRun = modelOfTheProject[0].totalRun;
   const ProjectName = modelOfTheProject[0].projectName;
-  console.log("ProjectName",ProjectName)
-  useEffect(() => {
-    console.log("유즈이펙트!")
-    dispatch(Actions.getSelectedModelData(id));
-    dispatch(Actions.getNumberOfModel(id));
-  getGraph(totalRun);
-
-  }, [totalRun]);
-const graphDatas =[];
 const getGraph=(totalRun)=>
 {
 console.log("안에들어왔어요!",totalRun)
-for(let i=0;i<=totalRun;i++)
+for(let i=0;i<totalRun;i++)
 {
   dispatch(Actions.getGraphData(i,"accuracy"));
- graphDatas.push(graph)
+  console.log("graph:",graph)
+ graphDatas.push(graph[0])
   console.log("graphDatas",i,":",graphDatas)
 }
 }
+  const timerID = setInterval(getGraph(totalRun), 60000);
+
+  
+  
+  console.log("ProjectName",ProjectName)
+  useEffect(() => {
+    console.log("유즈이펙트!")
+    dispatch(Actions.getNumberOfModel(id));
+   
+    
+    dispatch(Actions.getSelectedModelData(id));
+    clearInterval(timerID)
+  
+
+  }, []);
+
 console.log("model",model,"modelOfTheProject",modelOfTheProject,"maingraph",graph);
 
-const a = graph.map(a=>a.accuracy)
-console.log("a",ProjectName)
- const data = [];
-  // for(let i= 0; i<3;i++)
-  // {
-  //   data.push({x:graph[i].runName})
-  // }
-  for(var i=1;i<graph.length+1;i++)
-  {
-    // console.log(i,"번째" ,a[i-1])
-    data.push({x:i,y:a[i-1]})
-  }
-  console.log("data",data)
-// console.log(totalRun);
+// const a = graphDatas.map(a=>a.accuracy)
+// console.log("graphData",graphDatas)
+// console.log("graphData[0]",graphDatas[0])
+// console.log("a",a)
+//  const data = [];
+//   // for(let i= 0; i<3;i++)
+//   // {
+//   //   data.push({x:graph[i].runName})
+//   // }
+//   for(var i=1;i<graphDatas.length+1;i++)
+//   {
+//     // console.log(i,"번째" ,a[i-1])
+//     console.log("그래프넣기",i,":",graphDatas)
+//     data.push({x:i,y:a[i-1]})
+//   }
+//   console.log("data",data)
+// // console.log(totalRun);
 
-
+const sample = [{x: 1, y: 0.7},
+{x: 2, y: 0.7},
+{x: 3, y: 0.7}]
 ///////////////////////////
 ///////////////////////////
 
@@ -64,9 +78,9 @@ console.log("a",ProjectName)
   return (
     <div>
       <Header projectId ={id}  ProjectName={ProjectName} ></Header>
-      <RunTableComponent models={model} totalRuns={totalRun} ></RunTableComponent>
-      <SectionsComponent  models={model} graph={data}></SectionsComponent>
-      <SystemComponent  models={model} graph={data}></SystemComponent>
+      <RunTableComponent  totalRuns={totalRun} models={model}></RunTableComponent>
+      <SectionsComponent  models={model} graph={sample}></SectionsComponent>
+      <SystemComponent  models={model} graph={sample}></SystemComponent>
     </div>
   );
 };
