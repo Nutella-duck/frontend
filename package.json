@@ -23,6 +23,7 @@
     "react-vis": "^1.11.7",
     "reduct": "^3.3.1",
     "redux": "^4.0.5",
+    "redux-actions": "^2.6.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0"
   },

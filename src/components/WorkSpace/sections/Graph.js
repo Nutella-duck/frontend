@@ -163,7 +163,7 @@ class Graph extends Component {
     //const modelName = models.map(model=>model.runName);
     // console.log("models", models)
     const model_name = models.map(model=>model.runName);
-    console.log("system m_name", model_name);
+    
 
  
 
@@ -171,7 +171,7 @@ class Graph extends Component {
 // for(let i= 0;i<10;i++)
 // graph.push({x: i, y: 1.2})
 
-console.log("graph",graph)
+console.log("chart graph",graph)
 
     // const arr=[{title:"r1"}];
     // for(let i = 0;i<1;i++)

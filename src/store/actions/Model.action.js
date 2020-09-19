@@ -70,6 +70,7 @@ export const getNumberOfModel = (id) =>
   };
 }
 
+
 export const getGraphData = (id,index) =>
 {
   return (dispatch) => {
@@ -78,7 +79,7 @@ export const getGraphData = (id,index) =>
         headers: { "Content-Type": "application/json" },
       })
       .then((response) => {
-        
+        console.log("그래프 형태",response.data)
         dispatch(fetchGraphData(response.data));
       })
       .catch((error) => {

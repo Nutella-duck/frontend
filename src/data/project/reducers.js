@@ -1,4 +1,4 @@
-import * as Actions from "../actions";
+import * as AT from '@/data/project/actionTypes';
 
 const initialState = {
   input: "",
@@ -46,27 +46,29 @@ const initialState = {
   ],
 };
 
+// export default (state = initialState, { type, payload }) => {
+//   switch (type) {
+//     case AT.GET_PRODUCT_DETAIL_SUCCESS:
+//       return payload;
+//     case AT.GET_PRODUCT_DETAIL_FAIL:
+//       return state;
+//     default:
+//       return state;
+//   }
+// };
 const ProjectReducer = (state = initialState, action) => {
   switch (action.type) {
-    case Actions.FETCH_ALL_PROJECT_DATA: {
+    case AT.FETCH_ALL_PROJECT_DATA: {
     
       return {
         ...state,
         projects: action.projectData,
       };
     }
-    // case Actions.SELECT_POJECT:{
-    //   const title = state.projects.find(v=>v.projectId===Number(action.projectId))
-    //   console.log("titlereducer",title)
-    //   return {
-    //     ...state,
-    //     title
-    //   }
-    // }
+    
     default: {
       return state;
     }
   }
 };
-
 export default ProjectReducer;

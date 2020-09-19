@@ -6,13 +6,14 @@ import * as serviceWorker from "./serviceWorker";
 
 import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
-import rootReducer from "./store/reducers";
+import rootReducer from "./data/rootReducer";
 import ReduxThunk from "redux-thunk";
 
 const composeEnhancer = window.__REDUX__DEVTOOLS_EXTENSION_COMPOSE || compose;
 const store = createStore(
   rootReducer,
-  composeEnhancer(applyMiddleware(ReduxThunk))
+  composeEnhancer(applyMiddleware(ReduxThunk),  window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f)
+  ,
 );
 
 ReactDOM.render(

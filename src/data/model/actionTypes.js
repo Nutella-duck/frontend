@@ -1,0 +1,12 @@
+
+
+// export const GET_PRODUCT_DETAIL_SUCCESS = success(GET_PRODUCT_DETAIL);
+// export const GET_PRODUCT_DETAIL_FAIL = fail(GET_PRODUCT_DETAIL);
+// export const GET_PRODUCT_DETAIL_LOADING = loading(GET_PRODUCT_DETAIL);
+
+export const FETCH_ALL_MODEL_DATA = "@Model/FETCH_ALL_MODEL_DATA";
+export const ADD_MODEL = "@Model/ADD_MODEL";
+export const FETCH_NUMBER_OF_MODEL = "@Model/FETCH_NUMBER_OF_MODEL";
+export const FETCH_GRAPH_DATA = "@Model/FETCH_GRAPH_DATA";
+export const GET_MODEL_SUCCESS = "@Model/GET_MODEL_SUCCESS";
+export const GET_GRAPH_SUCCESS = "@Modle/GET_GRAPH_SUCCESS"
