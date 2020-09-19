@@ -55,11 +55,11 @@
 //   cartItems,
 // });
 import * as Actions from './actionTypes';
-import {  handleActions } from 'redux-actions';
+
 const initialState = {
   totalRun:[{total_run:"0"}],
   index: 8,
-  graphData:[],
+  graphData:[{"stepId":1,"runName":"r1","stepNumber":1,"accuracy":0.1}],
   models: [
     {
       NAME: "project_test",
@@ -220,8 +220,11 @@ const initialState = {
       };
     }
     case Actions.GET_GRAPH_SUCCESS:{
+      console.log("겟 그래프")
+      console.log("before graphData",state.graphData)
+      console.log("payload",action.payload.graph)
       return {...state,
-        graphData:action.payload.graph
+        graphData:action.payload
       }
     }
     default: {

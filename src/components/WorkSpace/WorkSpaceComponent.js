@@ -20,23 +20,35 @@ const WorkSpaceComponent = () => {
   const totalRun = modelOfTheProject[0].totalRun;
   const ProjectName = modelOfTheProject[0].projectName;
 
-  useLayoutEffect(()=>{
-    function fetchFirstData() {
-      return new Promise((resolve, reject) => {
-        console.log("26")
-        dispatch(Actions.getResult(id));
-        resolve();
-      });
-    }
+  
+  // useLayoutEffect(()=>{
+  //   function fetchFirstData() {
+  //     return new Promise((resolve, reject) => {
+  //       console.log("26")
+  //       dispatch(Actions.getResult(id));
+  //       resolve();
+  //     });
+  //   }
 
-    fetchFirstData().then(() => {
-      console.log("tot",totalRun);
-      dispatch(Actions.getGraphs(id,"accuracy",totalRun));
-      console.log("유즈이펙트2");
-    })
+  //   fetchFirstData().then(() => {
+  //     console.log("tot",totalRun);
+  //     dispatch(Actions.getGraphs(id,"accuracy",totalRun));
+  //     console.log("유즈이펙트2");
+  //   })
 
-    console.log("유즈이펙트");
-  }, []);
+  //   console.log("유즈이펙트");
+  // }, []);
+ 
+  useEffect(() => {
+    
+    dispatch(Actions.getResult(id))
+    // dispatch(Actions.getGraphs(id,"accuracy",3));
+  }, [])
+  useEffect(() => {
+    
+    
+    dispatch(Actions.getGraphs(id,"accuracy",totalRun));
+  }, [totalRun])
 
   // useEffect(() => {
     
@@ -51,7 +63,6 @@ const WorkSpaceComponent = () => {
     "maingraph",
     graph
   );
-  
 
   
   const sample = [
@@ -61,6 +72,21 @@ const WorkSpaceComponent = () => {
   ];
   ///////////////////////////
   ///////////////////////////
+//   if(graph.length>0){
+  
+//   const data=[];
+//   const result=[];
+//   for(let i=0;i<graph.length;i++)
+//   {
+//    const acc= graph[i].map(v=>v.accuracy);
+//    for(let j=0;j=acc.length;j++)
+//   {
+//     data=[];
+//     data.push({x:j+1,y:acc[j]})
+//   }
+//   result.push(data)
+//   }
+// }
 
   return (
     <div>
@@ -69,7 +95,7 @@ const WorkSpaceComponent = () => {
         totalRuns={totalRun}
         models={model}
       ></RunTableComponent>
-      <SectionsComponent models={model} graph={graph}></SectionsComponent>
+      <SectionsComponent models={model} graph={sample}></SectionsComponent>
       <SystemComponent models={model} graph={sample}></SystemComponent>
     </div>
   );

@@ -62,9 +62,6 @@ export const getResult = (modelId) => async(dispatch,getState)=>{
   const [totalRun,models] = await Promise.all([apis.modelApi.getNumberOfModel(modelId),apis.modelApi.getSelectedModelData(modelId)])
   console.log("totalRun",totalRun,)
   dispatch(getModelSuccess({totalRun,models}))
-  
-  
-
 };
 
 export const getGraphs =(id,index,totalRun)=> async(dispatch,getState)=>{
