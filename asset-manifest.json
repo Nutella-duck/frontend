@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/NutellaCoder/NutellaCoder-WebFrontEnd/static/css/main.db69ac77.chunk.css",
+    "main.js": "/NutellaCoder/NutellaCoder-WebFrontEnd/static/js/main.2005db06.chunk.js",
+    "main.js.map": "/NutellaCoder/NutellaCoder-WebFrontEnd/static/js/main.2005db06.chunk.js.map",
+    "runtime-main.js": "/NutellaCoder/NutellaCoder-WebFrontEnd/static/js/runtime-main.8bad6e10.js",
+    "runtime-main.js.map": "/NutellaCoder/NutellaCoder-WebFrontEnd/static/js/runtime-main.8bad6e10.js.map",
+    "static/css/2.7ff9c2c3.chunk.css": "/NutellaCoder/NutellaCoder-WebFrontEnd/static/css/2.7ff9c2c3.chunk.css",
+    "static/js/2.04fa8a6e.chunk.js": "/NutellaCoder/NutellaCoder-WebFrontEnd/static/js/2.04fa8a6e.chunk.js",
+    "static/js/2.04fa8a6e.chunk.js.map": "/NutellaCoder/NutellaCoder-WebFrontEnd/static/js/2.04fa8a6e.chunk.js.map",
+    "index.html": "/NutellaCoder/NutellaCoder-WebFrontEnd/index.html",
+    "precache-manifest.05a4cafa983fb4acb9436c44e3cfc4a1.js": "/NutellaCoder/NutellaCoder-WebFrontEnd/precache-manifest.05a4cafa983fb4acb9436c44e3cfc4a1.js",
+    "service-worker.js": "/NutellaCoder/NutellaCoder-WebFrontEnd/service-worker.js",
+    "static/css/2.7ff9c2c3.chunk.css.map": "/NutellaCoder/NutellaCoder-WebFrontEnd/static/css/2.7ff9c2c3.chunk.css.map",
+    "static/css/main.db69ac77.chunk.css.map": "/NutellaCoder/NutellaCoder-WebFrontEnd/static/css/main.db69ac77.chunk.css.map",
+    "static/js/2.04fa8a6e.chunk.js.LICENSE.txt": "/NutellaCoder/NutellaCoder-WebFrontEnd/static/js/2.04fa8a6e.chunk.js.LICENSE.txt",
+    "static/media/logo-nutella-s@3x.png": "/NutellaCoder/NutellaCoder-WebFrontEnd/static/media/logo-nutella-s@3x.94cd6439.png",
+    "static/media/logo@3x.png": "/NutellaCoder/NutellaCoder-WebFrontEnd/static/media/logo@3x.6dda454d.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8bad6e10.js",
+    "static/css/2.7ff9c2c3.chunk.css",
+    "static/js/2.04fa8a6e.chunk.js",
+    "static/css/main.db69ac77.chunk.css",
+    "static/js/main.2005db06.chunk.js"
+  ]
+}
