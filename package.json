@@ -27,13 +27,13 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0"
   },
-
-
   "scripts": {
     "start": "react-scripts start",
-    "build": " react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn build",
+    "deploy":"gh-page -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -49,5 +49,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "homepage": "https://leehaeina.github.io/NutellaCoder/NutellaCoder-WebFrontEnd",
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
   }
 }
