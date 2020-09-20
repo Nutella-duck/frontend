@@ -72,21 +72,22 @@ const WorkSpaceComponent = () => {
   ];
   ///////////////////////////
   ///////////////////////////
-//   if(graph.length>0){
+  if(graph.length>0){
   
-//   const data=[];
-//   const result=[];
-//   for(let i=0;i<graph.length;i++)
-//   {
-//    const acc= graph[i].map(v=>v.accuracy);
-//    for(let j=0;j=acc.length;j++)
-//   {
-//     data=[];
-//     data.push({x:j+1,y:acc[j]})
-//   }
-//   result.push(data)
-//   }
-// }
+  const data=[];
+  const result=[];
+  for(let i=0;i<graph.length;i++)
+  {
+   const acc= graph[i].map(v=>v.accuracy);
+   console.log("acc",acc)
+  //  for(let j=0;j=acc.length;j++)
+  // {
+  //   data=[];
+  //   data.push({x:j+1,y:acc[j]})
+  // }
+  result.push(data)
+  }
+}
 
   return (
     <div>
