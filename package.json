@@ -50,7 +50,7 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://leehaeina.github.io/NutellaCoder/NutellaCoder-WebFrontEnd",
+  "homepage": "https://NutellaCoder.github.io/NutellaCoder-WebFrontEnd",
   "devDependencies": {
     "gh-pages": "^3.1.0"
   }
