@@ -11,7 +11,7 @@ import {
 import { BsFunnel,} from "react-icons/bs";
 import { useSelector, useDispatch } from "react-redux";
 import Footer from "./RunFooter";
-import * as Actions from "../../../store/actions";
+import * as Actions from "../../../data/model/actions.js";
 import axios from "axios";
 
 const Run = () => {

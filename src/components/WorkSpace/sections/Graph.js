@@ -167,7 +167,6 @@ class Graph extends Component {
 
  
 
-
 // for(let i= 0;i<10;i++)
 // graph.push({x: i, y: 1.2})
 
@@ -188,6 +187,7 @@ console.log("chart graph",graph)
           <YAxis />
           
           <Line onNearestX={this._onNearestX} data={graph} />
+          
           {/* <Line onNearestX={this._onNearestX} data={graph.length>=2 ? graph[1]:graph[0]} />
           <Line onNearestX={this._onNearestX} data={graph.length>2 ? graph[2]:graph[0]} /> */}
           {/* <Line onNearestX={this._onNearestX} data={data[3]} />

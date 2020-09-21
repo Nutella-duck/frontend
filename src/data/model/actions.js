@@ -37,7 +37,7 @@ export const fetchGraphData = (graphData) => {
     graphData,
   };
 };
-/*
+
 export const getAllModelData = (modelId) => async(dispatch,getState)=>{
   
     const model = await apis.modelApi.fetch10model(modelId);
@@ -50,7 +50,7 @@ export const getSelectedModelData = (modelId) => async(dispatch,getState)=>{
  dispatch(fetchAllModelData(model));
 
 };
-*/
+
 export const getNumberOfModel = (modelId) => async(dispatch,getState)=>{
   
   const model = await apis.modelApi.getNumberOfModel(modelId);
