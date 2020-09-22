@@ -1,8 +1,18 @@
-import React from "react";
-import { Navbar, Nav, Button,Form } from "react-bootstrap";
-import {BsGear} from "react-icons/bs";
-import { useDispatch, useSelector } from "react-redux";
-import * as Actions from "../../../store/actions";
+import React, { useState } from 'react';
+import {
+  Navbar,
+  Nav,
+  Button,
+  Form,
+  Modal,
+  NavDropdown,
+  Container,
+  Col,
+  Row,
+} from 'react-bootstrap';
+import { BsGear } from 'react-icons/bs';
+import { useDispatch, useSelector } from 'react-redux';
+import * as Actions from '../../../store/actions';
 
 const SectionHeadComponent = () => {
   const dispatch = useDispatch();
@@ -13,23 +23,67 @@ const SectionHeadComponent = () => {
     dispatch(Actions.fectchCardData(cards));
     console.log(cards);
   };
-  console.log("차트1 렌더링 중...")
+  console.log('차트1 렌더링 중...');
+  const [show, setShow] = useState(false);
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
+
   return (
-    <div>
-      <Navbar  style={{marginTop:"3rem" , backgroundColor:"white",marginLeft:"2rem",marginRight:"2rem",borderRadius:"0.7rem"}} >
+    <>
+      <Navbar
+        style={{
+          marginTop: '3rem',
+          backgroundColor: 'white',
+          marginLeft: '2rem',
+          marginRight: '2rem',
+          borderRadius: '0.7rem',
+        }}
+      >
         <Form inline>
-        <Navbar.Brand style={{ fontWeight: "bold" }} >SECTIONS</Navbar.Brand>
-        <Button variant="light"><BsGear/></Button>
+          <Navbar.Brand style={{ fontWeight: 'bold' }}>SECTIONS</Navbar.Brand>
+          <Button variant="light">
+            <BsGear />
+          </Button>
         </Form>
         <Navbar.Collapse>
           <Nav className="ml-auto">
-            <Button variant="dark" onClick={addSectionsOnclick}>
+            <Button variant="dark" onClick={handleShow}>
               NEW SECTION
             </Button>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-    </div>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Container>
+            <Col>
+              <Modal.Title>New Chart</Modal.Title>
+            </Col>
+            <Col>
+              <p>Select the Indicator for Xais</p>
+            </Col>
+          </Container>
+        </Modal.Header>
+        <Modal.Body>
+          <p>Select the Indicator for Xais</p>
+
+          <NavDropdown title={cards[0]} id="nav-dropdown">
+            {cards.map((v, index) => (
+              <NavDropdown.Item key={index}>{v[index]}</NavDropdown.Item>
+            ))}
+          </NavDropdown>
+        </Modal.Body>
+        {/* <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            CANCEL
+          </Button>
+          <Button variant="primary" onClick={handleShow2}>
+            CREATE
+          </Button>
+        </Modal.Footer> */}
+      </Modal>
+    </>
   );
 };
 

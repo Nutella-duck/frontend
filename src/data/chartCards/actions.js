@@ -14,3 +14,8 @@ export const getChartCards = () => {
     type: AT.GET_CHART_CARDS,
   };
 };
+export const addSystemChart = (card) => {
+  return {
+    type: AT.ADD_SYSTEM_CARDS,
+  };
+};

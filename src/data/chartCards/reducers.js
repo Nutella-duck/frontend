@@ -13,6 +13,15 @@ const ModelReducer = (state = initialState, action) => {
     case Actions.GET_CHART_CARDS: {
       return { state };
     }
+    case Actions.ADD_SYSTEM_CARDS: {
+      const { chartCardsName } = state;
+
+      chartCardsName.concat(chartCardsName);
+      return {
+        ...state,
+        chartCardsName: chartCardsName.concat(chartCardsName),
+      };
+    }
     default: {
       return state;
     }

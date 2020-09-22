@@ -7,7 +7,7 @@ import 'react-vis/dist/style.css';
 
 const ItemHead = () => {
   return (
-    <div>
+    <>
       <Navbar
         style={{
           marginTop: '2rem',
@@ -28,7 +28,7 @@ const ItemHead = () => {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-    </div>
+    </>
   );
 };
 

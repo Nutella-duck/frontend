@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import "./ProjectForm.css";
+import React, { useState } from 'react';
+import './ProjectForm.css';
 import {
   Modal,
   Button,
@@ -10,7 +10,7 @@ import {
   Navbar,
   Form,
   FormControl,
-} from "react-bootstrap";
+} from 'react-bootstrap';
 
 const ProjectForm = ({
   projectName,
@@ -19,7 +19,7 @@ const ProjectForm = ({
   description,
   apiKey,
   getKey,
-  handleSearch 
+  handleSearch,
 }) => {
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
@@ -40,9 +40,9 @@ const ProjectForm = ({
   return (
     <>
       <Navbar
-        style={{ marginLeft: "16rem", marginRight: "16rem", padding: "x0" }}
+        style={{ marginLeft: '16rem', marginRight: '16rem', padding: 'x0' }}
       >
-        <Navbar.Brand style={{ fontWeight: "bold", fontSize: "2rem" }}>
+        <Navbar.Brand style={{ fontWeight: 'bold', fontSize: '2rem' }}>
           Project
         </Navbar.Brand>
         <Navbar.Collapse>
@@ -52,7 +52,7 @@ const ProjectForm = ({
                 type="text"
                 placeholder="Search"
                 className=" mr-sm-2"
-                onChange ={handleSearch}
+                onChange={handleSearch}
               />
               <Button variant="dark" onClick={handleShow}>
                 New Project
