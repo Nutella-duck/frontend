@@ -3,6 +3,7 @@ import { Navbar, Nav, Button, Card, Row, Col } from 'react-bootstrap';
 import { BsGear } from 'react-icons/bs';
 import Graph from './Graph';
 import 'react-vis/dist/style.css';
+import { useDispatch, useSelector } from 'react-redux';
 
 const SystemItemHead = () => {
   console.log('시스템1 렌더링 중...');
@@ -33,7 +34,7 @@ const SystemItemHead = () => {
 };
 
 const SystemComponents = ({ models, graph }) => {
-  const cards = ['GPU', 'CPU'];
+  const cards = useSelector((state) => state.cards.systemCardsName);
 
   return (
     <div style={{ borderRadius: '0.7rem' }}>

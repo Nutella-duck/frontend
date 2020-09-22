@@ -2,7 +2,7 @@ import React from 'react';
 import { Navbar, Nav, Button, Card, Row, Col } from 'react-bootstrap';
 import { BsGear } from 'react-icons/bs';
 import Graph from './Graph';
-
+import { useDispatch, useSelector } from 'react-redux';
 import 'react-vis/dist/style.css';
 
 const ItemHead = () => {
@@ -34,9 +34,8 @@ const ItemHead = () => {
 
 const SectionsComponents = ({ models, graph }) => {
   console.log('차트 2렌더링 중...');
-  const cards = [1, 2];
-  const name = ['accuracy', 'loss', 'val_acc'];
-  const run = ['r1', 'r2'];
+  const cards = useSelector((state) => state.cards.chartCardsName);
+
   console.log('차트 그래프', graph, graph[0]);
   return (
     <div style={{ borderRadius: '0.7rem' }}>
@@ -59,7 +58,7 @@ const SectionsComponents = ({ models, graph }) => {
             <Card
               style={{ height: '20rem', width: 'auto', borderColor: 'white' }}
             >
-              <h5>{name[index]}</h5>
+              <h5>{card}</h5>
               <Graph index={index} models={models} graph={graph[index]} />
             </Card>
           </Col>
