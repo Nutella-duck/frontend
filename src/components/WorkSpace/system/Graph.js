@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import "react-vis/dist/style.css";
+import 'react-vis/dist/style.css';
 import {
   XAxis,
   YAxis,
@@ -10,8 +10,7 @@ import {
   Crosshair,
   LineSeries,
   DiscreteColorLegend,
-} from "react-vis";
-
+} from 'react-vis';
 
 class Graph extends Component {
   constructor(props) {
@@ -28,23 +27,19 @@ class Graph extends Component {
   // };
 
   render() {
-    console.log("시스템 2렌더링 중...")
+    console.log('시스템 2렌더링 중...');
     const Line = LineSeries;
-    
-    const {models,graph} = this.props
-   
+
+    const { models, graph } = this.props;
+
     //const modelName = models.map(model=>model.runName);
     // console.log("models", models)
-    const model_name = models.map(model=>model.runName);
-   
+    const model_name = models.map((model) => model.runName);
 
- 
+    // for(let i= 0;i<10;i++)
+    // graph.push({x: i, y: 1.2})
 
-
-// for(let i= 0;i<10;i++)
-// graph.push({x: i, y: 1.2})
-
-console.log("graph system ",graph)
+    console.log('graph system ', graph);
 
     // const arr=[{title:"r1"}];
     // for(let i = 0;i<1;i++)
@@ -59,7 +54,7 @@ console.log("graph system ",graph)
           <VerticalGridLines />
           <XAxis />
           <YAxis />
-          
+
           <Line onNearestX={this._onNearestX} data={graph[0]} />
           <Line onNearestX={this._onNearestX} data={graph[1]} />
           <Line onNearestX={this._onNearestX} data={graph[2]} />

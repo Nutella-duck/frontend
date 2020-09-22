@@ -12,7 +12,7 @@
 // } from "react-vis";
 
 // const data = [
- 
+
 //   [
 //     { x: 0, y: 67.8 },
 //     { x: 1, y: 74.031472 },
@@ -87,19 +87,19 @@
 //       "run1"
 //       ]
 //       const {models,graph} = this.props
-   
+
 //       //const modelName = models.map(model=>model.runName);
 //       // console.log("models", models)
 //       const model_name = models.map(model=>model.runName);
 //       console.log("m_name", model_name);
-    
+
 //      //const model = models.models.models.map(model=>model.runName);
 //      console.log(models)
 //     // for(let i=0; i<1; i++)
 //     // {
 //     //     modelName[i].title=model[i];
 //     // }
-    
+
 //     return (
 //       <div>
 //         <FlexibleWidthXYPlot onMouseLeave={this._onMouseLeave} height={250}>
@@ -125,9 +125,9 @@
 // }
 
 // export default Graph;
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import "react-vis/dist/style.css";
+import 'react-vis/dist/style.css';
 import {
   XAxis,
   YAxis,
@@ -137,8 +137,7 @@ import {
   Crosshair,
   LineSeries,
   DiscreteColorLegend,
-} from "react-vis";
-
+} from 'react-vis';
 
 class Graph extends Component {
   constructor(props) {
@@ -155,22 +154,54 @@ class Graph extends Component {
   // };
 
   render() {
-    console.log("차트2->1 렌더링 중...")
+    console.log('차트2->1 렌더링 중...');
     const Line = LineSeries;
-    
-    const {models,graph} = this.props
-   
+
+    const { models, graph } = this.props;
+
     //const modelName = models.map(model=>model.runName);
     // console.log("models", models)
-    const model_name = models.map(model=>model.runName);
-    
+    const model_name = models.map((model) => model.runName);
 
- 
+    // for(let i= 0;i<10;i++)
+    // graph.push({x: i, y: 1.2})
 
-// for(let i= 0;i<10;i++)
-// graph.push({x: i, y: 1.2})
+    console.log('chart graph', graph);
+    const sample = [
+      [
+        { x: 1, y: 0.7 },
+        { x: 2, y: 0.75 },
+        { x: 3, y: 0.79 },
+      ],
+      [
+        { x: 1, y: 0.7 },
+        { x: 2, y: 0.75 },
+        { x: 3, y: 0.79 },
+      ],
+      [
+        { x: 1, y: 0.7 },
+        { x: 2, y: 0.75 },
+        { x: 3, y: 0.79 },
+      ],
 
-console.log("chart graph",graph)
+      [
+        [
+          { x: 1, y: 0.7 },
+          { x: 2, y: 0.75 },
+          { x: 3, y: 0.79 },
+        ],
+        [
+          { x: 1, y: 0.7 },
+          { x: 2, y: 0.75 },
+          { x: 3, y: 0.79 },
+        ],
+        [
+          { x: 1, y: 0.7 },
+          { x: 2, y: 0.75 },
+          { x: 3, y: 0.79 },
+        ],
+      ],
+    ];
 
     // const arr=[{title:"r1"}];
     // for(let i = 0;i<1;i++)
@@ -185,10 +216,14 @@ console.log("chart graph",graph)
           <VerticalGridLines />
           <XAxis />
           <YAxis />
-          
+
           <Line onNearestX={this._onNearestX} data={graph[0]} />
           <Line onNearestX={this._onNearestX} data={graph[1]} />
           <Line onNearestX={this._onNearestX} data={graph[2]} />
+          {/* <Line onNearestX={this._onNearestX} data={sample[0]} />
+          <Line onNearestX={this._onNearestX} data={sample[1]} />
+          <Line onNearestX={this._onNearestX} data={sample[2]} /> */}
+          {/* <Line onNearestX={this._onNearestX} data={sample[0]} /> */}
           {/* <Line onNearestX={this._onNearestX} data={graph.length>=2 ? graph[1]:graph[0]} />
           <Line onNearestX={this._onNearestX} data={graph.length>2 ? graph[2]:graph[0]} /> */}
           {/* <Line onNearestX={this._onNearestX} data={data[3]} />
