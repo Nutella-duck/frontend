@@ -63,12 +63,32 @@ const WorkSpaceComponent = () => {
     "maingraph",
     graph
   );
-
+  var a = "accuracy"
+ if(graph.length>1) console.log("잉?",graph[0][0][0])
+  const result=[]
+    for(let i=0;i<graph.length;i++)
+    {
+      const data=[]
+      for(let j=0;j<graph[i].length;j++)
+      {
+          data.push({x:graph[i][j].stepNumber,y:graph[i][j].accuracy})
+      }
+      result.push(data)
+    }
+    console.log("result",result)
   
-  const sample = [
+  const sample = [[
     { x: 1, y: 0.7 },
     { x: 2, y: 0.75 },
-    { x: 3, y: 0.79 },
+    { x: 3, y: 0.79 },],
+    [
+    { x: 1, y: 0.7 },
+    { x: 2, y: 0.75 },
+    { x: 3, y: 0.79 },],
+    [
+    { x: 1, y: 0.7 },
+    { x: 2, y: 0.75 },
+    { x: 3, y: 0.79 },]
  
 
   ];
@@ -98,8 +118,8 @@ const WorkSpaceComponent = () => {
         totalRuns={totalRun}
         models={model}
       ></RunTableComponent>
-      <SectionsComponent models={model} graph={sample}></SectionsComponent>
-      <SystemComponent models={model} graph={sample}></SystemComponent>
+      <SectionsComponent models={model} graph={result?result:sample}></SectionsComponent>
+      <SystemComponent models={model} graph={result?result:sample}></SystemComponent>
     </div>
   );
 };

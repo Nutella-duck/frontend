@@ -60,7 +60,9 @@ console.log("graph system ",graph)
           <XAxis />
           <YAxis />
           
-          <Line onNearestX={this._onNearestX} data={graph} />
+          <Line onNearestX={this._onNearestX} data={graph[0]} />
+          <Line onNearestX={this._onNearestX} data={graph[1]} />
+          <Line onNearestX={this._onNearestX} data={graph[2]} />
           {/* <Line onNearestX={this._onNearestX} data={graph.length>=2 ? graph[1]:graph[0]} />
           <Line onNearestX={this._onNearestX} data={graph.length>2 ? graph[2]:graph[0]} /> */}
           {/* <Line onNearestX={this._onNearestX} data={data[3]} />
