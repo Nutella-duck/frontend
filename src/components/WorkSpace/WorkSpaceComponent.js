@@ -6,6 +6,7 @@ import SystemComponent from './system/SystemComponent';
 import { useDispatch, useSelector } from 'react-redux';
 // import * as Actions from "../../store/actions";
 import * as Actions from '../../data/model/actions.js';
+
 import { useParams } from 'react-router-dom';
 // import { get } from "immer/dist/internal";
 const WorkSpaceComponent = () => {
@@ -19,7 +20,7 @@ const WorkSpaceComponent = () => {
   const model = useSelector((state) => state.model.models);
   const totalRun = modelOfTheProject[0].totalRun;
   const ProjectName = modelOfTheProject[0].projectName;
-  const chartIndicators = ['accuracy', 'loss'];
+  const chartIndicators = useSelector((state) => state.model.chartIndicators);
 
   const systemIndicators = [
     {
@@ -32,6 +33,7 @@ const WorkSpaceComponent = () => {
 
   useEffect(() => {
     dispatch(Actions.getResult(id));
+    dispatch(Actions.getIndicators);
   }, []);
   useEffect(() => {
     dispatch(Actions.getGraphs(id, chartIndicators, totalRun));

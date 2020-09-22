@@ -37,6 +37,11 @@ export const fetchGraphData = (graphData) => {
     graphData,
   };
 };
+export const getIndicators = () => {
+  return {
+    type: AT.GET_INDICATORS,
+  };
+};
 
 export const getAllModelData = (modelId) => async (dispatch, getState) => {
   const model = await apis.modelApi.fetch10model(modelId);
