@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import profileImage from "../ProjectPage/profile.png";
 import "./navbar.css";
 import { useSelector, useDispatch } from "react-redux";
-import * as Actions from "../../store/actions";
+import * as Actions from "../../data/project/actions.js"
 const WorkSpaceHeader = ({projectId,ProjectName}) => {
   console.log("헤더 렌더링 중...",projectId,ProjectName)
   const dispatch = useDispatch();
