@@ -1,4 +1,4 @@
-import * as AT from '@/data/project/actionTypes';
+import * as Actions from './actionTypes';
 
 const initialState = {
   input: "",
@@ -58,7 +58,7 @@ const initialState = {
 // };
 const ProjectReducer = (state = initialState, action) => {
   switch (action.type) {
-    case AT.FETCH_ALL_PROJECT_DATA: {
+    case Actions.FETCH_ALL_PROJECT_DATA: {
     
       return {
         ...state,

@@ -4,7 +4,7 @@ import ProjectForm from "./ProjectForm";
 import ProjectItemList from "./ProjectItemList";
 import { useSelector, useDispatch } from "react-redux";
 import ProjectFooter from "./ProjectFooter";
-import * as Actions from "../../../store/actions";
+import * as Actions from "../../../data/project/actions.js";
 import axios from "axios";
 
 const Project = () => {
