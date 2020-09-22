@@ -46,8 +46,8 @@ const WorkSpaceComponent = () => {
   }, [])
   useEffect(() => {
     
-    
-    dispatch(Actions.getGraphs(id,"accuracy",totalRun));
+    dispatch(Actions.getGraphs(id,"accuracy",totalRun))
+    const time = setInterval( function(){console.log("30초!",totalRun);dispatch(Actions.getGraphs(id,"accuracy",totalRun))},30000);
   }, [totalRun])
 
   // useEffect(() => {
