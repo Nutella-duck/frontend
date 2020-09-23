@@ -21,12 +21,13 @@ const SystemItemHead = ({ cards }) => {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
-  const [title, setTitle] = useState();
+  const [title, setTitle] = useState(cards[0]);
   const dispatch = useDispatch();
   const handleCreate = () => {
     setShow(false);
-
+    console.log('선택', title);
     dispatch(Actions.addSystemChart(title));
+    console.log('시스템 차트 추가');
   };
 
   const handleSelect = (id) => {
@@ -101,7 +102,7 @@ const SystemItemHead = ({ cards }) => {
 
 const SystemComponents = ({ models, graph }) => {
   const cards = useSelector((state) => state.cards.systemCardsName);
-
+  console.log('시스템카드', cards);
   return (
     <div style={{ borderRadius: '0.7rem' }}>
       <SystemItemHead cards={cards}></SystemItemHead>
