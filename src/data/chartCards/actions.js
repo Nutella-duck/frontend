@@ -1,7 +1,6 @@
 import apis from '../../apis/index';
 
 import * as AT from './actionTypes';
-import { createAction } from 'redux-actions';
 
 export const getSystemCards = () => {
   return {

@@ -2,7 +2,7 @@ import React from 'react';
 import { Navbar, Nav, Button, Card, Row, Col } from 'react-bootstrap';
 import { BsGear } from 'react-icons/bs';
 import Graph from './Graph';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import 'react-vis/dist/style.css';
 
 const ItemHead = () => {

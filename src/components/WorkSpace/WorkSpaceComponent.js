@@ -1,14 +1,14 @@
-import React, { useEffect, useLayoutEffect } from 'react';
+import React, { useEffect } from 'react';
 import RunTableComponent from './table/RunTableComponent';
 import Header from './WorkSpaceHeader';
 import SectionsComponent from './sections/SectionsComponent';
 import SystemComponent from './system/SystemComponent';
 import { useDispatch, useSelector } from 'react-redux';
-// import * as Actions from "../../store/actions";
+
 import * as Actions from '../../data/model/actions.js';
 
 import { useParams } from 'react-router-dom';
-// import { get } from "immer/dist/internal";
+
 const WorkSpaceComponent = () => {
   console.log('워크스페이스 렌더링 중...');
   const { id } = useParams();
@@ -110,25 +110,6 @@ const WorkSpaceComponent = () => {
       ],
     ],
   ];
-
-  ///////////////////////////
-  ///////////////////////////
-  //   if(graph.length>0){
-
-  //   const data=[];
-  //   const result=[];
-  //   for(let i=0;i<graph.length;i++)
-  //   {
-  //    const acc= graph[i].map(v=>v.accuracy);
-  //    console.log("acc",acc)
-  //   //  for(let j=0;j=acc.length;j++)
-  //   // {
-  //   //   data=[];
-  //   //   data.push({x:j+1,y:acc[j]})
-  //   // }
-  //   result.push(data)
-  //   }
-  // }
 
   return (
     <div>

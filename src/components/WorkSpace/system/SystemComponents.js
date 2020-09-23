@@ -33,10 +33,6 @@ const SystemItemHead = ({ cards }) => {
   const handleSelect = (id) => {
     console.log(id);
     setTitle(id);
-    // setTitle(dispatch(Actions.selectProject(id)))
-
-    // const first = cards.find(v => v.projectId === Number(id))
-    // console.log("first" ,first)
   };
   return (
     <>

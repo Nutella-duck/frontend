@@ -8,7 +8,6 @@ import {
   NavDropdown,
   Container,
   Col,
-  Row,
 } from 'react-bootstrap';
 import { BsGear } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';

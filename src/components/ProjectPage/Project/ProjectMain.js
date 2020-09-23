@@ -62,7 +62,7 @@ const Project = () => {
     });
   };
   const handleSearch = (e) => {
-    const { name, value } = e.target;
+    const { value } = e.target;
 
     setSearch(value);
   };
