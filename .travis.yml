@@ -5,9 +5,9 @@ node_js:
 
 before_deploy:
   - rm -rf node_modules
-  - zip -r NutellaCoder-WebFrontEnd *
+  - zip -r nutellFrontEnd *
   - mkdir -p deploy
-  - mv NutellaCoder-WebFrontEnd.zip deploy/NutellaCoder-WebFrontEnd.zip
+  - mv nutellFrontEnd.zip deploy/nutellFrontEnd.zip
 
 deploy:
   - provider: s3
