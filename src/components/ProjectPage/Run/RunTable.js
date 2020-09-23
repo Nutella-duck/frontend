@@ -1,12 +1,11 @@
-import React from "react";
+import React from 'react';
 
-import { Table } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { useSelector } from "react-redux";
+import { Table } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { useSelector } from 'react-redux';
 
-const RunTable = ({tableRows}) => {
-  const tableHeads = ["NAME", "PROJECT", "STATE", "CREATED"];
- 
+const RunTable = ({ tableRows }) => {
+  const tableHeads = ['NAME', 'PROJECT', 'STATE', 'CREATED'];
 
   return (
     <Table
@@ -15,9 +14,9 @@ const RunTable = ({tableRows}) => {
       hover
       size="sm"
       style={{
-        textAlign: "center",
-        backgroundColor: "white",
-        borderRadius: "0.7rem",
+        textAlign: 'center',
+        backgroundColor: 'white',
+        borderRadius: '0.7rem',
       }}
     >
       <thead>
@@ -34,9 +33,9 @@ const RunTable = ({tableRows}) => {
             <td>{tableRow.projectName}</td>
             <td
               style={
-                tableRow.state === "Crashed"
-                  ? { color: "red" }
-                  : { color: "#1ddd89" }
+                tableRow.state === 'Crashed'
+                  ? { color: 'red' }
+                  : { color: '#1ddd89' }
               }
             >
               {tableRow.state}

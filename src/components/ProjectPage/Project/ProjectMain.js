@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from "react";
-import ProjectListTemplate from "./ProjectListTemplate";
-import ProjectForm from "./ProjectForm";
-import ProjectItemList from "./ProjectItemList";
-import { useSelector, useDispatch } from "react-redux";
-import ProjectFooter from "./ProjectFooter";
-import * as Actions from "../../../data/project/actions.js";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import ProjectListTemplate from './ProjectListTemplate';
+import ProjectForm from './ProjectForm';
+import ProjectItemList from './ProjectItemList';
+import { useSelector, useDispatch } from 'react-redux';
+import ProjectFooter from './ProjectFooter';
+import * as Actions from '../../../data/project/actions.js';
+import axios from 'axios';
 
 const Project = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.project.projects);
- 
+
   const [apiKey, setApiKey] = useState(null);
   const [inputs, setInputs] = useState({
-    projectName: "",
-    description: "",
+    projectName: '',
+    description: '',
   });
 
   const { projectName, description } = inputs;
@@ -22,24 +22,26 @@ const Project = () => {
   useEffect(() => {
     dispatch(Actions.getAllPorject(1));
   }, []);
-  const [search,setSearch] = useState("")
-  
+  const [search, setSearch] = useState('');
+
   const getKey = () => {
-    console.log("getkey");
+    console.log('getkey');
     axios
-      .get("http://localhost:7000/admin/project/key")
+      .get(
+        'http://ec2-3-34-251-160.ap-northeast-2.compute.amazonaws.com:7000/admin/project/key',
+      )
       .then((resonse) => {
         setApiKey(resonse.data);
       })
       .catch((error) => {
-        console.log("error getKey");
+        console.log('error getKey');
       });
   };
 
   const handleCreate = () => {
     setInputs({
-      projectName: "",
-      description: "",
+      projectName: '',
+      description: '',
     });
     let projectInfoData = {
       projectName: inputs.projectName,
@@ -60,9 +62,9 @@ const Project = () => {
     });
   };
   const handleSearch = (e) => {
-    const { name, value } = e.target;
-  
-    setSearch(value)
+    const { value } = e.target;
+
+    setSearch(value);
   };
   return (
     <>
@@ -75,11 +77,15 @@ const Project = () => {
             onChange={handleChange}
             onCreate={handleCreate}
             getKey={getKey}
-            handleSearch ={handleSearch}
+            handleSearch={handleSearch}
           />
         }
       >
-        <ProjectItemList projects={ search ? state.filter(v=>(v.projectName.includes(search))):state}  />
+        <ProjectItemList
+          projects={
+            search ? state.filter((v) => v.projectName.includes(search)) : state
+          }
+        />
       </ProjectListTemplate>
       <ProjectFooter></ProjectFooter>
     </>

@@ -1,9 +1,11 @@
-import React, { Component } from "react";
-import { AgGridReact } from "ag-grid-react";
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { Navbar, Form, FormControl } from "react-bootstrap";
+import React, { Component } from 'react';
+
+import { AgGridReact } from 'ag-grid-react';
+
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import { Navbar, Form, FormControl } from 'react-bootstrap';
 function isFirstColumn(params) {
   var displayedColumns = params.columnApi.getAllDisplayedColumns();
   var thisIsFirstColumn = displayedColumns[0] === params.column;
@@ -20,23 +22,65 @@ class table extends Component {
       quickFilterText: null,
       totalRuns: 0,
       columnDefs: [
-        { headerName: "NAME", field: "runName", sortable: true, filter: true },
-        { headerName: "STATE", field: "state", sortable: true, filter: true },
+        { headerName: 'NAME', field: 'runName', sortable: true, filter: true },
+        { headerName: 'STATE', field: 'state', sortable: true, filter: true },
         {
-          headerName: "CREATED",
-          field: "created_at",
+          headerName: 'CREATED',
+          field: 'created_at',
           sortable: true,
           filter: true,
         },
         {
-          headerName: "CREATEDBY",
-          field: "created_by",
+          headerName: 'CREATEDBY',
+          field: 'created_by',
           sortable: true,
           filter: true,
         },
         {
-          headerName: "RUNTIME",
-          field: "runTime",
+          headerName: 'RUNTIME',
+          field: 'runTime',
+          sortable: true,
+          filter: true,
+        },
+        {
+          headerName: 'ACCURACY',
+          field: 'accuracy',
+          sortable: true,
+          filter: true,
+        },
+        {
+          headerName: 'LOSS',
+          field: 'loss',
+          sortable: true,
+          filter: true,
+        },
+        {
+          headerName: 'PRECISION',
+          field: 'precision',
+          sortable: true,
+          filter: true,
+        },
+        {
+          headerName: 'CPU',
+          field: 'cpu',
+          sortable: true,
+          filter: true,
+        },
+        {
+          headerName: 'GPU',
+          field: 'gpu',
+          sortable: true,
+          filter: true,
+        },
+        {
+          headerName: 'NET',
+          field: 'net',
+          sortable: true,
+          filter: true,
+        },
+        {
+          headerName: 'DISK',
+          field: 'disk',
           sortable: true,
           filter: true,
         },
@@ -48,7 +92,7 @@ class table extends Component {
         headerCheckboxSelection: isFirstColumn,
         checkboxSelection: isFirstColumn,
       },
-      rowSelection: "multiple",
+      rowSelection: 'multiple',
       rowData: [],
       getSelectedRows: getSelectedRows,
     };
@@ -65,13 +109,14 @@ class table extends Component {
   };
 
   render() {
+    console.log('테이블2 렌더링 중...');
     const { tableRows, totalRuns } = this.props;
-    const data = tableRows.models;
+    console.log(tableRows);
 
     return (
       <>
-        <Navbar bg="light" variant="light" style={{ borderRadius: "0.7rem" }}>
-          <Navbar.Brand href="#home" style={{ fontWeight: "bold" }}>
+        <Navbar bg="light" variant="light" style={{ borderRadius: '0.7rem' }}>
+          <Navbar.Brand style={{ fontWeight: 'bold' }}>
             {totalRuns} Runs
           </Navbar.Brand>
           <Form inline>
@@ -86,7 +131,7 @@ class table extends Component {
         </Navbar>
         <div
           className="ag-theme-alpine"
-          style={{ height: "200px", width: "1200px" }}
+          style={{ height: '200px', width: '1900px' }}
         >
           {/* <p>{data[0].runName.isSelected() ? "true" : "false"}</p>                     */}
 

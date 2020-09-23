@@ -1,5 +1,4 @@
-import React from "react";
-import "./ProjectListTemplate.css";
+import React from 'react';
 
 const ProjectListTemplate = ({ form, children }) => {
   return (

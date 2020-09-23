@@ -37,42 +37,46 @@ export const fetchGraphData = (graphData) => {
     graphData,
   };
 };
-
-export const getAllModelData = (modelId) => async(dispatch,getState)=>{
-  
-    const model = await apis.modelApi.fetch10model(modelId);
-   dispatch(fetchAllModelData(model));
- 
+export const getIndicators = () => {
+  return {
+    type: AT.GET_INDICATORS,
+  };
 };
-export const getSelectedModelData = (modelId) => async(dispatch,getState)=>{
-  
+
+export const getAllModelData = (modelId) => async (dispatch, getState) => {
+  const model = await apis.modelApi.fetch10model(modelId);
+  dispatch(fetchAllModelData(model));
+};
+export const getSelectedModelData = (modelId) => async (dispatch, getState) => {
   const model = await apis.modelApi.getSelectedModelData(modelId);
- dispatch(fetchAllModelData(model));
-
+  dispatch(fetchAllModelData(model));
 };
 
-export const getNumberOfModel = (modelId) => async(dispatch,getState)=>{
-  
+export const getNumberOfModel = (modelId) => async (dispatch, getState) => {
   const model = await apis.modelApi.getNumberOfModel(modelId);
- dispatch(fetchNumberOfModel(model));
-
+  dispatch(fetchNumberOfModel(model));
 };
 
-export const getResult = (modelId) => async(dispatch,getState)=>{
-  const [totalRun,models] = await Promise.all([apis.modelApi.getNumberOfModel(modelId),apis.modelApi.getSelectedModelData(modelId)])
-  console.log("totalRun",totalRun,)
-  dispatch(getModelSuccess({totalRun,models}))
+export const getResult = (modelId) => async (dispatch, getState) => {
+  const [totalRun, models] = await Promise.all([
+    apis.modelApi.getNumberOfModel(modelId),
+    apis.modelApi.getSelectedModelData(modelId),
+  ]);
+  console.log('totalRun', totalRun);
+  dispatch(getModelSuccess({ totalRun, models }));
 };
 
-export const getGraphs =(id,index,totalRun)=> async(dispatch,getState)=>{
-  
-  const graphPromise=[]
-  for(let i=0;i<totalRun;i++){
-   graphPromise.push(apis.modelApi.getGraphData(i+1,index));
-   
+export const getGraphs = (id, indicator, totalRun) => async (
+  dispatch,
+  getState,
+) => {
+  const graphPromise = [];
+  for (let i = 0; i < indicator.length; i++) {
+    for (let j = 0; j < totalRun; j++)
+      graphPromise.push(apis.modelApi.getGraphData(j + 1, indicator[i]));
   }
-  console.log("graphPromise",graphPromise)
-  const graph =await Promise.all(graphPromise)
-  console.log("그래프 받음")
+  console.log('graphPromise', graphPromise);
+  const graph = await Promise.all(graphPromise);
+  console.log('그래프 받음');
   dispatch(getGraphSuccess(graph));
-}
+};

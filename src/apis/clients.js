@@ -2,7 +2,6 @@ import { getAuthToken } from "../data/tokenManager";
 import axios from "axios";
 
 const SERVER_URL = process.env.REACT_APP_API_URL;
-// const SERVER_URL = 'http://localhost:7000/admin/';
 
 const apiClient = axios.create({
   baseURL: SERVER_URL,
