@@ -18,7 +18,7 @@ echo "package 설치 시작"
 
 npm install
 
-echo "애플리케이션 빌드"
+echo "애플리케이션 빌드 시작"
 npm run build
 
 echo "app 실행 시작"
