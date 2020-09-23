@@ -20,6 +20,18 @@ deploy:
     wait-until-deployed: true
     on:
       branch: feature/travis
+- provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: nutella-build
+    key: nutellFrontEnd.zip
+    bundle_type: zip
+    application: nutellaFrontEnd
+    deployment_group: nutellaFrontEnd-Group
+    region: ap-northeast-2
+    wait-until-deployed: true
+    on:
+      branch: feature/travis
 
 before_script:
   - npm install
