@@ -125,7 +125,7 @@ const SystemComponents = ({ models, graph }) => {
               style={{ height: '20rem', width: 'auto', borderColor: 'white' }}
             >
               <h5>{card}</h5>
-              <Graph models={models} graph={graph[index]} />
+              <Graph models={models} graph={graph[cards.indexOf(card)]} />
             </Card>
           </Col>
         ))}

@@ -139,7 +139,8 @@ const WorkSpaceComponent = () => {
       ></RunTableComponent>
       <SectionsComponent
         models={model}
-        graph={result.length >= chartIndicators.length ? result : sample}
+        // graph={result.length >= chartIndicators.length ? result : sample}
+        graph={sample}
       ></SectionsComponent>
       <SystemComponent
         models={model}
