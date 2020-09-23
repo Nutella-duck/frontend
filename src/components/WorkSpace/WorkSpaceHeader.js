@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import logo from "./logo-nutella-s@3x.jpg";
 import { Navbar, Nav, Image, NavDropdown, Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -6,32 +6,22 @@ import profileImage from "../ProjectPage/profile.png";
 import "./navbar.css";
 import { useSelector, useDispatch } from "react-redux";
 import * as Actions from "../../store/actions";
-const WorkSpaceHeader = ({projectId,ProjectName}) => {
-  console.log("헤더 렌더링 중...",projectId,ProjectName)
+const WorkSpaceHeader = ({ projectId, ProjectName }) => {
   const dispatch = useDispatch();
   const menu = useSelector((state) => state.project.projects);
-const [title,setTitle] = useState("test")
-const [id,setId] = useState(projectId)
-const currentTitle = ProjectName
-console.log(currentTitle)
-console.log(id)
+  const [title, setTitle] = useState("test");
+  const [id, setId] = useState(projectId);
+  const currentTitle = ProjectName;
+
   useEffect(() => {
-    
     dispatch(Actions.getAllPorject(1));
   }, []);
-console.log("dropdownid",id)
-console.log("menu",menu)
-  const handleSelect=(id)=>{
-    console.log(id)
-    // setTitle(dispatch(Actions.selectProject(id)))
-    
-    const first = menu.find(v => v.projectId === Number(id))
-    console.log("first" ,first)
- 
-   setId(id-1)
-    
-  
-  }
+
+  const handleSelect = (id) => {
+    const first = menu.find((v) => v.projectId === Number(id));
+
+    setId(id - 1);
+  };
 
   return (
     <Navbar style={{ backgroundColor: "white" }} onSelect={handleSelect}>
@@ -43,14 +33,22 @@ console.log("menu",menu)
         height="auto"
         className="d-inline-block align-top"
       />
-      
-     
-      <NavDropdown title={currentTitle ? currentTitle : "nutella"} id="nav-dropdown">
-        {
-          menu.map(v => (<NavDropdown.Item key={v.projectId} eventKey={v.projectId}href={`/workspace/${v.projectId}`}>{v.projectName}</NavDropdown.Item>))
-        }
+
+      <NavDropdown
+        title={currentTitle ? currentTitle : "nutella"}
+        id="nav-dropdown"
+      >
+        {menu.map((v) => (
+          <NavDropdown.Item
+            key={v.projectId}
+            eventKey={v.projectId}
+            href={`/workspace/${v.projectId}`}
+          >
+            {v.projectName}
+          </NavDropdown.Item>
+        ))}
       </NavDropdown>
-      
+
       <Nav
         className="topnav col-sm-9 justify-content-center"
         activeKey="/workspace"
