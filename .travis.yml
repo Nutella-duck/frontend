@@ -1,0 +1,48 @@
+language: node_js
+
+node_js:
+  - 12
+
+before_deploy:
+  - rm -rf node_modules
+  - zip -r nutellFrontEnd *
+  - mkdir -p deploy
+  - mv nutellFrontEnd.zip deploy/nutellFrontEnd.zip
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: nutella-build
+    region: ap-northeast-2
+    skip_cleanup: true
+    local_dir: deploy
+    wait-until-deployed: true
+    on:
+      branch: master
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: nutella-build
+    key: nutellFrontEnd.zip
+    bundle_type: zip
+    application: nutellaFrontEnd
+    deployment_group: nutellaFrontEnd-Group
+    region: ap-northeast-2
+    wait-until-deployed: true
+    on:
+      branch: master
+
+before_script:
+  - npm install
+
+script:
+  - CI=false npm run build
+
+branches:
+  only:
+    - master
+
+cache:
+  directories:
+    - node_modules

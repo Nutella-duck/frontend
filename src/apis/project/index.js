@@ -13,17 +13,3 @@ export const api = {
     return data;
   },
 }
-//   async fetchProjectList(categoryId, { sortBy, gtePrice, ltePrice } = {}) {
-//     const headers = categoryId ? { Prefer: `example=${categoryId}` } : {};
-//     const { data } = await apiClient.get(`/project`, {
-//       params: {
-//         categoryId,
-//         sortBy,
-//         gtePrice,
-//         ltePrice,
-//       },
-//       headers,
-//     });
-//     return data;
-//   },
-// };
