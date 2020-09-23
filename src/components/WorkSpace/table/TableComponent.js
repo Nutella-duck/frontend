@@ -1,17 +1,9 @@
 import React, { Component } from "react";
-//import { render } from 'react-dom';
 import { AgGridReact } from "ag-grid-react";
 
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import {
-  Navbar,
-  Form,
-  FormControl,
-  Nav,
-  ButtonGroup,
-  Button,
-} from "react-bootstrap";
+import { Navbar, Form, FormControl } from "react-bootstrap";
 function isFirstColumn(params) {
   var displayedColumns = params.columnApi.getAllDisplayedColumns();
   var thisIsFirstColumn = displayedColumns[0] === params.column;
@@ -73,9 +65,7 @@ class table extends Component {
   };
 
   render() {
-    console.log("테이블2 렌더링 중...");
     const { tableRows, totalRuns } = this.props;
-    console.log(tableRows);
     const data = tableRows.models;
 
     return (
