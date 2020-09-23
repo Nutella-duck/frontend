@@ -1,18 +1,17 @@
-import { getAuthToken } from '../data/tokenManager';
-import axios from 'axios';
+import { getAuthToken } from "../data/tokenManager";
+import axios from "axios";
 
 const SERVER_URL = process.env.REACT_APP_API_URL;
 
-console.log('url', SERVER_URL);
 const apiClient = axios.create({
   baseURL: SERVER_URL,
 });
 
 apiClient.interceptors.request.use((request) => {
   const token = getAuthToken();
-  console.log('token', token);
+
   if (token) {
-    request.headers['Authorization'] = token;
+    request.headers["Authorization"] = token;
   }
   return request;
 });

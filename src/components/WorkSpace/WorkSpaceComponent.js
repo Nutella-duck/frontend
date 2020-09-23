@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import RunTableComponent from './table/RunTableComponent';
 import Header from './WorkSpaceHeader';
@@ -12,7 +13,6 @@ import { useParams } from 'react-router-dom';
 const WorkSpaceComponent = () => {
   console.log('워크스페이스 렌더링 중...');
   const { id } = useParams();
-  console.log(id);
 
   const dispatch = useDispatch();
   const modelOfTheProject = useSelector((state) => state.model.totalRun);
@@ -21,6 +21,7 @@ const WorkSpaceComponent = () => {
   const totalRun = modelOfTheProject[0].totalRun;
   const ProjectName = modelOfTheProject[0].projectName;
   const chartIndicators = useSelector((state) => state.model.chartIndicators);
+
 
   const systemIndicators = [
     {
