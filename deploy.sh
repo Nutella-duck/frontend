@@ -12,7 +12,7 @@ cd /home/ec2-user/deploy/FrontEnd
 
 echo "실핼중인 프로세스 종료"
 
-kill -9 `ps -ef | grep 'node /home/ec2-user/.nvm/versions/node/v14.12.0/bin/npx serve -s build' | awk '{print $2}'`
+kill -9 `ps -ef | grep 'node ' | awk '{print $2}'`
 
 echo "package 설치 시작"
 
