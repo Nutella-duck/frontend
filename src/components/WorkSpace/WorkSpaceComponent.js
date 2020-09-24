@@ -104,9 +104,9 @@ const WorkSpaceComponent = () => {
         { x: 3, y: 0.79 },
       ],
       [
-        { x: 1, y: 0.7 },
-        { x: 2, y: 0.75 },
-        { x: 3, y: 0.79 },
+        { x: 1, y: 0.9 },
+        { x: 2, y: 0.95 },
+        { x: 3, y: 0.99 },
       ],
     ],
   ];
@@ -121,7 +121,7 @@ const WorkSpaceComponent = () => {
       <SectionsComponent
         models={model}
         // graph={result.length >= chartIndicators.length ? result : sample}
-        graph={sample}
+        graph={result.length >= chartIndicators.length ? result : sample}
       ></SectionsComponent>
       <SystemComponent
         models={model}

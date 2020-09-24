@@ -1,11 +1,38 @@
-import React from 'react';
-import { Navbar, Nav, Button, Card, Row, Col } from 'react-bootstrap';
+import React, { useState } from 'react';
+import {
+  Navbar,
+  Nav,
+  Button,
+  Card,
+  Row,
+  Col,
+  Modal,
+  Container,
+  Dropdown,
+  DropdownButton,
+} from 'react-bootstrap';
 import { BsGear } from 'react-icons/bs';
 import Graph from './Graph';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import 'react-vis/dist/style.css';
+import * as Actions from '../../../data/chartCards/actions.js';
+const ItemHead = ({ cards }) => {
+  const [show, setShow] = useState(false);
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
+  const [title, setTitle] = useState(cards[0]);
+  const dispatch = useDispatch();
+  const handleCreate = () => {
+    setShow(false);
+    console.log('선택', title);
+    dispatch(Actions.addChartCard(title));
+    console.log('시스템 차트 추가');
+  };
 
-const ItemHead = () => {
+  const handleSelect = (id) => {
+    console.log(id);
+    setTitle(id);
+  };
   return (
     <>
       <Navbar
@@ -24,10 +51,46 @@ const ItemHead = () => {
         </Button>
         <Navbar.Collapse>
           <Nav className="ml-auto">
-            <Button variant="dark">NEW PANEL</Button>
+            <Button variant="dark" onClick={handleShow}>
+              NEW PANEL
+            </Button>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Container>
+            <Col>
+              <Modal.Title>New Chart</Modal.Title>
+            </Col>
+            <Col>
+              <p>Select the Indicator for Xais</p>
+            </Col>
+          </Container>
+        </Modal.Header>
+        <Modal.Body>
+          <p>Select the Indicator for Xais</p>
+
+          <DropdownButton
+            id="dropdown-basic-button"
+            title={title ? title : cards[0]}
+          >
+            {cards.map((v, index) => (
+              <Dropdown.Item key={index} eventKey={v} onSelect={handleSelect}>
+                {v}
+              </Dropdown.Item>
+            ))}
+          </DropdownButton>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            CANCEL
+          </Button>
+          <Button variant="primary" onClick={handleCreate}>
+            CREATE
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 };
@@ -38,8 +101,8 @@ const SectionsComponents = ({ models, graph }) => {
 
   console.log('차트 그래프', graph, graph[0]);
   return (
-    <div style={{ borderRadius: '0.7rem' }}>
-      <ItemHead></ItemHead>
+    <>
+      <ItemHead cards={cards}></ItemHead>
       <Row
         style={{
           marginLeft: '2rem',
@@ -59,12 +122,16 @@ const SectionsComponents = ({ models, graph }) => {
               style={{ height: '20rem', width: 'auto', borderColor: 'white' }}
             >
               <h5>{card}</h5>
-              <Graph index={index} models={models} graph={graph[index]} />
+              <Graph
+                index={index}
+                models={models}
+                graph={graph[cards.indexOf(card)]}
+              />
             </Card>
           </Col>
         ))}
       </Row>
-    </div>
+    </>
   );
 };
 

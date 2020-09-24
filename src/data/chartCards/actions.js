@@ -19,3 +19,9 @@ export const addSystemChart = (card) => {
     card,
   };
 };
+export const addChartCard = (card) => {
+  return {
+    type: AT.ADD_CHART_CARD,
+    card,
+  };
+};

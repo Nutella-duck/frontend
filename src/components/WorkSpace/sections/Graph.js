@@ -79,9 +79,39 @@ class Graph extends Component {
           <XAxis />
           <YAxis />
 
-          <Line onNearestX={this._onNearestX} data={graph[0]} />
-          <Line onNearestX={this._onNearestX} data={graph[1]} />
-          <Line onNearestX={this._onNearestX} data={graph[2]} />
+          <Line
+            onNearestX={this._onNearestX}
+            data={
+              graph
+                ? graph[0]
+                : [
+                    { x: 1, y: 3 },
+                    { x: 2, y: 3 },
+                  ]
+            }
+          />
+          <Line
+            onNearestX={this._onNearestX}
+            data={
+              graph
+                ? graph[1]
+                : [
+                    { x: 1, y: 3 },
+                    { x: 2, y: 3 },
+                  ]
+            }
+          />
+          <Line
+            onNearestX={this._onNearestX}
+            data={
+              graph
+                ? graph[2]
+                : [
+                    { x: 1, y: 3 },
+                    { x: 2, y: 3 },
+                  ]
+            }
+          />
 
           <DiscreteColorLegend orientation="horizontal" items={model_name} />
           {/* <Crosshair
