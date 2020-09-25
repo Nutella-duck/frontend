@@ -130,7 +130,7 @@ class table extends Component {
         </Navbar>
         <div
           className="ag-theme-alpine"
-          style={{ height: '200px', width: '1900px' }}
+          style={{ height: '100%', width: '100%' }}
         >
           {/* <p>{data[0].runName.isSelected() ? "true" : "false"}</p>                     */}
 
@@ -144,6 +144,9 @@ class table extends Component {
             quickFilterText={this.state.quickFilterText}
             onSelectionChanged={this.onSelectionChanged.bind(this)}
             rowData={tableRows}
+            // enableColResize={true}
+            // angularCompileRows={true}
+            // angularCompileHeaders={true}
           ></AgGridReact>
         </div>
       </>
