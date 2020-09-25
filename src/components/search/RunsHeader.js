@@ -6,9 +6,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './navbar.css';
 import { useDispatch } from 'react-redux';
 import * as Actions from '../../data/project/actions.js';
-const RunsHeader = (id) => {
+const RunsHeader = (param) => {
   const dispatch = useDispatch();
-  const [select, setSelect] = useState();
+
+  const [select, setSelect] = useState(param.navId);
+  console.log('왜이래', param.navId, select);
   useEffect(() => {
     dispatch(Actions.getAllPorject(1));
   }, []);
@@ -29,17 +31,17 @@ const RunsHeader = (id) => {
       >
         <p>r1</p>
         <Nav.Item>
-          <Nav.Link eventKey="overview" href="/">
+          <Nav.Link eventKey="1" href="/">
             OVERVIEW
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="runs" href={`/run/Matrixs/${id.id}`}>
+          <Nav.Link eventKey="2" href={`/run/Matrixs/${param.id}`}>
             RUNS
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="systems" href={`/run/system/${id.id}`}>
+          <Nav.Link eventKey="3" href={`/run/system/${param.id}`}>
             SYSTEMS
           </Nav.Link>
         </Nav.Item>

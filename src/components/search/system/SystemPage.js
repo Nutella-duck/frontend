@@ -114,7 +114,7 @@ const MatrixsPage = () => {
 
   return (
     <div>
-      <Header id={id}></Header>
+      <Header id={id} navId={3}></Header>
       {/* <RunTableComponent
         totalRuns={totalRun}
         models={model}
