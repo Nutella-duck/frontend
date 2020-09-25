@@ -59,12 +59,22 @@ const WorkSpaceComponent = () => {
     for (let i = 0; i < chartIndicators.length; i++) {
       const data = [];
       for (let j = 0; j < totalRun; j++) {
+        console.log(i, totalRun);
         const one = [];
         for (let k = 0; k < 3; k++) {
-          console.log('i', i, 'j', j, 'k', k, 'graph', graph[3 * i + j][k]);
+          console.log(
+            'i',
+            i,
+            'j',
+            j,
+            'k',
+            k,
+            'graph',
+            graph[totalRun * i + j][k],
+          );
           one.push({
-            x: graph[3 * i + j][k].stepNumber,
-            y: graph[3 * i + j][k][chartIndicators[i]],
+            x: graph[totalRun * i + j][k].stepNumber,
+            y: graph[totalRun * i + j][k][chartIndicators[i]],
           });
         }
         data.push(one);
