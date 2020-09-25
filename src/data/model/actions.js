@@ -80,3 +80,13 @@ export const getGraphs = (id, indicator, totalRun) => async (
   console.log('그래프 받음');
   dispatch(getGraphSuccess(graph));
 };
+export const getOneGraph = (id, indicator) => async (dispatch, getState) => {
+  const graphPromise = [];
+  for (let i = 0; i < indicator.length; i++) {
+    graphPromise.push(apis.modelApi.getGraphData(id, indicator[i]));
+  }
+  console.log('graphPromise', graphPromise);
+  const graph = await Promise.all(graphPromise);
+  console.log('그래프 받음');
+  dispatch(getGraphSuccess(graph));
+};
