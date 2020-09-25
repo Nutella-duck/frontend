@@ -70,7 +70,24 @@ class Graph extends Component {
         ],
       ],
     ];
-
+    const mapToComponent = (data) => {
+      console.log('hi', graph);
+      return graph.map((data, i) => {
+        return (
+          <Line
+            onNearestX={this._onNearestX}
+            data={
+              data
+                ? data
+                : [
+                    { x: 1, y: 3 },
+                    { x: 2, y: 3 },
+                  ]
+            }
+          />
+        );
+      });
+    };
     return (
       <div>
         <FlexibleWidthXYPlot onMouseLeave={this._onMouseLeave} height={250}>
@@ -78,8 +95,18 @@ class Graph extends Component {
           <VerticalGridLines />
           <XAxis />
           <YAxis />
-
-          <Line
+          {/* <Line
+            onNearestX={this._onNearestX}
+            data={
+              graph
+                ? graph[0]
+                : [
+                    { x: 1, y: 3 },
+                    { x: 2, y: 3 },
+                  ]
+            }
+          /> */}
+          {/* <Line
             onNearestX={this._onNearestX}
             data={
               graph
@@ -111,8 +138,8 @@ class Graph extends Component {
                     { x: 2, y: 3 },
                   ]
             }
-          />
-
+          /> */}
+          {mapToComponent(this.state.graph)}
           <DiscreteColorLegend orientation="horizontal" items={model_name} />
           {/* <Crosshair
             values={this.state.crosshairValues}
