@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { AgGridReact } from 'ag-grid-react';
-
+import { Link } from 'react-router-dom';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import { Navbar, Form, FormControl } from 'react-bootstrap';
@@ -84,6 +84,21 @@ class table extends Component {
           filter: true,
         },
       ],
+
+      rowSelection: 'multiple',
+      rowData: [],
+      getSelectedRows: getSelectedRows,
+      onCellEditingStarted: function (event) {
+        console.log('cellEditingStarted');
+      },
+    };
+    this.gridOptions = {
+      //We register the react date component that ag-grid will use to render
+      //dateComponentFramework: DateComponent,
+      // this is how you listen for events using gridOptions
+      onModelUpdated: function () {
+        console.log('event onModelUpdated received');
+      },
       defaultColDef: {
         flex: 1,
         minWidth: 100,
@@ -91,10 +106,22 @@ class table extends Component {
         headerCheckboxSelection: isFirstColumn,
         checkboxSelection: isFirstColumn,
       },
-      rowSelection: 'multiple',
-      rowData: [],
-      getSelectedRows: getSelectedRows,
+      // this is a simple property
+      rowBuffer: 10, // no need to set this, the default is fine for almost all scenarios,
+      floatingFilter: true,
     };
+    // this.onGridReady = this.onGridReady.bind(this);
+    this.onRowSelected = this.onRowSelected.bind(this);
+    this.onCellClicked = this.onCellClicked.bind(this);
+  }
+  onCellClicked(event) {
+    console.log(
+      'onCellClicked: ' + event.data.runId + ', col ' + event.colIndex,
+    );
+    window.location.href = `/run/${event.data.runId}`;
+  }
+  onRowSelected(event) {
+    console.log('onRowSelected: ' + event.node.data.runName);
   }
 
   onQuickFilterText = (event) => {
@@ -143,6 +170,8 @@ class table extends Component {
             onGridReady={this.onGridReady}
             quickFilterText={this.state.quickFilterText}
             onSelectionChanged={this.onSelectionChanged.bind(this)}
+            onCellEditingStarted={this.onCellEditingStarted}
+            onCellClicked={this.onCellClicked}
             rowData={tableRows}
             // enableColResize={true}
             // angularCompileRows={true}
