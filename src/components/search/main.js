@@ -1,10 +1,10 @@
 import React from 'react';
-import home from './home';
+
 import { useParams } from 'react-router-dom';
-import Charts from './WorkSpaceComponent';
+import Matrixs from './Matrixs/MatrixsPage';
 const Main = () => {
   const { id } = useParams();
-  return <Charts id={id}></Charts>;
+  return <Matrixs id={id}></Matrixs>;
 };
 
 export default Main;

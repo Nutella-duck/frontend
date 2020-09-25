@@ -2,10 +2,9 @@ import React from 'react';
 import HomeComponent from '../components/HomeComponent';
 import LoginPage from '../components/LoginPage/LoginPage';
 import ProjectPage from '../components/ProjectPage/ProjectPage';
-import Table from '../components/search/index';
-import RUN from '../components/search/main';
-import Main from '../components/search/main';
 
+import MATRIXS from '../components/search/Matrixs/MatrixsPage';
+import SYSTEM from '../components/search/system/SystemPage';
 import WorkSpaceComponent from '../components/WorkSpace/WorkSpaceComponent';
 
 export const RouterConfig = [
@@ -34,19 +33,13 @@ export const RouterConfig = [
   },
 
   {
-    path: '/run/:id',
+    path: '/run/matrixs/:id',
     exact: true,
-    component: () => <RUN></RUN>,
+    component: () => <MATRIXS></MATRIXS>,
   },
   {
-    path: '/table',
+    path: '/run/system/:id',
     exact: true,
-    component: () => <Table></Table>,
-  },
-
-  {
-    path: '/main/:id',
-    exact: true,
-    component: () => <Main></Main>,
+    component: () => <SYSTEM></SYSTEM>,
   },
 ];

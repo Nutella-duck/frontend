@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { AgGridReact } from 'ag-grid-react';
-import { Link } from 'react-router-dom';
+
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import { Navbar, Form, FormControl } from 'react-bootstrap';
@@ -118,7 +118,7 @@ class table extends Component {
     console.log(
       'onCellClicked: ' + event.data.runId + ', col ' + event.colIndex,
     );
-    window.location.href = `/run/${event.data.runId}`;
+    window.location.href = `/run/system/${event.data.runId}`;
   }
   onRowSelected(event) {
     console.log('onRowSelected: ' + event.node.data.runName);

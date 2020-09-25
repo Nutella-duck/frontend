@@ -1,17 +1,15 @@
 import React, { useEffect } from 'react';
-import RunTableComponent from './table/RunTableComponent';
-import Header from './WorkSpaceHeader';
-import SectionsComponent from './sections/SectionsComponent';
-import SystemComponent from './system/SystemComponent';
+import Header from '../RunsHeader';
+import SystemComponent from './SystemComponent';
 import { useDispatch, useSelector } from 'react-redux';
 
-import * as Actions from '../../data/model/actions.js';
+import * as Actions from '../../../data/model/actions.js';
 
 import { useParams } from 'react-router-dom';
 
-const WorkSpaceComponent = ({ id }) => {
+const MatrixsPage = () => {
   console.log('워크스페이스 렌더링 중...');
-
+  const { id } = useParams();
   const dispatch = useDispatch();
 
   const graph = useSelector((state) => state.model.graphData);
@@ -116,22 +114,22 @@ const WorkSpaceComponent = ({ id }) => {
 
   return (
     <div>
-      <Header runName="r1"></Header>
+      <Header id={id}></Header>
       {/* <RunTableComponent
         totalRuns={totalRun}
         models={model}
       ></RunTableComponent> */}
-      <SectionsComponent
+      {/* <SectionsComponent
         models={model}
         // graph={result.length >= chartIndicators.length ? result : sample}
         graph={result.length >= chartIndicators.length ? result : sample}
-      ></SectionsComponent>
-      {/* <SystemComponent
+      ></SectionsComponent> */}
+      <SystemComponent
         models={model}
         graph={result.length >= chartIndicators.length ? result : sample}
-      ></SystemComponent> */}
+      ></SystemComponent>
     </div>
   );
 };
 
-export default WorkSpaceComponent;
+export default MatrixsPage;
