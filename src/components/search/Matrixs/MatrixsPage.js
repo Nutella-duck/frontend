@@ -49,27 +49,17 @@ const MatrixsPage = () => {
     console.log('hi', graph[0][0].stepNumber);
     for (let i = 0; i < chartIndicators.length; i++) {
       const data = [];
-      for (let j = 0; j < totalRun; j++) {
-        console.log(i, totalRun);
-        const one = [];
-        for (let k = 0; k < 3; k++) {
-          console.log(
-            'i',
-            i,
-            'j',
-            j,
-            'k',
-            k,
-            'graph',
-            graph[totalRun * i + j][k],
-          );
-          one.push({
-            x: graph[totalRun * i + j][k].stepNumber,
-            y: graph[totalRun * i + j][k][chartIndicators[i]],
-          });
-        }
-        data.push(one);
+
+      console.log(i, totalRun);
+      const one = [];
+      for (let k = 0; k < graph[i].length; k++) {
+        one.push({
+          x: graph[i][k].stepNumber,
+          y: graph[i][k][chartIndicators[i]],
+        });
       }
+      data.push(one);
+
       result.push(data);
     }
   }
