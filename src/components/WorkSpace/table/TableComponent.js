@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
-
+import React, { Component, PureComponent } from 'react';
+import { connect } from 'react-redux';
 import { AgGridReact } from 'ag-grid-react';
-
+import * as Actions from '../../../data/model/actions.js';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import { Navbar, Form, FormControl } from 'react-bootstrap';
+
 function isFirstColumn(params) {
   var displayedColumns = params.columnApi.getAllDisplayedColumns();
   var thisIsFirstColumn = displayedColumns[0] === params.column;
@@ -14,7 +15,8 @@ function getSelectedRows() {
   let rowsSelection = this.gridOptions.api.getSelectedRows();
   console.info(rowsSelection);
 }
-class table extends Component {
+
+class table extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -84,10 +86,8 @@ class table extends Component {
           filter: true,
         },
       ],
-
-      rowSelection: 'multiple',
       rowData: [],
-      getSelectedRows: getSelectedRows,
+      rowSelection: 'single',
       onCellEditingStarted: function (event) {
         console.log('cellEditingStarted');
       },
@@ -110,34 +110,36 @@ class table extends Component {
       rowBuffer: 10, // no need to set this, the default is fine for almost all scenarios,
       floatingFilter: true,
     };
-    // this.onGridReady = this.onGridReady.bind(this);
-    this.onRowSelected = this.onRowSelected.bind(this);
-    this.onCellClicked = this.onCellClicked.bind(this);
+    this.onGridReady = this.onGridReady.bind(this);
+    // this.onRowSelected = this.onRowSelected.bind(this);
+    // this.onCellClicked = this.onCellClicked.bind(this);
   }
-  onCellClicked(event) {
-    console.log(
-      'onCellClicked: ' + event.data.runId + ', col ' + event.colIndex,
-    );
-    window.location.href = `/run/system/${event.data.runId}`;
-  }
-  onRowSelected(event) {
-    console.log('onRowSelected: ' + event.node.data.runName);
+
+  onGridReady(params) {
+    this.gridApi = params.api;
   }
 
   onQuickFilterText = (event) => {
     this.setState({ quickFilterText: event.target.value });
   };
-  onSelectionChanged = (event) => {
+
+  onSelectionChanged = ({ event, inputSelectedModel }) => {
     // var rowCount = event.api.getSelectedNodes()
     // console.log('selection changed, ' + rowCount + ' rows selected');
     // var selectedRows = this.mgrid.ag.this.gridOptions.getSelectedRows();
-    // console.log(selectedRows);
+    const selectedRows = this.gridApi.getSelectedRows();
+    console.log(selectedRows[0]);
+    inputSelectedModel(selectedRows[0]);
   };
 
   render() {
     console.log('테이블2 렌더링 중...');
-    const { tableRows, totalRuns } = this.props;
-    console.log(tableRows);
+    const {
+      selectedModel,
+      tableRows,
+      totalRuns,
+      inputSelectedModel,
+    } = this.props;
 
     return (
       <>
@@ -162,14 +164,16 @@ class table extends Component {
           {/* <p>{data[0].runName.isSelected() ? "true" : "false"}</p>                     */}
 
           <AgGridReact
+            rowDeselection={true}
+            rowSelection={this.state.rowSelection}
             modules={this.state.modules}
             columnDefs={this.state.columnDefs}
             defaultColDef={this.state.defaultColDef}
-            suppressRowClickSelection={true}
-            rowSelection={this.state.rowSelection}
             onGridReady={this.onGridReady}
             quickFilterText={this.state.quickFilterText}
-            onSelectionChanged={this.onSelectionChanged.bind(this)}
+            onSelectionChanged={this.onSelectionChanged.bind(this, {
+              inputSelectedModel,
+            })}
             onCellEditingStarted={this.onCellEditingStarted}
             onCellClicked={this.onCellClicked}
             rowData={tableRows}
@@ -182,5 +186,10 @@ class table extends Component {
     );
   }
 }
-
-export default table;
+const mapDispatchToProps = (dispatch) => ({
+  inputSelectedModel: (model) => dispatch(Actions.fetchSelectedModel(model)),
+});
+const mapStateToProps = (state) => ({
+  selectedModel: state.model.selectedModel,
+});
+export default connect(mapStateToProps, mapDispatchToProps)(table);

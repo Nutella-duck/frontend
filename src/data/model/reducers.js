@@ -1,59 +1,3 @@
-// import { combineReducers } from 'redux';
-// import { ADD_CART_ITEM, CLOSE_CART, OPEN_CART, TOGGLE_CART, REMOVE_CART_ITEM } from './actionTypes';
-
-// const isShopingCartOpen = (state = false, { type, payload }) => {
-//   switch (type) {
-//     case OPEN_CART:
-//       return true;
-//     case CLOSE_CART:
-//       return false;
-//     case TOGGLE_CART:
-//       return !state;
-//     default:
-//       return state;
-//   }
-// };
-
-// const cartItems = (state = [], { type, payload = {} }) => {
-//   const { product = {}, qty, id } = payload;
-//   let found = {};
-
-//   switch (type) {
-//     case ADD_CART_ITEM:
-//       found = state.find((v) => v.product.id === product.id);
-//       if (found) {
-//         if (qty) {
-//           found.count += qty;
-//         } else {
-//           found.count += 1;
-//         }
-//         return [...state];
-//       } else {
-//         return [...state, { product, count: qty ? qty : 1 }];
-//       }
-
-//     case REMOVE_CART_ITEM:
-//       found = state.find((v) => v.product.id === id);
-//       if (found == null) {
-//         throw new Error(`Can not find the item (${id})`);
-//       }
-//       if (found && found.count > 1) {
-//         found.count -= 1;
-//       } else {
-//         const index = state.indexOf(found);
-//         state.splice(index, 1);
-//       }
-//       return [...state];
-
-//     default:
-//       return state;
-//   }
-// };
-
-// export default combineReducers({
-//   isShopingCartOpen,
-//   cartItems,
-// });
 import * as Actions from './actionTypes';
 
 const initialState = {
@@ -61,6 +5,8 @@ const initialState = {
   index: 8,
   graphData: [{ stepId: 1, runName: 'r1', stepNumber: 1, accuracy: 0.1 }],
   chartIndicators: ['accuracy', 'loss'],
+  isGraphLoading: true,
+  selectedModel: undefined,
   models: [
     {
       NAME: 'project_test',
@@ -206,11 +152,18 @@ const ModelReducer = (state = initialState, action) => {
       console.log('리듀서', data);
       return {
         ...state,
+        isGraphLoading: true,
 
         // graphData:state.graphData.concat(data)
       };
     }
-
+    case Actions.FETCH_SELECTED_MODEL: {
+      console.log('선택', action.selectedModel);
+      return {
+        ...state,
+        selectedModel: action.selectedModel,
+      };
+    }
     case '@Model/GET_MODEL_SUCCESS': {
       console.log('GET_MODEL_SUCCESS', action);
 
@@ -224,7 +177,8 @@ const ModelReducer = (state = initialState, action) => {
       console.log('겟 그래프');
       console.log('before graphData', state.graphData);
       console.log('payload', action.payload.graph);
-      return { ...state, graphData: action.payload };
+
+      return { ...state, graphData: action.payload, isGraphLoading: false };
     }
     default: {
       return state;

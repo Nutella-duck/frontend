@@ -16,21 +16,17 @@ const ModelReducer = (state = initialState, action) => {
     case Actions.ADD_SYSTEM_CARDS: {
       const { systemCardsName } = state;
 
-      systemCardsName.push(action.card);
-      console.log('b', action.card, systemCardsName);
       return {
         ...state,
-        systemCardsName: systemCardsName,
+        systemCardsName: [...systemCardsName, action.card],
       };
     }
     case Actions.ADD_CHART_CARD: {
       const { chartCardsName } = state;
 
-      chartCardsName.push(action.card);
-      console.log('b', action.card, chartCardsName);
       return {
         ...state,
-        chartCardsName: chartCardsName,
+        chartCardsName: [...chartCardsName, action.card],
       };
     }
     default: {
