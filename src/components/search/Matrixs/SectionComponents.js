@@ -24,9 +24,7 @@ const ItemHead = ({ cards }) => {
   const dispatch = useDispatch();
   const handleCreate = () => {
     setShow(false);
-    console.log('선택', title);
     dispatch(Actions.addChartCard(title));
-    console.log('시스템 차트 추가');
   };
 
   const handleSelect = (id) => {
@@ -96,10 +94,8 @@ const ItemHead = ({ cards }) => {
 };
 
 const SectionsComponents = ({ models, graph }) => {
-  console.log('차트 2렌더링 중...');
   const cards = useSelector((state) => state.cards.chartCardsName);
 
-  console.log('차트 그래프', graph, graph[0]);
   return (
     <>
       <ItemHead cards={cards}></ItemHead>

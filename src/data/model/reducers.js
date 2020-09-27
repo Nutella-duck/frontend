@@ -145,11 +145,9 @@ const ModelReducer = (state = initialState, action) => {
     }
     case Actions.FETCH_GRAPH_DATA: {
       // state.graphData.unshift (action.graphData)
-      // console.log("리듀서",state.graphData)
       var data = [];
       data = action.graphData.map((a) => a.accuracy);
       state.graphData.unshift(data);
-      console.log('리듀서', data);
       return {
         ...state,
         isGraphLoading: true,
@@ -158,15 +156,12 @@ const ModelReducer = (state = initialState, action) => {
       };
     }
     case Actions.FETCH_SELECTED_MODEL: {
-      console.log('선택', action.selectedModel);
       return {
         ...state,
         selectedModel: action.selectedModel,
       };
     }
     case '@Model/GET_MODEL_SUCCESS': {
-      console.log('GET_MODEL_SUCCESS', action);
-
       return {
         ...state,
         totalRun: action.payload.totalRun,
@@ -174,10 +169,6 @@ const ModelReducer = (state = initialState, action) => {
       };
     }
     case Actions.GET_GRAPH_SUCCESS: {
-      console.log('겟 그래프');
-      console.log('before graphData', state.graphData);
-      console.log('payload', action.payload.graph);
-
       return { ...state, graphData: action.payload, isGraphLoading: false };
     }
     default: {

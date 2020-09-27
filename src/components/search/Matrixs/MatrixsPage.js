@@ -8,7 +8,6 @@ import * as Actions from '../../../data/model/actions.js';
 import { useParams } from 'react-router-dom';
 
 const MatrixsPage = () => {
-  console.log('워크스페이스 렌더링 중...');
   const { id } = useParams();
   const dispatch = useDispatch();
 
@@ -30,27 +29,15 @@ const MatrixsPage = () => {
     dispatch(Actions.getIndicators);
     dispatch(Actions.getOneGraph(id, chartIndicators));
     const time = setInterval(function () {
-      console.log('30초!', 1);
       dispatch(Actions.getOneGraph(id, chartIndicators));
     }, 30000);
   }, []);
 
-  console.log(
-    'model',
-    model,
-
-    'maingraph',
-    graph,
-  );
-  var a = 'accuracy';
-
   const result = [];
   if (graph.length > 1) {
-    console.log('hi', graph[0][0].stepNumber);
     for (let i = 0; i < chartIndicators.length; i++) {
       const data = [];
 
-      console.log(i, totalRun);
       const one = [];
       for (let k = 0; k < graph[i].length; k++) {
         one.push({
@@ -63,7 +50,6 @@ const MatrixsPage = () => {
       result.push(data);
     }
   }
-  console.log('result', result);
 
   const sample = [
     [

@@ -26,16 +26,13 @@ class Graph extends Component {
   //   this.setState({ crosshairValues: data.map((d) => d[index]) });
   // };
   render() {
-    console.log('시스템 2렌더링 중...');
     const Line = LineSeries;
 
     const { models, graph } = this.props;
 
     const model_name = models.map((model) => model.runName);
 
-    console.log('graph system ', graph);
     const mapToComponent = (data) => {
-      console.log('hi', graph);
       return graph.map((data, i) => {
         return (
           <Line

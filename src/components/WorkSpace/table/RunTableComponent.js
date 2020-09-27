@@ -7,8 +7,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as Actions from '../../../store/actions';
 
 const RunTableComponent = ({ models, totalRuns }) => {
-  console.log('테이블 렌더링 중...');
-  console.log(models);
   return (
     <div
       className="scrollbar"

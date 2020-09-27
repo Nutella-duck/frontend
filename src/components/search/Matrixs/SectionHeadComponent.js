@@ -20,9 +20,7 @@ const SectionHeadComponent = () => {
     let len = cards.length;
     cards.push(len + 1);
     dispatch(Actions.fectchCardData(cards));
-    console.log(cards);
   };
-  console.log('차트1 렌더링 중...');
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);

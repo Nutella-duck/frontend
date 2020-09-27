@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 
 const SectionsComponent = ({ models, graph, isLoading }) => {
   const sectoions = useSelector((state) => state.section.cards);
-  console.log('차트 렌더링 중...');
   return (
     <div style={{ paddingBottom: '3rem' }}>
       <SectionHeadComponent></SectionHeadComponent>

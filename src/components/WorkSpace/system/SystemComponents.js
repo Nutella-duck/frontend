@@ -17,7 +17,6 @@ import 'react-vis/dist/style.css';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Actions from '../../../data/chartCards/actions.js';
 const SystemItemHead = ({ cards }) => {
-  console.log('시스템1 렌더링 중...');
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
@@ -25,9 +24,7 @@ const SystemItemHead = ({ cards }) => {
   const dispatch = useDispatch();
   const handleCreate = () => {
     setShow(false);
-    console.log('선택', title);
     dispatch(Actions.addSystemChart(title));
-    console.log('시스템 차트 추가');
   };
 
   const handleSelect = (id) => {
@@ -98,7 +95,6 @@ const SystemItemHead = ({ cards }) => {
 
 const SystemComponents = ({ models, graph, isLoading = true }) => {
   const cards = useSelector((state) => state.cards.systemCardsName);
-  console.log('시스템카드', cards);
   return (
     <div style={{ borderRadius: '0.7rem' }}>
       <SystemItemHead cards={cards}></SystemItemHead>

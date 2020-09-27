@@ -10,7 +10,6 @@ const RunsHeader = (param) => {
   const dispatch = useDispatch();
 
   const [select, setSelect] = useState(param.navId);
-  console.log('왜이래', param.navId, select);
   useEffect(() => {
     dispatch(Actions.getAllPorject(1));
   }, []);

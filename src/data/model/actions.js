@@ -3,20 +3,6 @@ import apis from '../../apis/index';
 import * as AT from './actionTypes';
 import { createAction } from 'redux-actions';
 
-// export const getProductDetailLoading = () => ({
-//   type: AT.GET_PRODUCT_DETAIL_LOADING,
-// });
-
-// export const getProductDetailSuccess = (data) => ({
-//   type: AT.GET_PRODUCT_DETAIL_SUCCESS,
-//   payload: data,
-// });
-
-// export const getProductDetailFail = (error) => ({
-//   type: AT.GET_PRODUCT_DETAIL_FAIL,
-//   payload: error,
-// });
-
 export const getmodelListLoading = () => ({
   type: AT.GET_MODEL_LIST_LOADING,
 });
@@ -92,7 +78,6 @@ export const getResult = (modelId) => async (dispatch, getState) => {
       apis.modelApi.getNumberOfModel(modelId),
       apis.modelApi.getSelectedModelData(modelId),
     ]);
-    console.log('totalRun', totalRun);
     dispatch(getModelSuccess({ totalRun, models }));
   } catch (error) {}
 };
@@ -108,9 +93,7 @@ export const getGraphs = (id, indicator, totalRun) => async (
       for (let j = 0; j < totalRun; j++)
         graphPromise.push(apis.modelApi.getGraphData(j + 1, indicator[i]));
     }
-    console.log('graphPromise', graphPromise);
     const graph = await Promise.all(graphPromise);
-    console.log('그래프 받음');
     dispatch(getGraphSuccess(graph));
   } catch (erro) {}
 };
@@ -119,8 +102,6 @@ export const getOneGraph = (id, indicator) => async (dispatch, getState) => {
   for (let i = 0; i < indicator.length; i++) {
     graphPromise.push(apis.modelApi.getGraphData(id, indicator[i]));
   }
-  console.log('graphPromise', graphPromise);
   const graph = await Promise.all(graphPromise);
-  console.log('그래프 받음');
   dispatch(getGraphSuccess(graph));
 };

@@ -27,14 +27,12 @@ class Graph extends Component {
   // };
 
   render() {
-    console.log('차트2->1 렌더링 중...');
     const Line = LineSeries;
 
     const { models, graph } = this.props;
 
     const model_name = models.map((model) => model.runName);
 
-    console.log('chart graph', graph);
     const sample = [
       [
         { x: 1, y: 0.7 },
@@ -71,7 +69,6 @@ class Graph extends Component {
       ],
     ];
     const mapToComponent = (data) => {
-      console.log('hi', graph);
       return graph.map((data, i) => {
         return (
           <Line

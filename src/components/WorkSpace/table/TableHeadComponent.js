@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 import {
   Navbar,
   Form,
@@ -8,23 +8,22 @@ import {
   Nav,
   ButtonGroup,
   Button,
-} from "react-bootstrap";
+} from 'react-bootstrap';
 import {
   BsFunnel,
   BsFillGridFill,
   BsArrowUpDown,
   BsColumnsGap,
   BsGear,
-} from "react-icons/bs";
+} from 'react-icons/bs';
 
 const TableHeadComponent = () => {
-  console.log("테이블 1렌더링 중...")
   const numberOfIndex = useSelector((state) => state.model.index);
 
   return (
     <>
-      <Navbar bg="light" variant="light" style={{ borderRadius: "0.7rem" }}>
-        <Navbar.Brand href="#home" style={{ fontWeight: "bold" }}>
+      <Navbar bg="light" variant="light" style={{ borderRadius: '0.7rem' }}>
+        <Navbar.Brand href="#home" style={{ fontWeight: 'bold' }}>
           {numberOfIndex} Runs
         </Navbar.Brand>
         <Form inline>
@@ -36,19 +35,19 @@ const TableHeadComponent = () => {
         <Nav className="mr-auto">
           <ButtonGroup aria-label="Basic example">
             <Button variant="light">
-              <BsFunnel style={{ marginRight: "1rem" }} />
+              <BsFunnel style={{ marginRight: '1rem' }} />
               Filter
             </Button>
             <Button variant="light">
-              <BsFillGridFill style={{ marginRight: "1rem" }} />
+              <BsFillGridFill style={{ marginRight: '1rem' }} />
               Group
             </Button>
             <Button variant="light">
-              <BsArrowUpDown style={{ marginRight: "1rem" }} />
+              <BsArrowUpDown style={{ marginRight: '1rem' }} />
               Sort
             </Button>
             <Button variant="light">
-              <BsColumnsGap style={{ marginRight: "1rem" }} />
+              <BsColumnsGap style={{ marginRight: '1rem' }} />
               Columns
             </Button>
           </ButtonGroup>

@@ -7,24 +7,17 @@ import './navbar.css';
 import { useSelector, useDispatch } from 'react-redux';
 import * as Actions from '../../data/project/actions.js';
 const WorkSpaceHeader = ({ projectId, ProjectName }) => {
-  console.log('헤더 렌더링 중...', projectId, ProjectName);
   const dispatch = useDispatch();
   const menu = useSelector((state) => state.project.projects);
 
   const [id, setId] = useState(projectId);
   const currentTitle = ProjectName;
-  console.log(currentTitle);
-  console.log(id);
+
   useEffect(() => {
     dispatch(Actions.getAllPorject(1));
   }, []);
-  console.log('dropdownid', id);
-  console.log('menu', menu);
   const handleSelect = (id) => {
-    console.log(id);
-
     const first = menu.find((v) => v.projectId === Number(id));
-    console.log('first', first);
 
     setId(id - 1);
   };

@@ -88,17 +88,13 @@ class table extends PureComponent {
       ],
       rowData: [],
       rowSelection: 'single',
-      onCellEditingStarted: function (event) {
-        console.log('cellEditingStarted');
-      },
+      onCellEditingStarted: function (event) {},
     };
     this.gridOptions = {
       //We register the react date component that ag-grid will use to render
       //dateComponentFramework: DateComponent,
       // this is how you listen for events using gridOptions
-      onModelUpdated: function () {
-        console.log('event onModelUpdated received');
-      },
+      onModelUpdated: function () {},
       defaultColDef: {
         flex: 1,
         minWidth: 100,
@@ -125,7 +121,6 @@ class table extends PureComponent {
 
   onSelectionChanged = ({ event, inputSelectedModel }) => {
     // var rowCount = event.api.getSelectedNodes()
-    // console.log('selection changed, ' + rowCount + ' rows selected');
     // var selectedRows = this.mgrid.ag.this.gridOptions.getSelectedRows();
     const selectedRows = this.gridApi.getSelectedRows();
     console.log(selectedRows[0]);
@@ -133,7 +128,6 @@ class table extends PureComponent {
   };
 
   render() {
-    console.log('테이블2 렌더링 중...');
     const {
       selectedModel,
       tableRows,
