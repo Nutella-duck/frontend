@@ -6,7 +6,12 @@ import SystemComponent from './system/SystemComponent';
 import { useDispatch, useSelector } from 'react-redux';
 
 import * as Actions from '../../data/model/actions.js';
+<<<<<<< Updated upstream
 
+=======
+import * as Selectors from '../../data/model/selectors.js';
+import { getchartIndicators } from '../../data/chartCards/selectors.js';
+>>>>>>> Stashed changes
 import { useParams } from 'react-router-dom';
 
 const WorkSpaceComponent = () => {
@@ -14,6 +19,31 @@ const WorkSpaceComponent = () => {
   const { id } = useParams();
   console.log(id);
 
+  // const dispatch = useDispatch();
+  // const modelOfTheProject = useSelector(Selectors.modelOfTheProject);
+  // console.log('modelOfTheProject', modelOfTheProject);
+
+  // const model = useSelector(Selectors.getModels);
+  // const totalRun = modelOfTheProject[0].totalRun;
+  // const ProjectName = modelOfTheProject[0].projectName;
+  // console.log('ProjectName', ProjectName);
+  // const chartIndicators = useSelector(getchartIndicators);
+  const isGraphLoading = useSelector(Selectors.getLoading);
+
+  // const result = useSelector(Selectors.getResult(chartIndicators, totalRun));
+
+  // useEffect(() => {
+  //   dispatch(Actions.getResult(id));
+  //   dispatch(Actions.getIndicators);
+  // }, []);
+  // useEffect(() => {
+  //   if (totalRun > 0) {
+  //     const time = setInterval(function () {
+  //       console.log('30초!', totalRun);
+  //       dispatch(Actions.getGraphs(id, chartIndicators, totalRun));
+  //     }, 5000);
+  //   }
+  // }, [totalRun]);
   const dispatch = useDispatch();
   const modelOfTheProject = useSelector((state) => state.model.totalRun);
   const graph = useSelector((state) => state.model.graphData);
@@ -21,6 +51,10 @@ const WorkSpaceComponent = () => {
   const totalRun = modelOfTheProject[0].totalRun;
   const ProjectName = modelOfTheProject[0].projectName;
   const chartIndicators = useSelector((state) => state.model.chartIndicators);
+<<<<<<< Updated upstream
+=======
+  // const isGraphLoading = useSelector((state) => state.model.isGraphLoading);
+>>>>>>> Stashed changes
 
   const systemIndicators = [
     {
@@ -40,7 +74,15 @@ const WorkSpaceComponent = () => {
     const time = setInterval(function () {
       console.log('30초!', totalRun);
       dispatch(Actions.getGraphs(id, chartIndicators, totalRun));
+<<<<<<< Updated upstream
     }, 30000);
+=======
+      const time = setInterval(function () {
+        console.log('30초!', totalRun);
+        dispatch(Actions.getGraphs(id, chartIndicators, totalRun));
+      }, 5000);
+    }
+>>>>>>> Stashed changes
   }, [totalRun]);
 
   console.log(
@@ -130,8 +172,13 @@ const WorkSpaceComponent = () => {
       ></RunTableComponent>
       <SectionsComponent
         models={model}
+<<<<<<< Updated upstream
         // graph={result.length >= chartIndicators.length ? result : sample}
         graph={result.length >= chartIndicators.length ? result : sample}
+=======
+        isLoading={isGraphLoading}
+        graph={result}
+>>>>>>> Stashed changes
       ></SectionsComponent>
       <SystemComponent
         models={model}

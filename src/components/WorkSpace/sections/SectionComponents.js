@@ -122,11 +122,35 @@ const SectionsComponents = ({ models, graph }) => {
               style={{ height: '20rem', width: 'auto', borderColor: 'white' }}
             >
               <h5>{card}</h5>
+<<<<<<< Updated upstream
               <Graph
                 index={index}
                 models={models}
                 graph={graph[cards.indexOf(card)]}
               />
+=======
+              {isLoading && (
+                <div
+                  className="spinner-border "
+                  role="status"
+                  style={{
+                    width: '10rem',
+                    height: '10rem',
+                    marginLeft: '13rem',
+                    marginTop: '3rem',
+                  }}
+                >
+                  <span className="sr-only">Loading...</span>
+                </div>
+              )}
+              {!isLoading && (
+                <Graph
+                  index={index}
+                  models={models}
+                  graph={graph[cards.indexOf(card)]}
+                />
+              )}
+>>>>>>> Stashed changes
             </Card>
           </Col>
         ))}

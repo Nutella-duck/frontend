@@ -11,7 +11,7 @@ const Run = () => {
   const state = useSelector((state) => state.model.models);
 
   useEffect(() => {
-    dispatch(Actions.getAllModelData());
+    dispatch(Actions.getAllModelData(1));
   }, []);
 
   console.log(state);
