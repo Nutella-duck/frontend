@@ -156,6 +156,7 @@ const ModelReducer = (state = initialState, action) => {
       };
     }
     case Actions.FETCH_SELECTED_MODEL: {
+      const { selectedModel } = state;
       return {
         ...state,
         selectedModel: action.selectedModel,

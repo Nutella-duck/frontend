@@ -85,8 +85,8 @@ const Project = () => {
             search ? state.filter((v) => v.projectName.includes(search)) : state
           }
         />
+        <ProjectFooter></ProjectFooter>
       </ProjectListTemplate>
-      <ProjectFooter></ProjectFooter>
     </>
   );
 };

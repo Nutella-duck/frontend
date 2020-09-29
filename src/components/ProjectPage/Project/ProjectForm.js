@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import ProjectFooter from './ProjectFooter';
 import {
   Modal,
   Button,
@@ -138,6 +138,7 @@ const ProjectForm = ({
           </Button>
         </Modal.Footer>
       </Modal>
+      <ProjectFooter></ProjectFooter>
     </>
   );
 };

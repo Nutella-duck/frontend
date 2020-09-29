@@ -11,10 +11,10 @@ function isFirstColumn(params) {
   var thisIsFirstColumn = displayedColumns[0] === params.column;
   return thisIsFirstColumn;
 }
-function getSelectedRows() {
-  let rowsSelection = this.gridOptions.api.getSelectedRows();
-  console.info(rowsSelection);
-}
+// function getSelectedRows() {
+//   let rowsSelection = this.gridOptions.api.getSelectedRows();
+//   console.info(rowsSelection);
+// }
 
 class table extends PureComponent {
   constructor(props) {
@@ -23,6 +23,13 @@ class table extends PureComponent {
       quickFilterText: null,
       totalRuns: 0,
       columnDefs: [
+        {
+          headerName: '#',
+
+          sortable: true,
+          filter: true,
+          checkboxSelection: true,
+        },
         { headerName: 'NAME', field: 'runName', sortable: true, filter: true },
         { headerName: 'STATE', field: 'state', sortable: true, filter: true },
         {
@@ -87,21 +94,22 @@ class table extends PureComponent {
         },
       ],
       rowData: [],
-      rowSelection: 'single',
+      rowSelection: 'multiple',
       onCellEditingStarted: function (event) {},
+      defaultColDef: {
+        flex: 1,
+        minWidth: 100,
+        resizable: true,
+        headerCheckboxSelection: isFirstColumn,
+        // checkboxSelection: isFirstColumn,
+      },
     };
     this.gridOptions = {
       //We register the react date component that ag-grid will use to render
       //dateComponentFramework: DateComponent,
       // this is how you listen for events using gridOptions
       onModelUpdated: function () {},
-      defaultColDef: {
-        flex: 1,
-        minWidth: 100,
-        resizable: true,
-        headerCheckboxSelection: isFirstColumn,
-        checkboxSelection: isFirstColumn,
-      },
+
       // this is a simple property
       rowBuffer: 10, // no need to set this, the default is fine for almost all scenarios,
       floatingFilter: true,
@@ -123,10 +131,15 @@ class table extends PureComponent {
     // var rowCount = event.api.getSelectedNodes()
     // var selectedRows = this.mgrid.ag.this.gridOptions.getSelectedRows();
     const selectedRows = this.gridApi.getSelectedRows();
-    console.log(selectedRows[0]);
+    console.log(selectedRows);
     inputSelectedModel(selectedRows[0]);
   };
-
+  onCellClicked(event) {
+    console.log(
+      'onCellClicked: ' + event.data.runId + ', col ' + event.colIndex,
+    );
+    window.location.href = `/run/system/${event.data.runId}`;
+  }
   render() {
     const {
       selectedModel,
@@ -171,6 +184,7 @@ class table extends PureComponent {
             onCellEditingStarted={this.onCellEditingStarted}
             onCellClicked={this.onCellClicked}
             rowData={tableRows}
+            selectAll={false}
             // enableColResize={true}
             // angularCompileRows={true}
             // angularCompileHeaders={true}

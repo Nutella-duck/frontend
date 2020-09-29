@@ -14,7 +14,7 @@ const WorkSpaceComponent = () => {
   const { id } = useParams();
 
   const dispatch = useDispatch();
-  const selectedModel = useSelector((state) => state.model.selectedModel);
+
   const modelOfTheProject = useSelector((state) => state.model.totalRun);
 
   const model = useSelector((state) => state.model.models);
@@ -22,15 +22,6 @@ const WorkSpaceComponent = () => {
   const ProjectName = modelOfTheProject[0].projectName;
   const chartIndicators = useSelector((state) => state.model.chartIndicators);
   const isGraphLoading = useSelector((state) => state.model.isGraphLoading);
-
-  const systemIndicators = [
-    {
-      cpu: null,
-      gpu: null,
-      net: null,
-      disk: null,
-    },
-  ];
 
   const result = useSelector(Selectors.getResult(chartIndicators, totalRun));
 
@@ -41,9 +32,14 @@ const WorkSpaceComponent = () => {
   useEffect(() => {
     if (totalRun > 0) {
       dispatch(Actions.getGraphs(id, chartIndicators, totalRun));
+      // const time = setInterval(function () {
+      //   console.log('30초!', totalRun);
+
+      //   dispatch(Actions.getGraphs(id, chartIndicators, totalRun));
+      // }, 5000);
     }
   }, [totalRun]);
-
+  console.log('본문에서 찾는것은...', result);
   return (
     <div>
       <Header projectId={id} ProjectName={ProjectName}></Header>
