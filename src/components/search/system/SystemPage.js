@@ -79,7 +79,7 @@ const MatrixsPage = () => {
       ],
     ],
   ];
-
+  console.log('graph', graph);
   return (
     <div>
       <Header id={id} navId={3}></Header>

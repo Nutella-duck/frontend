@@ -135,9 +135,7 @@ class table extends PureComponent {
     inputSelectedModel(selectedRows);
   };
   onCellClicked(event) {
-    console.log(
-      'onCellClicked: ' + event.data.runId + ', col ' + event.colIndex,
-    );
+    console.log('onCellClicked: ' + event.data.runName);
     window.location.href = `/run/system/${event.data.runId}`;
   }
   render() {

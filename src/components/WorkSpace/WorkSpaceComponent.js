@@ -22,7 +22,7 @@ const WorkSpaceComponent = () => {
   const ProjectName = modelOfTheProject[0].projectName;
   const chartIndicators = useSelector((state) => state.model.chartIndicators);
   const isGraphLoading = useSelector((state) => state.model.isGraphLoading);
-  //const modelName = useSelector((state) => state.model.selectedModel);
+
   const result = useSelector(Selectors.getResult(chartIndicators, totalRun));
   const modelName = useSelector(Selectors.getSelectedModelName());
   useEffect(() => {

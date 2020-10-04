@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import * as Actions from '../../data/project/actions.js';
 const RunsHeader = (param) => {
   const dispatch = useDispatch();
-
+  console.log('param', param);
   const [select, setSelect] = useState(param.navId);
   useEffect(() => {
     dispatch(Actions.getAllPorject(1));
@@ -28,7 +28,7 @@ const RunsHeader = (param) => {
         style={{ fontWeight: 'bold' }}
         onSelect={handleSelect}
       >
-        <p>r1</p>
+        <p>{param.title}</p>
         <Nav.Item>
           <Nav.Link eventKey="1" href="/">
             OVERVIEW

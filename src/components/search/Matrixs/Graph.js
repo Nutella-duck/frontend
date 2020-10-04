@@ -72,6 +72,7 @@ class Graph extends Component {
       return graph.map((data, i) => {
         return (
           <Line
+            key={i}
             onNearestX={this._onNearestX}
             data={
               data
