@@ -7,9 +7,9 @@ import {
   HorizontalGridLines,
   VerticalGridLines,
   FlexibleWidthXYPlot,
-  Crosshair,
   LineSeries,
   DiscreteColorLegend,
+
 } from 'react-vis';
 
 class Graph extends Component {
@@ -18,6 +18,11 @@ class Graph extends Component {
   };
 
   render() {
+<<<<<<< HEAD
+=======
+
+    console.log('시스템 2렌더링 중...');
+>>>>>>> 5389c4edb8a17bf1c7caad118c6c71190c1106fb
     const Line = LineSeries;
 
     const { models, graph } = this.props;
@@ -41,8 +46,25 @@ class Graph extends Component {
           <VerticalGridLines />
           <XAxis />
           <YAxis />
+<<<<<<< HEAD
 
           {mapToComponent(this.state.graph)}
+=======
+          <Line
+            onNearestX={this._onNearestX}
+            data={
+              graph
+                ? graph[0]
+                : [
+                    { x: 1, y: 3 },
+                    { x: 2, y: 3 },
+                  ]
+            }
+          />
+          <Line onNearestX={this._onNearestX} data={graph[1]} />
+          <Line onNearestX={this._onNearestX} data={graph[2]} />
+
+>>>>>>> 5389c4edb8a17bf1c7caad118c6c71190c1106fb
           <DiscreteColorLegend orientation="horizontal" items={model_name} />
           <Crosshair
             values={this.state.crosshairValues}

@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 import React, { Component, PureComponent } from 'react';
 import { connect } from 'react-redux';
+=======
+
+import React, { Component } from 'react';
+
+>>>>>>> 5389c4edb8a17bf1c7caad118c6c71190c1106fb
 import { AgGridReact } from 'ag-grid-react';
 import * as Actions from '../../../data/model/actions.js';
 import 'ag-grid-community/dist/styles/ag-grid.css';
