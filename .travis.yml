@@ -37,7 +37,7 @@ before_script:
   - npm install
 
 script:
-  - CI=false npm run build
+  - CI=false npm build
 
 branches:
   only:
