@@ -19,6 +19,7 @@ const MatrixsPage = () => {
 
   useEffect(() => {
     dispatch(Actions.getIndicators);
+    dispatch(Actions.getAllModelData());
     dispatch(Actions.getOneGraph(id, chartIndicators));
     const time = setInterval(function () {
       dispatch(Actions.getOneGraph(id, chartIndicators));
@@ -79,10 +80,12 @@ const MatrixsPage = () => {
       ],
     ],
   ];
+  const name = model.find((item) => item.runId == id);
+  const legend = model.filter((item) => item.runId == id);
   console.log('graph', graph);
   return (
     <div>
-      <Header id={id} navId={3}></Header>
+      <Header title={name ? name.runName : name} id={id} navId={3}></Header>
       {/* <RunTableComponent
         totalRuns={totalRun}
         models={model}
@@ -93,7 +96,7 @@ const MatrixsPage = () => {
         graph={result.length >= chartIndicators.length ? result : sample}
       ></SectionsComponent> */}
       <SystemComponent
-        models={model}
+        models={legend ? legend : model}
         graph={result.length >= chartIndicators.length ? result : sample}
       ></SystemComponent>
     </div>

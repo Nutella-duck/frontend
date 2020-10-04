@@ -31,7 +31,7 @@ class Graph extends Component {
     const { models, graph } = this.props;
 
     const model_name = models.map((model) => model.runName);
-
+    console.log('graph', models);
     const mapToComponent = (data) => {
       return graph.map((data, i) => {
         return <Line key={i} data={data} />;
