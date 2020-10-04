@@ -33,57 +33,9 @@ class Graph extends Component {
 
     const model_name = models.map((model) => model.runName);
 
-    const sample = [
-      [
-        { x: 1, y: 0.7 },
-        { x: 2, y: 0.75 },
-        { x: 3, y: 0.79 },
-      ],
-      [
-        { x: 1, y: 0.7 },
-        { x: 2, y: 0.75 },
-        { x: 3, y: 0.79 },
-      ],
-      [
-        { x: 1, y: 0.7 },
-        { x: 2, y: 0.75 },
-        { x: 3, y: 0.79 },
-      ],
-
-      [
-        [
-          { x: 1, y: 0.7 },
-          { x: 2, y: 0.75 },
-          { x: 3, y: 0.79 },
-        ],
-        [
-          { x: 1, y: 0.7 },
-          { x: 2, y: 0.75 },
-          { x: 3, y: 0.79 },
-        ],
-        [
-          { x: 1, y: 0.7 },
-          { x: 2, y: 0.75 },
-          { x: 3, y: 0.79 },
-        ],
-      ],
-    ];
     const mapToComponent = (data) => {
       return graph.map((data, i) => {
-        return (
-          <Line
-            key={i}
-            onNearestX={this._onNearestX}
-            data={
-              data
-                ? data
-                : [
-                    { x: 1, y: 3 },
-                    { x: 2, y: 3 },
-                  ]
-            }
-          />
-        );
+        return <Line key={i} onNearestX={this._onNearestX} data={data} />;
       });
     };
     return (
@@ -93,50 +45,7 @@ class Graph extends Component {
           <VerticalGridLines />
           <XAxis />
           <YAxis />
-          {/* <Line
-            onNearestX={this._onNearestX}
-            data={
-              graph
-                ? graph[0]
-                : [
-                    { x: 1, y: 3 },
-                    { x: 2, y: 3 },
-                  ]
-            }
-          /> */}
-          {/* <Line
-            onNearestX={this._onNearestX}
-            data={
-              graph
-                ? graph[0]
-                : [
-                    { x: 1, y: 3 },
-                    { x: 2, y: 3 },
-                  ]
-            }
-          />
-          <Line
-            onNearestX={this._onNearestX}
-            data={
-              graph
-                ? graph[1]
-                : [
-                    { x: 1, y: 3 },
-                    { x: 2, y: 3 },
-                  ]
-            }
-          />
-          <Line
-            onNearestX={this._onNearestX}
-            data={
-              graph
-                ? graph[2]
-                : [
-                    { x: 1, y: 3 },
-                    { x: 2, y: 3 },
-                  ]
-            }
-          /> */}
+
           {mapToComponent(this.state.graph)}
           <DiscreteColorLegend orientation="horizontal" items={model_name} />
           {/* <Crosshair

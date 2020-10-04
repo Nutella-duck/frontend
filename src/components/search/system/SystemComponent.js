@@ -3,7 +3,7 @@ import React from 'react';
 import SystemComponents from './SystemComponents';
 import { useSelector } from 'react-redux';
 
-const SystemComponent = ({ models, graph }) => {
+const SystemComponent = ({ models, graph, isLoading }) => {
   const systems = useSelector((state) => state.system.cards);
 
   return (
@@ -13,6 +13,7 @@ const SystemComponent = ({ models, graph }) => {
           key={index}
           models={models}
           graph={graph}
+          isLoading={isLoading}
         ></SystemComponents>
       ))}
     </div>

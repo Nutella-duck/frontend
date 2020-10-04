@@ -15,7 +15,7 @@ const MatrixsPage = () => {
   const model = useSelector((state) => state.model.models);
   console.log('model', model);
   const chartIndicators = useSelector((state) => state.model.chartIndicators);
-
+  const isGraphLoading = useSelector((state) => state.model.isGraphLoading);
   useEffect(() => {
     dispatch(Actions.getIndicators);
     dispatch(Actions.getAllModelData());
@@ -43,61 +43,17 @@ const MatrixsPage = () => {
     }
   }
 
-  const sample = [
-    [
-      [
-        { x: 1, y: 0.7 },
-        { x: 2, y: 0.75 },
-        { x: 3, y: 0.79 },
-      ],
-      [
-        { x: 1, y: 0.7 },
-        { x: 2, y: 0.75 },
-        { x: 3, y: 0.79 },
-      ],
-      [
-        { x: 1, y: 0.7 },
-        { x: 2, y: 0.75 },
-        { x: 3, y: 0.79 },
-      ],
-    ],
-    [
-      [
-        { x: 1, y: 0.7 },
-        { x: 2, y: 0.75 },
-        { x: 3, y: 0.79 },
-      ],
-      [
-        { x: 1, y: 0.7 },
-        { x: 2, y: 0.75 },
-        { x: 3, y: 0.79 },
-      ],
-      [
-        { x: 1, y: 0.9 },
-        { x: 2, y: 0.95 },
-        { x: 3, y: 0.99 },
-      ],
-    ],
-  ];
   const name = model.find((item) => item.runId === Number(id));
   const legend = model.filter((item) => item.runId === Number(id));
 
   return (
     <div>
-      <Header title={name ? name.runName : name} id={id} navId={2}></Header>
-      {/* <RunTableComponent
-        totalRuns={totalRun}
-        models={model}
-      ></RunTableComponent> */}
+      <Header title={name ? name.runName : name} id={id} navId={2}></Header>\
       <SectionsComponent
         models={legend ? legend : model}
-        // graph={result.length >= chartIndicators.length ? result : sample}
-        graph={result.length >= chartIndicators.length ? result : sample}
+        isLoading={isGraphLoading}
+        graph={result}
       ></SectionsComponent>
-      {/* <SystemComponent
-        models={model}
-        graph={result.length >= chartIndicators.length ? result : sample}
-      ></SystemComponent> */}
     </div>
   );
 };

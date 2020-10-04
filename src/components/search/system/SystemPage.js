@@ -13,9 +13,8 @@ const MatrixsPage = () => {
 
   const graph = useSelector((state) => state.model.graphData);
   const model = useSelector((state) => state.model.models);
-
+  const isGraphLoading = useSelector((state) => state.model.isGraphLoading);
   const chartIndicators = useSelector((state) => state.model.chartIndicators);
-  const totalRun = 1;
 
   useEffect(() => {
     dispatch(Actions.getIndicators);
@@ -44,42 +43,6 @@ const MatrixsPage = () => {
     }
   }
 
-  const sample = [
-    [
-      [
-        { x: 1, y: 0.7 },
-        { x: 2, y: 0.75 },
-        { x: 3, y: 0.79 },
-      ],
-      [
-        { x: 1, y: 0.7 },
-        { x: 2, y: 0.75 },
-        { x: 3, y: 0.79 },
-      ],
-      [
-        { x: 1, y: 0.7 },
-        { x: 2, y: 0.75 },
-        { x: 3, y: 0.79 },
-      ],
-    ],
-    [
-      [
-        { x: 1, y: 0.7 },
-        { x: 2, y: 0.75 },
-        { x: 3, y: 0.79 },
-      ],
-      [
-        { x: 1, y: 0.7 },
-        { x: 2, y: 0.75 },
-        { x: 3, y: 0.79 },
-      ],
-      [
-        { x: 1, y: 0.9 },
-        { x: 2, y: 0.95 },
-        { x: 3, y: 0.99 },
-      ],
-    ],
-  ];
   const name = model.find((item) => item.runId === Number(id));
   const legend = model.filter((item) => item.runId === Number(id));
   console.log('graph', graph);
@@ -89,7 +52,8 @@ const MatrixsPage = () => {
 
       <SystemComponent
         models={legend ? legend : model}
-        graph={result.length >= chartIndicators.length ? result : sample}
+        isLoading={isGraphLoading}
+        graph={result}
       ></SystemComponent>
     </div>
   );
