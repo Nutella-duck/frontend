@@ -7,6 +7,8 @@ class ProjectItemList extends Component {
     const userNumber = [2, 3, 1];
     const hoursNumber = [7, 12, 1];
 
+    console.log(projects);
+    console.log(typeof projects);
     const projectList = projects.map((project, index) => (
       <Col sm={4} style={{ padding: '0' }} key={index}>
         <ProjectItem

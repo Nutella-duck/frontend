@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import RunTableComponent from './table/RunTableComponent';
 import Header from './WorkSpaceHeader';
@@ -23,8 +24,21 @@ const WorkSpaceComponent = () => {
   const chartIndicators = useSelector((state) => state.model.chartIndicators);
   const isGraphLoading = useSelector((state) => state.model.isGraphLoading);
 
+<<<<<<< HEAD
   const result = useSelector(Selectors.getResult(chartIndicators, totalRun));
   const modelName = useSelector(Selectors.getSelectedModelName());
+=======
+
+  const systemIndicators = [
+    {
+      cpu: null,
+      gpu: null,
+      net: null,
+      disk: null,
+    },
+  ];
+
+>>>>>>> 5389c4edb8a17bf1c7caad118c6c71190c1106fb
   useEffect(() => {
     dispatch(Actions.getResult(id));
     dispatch(Actions.getIndicators);
