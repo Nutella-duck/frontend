@@ -14,3 +14,4 @@ export const GET_MODEL_LIST_SUCCESS = success(GET_MODEL_LIST);
 export const GET_MODEL_LIST_FAIL = fail(GET_MODEL_LIST);
 export const GET_MODEL_LIST_LOADING = loading(GET_MODEL_LIST);
 export const FETCH_SELECTED_MODEL = '@Model/FETCH_SELECTED_MODEL';
+export const GET_SELECTED_MODEL = '@Model/GET_SELECTED_MODEL';

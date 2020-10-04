@@ -6,7 +6,7 @@ const initialState = {
   graphData: [{ stepId: 1, runName: 'r1', stepNumber: 1, accuracy: 0.1 }],
   chartIndicators: ['accuracy', 'loss'],
   isGraphLoading: true,
-  selectedModel: undefined,
+  selectedModel: [],
   models: [
     {
       NAME: 'project_test',
@@ -131,6 +131,9 @@ const ModelReducer = (state = initialState, action) => {
     case Actions.GET_INDICATORS: {
       return { state };
     }
+    case Actions.GET_SELECTED_MODEL: {
+      return { state };
+    }
     case Actions.FETCH_ALL_MODEL_DATA: {
       return {
         ...state,
@@ -162,6 +165,7 @@ const ModelReducer = (state = initialState, action) => {
         selectedModel: action.selectedModel,
       };
     }
+
     case '@Model/GET_MODEL_SUCCESS': {
       return {
         ...state,

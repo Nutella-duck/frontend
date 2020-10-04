@@ -132,7 +132,7 @@ class table extends PureComponent {
     // var selectedRows = this.mgrid.ag.this.gridOptions.getSelectedRows();
     const selectedRows = this.gridApi.getSelectedRows();
     console.log(selectedRows);
-    inputSelectedModel(selectedRows[0]);
+    inputSelectedModel(selectedRows);
   };
   onCellClicked(event) {
     console.log(

@@ -47,6 +47,11 @@ export const getIndicators = () => {
     type: AT.GET_INDICATORS,
   };
 };
+export const getSelectedModel = () => {
+  return {
+    type: AT.GET_SELECTED_MODEL,
+  };
+};
 
 export const getAllModelData = (modelId) => async (dispatch, getState) => {
   dispatch(getmodelListLoading);

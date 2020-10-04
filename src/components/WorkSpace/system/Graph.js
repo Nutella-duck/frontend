@@ -21,8 +21,7 @@ class Graph extends Component {
     const Line = LineSeries;
 
     const { models, graph } = this.props;
-
-    const model_name = models.map((model) => model.runName);
+    const model_name = models;
     const _onMouseLeave = () => {
       this.setState({ crosshairValues: [] });
     };
@@ -49,7 +48,7 @@ class Graph extends Component {
             values={this.state.crosshairValues}
             className={'test-class-name'}
             // itemsFormat={(d) => [
-            //   { title: model_name[0], value: d.y },
+            //   { title: model_name[0], value: d[0].y },
             //   // { title: model_name[1], value: d[1].y },
             //   // { title: model_name[2], value: d[2].y },
             // ]}

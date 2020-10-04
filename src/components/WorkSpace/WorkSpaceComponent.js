@@ -22,9 +22,9 @@ const WorkSpaceComponent = () => {
   const ProjectName = modelOfTheProject[0].projectName;
   const chartIndicators = useSelector((state) => state.model.chartIndicators);
   const isGraphLoading = useSelector((state) => state.model.isGraphLoading);
-
+  //const modelName = useSelector((state) => state.model.selectedModel);
   const result = useSelector(Selectors.getResult(chartIndicators, totalRun));
-
+  const modelName = useSelector(Selectors.getSelectedModelName());
   useEffect(() => {
     dispatch(Actions.getResult(id));
     dispatch(Actions.getIndicators);
@@ -33,13 +33,11 @@ const WorkSpaceComponent = () => {
     if (totalRun > 0) {
       dispatch(Actions.getGraphs(id, chartIndicators, totalRun));
       // const time = setInterval(function () {
-      //   console.log('30초!', totalRun);
-
       //   dispatch(Actions.getGraphs(id, chartIndicators, totalRun));
       // }, 5000);
     }
   }, [totalRun]);
-  console.log('본문에서 찾는것은...', result);
+
   return (
     <div>
       <Header projectId={id} ProjectName={ProjectName}></Header>
@@ -48,13 +46,13 @@ const WorkSpaceComponent = () => {
         models={model}
       ></RunTableComponent>
       <SectionsComponent
-        models={model}
+        models={modelName}
         isLoading={isGraphLoading}
         // graph={result.length >= chartIndicators.length ? result : sample}
         graph={result}
       ></SectionsComponent>
       <SystemComponent
-        models={model}
+        models={modelName}
         isLoading={isGraphLoading}
         graph={result}
       ></SystemComponent>

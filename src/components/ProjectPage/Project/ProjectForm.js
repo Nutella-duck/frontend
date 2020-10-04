@@ -61,7 +61,7 @@ const ProjectForm = ({
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-
+      <ProjectFooter></ProjectFooter>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Container>
@@ -138,7 +138,6 @@ const ProjectForm = ({
           </Button>
         </Modal.Footer>
       </Modal>
-      <ProjectFooter></ProjectFooter>
     </>
   );
 };
