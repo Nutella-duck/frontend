@@ -15,15 +15,6 @@ const MatrixsPage = () => {
   const model = useSelector((state) => state.model.models);
   console.log('model', model);
   const chartIndicators = useSelector((state) => state.model.chartIndicators);
-  const totalRun = 1;
-  const systemIndicators = [
-    {
-      cpu: null,
-      gpu: null,
-      net: null,
-      disk: null,
-    },
-  ];
 
   useEffect(() => {
     dispatch(Actions.getIndicators);
@@ -88,9 +79,9 @@ const MatrixsPage = () => {
       ],
     ],
   ];
-  const name = model.find((item) => item.runId == id);
-  const legend = model.filter((item) => item.runId == id);
-  console.log('name', name);
+  const name = model.find((item) => item.runId === Number(id));
+  const legend = model.filter((item) => item.runId === Number(id));
+
   return (
     <div>
       <Header title={name ? name.runName : name} id={id} navId={2}></Header>

@@ -80,21 +80,13 @@ const MatrixsPage = () => {
       ],
     ],
   ];
-  const name = model.find((item) => item.runId == id);
-  const legend = model.filter((item) => item.runId == id);
+  const name = model.find((item) => item.runId === Number(id));
+  const legend = model.filter((item) => item.runId === Number(id));
   console.log('graph', graph);
   return (
     <div>
       <Header title={name ? name.runName : name} id={id} navId={3}></Header>
-      {/* <RunTableComponent
-        totalRuns={totalRun}
-        models={model}
-      ></RunTableComponent> */}
-      {/* <SectionsComponent
-        models={model}
-        // graph={result.length >= chartIndicators.length ? result : sample}
-        graph={result.length >= chartIndicators.length ? result : sample}
-      ></SectionsComponent> */}
+
       <SystemComponent
         models={legend ? legend : model}
         graph={result.length >= chartIndicators.length ? result : sample}
