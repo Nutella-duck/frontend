@@ -1,79 +1,45 @@
 import * as Actions from './actionTypes';
 
 const initialState = {
-  totalRun: [{ total_run: '0' }],
-  index: 8,
-  graphData: [{ stepId: 1, runName: 'r1', stepNumber: 1, accuracy: 0.1 }],
-  chartIndicators: ['accuracy', 'loss'],
-  isGraphLoading: true,
-  selectedModel: [],
-  models: [],
+ 
+  // title:"titlereduce",
+ hpoData: [
+    { name: 'hpo1', state: 'running', created: 35000, computedTime: '1hours', runCount: 115,createdBy:'leehaein' },{computedTime: "1hours"
+    ,created: 35000,
+    createdBy: "leehaein",
+    name: "dfwe",
+    runCount: 100,
+    state: "gewg"},
+    { name: 'hpo1', state: 'running', created: 35000, computedTime: '1hours', runCount: 115,createdBy:'leehaein'  },{ name: 'hpo1', state: 'running', created: 35000, computedTime: '1hours', runCount: 115,createdBy:'leehaein'  },
+  ]
 };
 
-const ModelReducer = (state = initialState, action) => {
+
+const HpoReducer = (state = initialState, action) => {
   switch (action.type) {
-    case Actions.ADD_MODEL: {
-      const { models } = state;
-      const model = {};
-      model.id = 1;
-      model.name = action.name;
-      models.concat(model);
+    case Actions.FETCH_ALL_HPO_DATA: {
+    
       return {
         ...state,
-        models: models.concat(model),
+       
       };
     }
-    case Actions.GET_INDICATORS: {
-      return { state };
-    }
-    case Actions.GET_SELECTED_MODEL: {
-      return { state };
-    }
-    case Actions.FETCH_ALL_MODEL_DATA: {
+    case Actions.ADD_HPO_DATA:{
+      
+      const current =  action.hpoData;
+     const {before} = state;
+  
+    console.log(current)
       return {
-        ...state,
-        models: action.modelData,
-      };
+        ...state, 
+        hpoData:[...state.hpoData,action.hpoData]
+        
+      }
     }
-    case Actions.FETCH_NUMBER_OF_MODEL: {
-      return {
-        ...state,
-        totalRun: action.totalRun,
-      };
-    }
-    case Actions.FETCH_GRAPH_DATA: {
-      // state.graphData.unshift (action.graphData)
-      var data = [];
-      data = action.graphData.map((a) => a.accuracy);
-      state.graphData.unshift(data);
-      return {
-        ...state,
-        isGraphLoading: true,
-
-        // graphData:state.graphData.concat(data)
-      };
-    }
-    case Actions.FETCH_SELECTED_MODEL: {
-      const { selectedModel } = state;
-      return {
-        ...state,
-        selectedModel: action.selectedModel,
-      };
-    }
-
-    case '@Model/GET_MODEL_SUCCESS': {
-      return {
-        ...state,
-        totalRun: action.payload.totalRun,
-        models: action.payload.models,
-      };
-    }
-    case Actions.GET_GRAPH_SUCCESS: {
-      return { ...state, graphData: action.payload, isGraphLoading: false };
-    }
+    
     default: {
       return state;
     }
   }
 };
-export default ModelReducer;
+export default HpoReducer;

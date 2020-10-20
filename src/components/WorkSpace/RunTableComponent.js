@@ -6,8 +6,12 @@ import React, { useState } from 'react';
 import { render } from 'react-dom';
 import { AgGridColumn, AgGridReact } from 'ag-grid-react';
 import { RowNodeCache } from 'ag-grid-community';
-
+import * as Actions from '../../data/hpo/actions';
+import { useSelector, useDispatch } from 'react-redux';
+import HpoReducer from '../../data/hpo/reducers';
 const App = () => {
+  const dispatch = useDispatch();
+  const rowData = useSelector((state)=>state.hpo.hpoData)
   const [gridApi, setGridApi] = useState(null);
   const [gridColumnApi, setGridColumnApi] = useState(null);
   const [show, setShow] = useState(false);
@@ -35,10 +39,10 @@ const onCreate=()=>{
     runCount: apiKey,
     created: 35000, computedTime: '1hours',createdBy:'leehaein'
   };
-  setRowData(rowData.concat(HPOInfoData));
+  // setRowData(rowData.concat(HPOInfoData));
 
 
-  // dispatch(Actions.addProject(projectInfoData));
+   dispatch(Actions.addHpo(HPOInfoData));
 
   // state.push(projectInfoData);
   
@@ -61,15 +65,15 @@ const onChange = (e) => {
     onCreate();
   };
 
-  const [rowData, setRowData] = useState([
-    { name: 'hpo1', state: 'running', created: 35000, computedTime: '1hours', runCount: 115,createdBy:'leehaein' },{computedTime: "1hours"
-    ,created: 35000,
-    createdBy: "leehaein",
-    name: "dfwe",
-    runCount: 100,
-    state: "gewg"},
-    { name: 'hpo1', state: 'running', created: 35000, computedTime: '1hours', runCount: 115,createdBy:'leehaein'  },{ name: 'hpo1', state: 'running', created: 35000, computedTime: '1hours', runCount: 115,createdBy:'leehaein'  },
-  ]);
+  // const [rowData, setRowData] = useState([
+  //   { name: 'hpo1', state: 'running', created: 35000, computedTime: '1hours', runCount: 115,createdBy:'leehaein' },{computedTime: "1hours"
+  //   ,created: 35000,
+  //   createdBy: "leehaein",
+  //   name: "dfwe",
+  //   runCount: 100,
+  //   state: "gewg"},
+  //   { name: 'hpo1', state: 'running', created: 35000, computedTime: '1hours', runCount: 115,createdBy:'leehaein'  },{ name: 'hpo1', state: 'running', created: 35000, computedTime: '1hours', runCount: 115,createdBy:'leehaein'  },
+  // ]);
 
   function onGridReady(params) {
     setGridApi(params.api);
