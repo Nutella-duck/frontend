@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import logo from './logo-nutella-s@3x.jpg';
 import { Navbar, Nav, Image, NavDropdown } from 'react-bootstrap';
@@ -66,7 +65,7 @@ const WorkSpaceHeader = ({ projectId, ProjectName }) => {
           <Nav.Link eventKey="/chart">REPORTS</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="link-2">HPO</Nav.Link>
+          <Nav.Link href="/hpo">HPO</Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link eventKey="link-2">COMPRESSION</Nav.Link>

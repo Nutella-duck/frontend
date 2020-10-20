@@ -6,7 +6,7 @@ import TEST from '../components/search/main';
 import MATRIXS from '../components/search/Matrixs/MatrixsPage';
 import SYSTEM from '../components/search/system/SystemPage';
 import WorkSpaceComponent from '../components/WorkSpace/WorkSpaceComponent';
-
+import HPO from '../components/WorkSpace/HPOPage';
 export const RouterConfig = [
   {
     path: '/',
@@ -46,5 +46,10 @@ export const RouterConfig = [
     path: '/test',
     exact: true,
     component: () => <TEST></TEST>,
+  },
+  {
+    path: '/hpo',
+    exact: true,
+    component: () => <HPO></HPO>,
   },
 ];
