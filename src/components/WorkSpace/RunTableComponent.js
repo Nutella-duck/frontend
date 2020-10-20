@@ -11,21 +11,50 @@ const App = () => {
   const [gridColumnApi, setGridColumnApi] = useState(null);
 
   const [rowData, setRowData] = useState([
-    { name: 'Toyota', state: 'Celica', created: 35000, computedTime: '1hours' },
-    { name: 'Ford', state: 'Mondeo', created: 32000, computedTime: '1hours' },
-    {
-      name: 'Porsche',
-      state: 'Boxter',
-      created: 72000,
-      computedTime: '1hours',
-    },
+    { name: 'hpo1', state: 'running', created: 35000, computedTime: '1hours', runCount: 115,createdBy:'leehaein' },
+    { name: 'hpo1', state: 'running', created: 35000, computedTime: '1hours', runCount: 115,createdBy:'leehaein'  },{ name: 'hpo1', state: 'running', created: 35000, computedTime: '1hours', runCount: 115,createdBy:'leehaein'  },
   ]);
 
   function onGridReady(params) {
     setGridApi(params.api);
     setGridColumnApi(params.columnApi);
   }
+const columnDef =[
+  {
+    headerName: '#',
 
+    sortable: true,
+    filter: true,
+    checkboxSelection: true,
+  },
+  { headerName: 'NAME', field: 'name', sortable: true, filter: true },
+  { headerName: 'STATE', field: 'state', sortable: true, filter: true },
+  {
+    headerName: 'CREATED',
+    field: 'created',
+    sortable: true,
+    filter: true,
+  },
+  {
+    headerName: 'CREATEDBY',
+    field: 'createdBy',
+    sortable: true,
+    filter: true,
+  },
+  {
+    headerName: 'COMPUTEDTIME',
+    field: 'computedTime',
+    sortable: true,
+    filter: true,
+  },
+  {
+    headerName: 'RUNCOUNT',
+    field: 'runCount',
+    sortable: true,
+    filter: true,
+  },
+  
+]
   return (
     // <div
     //   className="ag-theme-alpine"
@@ -56,11 +85,8 @@ const App = () => {
       >
         {/* <p>{data[0].runName.isSelected() ? "true" : "false"}</p>                     */}
 
-        <AgGridReact onGridReady={onGridReady} rowData={rowData}>
-          <AgGridColumn field="name"></AgGridColumn>
-          <AgGridColumn field="state"></AgGridColumn>
-          <AgGridColumn field="created"></AgGridColumn>
-          <AgGridColumn field ='computedTime'></AgGridColumn>
+        <AgGridReact onGridReady={onGridReady} rowData={rowData} columnDefs={columnDef}>
+         
         </AgGridReact>
       </div>
     </>

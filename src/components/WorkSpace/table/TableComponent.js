@@ -145,7 +145,7 @@ class table extends PureComponent {
       totalRuns,
       inputSelectedModel,
     } = this.props;
-
+console.log(tableRows)
     return (
       <>
         <Navbar bg="light" variant="light" style={{ borderRadius: '0.7rem' }}>
