@@ -124,7 +124,7 @@ const columnDef =[
     // </div>
     <>
       <Navbar bg="light" variant="light" style={{ borderRadius: '0.7rem' }}>
-        <Navbar.Brand style={{ fontWeight: 'bold' }}>7 Runs</Navbar.Brand>
+        <Navbar.Brand style={{ fontWeight: 'bold' }}>{rowData.length} Runs</Navbar.Brand>
         <Form inline>
           <FormControl
             type="text"

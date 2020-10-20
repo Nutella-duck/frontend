@@ -1,0 +1,17 @@
+// export const GET_PRODUCT_DETAIL_SUCCESS = success(GET_PRODUCT_DETAIL);
+// export const GET_PRODUCT_DETAIL_FAIL = fail(GET_PRODUCT_DETAIL);
+// export const GET_PRODUCT_DETAIL_LOADING = loading(GET_PRODUCT_DETAIL);
+import { fail, loading, success } from '../utils';
+export const GET_MODEL_LIST = 'GET_MODEL_LIST';
+export const FETCH_ALL_MODEL_DATA = '@Model/FETCH_ALL_MODEL_DATA';
+export const ADD_MODEL = '@Model/ADD_MODEL';
+export const FETCH_NUMBER_OF_MODEL = '@Model/FETCH_NUMBER_OF_MODEL';
+export const FETCH_GRAPH_DATA = '@Model/FETCH_GRAPH_DATA';
+export const GET_MODEL_SUCCESS = '@Model/GET_MODEL_SUCCESS';
+export const GET_GRAPH_SUCCESS = '@Modle/GET_GRAPH_SUCCESS';
+export const GET_INDICATORS = '@Modle/GET_INDICATORS';
+export const GET_MODEL_LIST_SUCCESS = success(GET_MODEL_LIST);
+export const GET_MODEL_LIST_FAIL = fail(GET_MODEL_LIST);
+export const GET_MODEL_LIST_LOADING = loading(GET_MODEL_LIST);
+export const FETCH_SELECTED_MODEL = '@Model/FETCH_SELECTED_MODEL';
+export const GET_SELECTED_MODEL = '@Model/GET_SELECTED_MODEL';
