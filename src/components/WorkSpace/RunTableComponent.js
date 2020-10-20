@@ -60,6 +60,7 @@ const App = () => {
           <AgGridColumn field="name"></AgGridColumn>
           <AgGridColumn field="state"></AgGridColumn>
           <AgGridColumn field="created"></AgGridColumn>
+          <AgGridColumn field ='computedTime'></AgGridColumn>
         </AgGridReact>
       </div>
     </>
