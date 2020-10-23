@@ -1,8 +1,17 @@
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-import { Navbar, Form, FormControl, Button,Modal,Col,Container,Row } from 'react-bootstrap';
+import {
+  Navbar,
+  Form,
+  FormControl,
+  Button,
+  Modal,
+  Col,
+  Container,
+  Row,
+} from 'react-bootstrap';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { render } from 'react-dom';
 import { AgGridColumn, AgGridReact } from 'ag-grid-react';
 import { RowNodeCache } from 'ag-grid-community';
@@ -11,49 +20,53 @@ import { useSelector, useDispatch } from 'react-redux';
 import HpoReducer from '../../data/hpo/reducers';
 const App = () => {
   const dispatch = useDispatch();
-  const rowData = useSelector((state)=>state.hpo.hpoData)
+  useEffect(() => {
+    dispatch(Actions.getAllModelData());
+  }, []);
+  const rowData = useSelector((state) => state.hpo.hpoData);
   const [gridApi, setGridApi] = useState(null);
   const [gridColumnApi, setGridColumnApi] = useState(null);
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
   const [inputs, setInputs] = useState({
     HPOName: '',
     description: '',
   });
   const { HPOName, description } = inputs;
-  const [apiKey,setApiKey]=useState();
-const getKey=()=>{
- setApiKey(100);
-}
-const onCreate=()=>{
-  setInputs({
-    HPOName: '',
-    description: '',
-  });
-  console.log("setinputs",inputs);
-  let HPOInfoData = {
-    name: inputs.HPOName,
-    state: inputs.description,
-    runCount: apiKey,
-    created: 35000, computedTime: '1hours',createdBy:'leehaein'
+  const [apiKey, setApiKey] = useState();
+  const getKey = () => {
+    setApiKey(100);
   };
-  // setRowData(rowData.concat(HPOInfoData));
+  const onCreate = () => {
+    setInputs({
+      HPOName: '',
+      description: '',
+    });
+    console.log('setinputs', inputs);
+    let HPOInfoData = {
+      name: inputs.HPOName,
+      state: inputs.description,
+      runCount: apiKey,
+      created: 35000,
+      computedTime: '1hours',
+      createdBy: 'leehaein',
+    };
+    // setRowData(rowData.concat(HPOInfoData));
 
+    dispatch(Actions.addHpo(HPOInfoData));
 
-   dispatch(Actions.addHpo(HPOInfoData));
-
-  // state.push(projectInfoData);
-  
-}
-const onChange = (e) => {
-  const { name, value } = e.target;
-  setInputs({
-    ...inputs,
-    [name]: value,
-  });
-};
+    // state.push(projectInfoData);
+  };
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value,
+    });
+  };
   const handleShow2 = () => {
     getKey();
     setShow2(true);
@@ -79,42 +92,41 @@ const onChange = (e) => {
     setGridApi(params.api);
     setGridColumnApi(params.columnApi);
   }
-const columnDef =[
-  {
-    headerName: '#',
+  const columnDef = [
+    {
+      headerName: '#',
 
-    sortable: true,
-    filter: true,
-    checkboxSelection: true,
-  },
-  { headerName: 'NAME', field: 'name', sortable: true, filter: true },
-  { headerName: 'STATE', field: 'state', sortable: true, filter: true },
-  {
-    headerName: 'CREATED',
-    field: 'created',
-    sortable: true,
-    filter: true,
-  },
-  {
-    headerName: 'CREATEDBY',
-    field: 'createdBy',
-    sortable: true,
-    filter: true,
-  },
-  {
-    headerName: 'COMPUTEDTIME',
-    field: 'computedTime',
-    sortable: true,
-    filter: true,
-  },
-  {
-    headerName: 'RUNCOUNT',
-    field: 'runCount',
-    sortable: true,
-    filter: true,
-  },
-  
-]
+      sortable: true,
+      filter: true,
+      checkboxSelection: true,
+    },
+    { headerName: 'NAME', field: 'name', sortable: true, filter: true },
+    { headerName: 'STATE', field: 'state', sortable: true, filter: true },
+    {
+      headerName: 'CREATED',
+      field: 'created',
+      sortable: true,
+      filter: true,
+    },
+    {
+      headerName: 'CREATEDBY',
+      field: 'createdBy',
+      sortable: true,
+      filter: true,
+    },
+    {
+      headerName: 'COMPUTEDTIME',
+      field: 'computedTime',
+      sortable: true,
+      filter: true,
+    },
+    {
+      headerName: 'RUNCOUNT',
+      field: 'runCount',
+      sortable: true,
+      filter: true,
+    },
+  ];
   return (
     // <div
     //   className="ag-theme-alpine"
@@ -128,7 +140,9 @@ const columnDef =[
     // </div>
     <>
       <Navbar bg="light" variant="light" style={{ borderRadius: '0.7rem' }}>
-        <Navbar.Brand style={{ fontWeight: 'bold' }}>{rowData.length} Runs</Navbar.Brand>
+        <Navbar.Brand style={{ fontWeight: 'bold' }}>
+          {rowData.length} Runs
+        </Navbar.Brand>
         <Form inline>
           <FormControl
             type="text"
@@ -157,11 +171,7 @@ const columnDef =[
                 <p>Project Name</p>
               </Col>
               <Col>
-                <input
-                  name="HPOName"
-                  onChange={onChange}
-                  value={HPOName}
-                />
+                <input name="HPOName" onChange={onChange} value={HPOName} />
               </Col>
             </Row>
             <Row>
@@ -221,9 +231,11 @@ const columnDef =[
       >
         {/* <p>{data[0].runName.isSelected() ? "true" : "false"}</p>                     */}
 
-        <AgGridReact onGridReady={onGridReady} rowData={rowData} columnDefs={columnDef}>
-         
-        </AgGridReact>
+        <AgGridReact
+          onGridReady={onGridReady}
+          rowData={rowData}
+          columnDefs={columnDef}
+        ></AgGridReact>
       </div>
     </>
   );

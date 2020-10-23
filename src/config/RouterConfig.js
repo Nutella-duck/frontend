@@ -7,6 +7,7 @@ import MATRIXS from '../components/search/Matrixs/MatrixsPage';
 import SYSTEM from '../components/search/system/SystemPage';
 import WorkSpaceComponent from '../components/WorkSpace/WorkSpaceComponent';
 import HPO from '../components/WorkSpace/HPOPage';
+
 export const RouterConfig = [
   {
     path: '/',
@@ -48,7 +49,7 @@ export const RouterConfig = [
     component: () => <TEST></TEST>,
   },
   {
-    path: '/hpo',
+    path: '/hpolist/:id',
     exact: true,
     component: () => <HPO></HPO>,
   },

@@ -10,8 +10,9 @@ import * as Selectors from '../../data/model/selectors.js';
 
 import { useParams } from 'react-router-dom';
 
-const WorkSpaceComponent = () => {
+const HPOListComponents = () => {
   const { id } = useParams();
+  console.log(id);
 
   const dispatch = useDispatch();
 
@@ -26,7 +27,7 @@ const WorkSpaceComponent = () => {
 
   return (
     <div>
-      <Header projectId="1" ProjectName={'nutella'}></Header>
+      <Header projectId={id} ProjectName={'nutella'}></Header>
       <RunTableComponent
         totalRuns={totalRun}
         models={model}
@@ -35,4 +36,4 @@ const WorkSpaceComponent = () => {
   );
 };
 
-export default WorkSpaceComponent;
+export default HPOListComponents;
