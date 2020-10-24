@@ -30,7 +30,7 @@ const App = () => {
   const [show2, setShow2] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  const [filterText, setFilterText] = useState(null);
   const [inputs, setInputs] = useState({
     HPOName: '',
     description: '',
@@ -45,7 +45,7 @@ const App = () => {
       HPOName: '',
       description: '',
     });
-    console.log('setinputs', inputs);
+
     let HPOInfoData = {
       name: inputs.HPOName,
       state: inputs.description,
@@ -87,11 +87,15 @@ const App = () => {
   //   state: "gewg"},
   //   { name: 'hpo1', state: 'running', created: 35000, computedTime: '1hours', runCount: 115,createdBy:'leehaein'  },{ name: 'hpo1', state: 'running', created: 35000, computedTime: '1hours', runCount: 115,createdBy:'leehaein'  },
   // ]);
-
+  function onQuickFilterText(event) {
+    setFilterText(event.target.value);
+    console.log(filterText);
+  }
   function onGridReady(params) {
     setGridApi(params.api);
     setGridColumnApi(params.columnApi);
   }
+
   const columnDef = [
     {
       headerName: '#',
@@ -149,6 +153,7 @@ const App = () => {
             id="quickFilter"
             placeholder="Search"
             className="mr-sm-2"
+            onChange={onQuickFilterText}
           />
         </Form>
         <Button onClick={handleShow}>New HPO</Button>
@@ -235,6 +240,7 @@ const App = () => {
           onGridReady={onGridReady}
           rowData={rowData}
           columnDefs={columnDef}
+          quickFilterText={filterText}
         ></AgGridReact>
       </div>
     </>

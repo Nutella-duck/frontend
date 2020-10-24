@@ -14,7 +14,6 @@ const WorkSpaceHeader = ({ projectId, projectName }) => {
   console.log('menu', menu);
   console.log('nav id', id);
 
-  // const currentTitle = projectName;
   const currentTitle =
     menu[menu.findIndex((v) => v.projectId === Number(projectId))]?.projectName;
 
