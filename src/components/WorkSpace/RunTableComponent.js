@@ -24,6 +24,7 @@ const App = () => {
     dispatch(Actions.getAllModelData());
   }, []);
   const rowData = useSelector((state) => state.hpo.hpoData);
+  console.log(rowData);
   const [gridApi, setGridApi] = useState(null);
   const [gridColumnApi, setGridColumnApi] = useState(null);
   const [show, setShow] = useState(false);
@@ -78,15 +79,7 @@ const App = () => {
     onCreate();
   };
 
-  // const [rowData, setRowData] = useState([
-  //   { name: 'hpo1', state: 'running', created: 35000, computedTime: '1hours', runCount: 115,createdBy:'leehaein' },{computedTime: "1hours"
-  //   ,created: 35000,
-  //   createdBy: "leehaein",
-  //   name: "dfwe",
-  //   runCount: 100,
-  //   state: "gewg"},
-  //   { name: 'hpo1', state: 'running', created: 35000, computedTime: '1hours', runCount: 115,createdBy:'leehaein'  },{ name: 'hpo1', state: 'running', created: 35000, computedTime: '1hours', runCount: 115,createdBy:'leehaein'  },
-  // ]);
+  
   function onQuickFilterText(event) {
     setFilterText(event.target.value);
     console.log(filterText);
@@ -94,6 +87,10 @@ const App = () => {
   function onGridReady(params) {
     setGridApi(params.api);
     setGridColumnApi(params.columnApi);
+  }
+  function onCellClicked(event){
+    console.log(event.data)
+    window.location.href=`/hpo/${event.data.runId}`;
   }
 
   const columnDef = [
@@ -132,16 +129,7 @@ const App = () => {
     },
   ];
   return (
-    // <div
-    //   className="ag-theme-alpine"
-    //   style={{ height: '1600px', width: 'px' }}
-    // >
-    //   <AgGridReact onGridReady={onGridReady} rowData={rowData}>
-    //     <AgGridColumn field="name"></AgGridColumn>
-    //     <AgGridColumn field="state"></AgGridColumn>
-    //     <AgGridColumn field="created"></AgGridColumn>
-    //   </AgGridReact>
-    // </div>
+    
     <>
       <Navbar bg="light" variant="light" style={{ borderRadius: '0.7rem' }}>
         <Navbar.Brand style={{ fontWeight: 'bold' }}>
@@ -234,13 +222,14 @@ const App = () => {
         className="ag-theme-alpine"
         style={{ height: '1600px', width: '2000px' }}
       >
-        {/* <p>{data[0].runName.isSelected() ? "true" : "false"}</p>                     */}
+                           
 
         <AgGridReact
           onGridReady={onGridReady}
           rowData={rowData}
           columnDefs={columnDef}
-          quickFilterText={filterText}
+          quickFilterText={filterText} 
+          onCellClicked={onCellClicked}
         ></AgGridReact>
       </div>
     </>

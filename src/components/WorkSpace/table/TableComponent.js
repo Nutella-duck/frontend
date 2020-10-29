@@ -145,7 +145,7 @@ class table extends PureComponent {
       totalRuns,
       inputSelectedModel,
     } = this.props;
-console.log(tableRows)
+
     return (
       <>
         <Navbar bg="light" variant="light" style={{ borderRadius: '0.7rem' }}>
@@ -166,7 +166,7 @@ console.log(tableRows)
           className="ag-theme-alpine"
           style={{ height: '100%', width: '100%' }}
         >
-          {/* <p>{data[0].runName.isSelected() ? "true" : "false"}</p>                     */}
+         
 
           <AgGridReact
             rowDeselection={true}

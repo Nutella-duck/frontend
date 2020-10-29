@@ -38,7 +38,7 @@ const WorkSpaceHeader = ({ projectId, projectName }) => {
       />
 
       <NavDropdown
-        title={currentTitle ? currentTitle : 'nutella'}
+        title={currentTitle ? currentTitle : ''}
         id="nav-dropdown"
       >
         {menu.map((v) => (
