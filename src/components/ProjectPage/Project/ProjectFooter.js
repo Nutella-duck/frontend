@@ -21,7 +21,7 @@ const ProjectFooter = () => {
         onClick={() => handleClick(number)}
       >
         {number}
-      </Pagination.Item>,
+      </Pagination.Item>
     );
   }
   return <Pagination className="mr-auto">{items}</Pagination>;

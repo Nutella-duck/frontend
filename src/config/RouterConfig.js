@@ -10,6 +10,7 @@ import HPOList from '../components/WorkSpace/HPOPage';
 import HPOSpace from '../components/HPOSpace/hpopage';
 
 export const RouterConfig = [
+  
   {
     path: '/',
     exact: true,
