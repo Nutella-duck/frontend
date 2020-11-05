@@ -9,12 +9,14 @@ export const fetchAllProjectData = (projectData) => {
     projectData,
   };
 };
+
 export const selectProject = (projectId) => {
   return {
     type: SELECT_POJECT,
     projectId,
   };
 };
+
 export const getAllPorject = (id) => {
   return (dispatch) => {
     return axios
