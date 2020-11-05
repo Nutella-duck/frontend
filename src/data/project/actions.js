@@ -2,17 +2,17 @@ import apis from '../../apis/index';
 
 import * as AT from './actionTypes';
 
-export const checkoutLoading = () => ({
-  type: AT.CHECKOUT_LOADING,
+export const projectLoading = () => ({
+  type: AT.PROJECT_LOADING,
 });
 
-export const checkoutSuccess = (data) => ({
-  type: AT.CHECKOUT_SUCCESS,
+export const projectSuccess = (data) => ({
+  type: AT.PROJECT_SUCCESS,
   data,
 });
 
-export const checkoutFail = (error) => ({
-  type: AT.CHECKOUT_FAIL,
+export const projectFail = (error) => ({
+  type: AT.PROJECT_FAIL,
   error,
 });
 
@@ -36,12 +36,12 @@ export const getAllPorject = (projectId) => async(dispatch,getState)=>{
 export const addProject = (projectData) => async(dispatch,getState)=>{
   
 // await apis.projectApi.fetchAllProject(projectData);
-dispatch(checkoutLoading());
+dispatch(projectLoading());
 try {
   const product = await apis.projectApi.addProject(projectData);
-  dispatch(checkoutSuccess(product));
+  dispatch(projectSuccess(product));
 } catch (e) {
-  dispatch(checkoutFail(e));
+  dispatch(projectFail(e));
 }
 
 };
