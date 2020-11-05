@@ -28,7 +28,7 @@ class ProjectItem extends Component {
                   <BsGear />
                 </Button>
               </Form>
-              <Card.Text>{description}</Card.Text>
+              <Card.Text>{description ? description : "non description"}</Card.Text>
 
               <Table
                 borderless

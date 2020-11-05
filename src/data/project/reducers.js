@@ -1,3 +1,4 @@
+import { checkoutSuccess } from './actions';
 import * as Actions from './actionTypes';
 
 const initialState = {
@@ -65,6 +66,12 @@ const ProjectReducer = (state = initialState, action) => {
         projects: action.projectData,
       };
     }
+    case Actions.CHECKOUT_SUCCESS:
+      console.log(
+        "checkoutSuccess",checkoutSuccess);
+      return action.payload;
+    case Actions.CHECKOUT_FAIL:
+      return state;
     
     default: {
       return state;

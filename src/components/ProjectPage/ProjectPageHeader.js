@@ -2,6 +2,7 @@ import React from "react";
 import logo from "./logo-nutella-s@3x.png";
 import { Navbar, Nav, Image } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+
 import profileImage from "./profile.png";
 const ProjectPageHeader = () => {
   return (

@@ -1,27 +1,35 @@
-
-import React, { Component } from 'react';
-
+import React, { Component, PureComponent } from 'react';
+import { connect } from 'react-redux';
 import { AgGridReact } from 'ag-grid-react';
-
+import * as Actions from '../../../data/model/actions.js';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import { Navbar, Form, FormControl } from 'react-bootstrap';
+
 function isFirstColumn(params) {
   var displayedColumns = params.columnApi.getAllDisplayedColumns();
   var thisIsFirstColumn = displayedColumns[0] === params.column;
   return thisIsFirstColumn;
 }
-function getSelectedRows() {
-  let rowsSelection = this.gridOptions.api.getSelectedRows();
-  console.info(rowsSelection);
-}
-class table extends Component {
+// function getSelectedRows() {
+//   let rowsSelection = this.gridOptions.api.getSelectedRows();
+//   console.info(rowsSelection);
+// }
+
+class table extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       quickFilterText: null,
       totalRuns: 0,
       columnDefs: [
+        {
+          headerName: '#',
+
+          sortable: true,
+          filter: true,
+          checkboxSelection: true,
+        },
         { headerName: 'NAME', field: 'runName', sortable: true, filter: true },
         { headerName: 'STATE', field: 'state', sortable: true, filter: true },
         {
@@ -85,33 +93,58 @@ class table extends Component {
           filter: true,
         },
       ],
+      rowData: [],
+      rowSelection: 'multiple',
+      onCellEditingStarted: function (event) {},
       defaultColDef: {
         flex: 1,
         minWidth: 100,
         resizable: true,
         headerCheckboxSelection: isFirstColumn,
-        checkboxSelection: isFirstColumn,
+        // checkboxSelection: isFirstColumn,
       },
-      rowSelection: 'multiple',
-      rowData: [],
-      getSelectedRows: getSelectedRows,
     };
+    this.gridOptions = {
+      //We register the react date component that ag-grid will use to render
+      //dateComponentFramework: DateComponent,
+      // this is how you listen for events using gridOptions
+      onModelUpdated: function () {},
+
+      // this is a simple property
+      rowBuffer: 10, // no need to set this, the default is fine for almost all scenarios,
+      floatingFilter: true,
+    };
+    this.onGridReady = this.onGridReady.bind(this);
+    // this.onRowSelected = this.onRowSelected.bind(this);
+    // this.onCellClicked = this.onCellClicked.bind(this);
+  }
+
+  onGridReady(params) {
+    this.gridApi = params.api;
   }
 
   onQuickFilterText = (event) => {
     this.setState({ quickFilterText: event.target.value });
   };
-  onSelectionChanged = (event) => {
-    // var rowCount = event.api.getSelectedNodes()
-    // console.log('selection changed, ' + rowCount + ' rows selected');
-    // var selectedRows = this.mgrid.ag.this.gridOptions.getSelectedRows();
-    // console.log(selectedRows);
-  };
 
+  onSelectionChanged = ({ event, inputSelectedModel }) => {
+    // var rowCount = event.api.getSelectedNodes()
+    // var selectedRows = this.mgrid.ag.this.gridOptions.getSelectedRows();
+    const selectedRows = this.gridApi.getSelectedRows();
+    console.log(selectedRows);
+    inputSelectedModel(selectedRows);
+  };
+  onCellClicked(event) {
+    console.log('onCellClicked: ' + event.data.runName);
+    window.location.href = `/run/system/${event.data.runId}`;
+  }
   render() {
-    console.log('테이블2 렌더링 중...');
-    const { tableRows, totalRuns } = this.props;
-    console.log(tableRows);
+    const {
+      selectedModel,
+      tableRows,
+      totalRuns,
+      inputSelectedModel,
+    } = this.props;
 
     return (
       <>
@@ -131,25 +164,38 @@ class table extends Component {
         </Navbar>
         <div
           className="ag-theme-alpine"
-          style={{ height: '200px', width: '1900px' }}
+          style={{ height: '100%', width: '100%' }}
         >
-          {/* <p>{data[0].runName.isSelected() ? "true" : "false"}</p>                     */}
+         
 
           <AgGridReact
+            rowDeselection={true}
+            rowSelection={this.state.rowSelection}
             modules={this.state.modules}
             columnDefs={this.state.columnDefs}
             defaultColDef={this.state.defaultColDef}
-            suppressRowClickSelection={true}
-            rowSelection={this.state.rowSelection}
             onGridReady={this.onGridReady}
             quickFilterText={this.state.quickFilterText}
-            onSelectionChanged={this.onSelectionChanged.bind(this)}
+            onSelectionChanged={this.onSelectionChanged.bind(this, {
+              inputSelectedModel,
+            })}
+            onCellEditingStarted={this.onCellEditingStarted}
+            onCellClicked={this.onCellClicked}
             rowData={tableRows}
+            selectAll={false}
+            // enableColResize={true}
+            // angularCompileRows={true}
+            // angularCompileHeaders={true}
           ></AgGridReact>
         </div>
       </>
     );
   }
 }
-
-export default table;
+const mapDispatchToProps = (dispatch) => ({
+  inputSelectedModel: (model) => dispatch(Actions.fetchSelectedModel(model)),
+});
+const mapStateToProps = (state) => ({
+  selectedModel: state.model.selectedModel,
+});
+export default connect(mapStateToProps, mapDispatchToProps)(table);

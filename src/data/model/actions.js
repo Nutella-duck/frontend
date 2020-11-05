@@ -3,20 +3,19 @@ import apis from '../../apis/index';
 import * as AT from './actionTypes';
 import { createAction } from 'redux-actions';
 
-// export const getProductDetailLoading = () => ({
-//   type: AT.GET_PRODUCT_DETAIL_LOADING,
-// });
+export const getmodelListLoading = () => ({
+  type: AT.GET_MODEL_LIST_LOADING,
+});
 
-// export const getProductDetailSuccess = (data) => ({
-//   type: AT.GET_PRODUCT_DETAIL_SUCCESS,
-//   payload: data,
-// });
+export const getmodelListSuccess = (data) => ({
+  type: AT.GET_MODEL_LIST_SUCCESS,
+  payload: data,
+});
 
-// export const getProductDetailFail = (error) => ({
-//   type: AT.GET_PRODUCT_DETAIL_FAIL,
-//   payload: error,
-// });
-
+export const getmodelListFail = (error) => ({
+  type: AT.GET_MODEL_LIST_FAIL,
+  payload: error,
+});
 export const getModelSuccess = createAction(AT.GET_MODEL_SUCCESS);
 export const getGraphSuccess = createAction(AT.GET_GRAPH_SUCCESS);
 export const fetchAllModelData = (modelData) => {
@@ -31,6 +30,12 @@ export const fetchNumberOfModel = (totalRun) => {
     totalRun,
   };
 };
+export const fetchSelectedModel = (selectedModel) => {
+  return {
+    type: AT.FETCH_SELECTED_MODEL,
+    selectedModel,
+  };
+};
 export const fetchGraphData = (graphData) => {
   return {
     type: AT.FETCH_GRAPH_DATA,
@@ -42,41 +47,66 @@ export const getIndicators = () => {
     type: AT.GET_INDICATORS,
   };
 };
+export const getSelectedModel = () => {
+  return {
+    type: AT.GET_SELECTED_MODEL,
+  };
+};
 
 export const getAllModelData = (modelId) => async (dispatch, getState) => {
-  const model = await apis.modelApi.fetch10model(modelId);
-  dispatch(fetchAllModelData(model));
+  dispatch(getmodelListLoading);
+  try {
+    const model = await apis.modelApi.fetch10model(modelId);
+    dispatch(fetchAllModelData(model));
+  } catch (error) {}
 };
 export const getSelectedModelData = (modelId) => async (dispatch, getState) => {
-  const model = await apis.modelApi.getSelectedModelData(modelId);
-  dispatch(fetchAllModelData(model));
+  dispatch(getmodelListLoading);
+  try {
+    const model = await apis.modelApi.getSelectedModelData(modelId);
+    dispatch(fetchAllModelData(model));
+  } catch (error) {}
 };
 
 export const getNumberOfModel = (modelId) => async (dispatch, getState) => {
-  const model = await apis.modelApi.getNumberOfModel(modelId);
-  dispatch(fetchNumberOfModel(model));
+  dispatch(getmodelListLoading);
+  try {
+    const model = await apis.modelApi.getNumberOfModel(modelId);
+    dispatch(fetchNumberOfModel(model));
+  } catch (error) {}
 };
 
 export const getResult = (modelId) => async (dispatch, getState) => {
-  const [totalRun, models] = await Promise.all([
-    apis.modelApi.getNumberOfModel(modelId),
-    apis.modelApi.getSelectedModelData(modelId),
-  ]);
-  console.log('totalRun', totalRun);
-  dispatch(getModelSuccess({ totalRun, models }));
+  dispatch(getmodelListLoading);
+  try {
+    const [totalRun, models] = await Promise.all([
+      apis.modelApi.getNumberOfModel(modelId),
+      apis.modelApi.getSelectedModelData(modelId),
+    ]);
+    dispatch(getModelSuccess({ totalRun, models }));
+  } catch (error) {}
 };
 
 export const getGraphs = (id, indicator, totalRun) => async (
   dispatch,
   getState,
 ) => {
+  dispatch(getmodelListLoading);
+  try {
+    const graphPromise = [];
+    for (let i = 0; i < indicator.length; i++) {
+      for (let j = 0; j < totalRun; j++)
+        graphPromise.push(apis.modelApi.getGraphData(j + 1, indicator[i]));
+    }
+    const graph = await Promise.all(graphPromise);
+    dispatch(getGraphSuccess(graph));
+  } catch (erro) {}
+};
+export const getOneGraph = (id, indicator) => async (dispatch, getState) => {
   const graphPromise = [];
   for (let i = 0; i < indicator.length; i++) {
-    for (let j = 0; j < totalRun; j++)
-      graphPromise.push(apis.modelApi.getGraphData(j + 1, indicator[i]));
+    graphPromise.push(apis.modelApi.getGraphData(id, indicator[i]));
   }
-  console.log('graphPromise', graphPromise);
   const graph = await Promise.all(graphPromise);
-  console.log('그래프 받음');
   dispatch(getGraphSuccess(graph));
 };

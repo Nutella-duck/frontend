@@ -25,7 +25,6 @@ const Project = () => {
   const [search, setSearch] = useState('');
 
   const getKey = () => {
-    console.log('getkey');
     axios
       .get(
         'http://ec2-3-34-251-160.ap-northeast-2.compute.amazonaws.com:7000/admin/project/key',
@@ -86,8 +85,8 @@ const Project = () => {
             search ? state.filter((v) => v.projectName.includes(search)) : state
           }
         />
+        <ProjectFooter></ProjectFooter>
       </ProjectListTemplate>
-      <ProjectFooter></ProjectFooter>
     </>
   );
 };

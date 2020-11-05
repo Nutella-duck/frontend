@@ -1,58 +1,63 @@
-import React from "react";
-import HomeComponent from "../components/HomeComponent";
-import { Route, Link } from 'react-router-dom';
-import LoginPage from "../components/LoginPage/LoginPage";
-import ProjectPage from "../components/ProjectPage/ProjectPage";
-import Table from "../components/search/index";
-import API from "../components/search/main";
-import Main from "../components/search/main";
-
-import WorkSpaceComponent from "../components/WorkSpace/WorkSpaceComponent";
+import React from 'react';
+import HomeComponent from '../components/HomeComponent';
+import LoginPage from '../components/LoginPage/LoginPage';
+import ProjectPage from '../components/ProjectPage/ProjectPage';
+import TEST from '../components/search/main';
+import MATRIXS from '../components/search/Matrixs/MatrixsPage';
+import SYSTEM from '../components/search/system/SystemPage';
+import WorkSpaceComponent from '../components/WorkSpace/WorkSpaceComponent';
+import HPOList from '../components/WorkSpace/HPOPage';
+import HPOSpace from '../components/HPOSpace/hpopage';
 
 export const RouterConfig = [
+  
   {
-    path: "/",
+    path: '/',
     exact: true,
     component: () => <HomeComponent></HomeComponent>,
   },
 
   {
-    path: "/login",
+    path: '/login',
     exact: true,
     component: () => <LoginPage></LoginPage>,
   },
 
-  
   {
-    path: "/project",
+    path: '/project',
     exact: true,
     component: () => <ProjectPage></ProjectPage>,
   },
-  
-
 
   {
-    path: "/workspace/:id",
+    path: '/workspace/:id',
     exact: true,
     component: () => <WorkSpaceComponent></WorkSpaceComponent>,
   },
-  
 
   {
-    path: "/api",
+    path: '/run/matrixs/:id',
     exact: true,
-    component: () => <API></API>,
+    component: () => <MATRIXS></MATRIXS>,
   },
   {
-    path: "/table",
+    path: '/run/system/:id',
     exact: true,
-    component: () => <Table></Table>,
+    component: () => <SYSTEM></SYSTEM>,
   },
- 
   {
-    path: "/main/:id",
+    path: '/test',
     exact: true,
-    component: () => <Main></Main>,
+    component: () => <TEST></TEST>,
   },
- 
+  {
+    path: '/hpolist/:id',
+    exact: true,
+    component: () => <HPOList></HPOList>,
+  },
+  {
+    path: '/hpo/:id',
+    exact: true,
+    component: () => <HPOSpace></HPOSpace>,
+  },
 ];
