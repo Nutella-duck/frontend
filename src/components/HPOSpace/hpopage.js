@@ -19,8 +19,8 @@ import Label from './labelSeries.js'
 import HPOGraph from '../HPOSpace/graph.js';
 import Parallel2 from './tickValue.js'
 import { useParams } from 'react-router-dom';
-
-
+import PageRoot from './pageRoot';
+import SideMenu from './sideMenu';
 
 
 const HPOSpace=()=>{
@@ -60,11 +60,11 @@ const HPOSpace=()=>{
   return (
     < >
 <div className="header">
-<div className="rootbox">page root</div>
+<div className="rootbox"><PageRoot></PageRoot></div>
 <div className="profile">profile</div>
 </div>
 <div className="body">
-  <div className="sidebar">sidebar</div>
+  <div className="sidebar"><SideMenu/></div>
   <div className="contents">
   <div className="eval"><Label></Label></div>
   <div className="importance">importance</div>
