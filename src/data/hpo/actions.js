@@ -8,6 +8,12 @@ export const fetchAllHpoData = (hpoData) => {
     hpoData,
   };
 };
+export const fetchHPOConfig = (hpoConfig) => {
+  return {
+    type: AT.FETCH_ALL_HPO_CONFIG,
+    hpoConfig,
+  };
+};
 export const getAllModelData = () => {
   return (dispatch) => {
     return axios
@@ -16,6 +22,21 @@ export const getAllModelData = () => {
       })
       .then((response) => {
         dispatch(fetchAllHpoData(response.data));
+      })
+      .catch((error) => {
+        console.log('error read model');
+        throw error;
+      });
+  };
+};
+export const hpoConfig = () => {
+  return (dispatch) => {
+    return axios
+      .get(`http://localhost:4001/hpoConfig`, {
+        headers: { 'Content-Type': 'application/json' },
+      })
+      .then((response) => {
+        dispatch(fetchHPOConfig(response.data));
       })
       .catch((error) => {
         console.log('error read model');
