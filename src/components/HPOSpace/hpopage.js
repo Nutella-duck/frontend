@@ -17,11 +17,11 @@ import * as Actions from '../../data/hpo/actions.js';
 import * as Selectors from '../../data/hpo/selectors.js';
 import Label from './labelSeries.js'
 import HPOGraph from '../HPOSpace/graph.js';
-import Parallel2 from './tickValue.js'
+import Parallel2 from './parallelGraph.js'
 import { useParams } from 'react-router-dom';
 import PageRoot from './pageRoot';
 import SideMenu from './sideMenu';
-
+import Profile from './profile';
 
 const HPOSpace=()=>{
   const {id} = useParams();
@@ -60,8 +60,8 @@ const HPOSpace=()=>{
   return (
     < >
 <div className="header">
-<div className="rootbox"><PageRoot></PageRoot></div>
-<div className="profile">profile</div>
+<div className="rootbox"><PageRoot className="pageroot"></PageRoot></div>
+<div className="profile"><Profile></Profile></div>
 </div>
 <div className="body">
   <div className="sidebar"><SideMenu/></div>

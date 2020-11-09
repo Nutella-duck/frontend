@@ -15,13 +15,13 @@ import {
   ButtonGroup,
   SplitButton
 } from 'react-bootstrap';
-import { AgGridColumn, AgGridReact } from 'ag-grid-react';
-import * as Actions from '../../data/hpo/actions.js';
-import * as Selectors from '../../data/hpo/selectors.js';
-import Label from './labelSeries.js'
-import HPOGraph from '../HPOSpace/graph.js';
-import Parallel2 from './tickValue.js'
-import { useParams } from 'react-router-dom';
+// import { AgGridColumn, AgGridReact } from 'ag-grid-react';
+// import * as Actions from '../../data/hpo/actions.js';
+// import * as Selectors from '../../data/hpo/selectors.js';
+// import Label from './evalGraph.js'
+// import HPOGraph from '../HPOSpace/graph.js';
+// import Parallel2 from './tickValue.js'
+// import { useParams } from 'react-router-dom';
 
 const HPOSpace=()=>{
 

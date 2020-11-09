@@ -9,6 +9,7 @@ import {
   Col,
   Container,
   Row,
+  NavDropdown
 } from 'react-bootstrap';
 
 import React, { useState, useEffect } from 'react';
@@ -29,6 +30,7 @@ const App = () => {
   const [gridColumnApi, setGridColumnApi] = useState(null);
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
+  const [show3 , setShow3] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [filterText, setFilterText] = useState(null);
@@ -68,16 +70,25 @@ const App = () => {
       [name]: value,
     });
   };
-  const handleShow2 = () => {
-    getKey();
+  const handleShow2 = () =>{
     setShow2(true);
+  }
+  const handleShow3 = () => {
+    getKey();
+    setShow3(true);
   };
 
   const handleClose2 = () => {
     setShow2(false);
     setShow(false);
-    onCreate();
+    
   };
+  const handleClose3 = () => {
+    setShow(false);
+    setShow2(false);
+    setShow3(false);
+    onCreate();
+  }
 
   
   function onQuickFilterText(event) {
@@ -186,12 +197,48 @@ const App = () => {
             CANCEL
           </Button>
           <Button variant="primary" onClick={handleShow2}>
+            NEXT
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      <Modal show={show2} onHide={handleClose2}>
+        <Modal.Header closeButton>
+          <Container>
+            <Col>
+              <Modal.Title>New HPO</Modal.Title>
+            </Col>
+            <Col>
+              <p>Select the method and config parameters</p>
+            </Col>
+          </Container>
+        </Modal.Header>
+        <Modal.Body>
+        
+          <Row> <p>Method : </p>
+          <NavDropdown title="TPE" id="nav-dropdown">
+            {/* {cards.map((v, index) => (
+              <NavDropdown.Item key={index}>{v[index]}</NavDropdown.Item>
+            ))} */}
+ <NavDropdown.Item key={0}>TPE</NavDropdown.Item>
+ <NavDropdown.Item key={1}>Grid</NavDropdown.Item>
+ <NavDropdown.Item key={2}>Range</NavDropdown.Item>
+          </NavDropdown>
+          </Row>
+
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleShow3}>
+            SKIP
+          </Button>
+          <Button variant="primary" onClick={handleClose2}>
+            CANCEL
+          </Button>
+          <Button variant="primary" onClick={handleShow3}>
             CREATE
           </Button>
         </Modal.Footer>
       </Modal>
-
-      <Modal show={show2} onHide={handleClose2}>
+      <Modal show={show3} onHide={handleClose3}>
         <Modal.Header closeButton>
           <Container>
             <Col>
@@ -213,7 +260,7 @@ const App = () => {
           </Container>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose2}>
+          <Button variant="secondary" onClick={handleClose3}>
             DONE
           </Button>
         </Modal.Footer>

@@ -6,7 +6,7 @@ import {Nav} from 'react-bootstrap'
 const SideMenu = ()=>{
     return (
         <>
-     <Nav defaultActiveKey="/home" className="flex-column">
+     <Nav defaultActiveKey="/home" className="flex-column" >
   <Nav.Link href="/home"><div><Display/><div>OVERVIEW</div></div></Nav.Link>
   <Nav.Link eventKey="link-1"><div><GraphUp/><div>CHARTS</div></div></Nav.Link>
   <Nav.Link eventKey="link-2"><div><Table/><div>RUNS</div></div></Nav.Link>

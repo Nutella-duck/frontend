@@ -2,55 +2,58 @@
     display: flex;
     flex-flow: row;
     flex-wrap: nowrap;
-    border: 4px solid black;
+    /* border: 4px solid black; */
   }
   .box-container1 {
     display: flex;
     flex-flow :column;
-    border: 4px solid blue;
+    /* border: 4px solid blue; */
   }
   .header {
     display: flex;
-    border: 4px solid yellow;
-
+    /* border: 4px solid yellow; */
+    background-color: rgb(238, 228, 85);
     justify-content: space-between;
   }
   .profile {
     display: flex;
     width: 200px;
     height: 70px;
-    border: 4px solid red;
-    margin: 5px;
+    /* border: 4px solid red; */
+    /* margin: 5px; */
   }
   .rootbox{
       display: flex;
     width: 421px;
     height: 70px;
-    border: 4px solid red;
+    /* border: 4px solid red; */
     margin: 5px;
+    justify-content: space-around;
+    align-items: center;
   }
   .sidebar{
     display: flex;
     width: 225px;
     height: 940px;
-    border: 4px solid red;
-    margin: 5px;
+    /* border: 4px solid red; */
+    /* margin: 5px; */
+    background-color: rgb(238, 228, 85);
   }
   .body{
     display: flex;
     
-    border: 4px solid red;
+    /* border: 4px solid red; */
     margin: 5px;
   }
   .contents{
       display: flex;
-      border: 4px solid blue;
+      /* border: 4px solid blue; */
       margin:5px;
       flex-wrap: wrap;
 
   }
   .eval{
-    border: 4px solid yellow;
+    border: 4px solid rgb(238, 228, 85);
     justify-content: center;
     align-items: center;
     margin:5px;
@@ -60,7 +63,7 @@
     display: flex;
   }
   .importance{
-    border: 4px solid yellow;
+    border: 4px solid rgb(238, 228, 85);
     margin:5px;
     width: 612px;
     height: 414px;
@@ -68,7 +71,7 @@
   }
   .graph{
     display: flex;
-    border: 4px solid yellow;
+    border: 4px solid rgb(238, 228, 85);
     justify-content: center;
     align-items: center;
     margin:5px;
@@ -80,3 +83,12 @@
  
       flex-grow: 1;
   }
+  .pageroot{
+    display: flex;
+    /* border: 4px solid blue; */
+  }
+  @media only screen and (max-heigt: 600px) {
+ .importance{
+   /* background-color: blue; */
+ }
+}
