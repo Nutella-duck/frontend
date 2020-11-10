@@ -142,9 +142,21 @@ const App = () => {
     },
   ];
   function Table(){
-    return (<div className="addTable"><div className="Config">Config</div>
-    <div className="Type">Type</div>
-    <div className="Value">Value</div>
+    return (<div className="addTable"><div className="Config"><input
+    className="ConfigInputbox"
+    placeholder="epoch"
+   
+  /></div>
+    <div className="Type"> <NavDropdown title="Range" id="nav-dropdown">
+           
+           <NavDropdown.Item key={0}>Range</NavDropdown.Item>
+           <NavDropdown.Item key={1}>Specific</NavDropdown.Item>
+          
+                    </NavDropdown></div>
+    <div className="Value"><input
+    placeholder=""
+   
+  /></div>
     <div className="Trash"><Trash/></div></div>)
   }
   return (
@@ -246,7 +258,7 @@ const App = () => {
           <div className="addTable"><div className="Config">Config</div>
     <div className="Type">Type</div>
     <div className="Value">Value</div>
-    <div className="Trash"><Trash/></div></div>
+    <div className="Trash"></div></div>
          <Table />
           </div>
           </>

@@ -38,7 +38,8 @@ justify-content: center;
     display: flex;
     width:140px;
     height: 30px;
-    border : 2px solid red;
+    /* border : 2px solid red; */
+    overflow: hidden;
 margin : 3px;
 
 }
@@ -46,7 +47,8 @@ margin : 3px;
     display: flex;
     width:140px;
     height: 30px;
-    border : 2px solid red;
+    /* border : 2px solid red; */
+    overflow: hidden;
 margin : 3px;
 
 }
@@ -54,7 +56,8 @@ margin : 3px;
     display: flex;
     width:100px;
     height: 30px;
-    border : 2px solid red;
+    /* border : 2px solid red; */
+
 margin : 3px;
 
 }
@@ -62,7 +65,7 @@ margin : 3px;
     display: flex;
     width:30px;
     height: 30px;
-    border : 2px solid red;
+    /* border : 2px solid red; */
 margin : 3px;
 justify-content: center;
 align-items: center;
@@ -71,4 +74,7 @@ align-items: center;
 }
 .addTable{
     display: flex;
+}
+input{
+    flex: 1;
 }
