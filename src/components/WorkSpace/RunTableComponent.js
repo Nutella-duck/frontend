@@ -141,6 +141,12 @@ const App = () => {
       filter: true,
     },
   ];
+  function Table(){
+    return (<div className="addTable"><div className="Config">Config</div>
+    <div className="Type">Type</div>
+    <div className="Value">Value</div>
+    <div className="Trash"><Trash/></div></div>)
+  }
   return (
     
     <>
@@ -237,10 +243,11 @@ const App = () => {
           </NavDropdown></div>
           </div>
           <div className="NewHPOtitle">
-            <div className="Config">Config</div>
-            <div className="Type">Type</div>
-            <div className="Value">Value</div>
-            <div className="Trash"><Trash/></div>
+          <div className="addTable"><div className="Config">Config</div>
+    <div className="Type">Type</div>
+    <div className="Value">Value</div>
+    <div className="Trash"><Trash/></div></div>
+         <Table />
           </div>
           </>
 
