@@ -1,0 +1,70 @@
+.Method{
+display: flex;
+border:2px solid orange;
+width: 450px;
+height: 35px;
+margin:4px;
+}
+.MethodName{
+display:flex;
+justify-content: center;
+    align-items: center;
+    margin: 3px;
+    font-size: large;
+    
+}
+.MethodDropdown{
+display: flex;
+justify-content: center;
+    align-items: center;
+    margin: 3px;
+    font-size: large;
+    font:bold;
+    width: 150px;
+    justify-content: left;
+    
+    
+}
+.NewHPOtitle{
+    display: flex;
+    height: 250px;
+    width: 450px;
+
+    border : 2px solid black;
+    margin:4px;
+    justify-content: left;
+}
+.Config{
+    display: flex;
+    width:140px;
+    height: 210px;
+    border : 2px solid red;
+margin : 3px;
+
+}
+.Value{
+    display: flex;
+    width:140px;
+    height: 210px;
+    border : 2px solid red;
+margin : 3px;
+
+}
+.Type{
+    display: flex;
+    width:100px;
+    height: 210px;
+    border : 2px solid red;
+margin : 3px;
+
+}
+.Trash{
+    display: flex;
+    width:30px;
+    height: 210px;
+    border : 2px solid red;
+margin : 3px;
+justify-content: center;
+   
+
+}

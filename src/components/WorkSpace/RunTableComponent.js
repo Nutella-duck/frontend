@@ -11,8 +11,9 @@ import {
   Row,
   NavDropdown
 } from 'react-bootstrap';
-
+import {Trash} from "react-bootstrap-icons"
 import React, { useState, useEffect } from 'react';
+import './HpoList.css';
 import { render } from 'react-dom';
 import { AgGridColumn, AgGridReact } from 'ag-grid-react';
 import { RowNodeCache } from 'ag-grid-community';
@@ -71,6 +72,7 @@ const App = () => {
     });
   };
   const handleShow2 = () =>{
+    setShow(false);
     setShow2(true);
   }
   const handleShow3 = () => {
@@ -214,16 +216,33 @@ const App = () => {
         </Modal.Header>
         <Modal.Body>
         
-          <Row> <p>Method : </p>
+          {/*<Row> <p>Method : </p>
           <NavDropdown title="TPE" id="nav-dropdown">
             {/* {cards.map((v, index) => (
               <NavDropdown.Item key={index}>{v[index]}</NavDropdown.Item>
-            ))} */}
+            ))} 
  <NavDropdown.Item key={0}>TPE</NavDropdown.Item>
  <NavDropdown.Item key={1}>Grid</NavDropdown.Item>
  <NavDropdown.Item key={2}>Range</NavDropdown.Item>
           </NavDropdown>
-          </Row>
+          </Row>*/}
+          <>
+          <div className="Method">
+          <div className="MethodName">Method</div>
+          <div className="MethodDropdown"> <NavDropdown title="TPE" id="nav-dropdown">
+           
+ <NavDropdown.Item key={0}>TPE</NavDropdown.Item>
+ <NavDropdown.Item key={1}>Grid</NavDropdown.Item>
+ <NavDropdown.Item key={2}>Range</NavDropdown.Item>
+          </NavDropdown></div>
+          </div>
+          <div className="NewHPOtitle">
+            <div className="Config">Config</div>
+            <div className="Type">Type</div>
+            <div className="Value">Value</div>
+            <div className="Trash"><Trash/></div>
+          </div>
+          </>
 
         </Modal.Body>
         <Modal.Footer>
