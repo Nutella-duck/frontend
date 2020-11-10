@@ -41,6 +41,9 @@ const App = () => {
   });
   const { HPOName, description } = inputs;
   const [apiKey, setApiKey] = useState();
+  let types= [];
+  const [method,setMethod] = useState();
+
   const getKey = () => {
     setApiKey(100);
   };
@@ -92,7 +95,25 @@ const App = () => {
     onCreate();
   }
 
-  
+  const handleSelect=(id)=>{
+    console.log(id,typeof(id))
+    switch(Number(id)){
+      case 0:
+        setMethod("TPE")
+        break;
+      case 1:
+         setMethod("Grid")
+         
+         break;
+      case 2:
+          setMethod("Random")
+          break;
+      default:
+          setMethod("TPE");
+          break;
+    }
+    console.log(method);
+  }
   function onQuickFilterText(event) {
     setFilterText(event.target.value);
     console.log(filterText);
@@ -247,11 +268,11 @@ const App = () => {
           <>
           <div className="Method">
           <div className="MethodName">Method</div>
-          <div className="MethodDropdown"> <NavDropdown title="TPE" id="nav-dropdown">
+          <div className="MethodDropdown"> <NavDropdown title={method?method:"TPE"} id="nav-dropdown">
            
- <NavDropdown.Item key={0}>TPE</NavDropdown.Item>
- <NavDropdown.Item key={1}>Grid</NavDropdown.Item>
- <NavDropdown.Item key={2}>Range</NavDropdown.Item>
+ <NavDropdown.Item key="0"eventKey="0" onSelect={handleSelect}>TPE</NavDropdown.Item>
+ <NavDropdown.Item key="1"eventKey="1"onSelect={handleSelect}>Grid</NavDropdown.Item>
+ <NavDropdown.Item key="2"eventKey="2"onSelect={handleSelect}>Range</NavDropdown.Item>
           </NavDropdown></div>
           </div>
           <div className="NewHPOtitle">
