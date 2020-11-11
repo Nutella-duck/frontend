@@ -22,7 +22,7 @@ const SideMenu = () => {
   return (
     <>
       <Nav variant="pills" defaultActiveKey="/home" className="flex-column">
-        <Nav.Link href="/home">
+        <Nav.Link eventKey="link1">
           <div
             style={{
               justifyContent: 'space-around',

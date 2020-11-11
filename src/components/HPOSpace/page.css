@@ -101,3 +101,20 @@
   display: flex;
   border: 4px solid blue;
 }
+.user {
+  display: flex;
+  border: 4px solid blue;
+  width: 1557px;
+  height: 400px;
+}
+.hpoConfig {
+  display: flex;
+  border: 4px solid blue;
+  width: 1557px;
+  height: 464px;
+}
+.overviewContents {
+  display: flex;
+  border: 4px solid blue;
+  flex-flow: column;
+}
