@@ -73,11 +73,13 @@ const HPOSpace = () => {
         </div>
         <div className="contents">
           <div className="eval">
-            <div>eval_loss</div>
+            <div style={{ marginBottom: '10px' }}>eval_loss v. created</div>
             <Label></Label>
           </div>
           <div className="importance">
-            <div>Importance</div>
+            <div style={{ marginLeft: '70px' }}>
+              parameter importance with respect to eval_loss
+            </div>
             <Importance className="importaceContents"></Importance>
           </div>
           <div className="graph">

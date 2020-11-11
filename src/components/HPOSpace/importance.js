@@ -19,7 +19,7 @@ export default class Example extends React.Component {
   render() {
     const { useCanvas } = this.state;
     const BarSeries = HorizontalBarSeries;
-    const yAxisLabel = ['epochs', 'bagging_fraction', 'bagging_freq'];
+    const yAxisLabel = ['units', 'dropout', 'batchsize', 'optimizer'];
 
     return (
       <div>
@@ -31,24 +31,26 @@ export default class Example extends React.Component {
         >
           <VerticalGridLines />
           <HorizontalGridLines />
-          <XAxis />
+          <XAxis tickFormat={(v) => v * 100 + '%'} />
           <YAxis
-            title={'importance'}
             tickTotal={3}
             tickFormat={(v) => yAxisLabel[v]}
+            style={{ fontWeight: 'bold' }}
           />
           <BarSeries
             data={[
               { y: 0, x: 0.1 },
               { y: 1, x: 0.3 },
-              { y: 2, x: 0.7 },
+              { y: 2, x: 0.5 },
+              { y: 3, x: 0.8 },
             ]}
           />
           <BarSeries
             data={[
               { y: 0, x: 0.9 },
               { y: 1, x: 0.7 },
-              { y: 2, x: 0.3 },
+              { y: 2, x: 0.5 },
+              { y: 3, x: 0.2 },
             ]}
           />
         </FlexibleWidthXYPlot>

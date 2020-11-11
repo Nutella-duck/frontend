@@ -97,7 +97,7 @@ const App = () => {
   const [method, setMethod] = useState();
 
   const getKey = () => {
-    setApiKey(100);
+    setApiKey('xgQe1aNnzV-OGeulE0ovCkB3YkP2C1XF5KY1i1kE');
   };
   const onCreate = () => {
     setInputs({
@@ -112,8 +112,8 @@ const App = () => {
 
     let HPOInfoData = {
       name: inputs.HPOName,
-      state: inputs.description,
-      runCount: apiKey,
+      state: 'running',
+      runCount: 100,
       created: 35000,
       computedTime: '1hours',
       createdBy: 'leehaein',
