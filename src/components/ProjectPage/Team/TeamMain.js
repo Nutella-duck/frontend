@@ -4,7 +4,7 @@ import TeamListTemplate from './TeamListTemplate';
 import TeamForm from './TeamForm';
 import TeamItemList from './TeamItemList';
 import TeamFooter from './TeamFooter';
-
+import '../Run/Run.css';
 class Team extends Component {
   id = 3;
   state = {
@@ -38,7 +38,7 @@ class Team extends Component {
     const { handleCreate, handleChange } = this;
 
     return (
-      <>
+      <div className="run">
         <TeamListTemplate
           form={
             <TeamForm
@@ -50,8 +50,8 @@ class Team extends Component {
         >
           <TeamItemList projects={projects} />
         </TeamListTemplate>
-        <TeamFooter />
-      </>
+        <TeamFooter></TeamFooter>
+      </div>
     );
   }
 }

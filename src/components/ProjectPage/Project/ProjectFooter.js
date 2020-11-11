@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Pagination } from 'react-bootstrap';
 import * as Actions from '../../../store/actions';
 import { useDispatch } from 'react-redux';
-
+import '../Run/Run.css';
 const ProjectFooter = () => {
   const dispatch = useDispatch();
 
@@ -21,9 +21,9 @@ const ProjectFooter = () => {
         onClick={() => handleClick(number)}
       >
         {number}
-      </Pagination.Item>
+      </Pagination.Item>,
     );
   }
-  return <Pagination className="mr-auto">{items}</Pagination>;
+  return <Pagination className="RunFooter">{items}</Pagination>;
 };
 export default ProjectFooter;

@@ -1,0 +1,14 @@
+.run {
+  display: flex;
+  flex-flow: column;
+  /* border: 3px solid red; */
+  justify-content: flex-end;
+  align-content: center;
+}
+.RunFooter {
+  display: flex;
+  /* border: 3px solid red; */
+  width: fit-content;
+  margin-right: 256px;
+  margin-left: 1520px;
+}
