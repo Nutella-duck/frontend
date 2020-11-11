@@ -6,9 +6,9 @@
 
 - 머신러닝 개발자를 위한 시각화 및 hyperparameter optimizing service
 - 개발기간 : 2020.06 ~ 2020.11 (약 6개월)
-- [Front-end Github](https://github.com/wecode-bootcamp-korea/9-Dr_strange-frontend)
-- [Back-end Github](https://github.com/wecode-bootcamp-korea/9-Dr_strange-backend)
-- [ML-Github]()
+- [Front-end Github](https://github.com/NutellaCoder/NutellaCoder-WebFrontEnd)
+- [Back-end Github](https://github.com/NutellaCoder/WebApiServer)
+- [SDK-Github](https://github.com/NutellaCoder/NutellaSdk)
 
 # Demo
 
