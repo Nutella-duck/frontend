@@ -41,7 +41,30 @@ const App = () => {
   });
   const { HPOName, description } = inputs;
   const [apiKey, setApiKey] = useState();
-  let types= [];
+  let ConfigArr= [
+    {
+   
+      config: "epochs",
+      type:"Range",
+      Value:"1 ~ 10"
+      
+    },
+    {
+   
+      config: "bagging_fraction",
+      type:"Specific",
+      Value:"0.6,0.7,0.8"
+      
+    },
+    {
+   
+      config: "bagging_freq",
+      type:"Specific",
+      Value:"clemendelague"
+      
+    },
+
+  ];
   const [method,setMethod] = useState();
 
   const getKey = () => {
@@ -162,23 +185,38 @@ const App = () => {
       filter: true,
     },
   ];
-  function Table(){
-    return (<div className="addTable"><div className="Config"><input
+  function ConfigCell({data}){
+    console.log(data)
+    return (
+      
+    <div className="addTable">
+      <div className="Config"><input
     className="ConfigInputbox"
-    placeholder="epoch"
+    placeholder={data.config}
    
   /></div>
-    <div className="Type"> <NavDropdown title="Range" id="nav-dropdown">
+    <div className="Type"> <NavDropdown title={data.type} id="nav-dropdown">
            
            <NavDropdown.Item key={0}>Range</NavDropdown.Item>
            <NavDropdown.Item key={1}>Specific</NavDropdown.Item>
           
                     </NavDropdown></div>
     <div className="Value"><input
-    placeholder=""
+    placeholder={data.Value}
    
   /></div>
     <div className="Trash"><Trash/></div></div>)
+  }
+  class ConfigCells extends React.Component {
+    render() {
+      const mapToConfigCell = (data) => {
+        return data.map((cell, i) => {
+          return <ConfigCell data={cell} key={i} />;
+        });
+      };
+  
+      return <div>{mapToConfigCell(ConfigArr)}</div>;
+    }
   }
   return (
     
@@ -280,7 +318,7 @@ const App = () => {
     <div className="Type">Type</div>
     <div className="Value">Value</div>
     <div className="Trash"></div></div>
-         <Table />
+         < ConfigCells/>
           </div>
           </>
 

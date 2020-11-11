@@ -30,7 +30,7 @@ const ItemHead = ({ cards }) => {
 
   const handleSelect = (id) => {
     console.log("dropdown",id);
-    //setTitle(id);
+    setTitle(id);
   };
   return (
     <>
