@@ -1,6 +1,6 @@
 .Method{
 display: flex;
-border:2px solid orange;
+/* border:2px solid orange; */
 width: 450px;
 height: 35px;
 margin:4px;
@@ -30,7 +30,7 @@ justify-content: center;
     height: 250px;
     width: 450px;
     flex-direction: column;
-    border : 2px solid black;
+    /* border : 2px solid black; */
     margin:4px;
     justify-content: left;
 }
@@ -51,6 +51,9 @@ margin : 3px;
     overflow: hidden;
 margin : 3px;
 
+}
+.ConfigInputbox{
+    
 }
 .Type{
     display: flex;

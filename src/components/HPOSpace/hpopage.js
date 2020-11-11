@@ -1,5 +1,5 @@
-import React, {useState, useEffect } from 'react';
-import "./page.css"
+import React, { useState, useEffect } from 'react';
+import './page.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Navbar,
@@ -10,28 +10,28 @@ import {
   Col,
   Container,
   Row,
-  Dropdown
+  Dropdown,
 } from 'react-bootstrap';
 import { AgGridColumn, AgGridReact } from 'ag-grid-react';
 import * as Actions from '../../data/hpo/actions.js';
 import * as Selectors from '../../data/hpo/selectors.js';
-import Label from './labelSeries.js'
+import Label from './labelSeries.js';
 import HPOGraph from '../HPOSpace/graph.js';
-import Parallel2 from './parallelGraph.js'
+import Parallel2 from './parallelGraph.js';
 import { useParams } from 'react-router-dom';
 import PageRoot from './pageRoot';
 import SideMenu from './sideMenu';
 import Profile from './profile';
-
-const HPOSpace=()=>{
-  const {id} = useParams();
+import Importance from './importance';
+const HPOSpace = () => {
+  const { id } = useParams();
   const rowData = useSelector((state) => state.hpo.hpoConfig);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(Actions.hpoConfig());
-  }, []);
- //let arr = JSON.parse(rowData);
-    
+  }, [dispatch]);
+  //let arr = JSON.parse(rowData);
+
   //console.log(arr);
 
   // const data = {
@@ -46,34 +46,46 @@ const HPOSpace=()=>{
   //     "value": [4, 5, 6, 7]
   //   }
   // }
-  
+
   // const jsondata = Object.keys(data)
-  
+
   // console.log(jsondata)
   // rowData?console.log(rowData[0].config):console.log(rowData)
 
-  const data ="\"method\":\"tpe\",\"epoch\":10,\"learning_rate\":0.05"
-  let datasplice = data.replace("\"","");
-  datasplice = "\""+datasplice
-  console.log(datasplice)
+  const data = '"method":"tpe","epoch":10,"learning_rate":0.05';
+  let datasplice = data.replace('"', '');
+  datasplice = '"' + datasplice;
+  console.log(datasplice);
 
   return (
-    < >
-<div className="header">
-<div className="rootbox"><PageRoot className="pageroot"></PageRoot></div>
-<div className="profile"><Profile></Profile></div>
-</div>
-<div className="body">
-  <div className="sidebar"><SideMenu/></div>
-  <div className="contents">
-  <div className="eval"><Label></Label></div>
-  <div className="importance">importance</div>
-  <div className="graph"><Parallel2 className="grph-content"/></div>
-  </div>
-
-</div>
+    <>
+      <div className="header">
+        <div className="rootbox">
+          <PageRoot className="pageroot"></PageRoot>
+        </div>
+        <div className="profile">
+          <Profile></Profile>
+        </div>
+      </div>
+      <div className="body">
+        <div className="sidebar">
+          <SideMenu />
+        </div>
+        <div className="contents">
+          <div className="eval">
+            <div>eval_loss</div>
+            <Label></Label>
+          </div>
+          <div className="importance">
+            <div>Importance</div>
+            <Importance className="importaceContents"></Importance>
+          </div>
+          <div className="graph">
+            <Parallel2 className="grph-content"></Parallel2>
+          </div>
+        </div>
+      </div>
     </>
-  
   );
 };
 
