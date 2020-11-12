@@ -1,3 +1,4 @@
+import { projectSuccess } from './actions';
 import * as Actions from './actionTypes';
 
 const initialState = {
@@ -65,6 +66,12 @@ const ProjectReducer = (state = initialState, action) => {
         projects: action.projectData,
       };
     }
+    case Actions.PROJECT_SUCCESS:
+      console.log(
+        "projectSuccess",projectSuccess);
+      return action.payload;
+    case Actions.PROJECT_FAIL:
+      return state;
     
     default: {
       return state;

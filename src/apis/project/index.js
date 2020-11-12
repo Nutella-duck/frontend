@@ -9,7 +9,10 @@ export const api = {
   },
 
   async addProject(projectData) {
-    const { data } = await apiClient.post(`/project`,projectData);
+    const { data } = await apiClient.post(`/project`, {
+      params: projectData,
+      headers: { 'Content-Type': 'application/json' },
+    });
     return data;
   },
 }

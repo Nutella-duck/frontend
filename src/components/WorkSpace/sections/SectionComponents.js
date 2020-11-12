@@ -29,7 +29,7 @@ const ItemHead = ({ cards }) => {
   };
 
   const handleSelect = (id) => {
-    console.log(id);
+    console.log("dropdown",id);
     setTitle(id);
   };
   return (

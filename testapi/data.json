@@ -1,0 +1,60 @@
+{
+ 
+  
+    "hpoConfig": [
+      {
+        "method": 0,
+        "config": {
+                    "method" : "tpe",
+                    "epoch" : {
+                        "scope" : [1, 10]
+                          },
+                    "learning_rate" : {
+                          "value" : [0.1, 0.05, 0.01]
+                            },
+                    "max_depth" : {
+                            "value" : [4, 5, 6, 7]
+                             }
+                    }
+      }
+    ],
+    "hpoData": [
+        {"runId":"1", "name": "hpo1", "state": "running", "created": 35000, "computedTime": "1hours", "runCount": 115,"createdBy":"leehaein" }
+        ,{ "runId":"2","name": "hpo2", "state": "running", "created": 35000, "computedTime": "1hours", "runCount": 115,"createdBy":"leehaein" }
+        ,{ "runId":"3","name": "hp3", "state": "running", "created": 35000, "computedTime": "1hours", "runCount": 115,"createdBy":"leehaein" }
+           
+    ],
+    "hpoResult":[
+      {
+        "target": "{\"eval_loss\":\"3.8\"}",
+        "config": "{\"method\":\"tpe\",\"epoch\":1,\"learning_rate\":0.1}",
+        "runName": "hr1-001"
+      },
+      {
+        "target": "{\"eval_loss\":\"2.8\"}",
+        "config": "{\"method\":\"tpe\",\"epoch\":1,\"learning_rate\":0.05}",
+        "runName": "hr1-002"
+      },
+      {
+        "target": "{\"eval_loss\":\"4.8\"}",
+        "config": "{\"method\":\"tpe\",\"epoch\":1,\"learning_rate\":0.01}",
+        "runName": "hr1-003"
+      },
+      {
+        "target": "{\"eval_loss\":\"3.2\"}",
+        "config": "{\"method\":\"tpe\",\"epoch\":10,\"learning_rate\":0.1}",
+        "runName": "hr1-004"
+      },
+      {
+        "target": "{\"eval_loss\":\"4.1\"}",
+        "config": "{\"method\":\"tpe\",\"epoch\":10,\"learning_rate\":0.05}",
+        "runName": "hr1-005"
+      },
+      {
+        "target": "{\"eval_loss\":\"3.0\"}",
+        "config": "{\"method\":\"tpe\",\"epoch\":10,\"learning_rate\":0.01}",
+        "runName": "hr1-006"
+      }
+    ]
+  
+  }

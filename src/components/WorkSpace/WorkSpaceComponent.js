@@ -12,7 +12,7 @@ import { useParams } from 'react-router-dom';
 
 const WorkSpaceComponent = () => {
   const { id } = useParams();
-
+  console.log('work', id);
   const dispatch = useDispatch();
 
   const modelOfTheProject = useSelector((state) => state.model.totalRun);

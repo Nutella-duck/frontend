@@ -2,7 +2,19 @@ import apis from '../../apis/index';
 
 import * as AT from './actionTypes';
 
+export const projectLoading = () => ({
+  type: AT.PROJECT_LOADING,
+});
 
+export const projectSuccess = (data) => ({
+  type: AT.PROJECT_SUCCESS,
+  data,
+});
+
+export const projectFail = (error) => ({
+  type: AT.PROJECT_FAIL,
+  error,
+});
 
 export const fetchAllProjectData = (projectData) => {
   return {
@@ -11,20 +23,18 @@ export const fetchAllProjectData = (projectData) => {
   };
 };
 
-
-
-
-export const getAllPorject = (projectId) => async(dispatch,getState)=>{
-  
+export const getAllPorject = (projectId) => async (dispatch, getState) => {
   const project = await apis.projectApi.fetchAllProject(projectId);
- dispatch(fetchAllProjectData(project));
-
+  dispatch(fetchAllProjectData(project));
 };
 
-export const addProject = (projectData) => async(dispatch,getState)=>{
-  
-await apis.projectApi.fetchAllProject(projectData);
- 
-
+export const addProject = (projectData) => async (dispatch, getState) => {
+  // await apis.projectApi.fetchAllProject(projectData);
+  dispatch(projectLoading());
+  try {
+    const product = await apis.projectApi.addProject(projectData);
+    dispatch(projectSuccess(product));
+  } catch (e) {
+    dispatch(projectFail(e));
+  }
 };
-

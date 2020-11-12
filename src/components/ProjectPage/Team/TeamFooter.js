@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Pagination } from 'react-bootstrap';
-
+import '../Run/Run.css';
 const TeamFooter = () => {
   const [select, setSelect] = useState(1);
   const handleClick = (id) => {
@@ -19,10 +19,6 @@ const TeamFooter = () => {
       </Pagination.Item>,
     );
   }
-  return (
-    <Pagination className="ml-auto" style={{ paddingLeft: '100rem' }}>
-      {items}
-    </Pagination>
-  );
+  return <Pagination className="RunFooter">{items}</Pagination>;
 };
 export default TeamFooter;

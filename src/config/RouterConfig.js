@@ -6,7 +6,9 @@ import TEST from '../components/search/main';
 import MATRIXS from '../components/search/Matrixs/MatrixsPage';
 import SYSTEM from '../components/search/system/SystemPage';
 import WorkSpaceComponent from '../components/WorkSpace/WorkSpaceComponent';
-
+import HPOList from '../components/WorkSpace/HPOPage';
+import HPOSpace from '../components/HPOSpace/hpopage';
+import HPOOverview from '../components/HPOSpace/overview';
 export const RouterConfig = [
   {
     path: '/',
@@ -46,5 +48,20 @@ export const RouterConfig = [
     path: '/test',
     exact: true,
     component: () => <TEST></TEST>,
+  },
+  {
+    path: '/hpolist/:id',
+    exact: true,
+    component: () => <HPOList></HPOList>,
+  },
+  {
+    path: '/hpo/:id',
+    exact: true,
+    component: () => <HPOSpace></HPOSpace>,
+  },
+  {
+    path: '/hpoOverview/:id',
+    exact: true,
+    component: () => <HPOOverview></HPOOverview>,
   },
 ];

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import logo from './logo-nutella-s@3x.jpg';
 import { Navbar, Nav, Image, NavDropdown } from 'react-bootstrap';
@@ -7,12 +6,16 @@ import profileImage from '../ProjectPage/profile.png';
 import './navbar.css';
 import { useSelector, useDispatch } from 'react-redux';
 import * as Actions from '../../data/project/actions.js';
-const WorkSpaceHeader = ({ projectId, ProjectName }) => {
+const WorkSpaceHeader = ({ projectId, projectName }) => {
   const dispatch = useDispatch();
   const menu = useSelector((state) => state.project.projects);
 
-  const [id, setId] = useState(projectId);
-  const currentTitle = ProjectName;
+  const [id, setId] = useState(Number(projectId));
+  console.log('menu', menu);
+  console.log('nav id', id);
+
+  const currentTitle =
+    menu[menu.findIndex((v) => v.projectId === Number(projectId))]?.projectName;
 
   useEffect(() => {
     dispatch(Actions.getAllPorject(1));
@@ -35,7 +38,7 @@ const WorkSpaceHeader = ({ projectId, ProjectName }) => {
       />
 
       <NavDropdown
-        title={currentTitle ? currentTitle : 'nutella'}
+        title={currentTitle ? currentTitle : ''}
         id="nav-dropdown"
       >
         {menu.map((v) => (
@@ -60,13 +63,13 @@ const WorkSpaceHeader = ({ projectId, ProjectName }) => {
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="/workspace">WORKSPACE</Nav.Link>
+          <Nav.Link href={`/workspace/${projectId}`}>WORKSPACE</Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link eventKey="/chart">REPORTS</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="link-2">HPO</Nav.Link>
+          <Nav.Link href={`/hpolist/${projectId}`}>HPO</Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link eventKey="link-2">COMPRESSION</Nav.Link>
