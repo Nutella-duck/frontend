@@ -1,6 +1,6 @@
 import React from 'react';
 // import ShowcaseButton from '../showcase-components/showcase-button';
-
+import Data from './iris.json';
 import {
   XYPlot,
   XAxis,
@@ -9,21 +9,21 @@ import {
   HorizontalGridLines,
   MarkSeries,
   MarkSeriesCanvas,
-  Hint
+  Hint,
 } from 'react-vis';
 
 function getRandomData() {
-  return new Array(100).fill(0).map(row => ({
+  return new Array(100).fill(0).map((row) => ({
     x: Math.random() * 10,
     y: Math.random() * 20,
     size: 1,
     color: Math.random() * 10,
-    opacity: Math.random() * 0.5 + 0.5
+    opacity: Math.random() * 0.5 + 0.5,
   }));
 }
 const colorRanges = {
   typeA: ['#59E4EC', '#0D676C'],
-  typeB: ['#EFC1E3', '#B52F93']
+  typeB: ['#EFC1E3', '#B52F93'],
 };
 
 const randomData = getRandomData();
@@ -44,20 +44,20 @@ export default class Example extends React.Component {
     drawMode: 0,
     data: randomData,
     colorType: 'typeA',
-    value: false
+    value: false,
   };
 
   render() {
-    const {drawMode, data, colorType} = this.state;
+    const { drawMode, data, colorType } = this.state;
     const markSeriesProps = {
       animation: true,
       className: 'mark-series-example',
-      sizeRange: [1,5],
+      sizeRange: [1, 5],
       seriesId: 'my-example-scatterplot',
       colorRange: colorRanges[colorType],
       opacityType: 'literal',
       data,
-      onNearestXY: value => this.setState({value})
+      onNearestXY: (value) => this.setState({ value }),
     };
 
     const mode = drawModes[drawMode];
@@ -79,7 +79,7 @@ export default class Example extends React.Component {
           />
         </div> */}
         <XYPlot
-          onMouseLeave={() => this.setState({value: false})}
+          onMouseLeave={() => this.setState({ value: false })}
           width={600}
           height={300}
         >

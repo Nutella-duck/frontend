@@ -8,9 +8,8 @@ import SYSTEM from '../components/search/system/SystemPage';
 import WorkSpaceComponent from '../components/WorkSpace/WorkSpaceComponent';
 import HPOList from '../components/WorkSpace/HPOPage';
 import HPOSpace from '../components/HPOSpace/hpopage';
-
+import HPOOverview from '../components/HPOSpace/overview';
 export const RouterConfig = [
-  
   {
     path: '/',
     exact: true,
@@ -59,5 +58,10 @@ export const RouterConfig = [
     path: '/hpo/:id',
     exact: true,
     component: () => <HPOSpace></HPOSpace>,
+  },
+  {
+    path: '/hpoOverview/:id',
+    exact: true,
+    component: () => <HPOOverview></HPOOverview>,
   },
 ];

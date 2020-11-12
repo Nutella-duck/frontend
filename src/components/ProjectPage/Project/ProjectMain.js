@@ -6,7 +6,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import ProjectFooter from './ProjectFooter';
 import * as Actions from '../../../data/project/actions.js';
 import axios from 'axios';
-
+import './ProjectItem.css';
+import '../Run/Run.css';
 const Project = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.project.projects);
@@ -21,7 +22,7 @@ const Project = () => {
 
   useEffect(() => {
     dispatch(Actions.getAllPorject(1));
-  }, []);
+  }, [dispatch]);
   const [search, setSearch] = useState('');
 
   const getKey = () => {
@@ -67,26 +68,31 @@ const Project = () => {
   };
   return (
     <>
-      <ProjectListTemplate
-        form={
-          <ProjectForm
-            projectName={projectName}
-            description={description}
-            apiKey={apiKey}
-            onChange={handleChange}
-            onCreate={handleCreate}
-            getKey={getKey}
-            handleSearch={handleSearch}
-          />
-        }
-      >
-        <ProjectItemList
-          projects={
-            search ? state.filter((v) => v.projectName.includes(search)) : state
+      <div className="run">
+        <ProjectListTemplate
+          className="template"
+          form={
+            <ProjectForm
+              projectName={projectName}
+              description={description}
+              apiKey={apiKey}
+              onChange={handleChange}
+              onCreate={handleCreate}
+              getKey={getKey}
+              handleSearch={handleSearch}
+            />
           }
-        />
+        >
+          <ProjectItemList
+            projects={
+              search
+                ? state.filter((v) => v.projectName.includes(search))
+                : state
+            }
+          />
+        </ProjectListTemplate>
         <ProjectFooter></ProjectFooter>
-      </ProjectListTemplate>
+      </div>
     </>
   );
 };

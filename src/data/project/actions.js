@@ -23,26 +23,18 @@ export const fetchAllProjectData = (projectData) => {
   };
 };
 
-
-
-
-export const getAllPorject = (projectId) => async(dispatch,getState)=>{
-  
+export const getAllPorject = (projectId) => async (dispatch, getState) => {
   const project = await apis.projectApi.fetchAllProject(projectId);
- dispatch(fetchAllProjectData(project));
-
+  dispatch(fetchAllProjectData(project));
 };
 
-export const addProject = (projectData) => async(dispatch,getState)=>{
-  
-// await apis.projectApi.fetchAllProject(projectData);
-dispatch(projectLoading());
-try {
-  const product = await apis.projectApi.addProject(projectData);
-  dispatch(projectSuccess(product));
-} catch (e) {
-  dispatch(projectFail(e));
-}
-
+export const addProject = (projectData) => async (dispatch, getState) => {
+  // await apis.projectApi.fetchAllProject(projectData);
+  dispatch(projectLoading());
+  try {
+    const product = await apis.projectApi.addProject(projectData);
+    dispatch(projectSuccess(product));
+  } catch (e) {
+    dispatch(projectFail(e));
+  }
 };
-

@@ -46,9 +46,15 @@ const HpoReducer = (state = initialState, action) => {
         hpoData: action.hpoData,
       };
     }
+    case Actions.FETCH_ALL_HPO_CONFIG: {
+      return {
+        ...state,
+        hpoConfig: action.hpoConfig,
+      };
+    }
     case Actions.ADD_HPO_DATA: {
       const current = action.hpoData;
-      const { before } = state;
+ 
 
       console.log(current);
       return {
@@ -56,7 +62,16 @@ const HpoReducer = (state = initialState, action) => {
         hpoData: [...state.hpoData, action.hpoData],
       };
     }
+    case Actions.ADD_HPO_CONFIG: {
+      const current = action.hpoConfig;
+      
 
+      console.log(current);
+      return {
+        ...state,
+        hpoConfig: [...state.hpoConfig, action.hpoConfig],
+      };
+    }
     default: {
       return state;
     }

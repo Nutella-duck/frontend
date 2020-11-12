@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ProjectFooter from './ProjectFooter';
+
 import {
   Modal,
   Button,
@@ -61,7 +61,7 @@ const ProjectForm = ({
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-      <ProjectFooter></ProjectFooter>
+
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Container>
