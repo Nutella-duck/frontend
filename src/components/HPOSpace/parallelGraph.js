@@ -52,7 +52,6 @@ const domainStructure = Object.keys(IrisData[0])
 //domainStructure = [{name:epoch domain:[infinity,-infinity]}]
 
 let domains = IrisData.reduce((acc, row) => {
-  console.log('acc', acc, 'row', row);
   return acc.map((d) => {
     return {
       name: d.name,

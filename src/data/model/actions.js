@@ -87,20 +87,31 @@ export const getResult = (modelId) => async (dispatch, getState) => {
   } catch (error) {}
 };
 
-export const getGraphs = (id, indicator, totalRun) => async (
-  dispatch,
-  getState,
-) => {
+// export const getGraphs = (id, indicator, totalRun) => async (
+//   dispatch,
+//   getState,
+// ) => {
+//   dispatch(getmodelListLoading);
+//   try {
+//     // const graphPromise = [];
+//     // for (let i = 0; i < indicator.length; i++) {
+//     //   for (let j = 0; j < totalRun; j++)
+//     //     graphPromise.push(apis.modelApi.getGraphData(j + 1, indicator[i]));
+//     // }
+//     // const graph = await Promise.all(graphPromise);
+//     const graph = await apis.modelApi.getNumberOfModel(id);
+//     console.log(graph);
+//     dispatch(getGraphSuccess(graph));
+//   } catch (erro) {}
+// };
+
+export const getGraphs = (id) => async (dispatch, getState) => {
   dispatch(getmodelListLoading);
   try {
-    const graphPromise = [];
-    for (let i = 0; i < indicator.length; i++) {
-      for (let j = 0; j < totalRun; j++)
-        graphPromise.push(apis.modelApi.getGraphData(j + 1, indicator[i]));
-    }
-    const graph = await Promise.all(graphPromise);
+    const graph = await apis.modelApi.getGraphData(id);
+    console.log(`repl${JSON.stringify(graph)}`);
     dispatch(getGraphSuccess(graph));
-  } catch (erro) {}
+  } catch (error) {}
 };
 export const getOneGraph = (id, indicator) => async (dispatch, getState) => {
   const graphPromise = [];

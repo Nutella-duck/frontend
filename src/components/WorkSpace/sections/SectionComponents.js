@@ -29,7 +29,7 @@ const ItemHead = ({ cards }) => {
   };
 
   const handleSelect = (id) => {
-    console.log("dropdown",id);
+    console.log('dropdown', id);
     setTitle(id);
   };
   return (
@@ -121,11 +121,7 @@ const SectionsComponents = ({ models, graph, isLoading = true }) => {
               <h5>{card}</h5>
               {isLoading && <p>loading...</p>}
               {!isLoading && (
-                <Graph
-                  index={index}
-                  models={models}
-                  graph={graph[cards.indexOf(card)]}
-                />
+                <Graph index={index} models={models} graph={graph} />
               )}
             </Card>
           </Col>

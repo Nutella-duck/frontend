@@ -43,14 +43,19 @@ const ModelReducer = (state = initialState, action) => {
     }
     case Actions.FETCH_GRAPH_DATA: {
       // state.graphData.unshift (action.graphData)
-      var data = [];
-      data = action.graphData.map((a) => a.accuracy);
-      state.graphData.unshift(data);
+      // var data = [];
+      // data = action.graphData.map((a) => a.accuracy);
+      // state.graphData.unshift(data);
+      // return {
+      //   ...state,
+      //   isGraphLoading: true,
+
+      //   // graphData:state.graphData.concat(data)
+      // };
+      const { graphData } = state;
       return {
         ...state,
-        isGraphLoading: true,
-
-        // graphData:state.graphData.concat(data)
+        graphData: action.graphData,
       };
     }
     case Actions.FETCH_SELECTED_MODEL: {

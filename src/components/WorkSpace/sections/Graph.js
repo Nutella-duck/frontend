@@ -31,19 +31,19 @@ class Graph extends Component {
       this.setState({ crosshairValues: graph.map((d) => d[index]) });
     };
 
-    const mapToComponent = (data) => {
-      return graph.map((data, i) => {
-        return (
-          <Line
-            curve={curveCatmullRom.alpha(0.5)}
-            key={i}
-            onNearestX={_onNearestX}
-            data={data}
-          />
-        );
-      });
-    };
-
+    // const mapToComponent = (data) => {
+    //   return graph.map((data, i) => {
+    //     return (
+    //       <Line
+    //         curve={curveCatmullRom.alpha(0.5)}
+    //         key={i}
+    //         onNearestX={_onNearestX}
+    //         data={data}
+    //       />
+    //     );
+    //   });
+    // };
+    console.log(graph);
     return (
       <div>
         <FlexibleWidthXYPlot onMouseLeave={_onMouseLeave} height={250}>
@@ -52,7 +52,12 @@ class Graph extends Component {
           <XAxis />
           <YAxis />
 
-          {mapToComponent(this.state.graph)}
+          {/* {mapToComponent(this.state.graph)} */}
+          <Line
+            curve={curveCatmullRom.alpha(0.5)}
+            onNearestX={_onNearestX}
+            data={graph}
+          />
           <DiscreteColorLegend orientation="horizontal" items={model_name} />
           <Crosshair
             values={this.state.crosshairValues}

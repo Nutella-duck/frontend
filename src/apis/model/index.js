@@ -1,6 +1,5 @@
 import { apiClient } from '../clients';
 
-
 export const api = {
   async getSelectedModelData(modelId) {
     const { data } = await apiClient.get(`/run/${modelId}`, {
@@ -19,9 +18,9 @@ export const api = {
     const { data } = await apiClient.get(`/run?page=${modelId}`);
     return data;
   },
- async getGraphData(id,index) {
-   const {data} = await apiClient.get(`/graph/${id}/?index=${index}`);
-   return data
- }
-
-}
+  async getGraphData(id) {
+    const { data } = await apiClient.get(`/graph/${id}`);
+    console.log(`getGraph${data}`);
+    return data;
+  },
+};
