@@ -21,7 +21,6 @@ const ProjectForm = ({
   getKey,
   handleSearch,
 }) => {
-  console.log(`우씨..${projectName}${description}`);
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
   const handleClose = () => setShow(false);
