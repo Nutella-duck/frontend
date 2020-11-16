@@ -14,35 +14,17 @@ export const fetchHPOConfig = (hpoConfig) => {
     hpoConfig,
   };
 };
-export const getAllModelData = () => {
-  return (dispatch) => {
-    return axios
-      .get(`http://localhost:4001/hpoData`, {
-        headers: { 'Content-Type': 'application/json' },
-      })
-      .then((response) => {
-        dispatch(fetchAllHpoData(response.data));
-      })
-      .catch((error) => {
-        console.log('error read model');
-        throw error;
-      });
-  };
+export const getHPOList = () => async (dispatch, getState) => {
+  const model = await apis.hpoApi.getHPOProjectList();
+  console.log('hpo!,!', model);
 };
-export const hpoConfig = () => {
-  return (dispatch) => {
-    return axios
-      .get(`http://localhost:4001/hpoConfig`, {
-        headers: { 'Content-Type': 'application/json' },
-      })
-      .then((response) => {
-        dispatch(fetchHPOConfig(response.data));
-      })
-      .catch((error) => {
-        console.log('error read model');
-        throw error;
-      });
-  };
+export const getAllModelData = () => async (dispatch, getState) => {
+  const model = await apis.hpoApi.getHPOProjectList();
+  dispatch(fetchAllHpoData(model));
+};
+export const hpoConfig = () => async (dispatch, getState) => {
+  const model = await apis.hpoApi.getHPOResult(1);
+  dispatch(fetchHPOConfig(model));
 };
 
 // export const getAllPorject = (hpoId) => async(dispatch,getState)=>{

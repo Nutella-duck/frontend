@@ -26,7 +26,7 @@ const App = () => {
     dispatch(Actions.getAllModelData());
   }, [dispatch]);
   const rowData = useSelector((state) => state.hpo.hpoData);
-  console.log(rowData);
+  console.log('외않되', rowData);
   const [gridApi, setGridApi] = useState(null);
   const [gridColumnApi, setGridColumnApi] = useState(null);
   const [show, setShow] = useState(false);
@@ -200,7 +200,7 @@ const App = () => {
       filter: true,
       checkboxSelection: true,
     },
-    { headerName: 'NAME', field: 'name', sortable: true, filter: true },
+    { headerName: 'NAME', field: 'hpoName', sortable: true, filter: true },
     { headerName: 'STATE', field: 'state', sortable: true, filter: true },
     {
       headerName: 'CREATED',
@@ -210,7 +210,7 @@ const App = () => {
     },
     {
       headerName: 'CREATEDBY',
-      field: 'createdBy',
+      field: 'createBy',
       sortable: true,
       filter: true,
     },

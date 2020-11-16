@@ -46,8 +46,7 @@ const Project = () => {
     let projectInfoData = {
       projectName: inputs.projectName,
       description: inputs.description,
-      apiKey: apiKey,
-      privacy: 1,
+      privacy: 0,
     };
 
     dispatch(Actions.addProject(projectInfoData));

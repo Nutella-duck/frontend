@@ -19,6 +19,7 @@ const HPOListComponents = () => {
   const modelOfTheProject = useSelector((state) => state.model.totalRun);
 
   const model = useSelector((state) => state.model.models);
+
   const totalRun = modelOfTheProject[0].totalRun;
   const ProjectName = modelOfTheProject[0].projectName;
   const chartIndicators = useSelector((state) => state.model.chartIndicators);

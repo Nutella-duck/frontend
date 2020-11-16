@@ -1,12 +1,22 @@
 import { apiClient } from '../clients';
 
 export const api = {
-  async getSelectedModelData(modelId) {
-    const { data } = await apiClient.get(`/run/${modelId}`, {
+  async getHPOProjectList() {
+    const { data } = await apiClient.get(`/hpo/hpoProject`, {
       params: {
         isNewArrival: true,
       },
     });
+    console.log('rhdwn', data);
+    return data;
+  },
+  async getHPOResult(id) {
+    const { data } = await apiClient.get(`/hpo/result/${id}`, {
+      params: {
+        isNewArrival: true,
+      },
+    });
+    console.log('rhdwn', data);
     return data;
   },
 

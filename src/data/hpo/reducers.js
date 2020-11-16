@@ -36,6 +36,7 @@ const initialState = {
       createdBy: 'leehaein',
     },
   ],
+  hpoConfig: [],
 };
 
 const HpoReducer = (state = initialState, action) => {
@@ -54,7 +55,6 @@ const HpoReducer = (state = initialState, action) => {
     }
     case Actions.ADD_HPO_DATA: {
       const current = action.hpoData;
- 
 
       console.log(current);
       return {
@@ -64,7 +64,6 @@ const HpoReducer = (state = initialState, action) => {
     }
     case Actions.ADD_HPO_CONFIG: {
       const current = action.hpoConfig;
-      
 
       console.log(current);
       return {
