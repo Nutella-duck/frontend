@@ -38,7 +38,7 @@ export const getResult = (chartIndicators, totalRun) => (state) => {
     return result;
   }
 };
-export const getGraph2Results = (runs) => (state) => {
+export const getGraph2Results = () => (state) => {
   const data = state.model.graph2Data;
   console.log('~!~!~!', data);
   let result = [];
@@ -57,6 +57,7 @@ export const getGraph2Results = (runs) => (state) => {
     });
     result.push(temp);
   });
+  console.log('!!!!', result);
   return result;
   // if (graph.length > 2) {
   //   graph.forEach((v) => {

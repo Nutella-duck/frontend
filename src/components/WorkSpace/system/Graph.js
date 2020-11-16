@@ -11,7 +11,7 @@ import {
   Crosshair,
   DiscreteColorLegend,
 } from 'react-vis';
-
+import { curveCatmullRom } from 'd3-shape';
 class Graph extends Component {
   state = {
     crosshairValues: [],
@@ -28,12 +28,19 @@ class Graph extends Component {
     const _onNearestX = (value, { index }) => {
       this.setState({ crosshairValues: graph.map((d) => d[index]) });
     };
-
-    // const mapToComponent = (data) => {
-    //   return graph.map((data, i) => {
-    //     return <Line key={i} onNearestX={_onNearestX} data={data} />;
-    //   });
-    // };
+    console.log(`3rd${JSON.stringify(graph)}`);
+    const mapToComponent = (data) => {
+      return graph.map((data, i) => {
+        return (
+          <Line
+            curve={curveCatmullRom.alpha(0.5)}
+            key={i}
+            onNearestX={_onNearestX}
+            data={data}
+          />
+        );
+      });
+    };
     return (
       <div>
         <FlexibleWidthXYPlot onMouseLeave={_onMouseLeave} height={250}>
@@ -42,7 +49,7 @@ class Graph extends Component {
           <XAxis />
           <YAxis />
 
-          {/* {mapToComponent(this.state.graph)} */}
+          {mapToComponent(this.state.graph)}
           <DiscreteColorLegend orientation="horizontal" items={model_name} />
           <Crosshair
             values={this.state.crosshairValues}

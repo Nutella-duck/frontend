@@ -32,7 +32,7 @@ const WorkSpaceComponent = () => {
   //const result = useSelector(Selectors.getResult(chartIndicators, totalRun));
   const result = useSelector(Selectors.getGraphResults());
   const graph2 = useSelector(Selectors.getGraph2Results(runs));
-  console.log(graph2);
+
   //console.log(result[0].y.replace('"', ''));
   const modelName = useSelector(Selectors.getSelectedModelName());
   useEffect(() => {
@@ -49,14 +49,17 @@ const WorkSpaceComponent = () => {
     if (totalRun > 0) {
       dispatch(Actions.getGraphs(id));
       dispatch(Actions.testGraphs(runs));
+      console.log('여기렌더링중');
       // const time = setInterval(function () {
       //   dispatch(Actions.getGraphs(id));
-      // }, 5000);
+      //   dispatch(Actions.testGraphs(runs));
+      // }, 10000);
     }
-  }, [dispatch, id, runs, totalRun]);
-
+  }, [dispatch, totalRun]);
+  console.log(`????????${graph2}`);
   return (
     <div>
+      {/* <div>{graphdata2}</div> */}
       <Header projectId={id} ProjectName={ProjectName}></Header>
       <RunTableComponent
         totalRuns={totalRun}
@@ -66,12 +69,12 @@ const WorkSpaceComponent = () => {
         models={modelName}
         isLoading={isGraphLoading}
         // graph={result.length >= chartIndicators.length ? result : sample}
-        graph={result}
+        graph={graph2}
       ></SectionsComponent>
       <SystemComponent
         models={modelName}
         isLoading={isGraphLoading}
-        graph={result}
+        graph={graph2}
       ></SystemComponent>
     </div>
   );
