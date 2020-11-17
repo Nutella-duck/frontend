@@ -92,7 +92,7 @@ const HPOSpace = () => {
         <div className="contents">
           <div className="eval">
             <div style={{ marginBottom: '10px' }}>eval_loss v. created</div>
-            <Label></Label>
+            <Label data={data ? data : iris}></Label>
           </div>
           <div className="importance">
             <div style={{ marginLeft: '70px' }}>

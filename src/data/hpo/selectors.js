@@ -20,3 +20,24 @@ export const getHPOResult = () => (state) => {
   console.log('!!!!', result);
   return result;
 };
+
+export const getHPOTarget = () => (state) => {
+  const data = state.hpo.hpoConfig;
+  let result = [];
+  data.forEach((item) => {
+    let temp = [];
+    item.forEach((v) => {
+      if (v.indicator) {
+        // console.log(`const${v.indicator}${typeof v.indicator}`);
+        let a = JSON.parse(v.indicator);
+        temp.push({
+          x: v.stepNumber,
+          y: a.accuracy,
+        });
+      }
+    });
+    result.push(temp);
+  });
+  console.log('!!!!', result);
+  return result;
+};

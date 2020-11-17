@@ -11,20 +11,17 @@ import {
   MarkSeriesCanvas,
   Hint,
 } from 'react-vis';
+import { gray } from 'd3';
 
 function getRandomData() {
   return new Array(100).fill(0).map((row) => ({
     x: Math.random() * 10,
     y: Math.random() * 20,
     size: 1,
-    color: Math.random() * 10,
-    opacity: Math.random() * 0.5 + 0.5,
+    color: gray,
+    // opacity: Math.random() * 0.5 + 0.5, //투명도
   }));
 }
-const colorRanges = {
-  typeA: ['#59E4EC', '#0D676C'],
-  typeB: ['#EFC1E3', '#B52F93'],
-};
 
 const randomData = getRandomData();
 // const nextType = {
@@ -42,42 +39,42 @@ const drawModes = ['canvas', 'svg'];
 export default class Example extends React.Component {
   state = {
     drawMode: 0,
-    data: randomData,
+    data1: randomData,
     colorType: 'typeA',
     value: false,
   };
 
   render() {
-    const { drawMode, data, colorType } = this.state;
+    const { drawMode, data1, colorType } = this.state;
+    const { data } = this.props;
+    let target = data.map((v) => v.target);
+    for (let i = 0; i < target.length; i++) {
+      target[i] = JSON.parse(target[i]);
+    }
+    console.log('target', target);
+    let result = [];
+    for (let i = 0; i < target.length; i++) {
+      result.push({
+        x: i,
+        y: target[i].eval_loss,
+        size: 1,
+      });
+    }
+    console.log('result', result);
     const markSeriesProps = {
       animation: true,
       className: 'mark-series-example',
       sizeRange: [1, 5],
       seriesId: 'my-example-scatterplot',
-      colorRange: colorRanges[colorType],
-      opacityType: 'literal',
-      data,
+
+      // opacityType: 'literal',
+      data: result,
       onNearestXY: (value) => this.setState({ value }),
     };
 
     const mode = drawModes[drawMode];
     return (
       <div className="canvas-wrapper">
-        {/* <div className="canvas-example-controls">
-          <div>{`MODE: ${mode}`}</div>
-          <ShowcaseButton
-            onClick={() => this.setState({drawMode: (drawMode + 1) % 2})}
-            buttonContent={nextModeContent[mode]}
-          />
-          <ShowcaseButton
-            onClick={() => this.setState({data: getRandomData()})}
-            buttonContent={'UPDATE DATA'}
-          />
-          <ShowcaseButton
-            onClick={() => this.setState({colorType: nextType[colorType]})}
-            buttonContent={'UPDATE COLOR'}
-          />
-        </div> */}
         <XYPlot
           onMouseLeave={() => this.setState({ value: false })}
           width={600}
@@ -88,8 +85,7 @@ export default class Example extends React.Component {
           <XAxis />
           <YAxis />
           {mode === 'canvas' && <MarkSeriesCanvas {...markSeriesProps} />}
-          {mode === 'svg' && <MarkSeries {...markSeriesProps} />}
-          {this.state.value ? <Hint value={this.state.value} /> : null}
+          {/* {this.state.value ? <Hint value={this.state.value} /> : null} */}
         </XYPlot>
       </div>
     );
