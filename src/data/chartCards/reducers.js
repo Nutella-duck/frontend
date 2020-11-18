@@ -1,8 +1,8 @@
 import * as Actions from './actionTypes';
 
 const initialState = {
-  chartCardsName: ['accuracy', 'loss'],
-  systemCardsName: ['GPU', 'CPU'],
+  chartCardsName: ['accuracy'],
+  systemCardsName: ['GPU'],
 };
 
 const ModelReducer = (state = initialState, action) => {

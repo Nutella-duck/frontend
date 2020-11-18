@@ -53,6 +53,11 @@ class Graph extends Component {
           <YAxis />
 
           {mapToComponent(this.state.graph)}
+          {/* <Line
+            curve={curveCatmullRom.alpha(0.5)}
+            onNearestX={_onNearestX}
+            data={graph}
+          /> */}
           <DiscreteColorLegend orientation="horizontal" items={model_name} />
           <Crosshair
             values={this.state.crosshairValues}

@@ -18,12 +18,14 @@ export const getmodelListFail = (error) => ({
 });
 export const getModelSuccess = createAction(AT.GET_MODEL_SUCCESS);
 export const getGraphSuccess = createAction(AT.GET_GRAPH_SUCCESS);
+export const getGraph2Success = createAction(AT.GET_GRAPH2_SUCCESS);
 export const fetchAllModelData = (modelData) => {
   return {
     type: AT.FETCH_ALL_MODEL_DATA,
     modelData,
   };
 };
+
 export const fetchNumberOfModel = (totalRun) => {
   return {
     type: AT.FETCH_NUMBER_OF_MODEL,
@@ -57,6 +59,7 @@ export const getAllModelData = (modelId) => async (dispatch, getState) => {
   dispatch(getmodelListLoading);
   try {
     const model = await apis.modelApi.fetch10model(modelId);
+
     dispatch(fetchAllModelData(model));
   } catch (error) {}
 };
@@ -68,26 +71,26 @@ export const getSelectedModelData = (modelId) => async (dispatch, getState) => {
   } catch (error) {}
 };
 
-export const getNumberOfModel = (modelId) => async (dispatch, getState) => {
+export const getNumberOfModel = (proejectId) => async (dispatch, getState) => {
   dispatch(getmodelListLoading);
   try {
-    const model = await apis.modelApi.getNumberOfModel(modelId);
+    const model = await apis.modelApi.getNumberOfModel(proejectId);
     dispatch(fetchNumberOfModel(model));
   } catch (error) {}
 };
 
-export const getResult = (modelId) => async (dispatch, getState) => {
+export const getResult = (proejectId) => async (dispatch, getState) => {
   dispatch(getmodelListLoading);
   try {
     const [totalRun, models] = await Promise.all([
-      apis.modelApi.getNumberOfModel(modelId),
-      apis.modelApi.getSelectedModelData(modelId),
+      apis.modelApi.getNumberOfModel(proejectId), //totalRun
+      apis.modelApi.getSelectedModelData(proejectId),
     ]);
     dispatch(getModelSuccess({ totalRun, models }));
   } catch (error) {}
 };
 
-export const getGraphs = (id, indicator, totalRun) => async (
+export const getGraphs1 = (id, indicator, totalRun) => async (
   dispatch,
   getState,
 ) => {
@@ -100,7 +103,29 @@ export const getGraphs = (id, indicator, totalRun) => async (
     }
     const graph = await Promise.all(graphPromise);
     dispatch(getGraphSuccess(graph));
-  } catch (erro) {}
+  } catch (error) {}
+};
+
+export const getGraphs = () => async (dispatch, getState) => {
+  dispatch(getmodelListLoading);
+  try {
+    const graph = await apis.modelApi.getGraphData(1);
+
+    dispatch(getGraphSuccess(graph));
+  } catch (error) {}
+};
+export const testGraphs = (runs) => async (dispatch, getState) => {
+  dispatch(getmodelListLoading);
+  try {
+    const graphPromise = [];
+    for (let i = 0; i < runs.length; i++) {
+      graphPromise.push(apis.modelApi.getGraphData(runs[i]));
+      console.log(`promis${graphPromise}`);
+    }
+    const graph = await Promise.all(graphPromise);
+    console.log('여기들어오나요');
+    dispatch(getGraph2Success(graph));
+  } catch (error) {}
 };
 export const getOneGraph = (id, indicator) => async (dispatch, getState) => {
   const graphPromise = [];

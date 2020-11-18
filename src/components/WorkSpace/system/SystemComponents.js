@@ -94,7 +94,8 @@ const SystemItemHead = ({ cards }) => {
 };
 
 const SystemComponents = ({ models, graph, isLoading = true }) => {
-  const cards = useSelector((state) => state.cards.systemCardsName);
+  console.log('2nd', graph);
+  const cards = useSelector((state) => state.model.indicatorCard);
   return (
     <div style={{ borderRadius: '0.7rem' }}>
       <SystemItemHead cards={cards}></SystemItemHead>
@@ -118,7 +119,7 @@ const SystemComponents = ({ models, graph, isLoading = true }) => {
             >
               <h5>{card}</h5>
               {!isLoading && (
-                <Graph models={models} graph={graph[cards.indexOf(card)]} />
+                <Graph index={index} models={models} graph={graph[index]} />
               )}
               {isLoading && <p>로딩중..</p>}
             </Card>

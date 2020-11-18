@@ -166,8 +166,6 @@ class table extends PureComponent {
           className="ag-theme-alpine"
           style={{ height: '100%', width: '100%' }}
         >
-         
-
           <AgGridReact
             rowDeselection={true}
             rowSelection={this.state.rowSelection}

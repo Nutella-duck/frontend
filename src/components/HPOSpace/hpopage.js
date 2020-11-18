@@ -1,20 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './page.css';
+
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  Navbar,
-  Form,
-  FormControl,
-  Button,
-  Modal,
-  Col,
-  Container,
-  Row,
-  Dropdown,
-} from 'react-bootstrap';
-import { AgGridColumn, AgGridReact } from 'ag-grid-react';
 import * as Actions from '../../data/hpo/actions.js';
-import * as Selectors from '../../data/hpo/selectors.js';
 import Label from './labelSeries.js';
 import HPOGraph from '../HPOSpace/graph.js';
 import Parallel2 from './parallelGraph.js';
@@ -26,10 +14,36 @@ import Importance from './importance';
 const HPOSpace = () => {
   const { id } = useParams();
   const rowData = useSelector((state) => state.hpo.hpoConfig);
+  console.log('잘옵니까?', rowData);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(Actions.hpoConfig());
+    dispatch(Actions.getHPOList());
   }, [dispatch]);
+  const iris = [
+    {
+      target: 0.3,
+      config: {
+        units: 5.1,
+        dropout: 3.5,
+        batch_size: 1.4,
+        eval_loss: 0.2,
+        optimizer: 'adam',
+        species: 'setosa',
+      },
+    },
+    {
+      target: 0.4,
+      config: {
+        units: 4.9,
+        dropout: 3.0,
+        batch_size: 1.4,
+        eval_loss: 0.2,
+        optimizer: 'adam',
+        species: 'setosa',
+      },
+    },
+  ];
   //let arr = JSON.parse(rowData);
 
   //console.log(arr);
@@ -52,10 +66,13 @@ const HPOSpace = () => {
   // console.log(jsondata)
   // rowData?console.log(rowData[0].config):console.log(rowData)
 
-  const data = '"method":"tpe","epoch":10,"learning_rate":0.05';
-  let datasplice = data.replace('"', '');
-  datasplice = '"' + datasplice;
-  console.log(datasplice);
+  let data = [];
+  for (let i = 0; i < rowData.length; i++) {
+    data.push({
+      target: rowData[i].target,
+      config: rowData[i].config,
+    });
+  }
 
   return (
     <>
@@ -74,7 +91,7 @@ const HPOSpace = () => {
         <div className="contents">
           <div className="eval">
             <div style={{ marginBottom: '10px' }}>eval_loss v. created</div>
-            <Label></Label>
+            <Label data={data ? data : iris}></Label>
           </div>
           <div className="importance">
             <div style={{ marginLeft: '70px' }}>
@@ -83,7 +100,10 @@ const HPOSpace = () => {
             <Importance className="importaceContents"></Importance>
           </div>
           <div className="graph">
-            <Parallel2 className="grph-content"></Parallel2>
+            <Parallel2
+              data={data ? data : iris}
+              className="grph-content"
+            ></Parallel2>
           </div>
         </div>
       </div>

@@ -14,7 +14,7 @@ import {
 import { Trash } from 'react-bootstrap-icons';
 import React, { useState, useEffect } from 'react';
 import './HpoList.css';
-import { render } from 'react-dom';
+
 import { AgGridColumn, AgGridReact } from 'ag-grid-react';
 import { RowNodeCache } from 'ag-grid-community';
 import * as Actions from '../../data/hpo/actions';
@@ -26,113 +26,85 @@ const App = () => {
     dispatch(Actions.getAllModelData());
   }, [dispatch]);
   const rowData = useSelector((state) => state.hpo.hpoData);
-  console.log(rowData);
   const [gridApi, setGridApi] = useState(null);
   const [gridColumnApi, setGridColumnApi] = useState(null);
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
   const [show3, setShow3] = useState(false);
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = () => {
+    setShow(true);
+    setConfigs([
+      {
+        config: '',
+        type: 'scope',
+        value: '',
+      },
+    ]);
+  };
   const [filterText, setFilterText] = useState(null);
   const [inputs, setInputs] = useState({
     HPOName: '',
     description: '',
   });
-  const [configInputs, setConfigInputs] = useState({
-    config: '',
-    type: 'Range',
-    Value: '',
-  });
-  const { config, type, Value } = configInputs;
+
+  const [configs, setConfigs] = useState([
+    {
+      config: '',
+      type: 'scope',
+      value: '',
+    },
+  ]);
+
   const { HPOName, description } = inputs;
   const [apiKey, setApiKey] = useState();
-  // let ConfigArr= [
-  //   {
-
-  //     config: "epochs",
-  //     type:"Range",
-  //     Value:"1 ~ 10"
-
-  //   },
-  //   {
-
-  //     config: "bagging_fraction",
-  //     type:"Specific",
-  //     Value:"0.6,0.7,0.8"
-
-  //   },
-  //   {
-
-  //     config: "bagging_freq",
-  //     type:"Specific",
-  //     Value:"clemendelague"
-
-  //   },
-
-  // ];
-  let ConfigArr = [
-    {
-      config: 'units',
-      type: 'Range',
-      Value: '64 ~ 1024',
-    },
-    {
-      config: 'dropout',
-      type: 'Range',
-      Value: '0.25 ~ 0.75',
-    },
-    {
-      config: 'optimizer',
-      type: 'Specific',
-      Value: 'rmsprop, adadelta, adam',
-    },
-    {
-      config: 'batch_size',
-      type: 'Specific',
-      Value: '128, 512 ',
-    },
-  ];
-
   const [method, setMethod] = useState();
 
   const getKey = () => {
     setApiKey('xgQe1aNnzV-OGeulE0ovCkB3YkP2C1XF5KY1i1kE');
   };
+
   const onCreate = () => {
     setInputs({
       HPOName: '',
       description: '',
     });
-    setConfigInputs({
-      config: '',
-      type: 'Range',
-      Value: '',
-    });
 
     let HPOInfoData = {
-      name: inputs.HPOName,
-      state: 'running',
-      runCount: 100,
-      created: 35000,
-      computedTime: '1hours',
-      createdBy: 'leehaein',
+      hpoName: inputs.HPOName,
+      description: inputs.description,
+      apiKey: apiKey,
+      createBy: 'haein',
     };
-    // setRowData(rowData.concat(HPOInfoData));
-    let configData = {
-      config: configInputs.config,
-      type: configInputs.type,
-      Value: configInputs.Value,
+    let HPOConfig = {
+      projectName: inputs.HPOName,
+      method: 2,
+      config: {},
     };
-    ConfigArr.push(configData);
-    //console.log(ConfigArr);
+    let ConfigObject = new Object();
+    for (let i = 0; i < configs.length; i++) {
+      let property = new Object();
+      let value = [];
+      if (configs[i].type === 'scope')
+        value = configs[i].value.split('~').map(Number);
+      else
+        value = configs[i].value
+          .split(',')
+          .map((v) => (isNaN(v) ? v : Number(v)));
+      property[configs[i].type] = value;
+      console.log(i, property);
+      ConfigObject[configs[i].config] = property;
+    }
+    HPOConfig.config = ConfigObject;
+    console.log(HPOConfig);
     dispatch(Actions.addHpo(HPOInfoData));
-
-    // state.push(projectInfoData);
+    dispatch(Actions.addHPOProject(HPOInfoData, HPOConfig));
+    //dispatch(Actions.addHPOConfig(HPOConfig));
   };
   const onChange = (e) => {
     console.log(e.target);
     const { name, value } = e.target;
+    console.log(name);
     setInputs({
       ...inputs,
       [name]: value,
@@ -147,6 +119,7 @@ const App = () => {
     getKey();
     setShow2(false);
     setShow3(true);
+    console.log(configs);
   };
 
   const handleClose2 = () => {
@@ -159,7 +132,32 @@ const App = () => {
     setShow3(false);
     onCreate();
   };
+  useEffect(() => {
+    console.log('Search message inside useEffect: ', configs);
+  }, [configs]);
 
+  const handleTypeSelect = (Keys) => {
+    console.log(Keys, typeof Keys);
+    const index = Keys[0];
+    const id = Keys[2];
+    console.log('index', index, 'id', id, configs);
+    switch (Number(id)) {
+      case 0:
+        console.log('hi', id);
+        configs[index].type = 'scope';
+        setConfigs([...configs]);
+        break;
+      case 1:
+        configs[index].type = 'value';
+        setConfigs([...configs]);
+        break;
+
+      default:
+        configs[index].type = 'scope';
+        break;
+    }
+    console.log(configs);
+  };
   const handleSelect = (id) => {
     console.log(id, typeof id);
     switch (Number(id)) {
@@ -200,7 +198,7 @@ const App = () => {
       filter: true,
       checkboxSelection: true,
     },
-    { headerName: 'NAME', field: 'name', sortable: true, filter: true },
+    { headerName: 'NAME', field: 'hpoName', sortable: true, filter: true },
     { headerName: 'STATE', field: 'state', sortable: true, filter: true },
     {
       headerName: 'CREATED',
@@ -210,7 +208,7 @@ const App = () => {
     },
     {
       headerName: 'CREATEDBY',
-      field: 'createdBy',
+      field: 'createBy',
       sortable: true,
       filter: true,
     },
@@ -227,59 +225,27 @@ const App = () => {
       filter: true,
     },
   ];
-  const ConfigCell = React.memo(function ConfigCell({ data }) {
-    const onChange2 = (e) => {
-      console.log(e.target);
-      const { name, value } = e.target;
-      setConfigInputs({
-        ...configInputs,
-        [name]: value,
-      });
-    };
-    return (
-      <div className="addTable">
-        <div className="Config">
-          <input
-            className="ConfigInputbox"
-            placeholder={data.config}
-            name="config"
-            onChange={onChange2}
-            value={config}
-            x
-          />
-        </div>
-        <div className="Type">
-          {' '}
-          <NavDropdown title={data.type} id="nav-dropdown">
-            <NavDropdown.Item key={0}>Range</NavDropdown.Item>
-            <NavDropdown.Item key={1}>Specific</NavDropdown.Item>
-          </NavDropdown>
-        </div>
-        <div className="Value">
-          <input
-            placeholder={data.Value}
-            name="Value"
-            onChange={onChange2}
-            value={Value}
-          />
-        </div>
-        <div className="Trash">
-          <Trash />
-        </div>
-      </div>
-    );
-  });
-  class ConfigCells extends React.PureComponent {
-    render() {
-      const mapToConfigCell = (data) => {
-        return data.map((cell, i) => {
-          return <ConfigCell data={cell} key={i} />;
-        });
-      };
 
-      return <div>{mapToConfigCell(ConfigArr)}</div>;
-    }
-  }
+  const handleClick = () => {
+    setConfigs([
+      ...configs,
+      {
+        config: '',
+        type: 'scope',
+        value: '',
+      },
+    ]);
+  };
+
+  const onChange2 = (e, index) => {
+    console.log('hi');
+    console.log(e.target, index);
+    console.log(configs, configs[index]);
+    configs[index][e.target.name] = e.target.value;
+    console.log(configs);
+    setConfigs([...configs]);
+  };
+
   return (
     <>
       <Navbar bg="light" variant="light" style={{ borderRadius: '0.7rem' }}>
@@ -378,7 +344,7 @@ const App = () => {
                     eventKey="2"
                     onSelect={handleSelect}
                   >
-                    Range
+                    Random
                   </NavDropdown.Item>
                 </NavDropdown>
               </div>
@@ -389,8 +355,55 @@ const App = () => {
                 <div className="Type">Type</div>
                 <div className="Value">Value</div>
                 <div className="Trash"></div>
+                <button onClick={(e) => handleClick(e)}>+</button>
               </div>
-              <ConfigCells />
+              {configs.map((con, index) => {
+                return (
+                  <div key={index}>
+                    <div className="addTable">
+                      <div className="Config">
+                        <input
+                          className="ConfigInputbox"
+                          placeholder="config"
+                          name="config"
+                          onChange={(e) => onChange2(e, index)}
+                          value={con.config}
+                        />
+                      </div>
+                      <div className="Type">
+                        {' '}
+                        <NavDropdown title={con.type} id="nav-dropdown">
+                          <NavDropdown.Item
+                            key="0"
+                            eventKey={[index, 0]}
+                            onSelect={handleTypeSelect}
+                          >
+                            scope
+                          </NavDropdown.Item>
+                          <NavDropdown.Item
+                            key="1"
+                            eventKey={[index, 1]}
+                            onSelect={handleTypeSelect}
+                          >
+                            value
+                          </NavDropdown.Item>
+                        </NavDropdown>
+                      </div>
+                      <div className="Value">
+                        <input
+                          placeholder="value"
+                          name="value"
+                          onChange={(e) => onChange2(e, index)}
+                          value={con.value}
+                        />
+                      </div>
+                      <div className="Trash">
+                        <Trash />
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </>
         </Modal.Body>
