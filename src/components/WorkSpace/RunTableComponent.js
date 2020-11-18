@@ -91,6 +91,8 @@ const App = () => {
     HPOConfig.config = ConfigObject;
     console.log(HPOConfig);
     dispatch(Actions.addHpo(HPOInfoData));
+    dispatch(Actions.addHPOProject(HPOInfoData, HPOConfig));
+    //dispatch(Actions.addHPOConfig(HPOConfig));
   };
   const onChange = (e) => {
     console.log(e.target);

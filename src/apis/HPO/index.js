@@ -19,18 +19,12 @@ export const api = {
     console.log('rhdwn', data);
     return data;
   },
-
-  //   async getNumberOfModel(modelId) {
-  //     const { data } = await apiClient.get(`/project/${modelId}`);
-  //     return data;
-  //   },
-
-  //   async fetch10model(modelId) {
-  //     const { data } = await apiClient.get(`/run?page=${modelId}`);
-  //     return data;
-  //   },
-  //  async getGraphData(id,index) {
-  //    const {data} = await apiClient.get(`/graph/${id}/?index=${index}`);
-  //    return data
-  //  }
+  async addHPOProject(HPOProject) {
+    const { data } = await apiClient.post(`/hpo/hpoProject`, HPOProject);
+    return data;
+  },
+  async addHPOConfig(HPOConfig) {
+    const { data } = await apiClient.post(`/hpo/config`, HPOConfig);
+    return data;
+  },
 };

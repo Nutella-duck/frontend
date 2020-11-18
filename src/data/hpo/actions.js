@@ -2,6 +2,19 @@ import apis from '../../apis/index';
 
 import * as AT from './actionTypes';
 import axios from 'axios';
+export const HPOLoading = () => ({
+  type: AT.HPO_LOADING,
+});
+
+export const HPOSuccess = (data) => ({
+  type: AT.HPO_SUCCESS,
+  data,
+});
+
+export const HPOFail = (error) => ({
+  type: AT.HPO_FAIL,
+  error,
+});
 export const fetchAllHpoData = (hpoData) => {
   return {
     type: AT.FETCH_ALL_HPO_DATA,
@@ -27,21 +40,35 @@ export const hpoConfig = () => async (dispatch, getState) => {
   dispatch(fetchHPOConfig(model));
 };
 
-// export const getAllPorject = (hpoId) => async(dispatch,getState)=>{
-
-//   const hpo = await apis.hpoApi.fetchAllHpo(hpoId);
-//  dispatch(fetchAllHpoData(hpo));
-
-// };
-
-// export const addHpo = (hpoData) => async(dispatch,getState)=>{
-
-// await apis.hpoApi.fetchAllHpo(hpoData);
-
-// };
 export const addHpo = (hpoData) => {
   return {
     type: AT.ADD_HPO_DATA,
     hpoData,
   };
+};
+export const addHPOProject = (HPOProject, HPOConfig) => async (
+  dispatch,
+  getState,
+) => {
+  dispatch(HPOLoading);
+  try {
+    console.log('hihi', HPOProject);
+    const project = await apis.hpoApi.addHPOProject(HPOProject);
+    console.log('hello', project);
+    dispatch(HPOSuccess(project));
+    dispatch(addHPOConfig(HPOConfig));
+  } catch (e) {
+    console.log(e);
+    dispatch(HPOFail(e));
+  }
+};
+export const addHPOConfig = (HPOConfig) => async (dispatch, getState) => {
+  dispatch(HPOLoading());
+  try {
+    const config = await apis.hpoApi.addHPOConfig(HPOConfig);
+    dispatch(HPOSuccess(config));
+  } catch (e) {
+    console.log(e);
+    dispatch(HPOFail(e));
+  }
 };
