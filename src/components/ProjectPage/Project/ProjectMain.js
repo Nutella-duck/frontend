@@ -27,9 +27,7 @@ const Project = () => {
 
   const getKey = () => {
     axios
-      .get(
-        'http://ec2-3-34-251-160.ap-northeast-2.compute.amazonaws.com:7000/admin/project/key',
-      )
+      .get('localhost:7000/admin/project/key')
       .then((resonse) => {
         setApiKey(resonse.data);
       })
@@ -47,6 +45,7 @@ const Project = () => {
       projectName: inputs.projectName,
       description: inputs.description,
       privacy: 0,
+      apiKey: apiKey,
     };
 
     dispatch(Actions.addProject(projectInfoData));

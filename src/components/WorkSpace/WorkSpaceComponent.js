@@ -47,7 +47,7 @@ const WorkSpaceComponent = () => {
     //   // }, 5000);
     // }
     if (totalRun > 0) {
-      dispatch(Actions.getGraphs(id));
+      // dispatch(Actions.getGraphs(id));
       dispatch(Actions.testGraphs(runs));
       console.log('여기렌더링중');
       // const time = setInterval(function () {
@@ -56,7 +56,7 @@ const WorkSpaceComponent = () => {
       // }, 10000);
     }
   }, [dispatch, totalRun]);
-  console.log(`????????${graph2}`);
+
   return (
     <div>
       {/* <div>{graphdata2}</div> */}

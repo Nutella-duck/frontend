@@ -51,16 +51,20 @@ export default class Example extends React.Component {
     for (let i = 0; i < target.length; i++) {
       target[i] = JSON.parse(target[i]);
     }
-    console.log('target', target);
     let result = [];
-    for (let i = 0; i < target.length; i++) {
-      result.push({
-        x: i,
-        y: target[i].eval_loss,
-        size: 1,
-      });
+    if (target.length > 1) {
+      let indicator = Object.keys(target[0]);
+      console.log('target', target, indicator);
+
+      for (let i = 0; i < target.length; i++) {
+        result.push({
+          x: i,
+          y: target[i][indicator],
+          size: 1,
+        });
+      }
+      console.log('result', result);
     }
-    console.log('result', result);
     const markSeriesProps = {
       animation: true,
       className: 'mark-series-example',

@@ -3,7 +3,6 @@ import './page.css';
 
 import { useDispatch, useSelector } from 'react-redux';
 import * as Actions from '../../data/hpo/actions.js';
-import * as Selectors from '../../data/hpo/selectors.js';
 import Label from './labelSeries.js';
 import HPOGraph from '../HPOSpace/graph.js';
 import Parallel2 from './parallelGraph.js';

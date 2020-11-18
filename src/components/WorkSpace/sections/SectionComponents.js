@@ -95,7 +95,7 @@ const ItemHead = ({ cards }) => {
 };
 
 const SectionsComponents = ({ models, graph, isLoading = true }) => {
-  const cards = useSelector((state) => state.cards.chartCardsName);
+  const cards = useSelector((state) => state.model.indicatorCard);
 
   return (
     <>
@@ -121,7 +121,7 @@ const SectionsComponents = ({ models, graph, isLoading = true }) => {
               <h5>{card}</h5>
               {isLoading && <p>loading...</p>}
               {!isLoading && (
-                <Graph index={index} models={models} graph={graph} />
+                <Graph index={index} models={models} graph={graph[index]} />
               )}
             </Card>
           </Col>
