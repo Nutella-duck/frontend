@@ -1,7 +1,12 @@
-
-
-
-export const FETCH_ALL_HPO_CONFIG = "hpo/FETCH_ALL_HPO_CONFIG";
-export const FETCH_ALL_HPO_DATA = "hpo/FETCH_ALL_HPO_DATA";
-export const ADD_HPO_DATA = "hpo/ADD_HPO_DATA"
-export const ADD_HPO_CONFIG="hpo/hpoConfig"
+import { fail, loading, success } from '../utils';
+export const HPO = 'HPO';
+export const HPO_SUCCESS = success(HPO);
+export const HPO_FAIL = fail(HPO);
+export const HPO_LOADING = loading(HPO);
+export const FETCH_ALL_HPO_CONFIG = 'hpo/FETCH_ALL_HPO_CONFIG';
+export const FETCH_ALL_HPO_DATA = 'hpo/FETCH_ALL_HPO_DATA';
+export const ADD_HPO_DATA = 'hpo/ADD_HPO_DATA';
+export const HPO_CONFIG = 'hpo/hpoConfig';
+export const GET_HPO_LIST = 'hpo/getHPOList';
+export const ADD_HPO_PROJECT = 'hpo/addHPOProject';
+export const ADD_HPO_CONFIG = 'hpo/addHPOConfig';

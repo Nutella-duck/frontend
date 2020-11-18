@@ -8,6 +8,7 @@ const initialState = {
   isGraphLoading: true,
   selectedModel: [],
   models: [],
+  graph2Data: [],
 };
 
 const ModelReducer = (state = initialState, action) => {
@@ -41,18 +42,23 @@ const ModelReducer = (state = initialState, action) => {
         totalRun: action.totalRun,
       };
     }
-    case Actions.FETCH_GRAPH_DATA: {
-      // state.graphData.unshift (action.graphData)
-      var data = [];
-      data = action.graphData.map((a) => a.accuracy);
-      state.graphData.unshift(data);
-      return {
-        ...state,
-        isGraphLoading: true,
+    // case Actions.FETCH_GRAPH_DATA: {
+    //   // state.graphData.unshift (action.graphData)
+    //   // var data = [];
+    //   // data = action.graphData.map((a) => a.accuracy);
+    //   // state.graphData.unshift(data);
+    //   // return {
+    //   //   ...state,
+    //   //   isGraphLoading: true,
 
-        // graphData:state.graphData.concat(data)
-      };
-    }
+    //   //   // graphData:state.graphData.concat(data)
+    //   // };
+    //   const { graphData } = state;
+    //   return {
+    //     ...state,
+    //     graphData: action.graphData,
+    //   };
+    // }
     case Actions.FETCH_SELECTED_MODEL: {
       const { selectedModel } = state;
       return {
@@ -69,7 +75,12 @@ const ModelReducer = (state = initialState, action) => {
       };
     }
     case Actions.GET_GRAPH_SUCCESS: {
+      console.log('payload', action.payload);
       return { ...state, graphData: action.payload, isGraphLoading: false };
+    }
+    case Actions.GET_GRAPH2_SUCCESS: {
+      console.log('payload2', action.payload);
+      return { ...state, graph2Data: action.payload, isGraphLoading: false };
     }
     default: {
       return state;

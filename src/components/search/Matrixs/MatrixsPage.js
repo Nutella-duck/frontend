@@ -20,10 +20,10 @@ const MatrixsPage = () => {
     dispatch(Actions.getIndicators);
     dispatch(Actions.getAllModelData());
     dispatch(Actions.getOneGraph(id, chartIndicators));
-    const time = setInterval(function () {
-      dispatch(Actions.getOneGraph(id, chartIndicators));
-    }, 30000);
-  }, []);
+    // const time = setInterval(function () {
+    //   dispatch(Actions.getOneGraph(id, chartIndicators));
+    // }, 30000);
+  }, [chartIndicators, dispatch, id]);
 
   const result = [];
   if (graph.length > 1) {

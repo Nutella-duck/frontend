@@ -11,7 +11,7 @@ import '../Run/Run.css';
 const Project = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.project.projects);
-
+  console.log(`state${state}`);
   const [apiKey, setApiKey] = useState(null);
   const [inputs, setInputs] = useState({
     projectName: '',
@@ -46,7 +46,7 @@ const Project = () => {
     let projectInfoData = {
       projectName: inputs.projectName,
       description: inputs.description,
-      api_key: apiKey,
+      privacy: 0,
     };
 
     dispatch(Actions.addProject(projectInfoData));
