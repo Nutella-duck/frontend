@@ -43,7 +43,7 @@ class Graph extends Component {
         );
       });
     };
-    console.log(graph);
+
     return (
       <div>
         <FlexibleWidthXYPlot onMouseLeave={_onMouseLeave} height={250}>

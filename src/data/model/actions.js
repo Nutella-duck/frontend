@@ -123,7 +123,7 @@ export const testGraphs = (runs) => async (dispatch, getState) => {
       console.log(`promis${graphPromise}`);
     }
     const graph = await Promise.all(graphPromise);
-
+    console.log('여기들어오나요');
     dispatch(getGraph2Success(graph));
   } catch (error) {}
 };

@@ -9,6 +9,7 @@ const initialState = {
   selectedModel: [],
   models: [],
   graph2Data: [],
+  indicatorCard: [],
 };
 
 const ModelReducer = (state = initialState, action) => {
@@ -79,8 +80,17 @@ const ModelReducer = (state = initialState, action) => {
       return { ...state, graphData: action.payload, isGraphLoading: false };
     }
     case Actions.GET_GRAPH2_SUCCESS: {
-      console.log('payload2', action.payload);
-      return { ...state, graph2Data: action.payload, isGraphLoading: false };
+      const indicators = Object.keys(
+        JSON.parse(action.payload[0][0].indicator),
+      );
+      console.log('payload2', action.payload, indicators);
+
+      return {
+        ...state,
+        graph2Data: action.payload,
+        isGraphLoading: false,
+        indicatorCard: indicators,
+      };
     }
     default: {
       return state;
