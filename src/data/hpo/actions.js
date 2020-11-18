@@ -52,9 +52,7 @@ export const addHPOProject = (HPOProject, HPOConfig) => async (
 ) => {
   dispatch(HPOLoading);
   try {
-    console.log('hihi', HPOProject);
     const project = await apis.hpoApi.addHPOProject(HPOProject);
-    console.log('hello', project);
     dispatch(HPOSuccess(project));
     dispatch(addHPOConfig(HPOConfig));
   } catch (e) {

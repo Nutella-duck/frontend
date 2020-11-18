@@ -37,7 +37,7 @@ const App = () => {
     setConfigs([
       {
         config: '',
-        type: 'Range',
+        type: 'scope',
         value: '',
       },
     ]);
@@ -51,7 +51,7 @@ const App = () => {
   const [configs, setConfigs] = useState([
     {
       config: '',
-      type: 'Range',
+      type: 'scope',
       value: '',
     },
   ]);
@@ -84,7 +84,14 @@ const App = () => {
     let ConfigObject = new Object();
     for (let i = 0; i < configs.length; i++) {
       let property = new Object();
-      property[configs[i].type] = configs[i].value;
+      let value = [];
+      if (configs[i].type === 'scope')
+        value = configs[i].value.split('~').map(Number);
+      else
+        value = configs[i].value
+          .split(',')
+          .map((v) => (isNaN(v) ? v : Number(v)));
+      property[configs[i].type] = value;
       console.log(i, property);
       ConfigObject[configs[i].config] = property;
     }
@@ -137,16 +144,16 @@ const App = () => {
     switch (Number(id)) {
       case 0:
         console.log('hi', id);
-        configs[index].type = 'Range';
+        configs[index].type = 'scope';
         setConfigs([...configs]);
         break;
       case 1:
-        configs[index].type = 'Specific';
+        configs[index].type = 'value';
         setConfigs([...configs]);
         break;
 
       default:
-        configs[index].type = 'Range';
+        configs[index].type = 'scope';
         break;
     }
     console.log(configs);
@@ -224,7 +231,7 @@ const App = () => {
       ...configs,
       {
         config: '',
-        type: 'Range',
+        type: 'scope',
         value: '',
       },
     ]);
@@ -371,14 +378,14 @@ const App = () => {
                             eventKey={[index, 0]}
                             onSelect={handleTypeSelect}
                           >
-                            Range
+                            scope
                           </NavDropdown.Item>
                           <NavDropdown.Item
                             key="1"
                             eventKey={[index, 1]}
                             onSelect={handleTypeSelect}
                           >
-                            Specific
+                            value
                           </NavDropdown.Item>
                         </NavDropdown>
                       </div>
