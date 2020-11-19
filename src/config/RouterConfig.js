@@ -39,26 +39,31 @@ export const RouterConfig = [
     exact: true,
     component: () => <MATRIXS></MATRIXS>,
   },
+
   {
     path: '/run/system/:id',
     exact: true,
     component: () => <SYSTEM></SYSTEM>,
   },
+
   {
     path: '/test',
     exact: true,
     component: () => <TEST></TEST>,
   },
+
   {
     path: '/hpolist/:id',
     exact: true,
     component: () => <HPOList></HPOList>,
   },
+
   {
     path: '/hpo/:id',
     exact: true,
     component: () => <HPOSpace></HPOSpace>,
   },
+
   {
     path: '/hpoOverview/:id',
     exact: true,

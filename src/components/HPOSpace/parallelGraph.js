@@ -79,6 +79,7 @@ const BrushedParallelCoordinates = ({ data }) => {
   console.log(target);
   let config = data.map((v) => v.config);
   for (let i = 0; i < config.length; i++) {
+    console.log('왜안되는거야?', config[i]);
     config[i] = JSON.parse(config[i]);
     target[i] = JSON.parse(target[i]);
     config[i] = { ...config[i], ...target[i] };
@@ -100,16 +101,9 @@ const BrushedParallelCoordinates = ({ data }) => {
         v.method = 0;
         break;
       }
-      case 'rmsprop': {
-        v.optimizer = 1;
-        break;
-      }
-      case 'adadelta': {
-        v.optimizer = 2;
-        break;
-      }
+
       default: {
-        v.optimizer = 0;
+        v.method = 0;
         break;
       }
     }
@@ -124,6 +118,7 @@ const BrushedParallelCoordinates = ({ data }) => {
 
     domains = config.reduce((acc, row) => {
       return acc.map((d) => {
+        console.log('row', d.name, row[d.name]);
         return {
           name: d.name,
           domain: [
