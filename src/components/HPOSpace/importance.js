@@ -30,6 +30,7 @@ export default class Example extends React.Component {
           height={300}
           margin={{ left: 100 }}
           stackBy="x"
+          onMouseLeave={() => this.setState({ value: false })}
         >
           <VerticalGridLines />
           <HorizontalGridLines />

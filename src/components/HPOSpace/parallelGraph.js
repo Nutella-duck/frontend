@@ -80,13 +80,14 @@ const BrushedParallelCoordinates = ({ data }) => {
   return (
     <ParallelCoordinates
       style={{ line: { curve: curveCatmullRom.alpha(0.5) } }}
-      animation
-      brushing
+      animation="true"
+      brushing="true"
       data={config.map((d) => ({ ...d, color: color(d) }))}
       domains={domains ? domains : { name: 'method', domain: Array(2) }}
       margin={60}
       width={1500}
       height={400}
+      showMarks="true"
     />
   );
 };
