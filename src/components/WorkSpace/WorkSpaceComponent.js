@@ -20,10 +20,7 @@ const WorkSpaceComponent = () => {
 
   const model = useSelector((state) => state.model.models);
   const runs = model.map((v) => v.runId);
-  console.log('runs!!!', runs);
-  console.log(
-    `model${JSON.stringify(model)}${JSON.stringify(modelOfTheProject)}`,
-  );
+
   const totalRun = modelOfTheProject[0].totalRun;
   const ProjectName = modelOfTheProject[0].projectName;
   //const chartIndicators = useSelector((state) => state.model.chartIndicators);
@@ -34,6 +31,7 @@ const WorkSpaceComponent = () => {
   const graph2 = useSelector(Selectors.getGraph2Results(runs));
 
   //console.log(result[0].y.replace('"', ''));
+  const selected = useSelector((state) => state.model.selectedModel);
   const modelName = useSelector(Selectors.getSelectedModelName());
   useEffect(() => {
     dispatch(Actions.getResult(id));
@@ -48,14 +46,14 @@ const WorkSpaceComponent = () => {
     // }
     if (totalRun > 0) {
       // dispatch(Actions.getGraphs(id));
-      dispatch(Actions.testGraphs(runs));
+      dispatch(Actions.testGraphs(runs, selected));
       console.log('여기렌더링중');
       // const time = setInterval(function () {
       //   dispatch(Actions.getGraphs(id));
       //   dispatch(Actions.testGraphs(runs));
       // }, 10000);
     }
-  }, [dispatch, totalRun]);
+  }, [dispatch, totalRun, selected]);
 
   return (
     <div>

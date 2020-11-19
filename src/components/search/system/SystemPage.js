@@ -11,13 +11,12 @@ const MatrixsPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  const graph = useSelector((state) => state.model.graphData);
+  const graph = useSelector((state) => state.model.graph2Data);
   const model = useSelector((state) => state.model.models);
   const isGraphLoading = useSelector((state) => state.model.isGraphLoading);
-  const chartIndicators = useSelector((state) => state.model.chartIndicators);
+  const chartIndicators = useSelector((state) => state.model.indicatorCard);
 
   useEffect(() => {
-    dispatch(Actions.getIndicators);
     dispatch(Actions.getAllModelData());
     dispatch(Actions.getOneGraph(id, chartIndicators));
     // const time = setInterval(function () {

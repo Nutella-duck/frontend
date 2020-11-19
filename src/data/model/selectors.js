@@ -1,3 +1,5 @@
+import { select } from 'd3';
+
 export const getResult = (chartIndicators, totalRun) => (state) => {
   const graph = JSON.stringify(state.model.graphData);
 
@@ -40,32 +42,25 @@ export const getResult = (chartIndicators, totalRun) => (state) => {
 };
 export const getGraph2Results = () => (state) => {
   const data = state.model.graph2Data;
-  console.log('~!~!~!', data, typeof data);
-
-  console.log(data);
+  const selected = state.model.selectedModel;
+  console.log('data', data, selected);
   let result = [];
   let graph = [];
-
-  if (data.length > 1) {
+  // if(selected.length>1)
+  // {
+  //   data.filter(v=>v)
+  // }
+  if (data.length > 0) {
     const indicators = Object.keys(JSON.parse(data[0][0].indicator));
-    console.log(indicators);
+
     //indicators : ['accuracy']
     indicators.forEach((indi) => {
       data.forEach((item) => {
         let temp = [];
         item.forEach((v) => {
           if (v.indicator) {
-            // console.log(`const${v.indicator}${typeof v.indicator}`);
             let a = JSON.parse(v.indicator);
-            console.log('여기!!! indicator:', v.indicator, a);
-            console.log('indicator[arr[0]]', a[indi]);
-            console.log('arr[0]', indi);
-            console.log(
-              'typeof indicator',
-              typeof v.indicators,
-              'typeof arr[0]',
-              typeof indi,
-            );
+
             temp.push({
               x: v.stepNumber,
               y: a[indi],
@@ -73,7 +68,6 @@ export const getGraph2Results = () => (state) => {
           }
         });
         result.push(temp);
-        console.log('result', result);
       });
       graph.push(result);
     });
@@ -81,6 +75,7 @@ export const getGraph2Results = () => (state) => {
   console.log('!!!!', graph);
   return graph;
 };
+
 export const getGraphResults = (totalRun) => (state) => {
   const data = state.model.graphData;
 

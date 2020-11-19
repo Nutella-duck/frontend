@@ -69,10 +69,7 @@ const SystemItemHead = ({ cards }) => {
         <Modal.Body>
           <p>Select the Indicator for Xais</p>
 
-          <DropdownButton
-            id="dropdown-basic-button"
-            title={title ? title : cards[0]}
-          >
+          <DropdownButton id="dropdown-basic-button" title={title ? title : ''}>
             {cards.map((v, index) => (
               <Dropdown.Item key={index} eventKey={v} onSelect={handleSelect}>
                 {v}

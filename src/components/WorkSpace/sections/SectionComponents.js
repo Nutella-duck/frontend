@@ -21,13 +21,13 @@ const ItemHead = ({ cards }) => {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
-  const [title, setTitle] = useState(cards[0]);
+  const [title, setTitle] = useState(cards[0] ? cards[0] : '');
   const dispatch = useDispatch();
   const handleCreate = () => {
     setShow(false);
     dispatch(Actions.addChartCard(title));
   };
-
+  console.log(cards, cards[0]);
   const handleSelect = (id) => {
     console.log('dropdown', id);
     setTitle(id);
@@ -70,10 +70,7 @@ const ItemHead = ({ cards }) => {
         <Modal.Body>
           <p>Select the Indicator for Xais</p>
 
-          <DropdownButton
-            id="dropdown-basic-button"
-            title={title ? title : cards[0]}
-          >
+          <DropdownButton id="dropdown-basic-button" title={title ? title : ''}>
             {cards.map((v, index) => (
               <Dropdown.Item key={index} eventKey={v} onSelect={handleSelect}>
                 {v}
@@ -96,7 +93,7 @@ const ItemHead = ({ cards }) => {
 
 const SectionsComponents = ({ models, graph, isLoading = true }) => {
   const cards = useSelector((state) => state.model.indicatorCard);
-
+  console.log(cards);
   return (
     <>
       <ItemHead cards={cards}></ItemHead>

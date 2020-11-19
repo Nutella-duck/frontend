@@ -21,6 +21,7 @@ class Graph extends Component {
     const Line = LineSeries;
 
     const { models, graph } = this.props;
+    console.log('3rd', models, graph);
     const model_name = models;
     const _onMouseLeave = () => {
       this.setState({ crosshairValues: [] });
@@ -28,7 +29,7 @@ class Graph extends Component {
     const _onNearestX = (value, { index }) => {
       this.setState({ crosshairValues: graph.map((d) => d[index]) });
     };
-    console.log(`3rd${JSON.stringify(graph)}`);
+
     const mapToComponent = (data) => {
       return graph.map((data, i) => {
         return (

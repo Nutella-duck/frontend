@@ -66,8 +66,8 @@ export const getAllModelData = (modelId) => async (dispatch, getState) => {
 export const getSelectedModelData = (modelId) => async (dispatch, getState) => {
   dispatch(getmodelListLoading);
   try {
-    const model = await apis.modelApi.getSelectedModelData(modelId);
-    dispatch(fetchAllModelData(model));
+    const model = await apis.modelApi.testGraphs(modelId);
+    dispatch(fetchSelectedModel(model));
   } catch (error) {}
 };
 
@@ -114,10 +114,16 @@ export const getGraphs = () => async (dispatch, getState) => {
     dispatch(getGraphSuccess(graph));
   } catch (error) {}
 };
-export const testGraphs = (runs) => async (dispatch, getState) => {
+export const testGraphs = (runs, selected) => async (dispatch, getState) => {
   dispatch(getmodelListLoading);
   try {
     const graphPromise = [];
+    console.log(runs);
+    if (selected.length > 0) {
+      selected = selected.map((v) => v.runId);
+      runs = selected;
+    }
+    console.log('runs', selected, runs);
     for (let i = 0; i < runs.length; i++) {
       graphPromise.push(apis.modelApi.getGraphData(runs[i]));
       console.log(`promis${graphPromise}`);
