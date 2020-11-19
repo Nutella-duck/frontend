@@ -32,7 +32,7 @@ const WorkSpaceComponent = () => {
   const graph2 = useSelector(Selectors.getGraph2Results());
   console.log(model);
   let system = [];
-  if (model.length > 0) {
+  if ('system' in model) {
     system = Object.keys(JSON.parse(model[0].system));
   }
   console.log(system);

@@ -12,7 +12,7 @@ function isFirstColumn(params) {
   return thisIsFirstColumn;
 }
 
-class table extends PureComponent {
+class table extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -40,12 +40,7 @@ class table extends PureComponent {
           sortable: true,
           filter: true,
         },
-        {
-          headerName: 'RUNTIME',
-          field: 'runTime',
-          sortable: true,
-          filter: true,
-        },
+
         {
           headerName: 'ACCURACY',
           field: 'accuracy',

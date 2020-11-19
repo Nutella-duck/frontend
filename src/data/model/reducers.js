@@ -3,7 +3,7 @@ import * as Actions from './actionTypes';
 const initialState = {
   totalRun: [{ total_run: '0' }],
   index: 8,
-  graphData: [{ stepId: 1, runName: 'r1', stepNumber: 1, accuracy: 0.1 }],
+  graphData: [],
 
   isGraphLoading: true,
   selectedModel: [],
