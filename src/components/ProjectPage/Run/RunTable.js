@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 const RunTable = ({ tableRows }) => {
   const tableHeads = ['NAME', 'PROJECT', 'STATE', 'CREATED'];
-
+  console.log(tableRows);
   return (
     <Table
       striped

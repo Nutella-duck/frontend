@@ -1,13 +1,14 @@
 import React from 'react';
 
 import { ParallelCoordinates } from 'react-vis';
+import { useDispatch, useSelector } from 'react-redux';
 import IrisData from './iris.json';
 import { curveCatmullRom } from 'd3';
 
-const BrushedParallelCoordinates = ({ data }) => {
+const BrushedParallelCoordinates = ({ data, best }) => {
   console.log('datalog', data);
   let target = data.map((v) => v.target);
-
+  console.log(best);
   let config = data.map((v) => v.config);
   for (let i = 0; i < config.length; i++) {
     config[i] = JSON.parse(config[i]);
@@ -31,7 +32,19 @@ const BrushedParallelCoordinates = ({ data }) => {
     });
     const total = parseInt(sorted.length * 0.1);
     if (value[key[0]] <= sorted[total][key[0]]) return '#f12711';
-    else return '#f5af19';
+    else return '#f1271155';
+  };
+  const opacity = (value) => {
+    // const sorted = target.map((v) => v.key[0]);
+
+    const sorted = target.sort(function (a, b) {
+      // 오름차순
+      return a[key[0]] - b[key[0]];
+      // 13, 21, 25, 44
+    });
+    const total = parseInt(sorted.length * 0.1);
+    if (value[key[0]] <= sorted[total][key[0]]) return 1;
+    else return 0.1;
   };
   const SPECIES_COLORS = {
     // 안의 내용에 따라 컬러 바뀌게~~
@@ -77,17 +90,16 @@ const BrushedParallelCoordinates = ({ data }) => {
     console.log('domain', domains);
   }
   console.log(key[0]);
+
   return (
     <ParallelCoordinates
+      className="grph-content"
       style={{ line: { curve: curveCatmullRom.alpha(0.5) } }}
-      animation="true"
-      brushing="true"
-      data={config.map((d) => ({ ...d, color: color(d) }))}
+      data={config.map((d) => ({ ...d, color: color(d), opacity: opacity(d) }))}
       domains={domains ? domains : { name: 'method', domain: Array(2) }}
       margin={60}
       width={1500}
       height={400}
-      showMarks="true"
     />
   );
 };

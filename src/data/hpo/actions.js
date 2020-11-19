@@ -56,6 +56,22 @@ export const getHPOImportance = (id) => async (dispatch, getState) => {
     dispatch(HPOFail(e));
   }
 };
+export const getBestParameter = (id) => async (dispatch, getState) => {
+  dispatch(HPOLoading);
+  try {
+    const model = await apis.hpoApi.getBestParameter(id);
+    dispatch(fetchGetBestParameter(model));
+  } catch (e) {
+    console.log(e);
+    dispatch(HPOFail(e));
+  }
+};
+export const fetchGetBestParameter = (best) => {
+  return {
+    type: AT.FETCH_GET_BEST_PARAMETER,
+    best,
+  };
+};
 export const fetchHPOImportance = (hpoImportance) => {
   return {
     type: AT.FETCH_ALL_HPO_IMPORTANCE,

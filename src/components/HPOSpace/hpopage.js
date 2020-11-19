@@ -13,15 +13,22 @@ import Profile from './profile';
 import Importance from './importance';
 import * as Selectors from '../../data/hpo/selectors.js';
 import { selector } from 'd3';
+import Best from './best';
 const HPOSpace = () => {
   const { id } = useParams();
   const rowData = useSelector((state) => state.hpo.hpoConfig);
   const importance = useSelector(Selectors.getHPOImportance());
+  const best = useSelector((state) => state.hpo.best);
+  let bestObj = new Object();
+  if ('bestParameter' in best) bestObj = JSON.parse(best.bestParameter);
+  console.log(bestObj);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(Actions.hpoConfig(id));
     dispatch(Actions.getHPOList());
     dispatch(Actions.getHPOImportance(id));
+    dispatch(Actions.getBestParameter(id));
   }, [dispatch]);
   console.log(importance);
   const iris = [
@@ -106,11 +113,18 @@ const HPOSpace = () => {
               data={importance}
             ></Importance>
           </div>
-          <div className="graph">
-            <Parallel2
-              data={data ? data : iris}
-              className="grph-content"
-            ></Parallel2>
+          <div className="bestComponents">
+            <div className="best">
+              <Best best={best} data={data}></Best>
+            </div>
+
+            <div className="graph">
+              <Parallel2
+                data={data ? data : iris}
+                className="grph-content"
+                best={bestObj}
+              ></Parallel2>
+            </div>
           </div>
         </div>
       </div>
