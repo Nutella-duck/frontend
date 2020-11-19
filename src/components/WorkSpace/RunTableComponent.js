@@ -187,7 +187,7 @@ const App = () => {
   }
   function onCellClicked(event) {
     console.log(event.data);
-    window.location.href = `/hpo/${event.data.runId}`;
+    window.location.href = `/hpo/${event.data.hpoProjectId}`;
   }
 
   const columnDef = [
