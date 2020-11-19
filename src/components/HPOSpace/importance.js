@@ -33,9 +33,9 @@ export default class Example extends React.Component {
         >
           <VerticalGridLines />
           <HorizontalGridLines />
-          <XAxis tickFormat={(v) => v * 100 + '%'} />
+          <XAxis tickTotal={3} tickFormat={(v) => v * 100 + '%'} />
           <YAxis
-            tickTotal={3}
+            tickTotal={data[0].length}
             tickFormat={(v) => yAxisLabel[v]}
             style={{ fontWeight: 'bold' }}
           />

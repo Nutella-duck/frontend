@@ -40,7 +40,7 @@ const BrushedParallelCoordinates = ({ data }) => {
   if (config.length > 1) {
     console.log(config[0], typeof config[0]);
     const domain = Object.keys(config[0])
-      .filter((name) => name !== 'species')
+      .filter((name) => name !== 'method')
       .map((name) => ({ name, domain: [Infinity, -Infinity] }));
     console.log(domain);
     // domainStructure = [{ name: epoch, domain: [infinity, -infinity] }];
