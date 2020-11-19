@@ -75,9 +75,13 @@ import { curveCatmullRom } from 'd3';
 
 const BrushedParallelCoordinates = ({ data }) => {
   console.log('datalog', data);
+  let target = data.map((v) => v.target);
+  console.log(target);
   let config = data.map((v) => v.config);
   for (let i = 0; i < config.length; i++) {
     config[i] = JSON.parse(config[i]);
+    target[i] = JSON.parse(target[i]);
+    config[i] = { ...config[i], ...target[i] };
   }
   let domains = [];
   console.log('여긴?', config);
