@@ -66,8 +66,8 @@ class table extends PureComponent {
           filter: true,
         },
         {
-          headerName: 'GPU',
-          field: 'gpu',
+          headerName: 'MEMORY',
+          field: 'memory',
           sortable: true,
           filter: true,
         },
@@ -139,9 +139,16 @@ class table extends PureComponent {
     console.log(tableRows);
     if (tableRows.length > 0) {
       const indicator = Object.keys(JSON.parse(tableRows[0].indicator));
+      const system = Object.keys(JSON.parse(tableRows[0].system));
+
       tableRows.forEach((v) => {
         indicator.forEach((i) => {
           let a = JSON.parse(v.indicator);
+          v[i] = a[i];
+          console.log(a[i], v, i);
+        });
+        system.forEach((i) => {
+          let a = JSON.parse(v.system);
           v[i] = a[i];
           console.log(a[i], v, i);
         });
