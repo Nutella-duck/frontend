@@ -19,9 +19,9 @@ const HPOSpace = () => {
   const importance = useSelector(Selectors.getHPOImportance());
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(Actions.hpoConfig());
+    dispatch(Actions.hpoConfig(id));
     dispatch(Actions.getHPOList());
-    dispatch(Actions.getHPOImportance());
+    dispatch(Actions.getHPOImportance(id));
   }, [dispatch]);
   console.log(importance);
   const iris = [
