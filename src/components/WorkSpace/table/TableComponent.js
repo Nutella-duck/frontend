@@ -40,7 +40,7 @@ class table extends PureComponent {
         },
         {
           headerName: 'CREATEDBY',
-          field: 'created_by',
+          field: 'createdBy',
           sortable: true,
           filter: true,
         },
@@ -145,7 +145,18 @@ class table extends PureComponent {
       totalRuns,
       inputSelectedModel,
     } = this.props;
-
+    console.log(tableRows);
+    if (tableRows.length > 0) {
+      const indicator = Object.keys(JSON.parse(tableRows[0].indicator));
+      tableRows.forEach((v) => {
+        indicator.forEach((i) => {
+          let a = JSON.parse(v.indicator);
+          v[i] = a[i];
+          console.log(a[i], v, i);
+        });
+      });
+    }
+    console.log(tableRows);
     return (
       <>
         <Navbar bg="light" variant="light" style={{ borderRadius: '0.7rem' }}>
