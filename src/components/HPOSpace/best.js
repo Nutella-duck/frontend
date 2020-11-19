@@ -43,7 +43,7 @@ const RunTable = ({ best, data }) => {
           {tableHeads.map((tableRow, index) => (
             <td key={index}>{tableRows[tableRow]}</td>
           ))}
-          <td>{bestRows[0]}</td>
+          <td>{bestRows[bestHeads[0]]}</td>
         </tr>
       </tbody>
     </Table>

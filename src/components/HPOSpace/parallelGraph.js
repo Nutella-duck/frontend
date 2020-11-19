@@ -32,7 +32,7 @@ const BrushedParallelCoordinates = ({ data, best }) => {
     });
     const total = parseInt(sorted.length * 0.1);
     if (value[key[0]] <= sorted[total][key[0]]) return '#f12711';
-    else return '#f1271155';
+    else return '#D3D3D355';
   };
   const opacity = (value) => {
     // const sorted = target.map((v) => v.key[0]);
