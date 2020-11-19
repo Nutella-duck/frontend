@@ -11,15 +11,19 @@ import PageRoot from './pageRoot';
 import SideMenu from './sideMenu';
 import Profile from './profile';
 import Importance from './importance';
+import * as Selectors from '../../data/hpo/selectors.js';
+import { selector } from 'd3';
 const HPOSpace = () => {
   const { id } = useParams();
   const rowData = useSelector((state) => state.hpo.hpoConfig);
-  console.log('잘옵니까?', rowData);
+  const importance = useSelector(Selectors.getHPOImportance());
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(Actions.hpoConfig());
     dispatch(Actions.getHPOList());
+    dispatch(Actions.getHPOImportance());
   }, [dispatch]);
+  console.log(importance);
   const iris = [
     {
       target: 0.3,
@@ -97,7 +101,10 @@ const HPOSpace = () => {
             <div style={{ marginLeft: '70px' }}>
               parameter importance with respect to eval_loss
             </div>
-            <Importance className="importaceContents"></Importance>
+            <Importance
+              className="importaceContents"
+              data={importance}
+            ></Importance>
           </div>
           <div className="graph">
             <Parallel2

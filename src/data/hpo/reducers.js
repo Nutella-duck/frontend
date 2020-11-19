@@ -37,6 +37,7 @@ const initialState = {
     },
   ],
   hpoConfig: [],
+  hpoImportance: [],
 };
 
 const HpoReducer = (state = initialState, action) => {
@@ -51,6 +52,12 @@ const HpoReducer = (state = initialState, action) => {
       return {
         ...state,
         hpoConfig: action.hpoConfig,
+      };
+    }
+    case Actions.FETCH_ALL_HPO_IMPORTANCE: {
+      return {
+        ...state,
+        hpoImportance: action.hpoImportance,
       };
     }
     case Actions.ADD_HPO_DATA: {

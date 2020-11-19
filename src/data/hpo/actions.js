@@ -36,10 +36,32 @@ export const getAllModelData = () => async (dispatch, getState) => {
   dispatch(fetchAllHpoData(model));
 };
 export const hpoConfig = () => async (dispatch, getState) => {
-  const model = await apis.hpoApi.getHPOResult(1);
-  dispatch(fetchHPOConfig(model));
+  dispatch(HPOLoading);
+  try {
+    const model = await apis.hpoApi.getHPOResult(1);
+    console.log(model);
+    dispatch(fetchHPOConfig(model));
+  } catch (e) {
+    console.log(e);
+    dispatch(HPOFail(e));
+  }
 };
-
+export const getHPOImportance = () => async (dispatch, getState) => {
+  dispatch(HPOLoading);
+  try {
+    const model = await apis.hpoApi.getHPOImportance(1);
+    dispatch(fetchHPOImportance(model));
+  } catch (e) {
+    console.log(e);
+    dispatch(HPOFail(e));
+  }
+};
+export const fetchHPOImportance = (hpoImportance) => {
+  return {
+    type: AT.FETCH_ALL_HPO_IMPORTANCE,
+    hpoImportance,
+  };
+};
 export const addHpo = (hpoData) => {
   return {
     type: AT.ADD_HPO_DATA,

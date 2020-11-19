@@ -16,6 +16,15 @@ export const api = {
         isNewArrival: true,
       },
     });
+
+    return data;
+  },
+  async getHPOImportance(id) {
+    const { data } = await apiClient.get(`/hpo/importances/${id}`, {
+      params: {
+        isNewArrival: true,
+      },
+    });
     console.log('rhdwn', data);
     return data;
   },
