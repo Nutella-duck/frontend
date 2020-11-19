@@ -62,12 +62,7 @@ class table extends PureComponent {
           sortable: true,
           filter: true,
         },
-        {
-          headerName: 'PRECISION',
-          field: 'precision',
-          sortable: true,
-          filter: true,
-        },
+
         {
           headerName: 'CPU',
           field: 'cpu',
@@ -156,7 +151,7 @@ class table extends PureComponent {
         });
       });
     }
-    console.log(tableRows);
+
     return (
       <>
         <Navbar bg="light" variant="light" style={{ borderRadius: '0.7rem' }}>

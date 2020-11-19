@@ -55,6 +55,7 @@ export const getGraph2Results = () => (state) => {
 
     //indicators : ['accuracy']
     indicators.forEach((indi) => {
+      result = [];
       data.forEach((item) => {
         let temp = [];
         item.forEach((v) => {
