@@ -7,7 +7,7 @@ import { curveCatmullRom } from 'd3';
 const BrushedParallelCoordinates = ({ data }) => {
   console.log('datalog', data);
   let target = data.map((v) => v.target);
-  console.log(target);
+
   let config = data.map((v) => v.config);
   for (let i = 0; i < config.length; i++) {
     config[i] = JSON.parse(config[i]);
@@ -15,7 +15,24 @@ const BrushedParallelCoordinates = ({ data }) => {
     config[i] = { ...config[i], ...target[i] };
   }
   let domains = [];
+  console.log(target);
+  let key = ['loss'];
+  if (target.length > 0) {
+    key = Object.keys(target[0]);
+    console.log(key);
+  }
+  const color = (value) => {
+    // const sorted = target.map((v) => v.key[0]);
 
+    const sorted = target.sort(function (a, b) {
+      // 오름차순
+      return a[key[0]] - b[key[0]];
+      // 13, 21, 25, 44
+    });
+    const total = parseInt(sorted.length * 0.1);
+    if (value[key[0]] <= sorted[total][key[0]]) return '#f12711';
+    else return '#f5af19';
+  };
   const SPECIES_COLORS = {
     // 안의 내용에 따라 컬러 바뀌게~~
     tpe: '#f12711', //bottom
@@ -58,22 +75,14 @@ const BrushedParallelCoordinates = ({ data }) => {
       });
     }, domain);
     console.log('domain', domains);
-    // let temp = {
-    //   name: domains[4].name,
-    //   domain: domains[4].domain,
-    //   tickFormat: (3, (v) => optimizer[v]),
-    // };
-    // const result = domains[3];
-
-    // domains[3] = temp;
-    // domains[4] = result;
   }
+  console.log(key[0]);
   return (
     <ParallelCoordinates
       style={{ line: { curve: curveCatmullRom.alpha(0.5) } }}
       animation
       brushing
-      data={config.map((d) => ({ ...d, color: SPECIES_COLORS[d.method] }))}
+      data={config.map((d) => ({ ...d, color: color(d) }))}
       domains={domains ? domains : { name: 'method', domain: Array(2) }}
       margin={60}
       width={1500}

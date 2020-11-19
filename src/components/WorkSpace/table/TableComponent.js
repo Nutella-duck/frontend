@@ -11,10 +11,6 @@ function isFirstColumn(params) {
   var thisIsFirstColumn = displayedColumns[0] === params.column;
   return thisIsFirstColumn;
 }
-// function getSelectedRows() {
-//   let rowsSelection = this.gridOptions.api.getSelectedRows();
-//   console.info(rowsSelection);
-// }
 
 class table extends PureComponent {
   constructor(props) {
