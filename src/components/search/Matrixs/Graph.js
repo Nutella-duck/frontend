@@ -11,7 +11,7 @@ import {
   LineSeries,
   DiscreteColorLegend,
 } from 'react-vis';
-
+import { curveCatmullRom } from 'd3-shape';
 class Graph extends Component {
   constructor(props) {
     super(props);
@@ -35,7 +35,14 @@ class Graph extends Component {
 
     const mapToComponent = (data) => {
       return graph.map((data, i) => {
-        return <Line key={i} onNearestX={this._onNearestX} data={data} />;
+        return (
+          <Line
+            curve={curveCatmullRom.alpha(0.5)}
+            key={i}
+            onNearestX={this._onNearestX}
+            data={data}
+          />
+        );
       });
     };
     return (
