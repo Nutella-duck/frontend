@@ -19,9 +19,6 @@ const HPOSpace = () => {
   const rowData = useSelector((state) => state.hpo.hpoConfig);
   const importance = useSelector(Selectors.getHPOImportance());
   const best = useSelector((state) => state.hpo.best);
-  let bestObj = new Object();
-  if ('bestParameter' in best) bestObj = JSON.parse(best.bestParameter);
-  console.log(bestObj);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -122,7 +119,6 @@ const HPOSpace = () => {
               <Parallel2
                 data={data ? data : iris}
                 className="grph-content"
-                best={bestObj}
               ></Parallel2>
             </div>
           </div>

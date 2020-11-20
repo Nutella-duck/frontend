@@ -32,7 +32,7 @@ const MatrixsPage = () => {
   console.log(graph2);
   return (
     <div>
-      <Header title={name ? name.runName : name} id={id} navId={2}></Header>\
+      <Header title={name ? name.runName : name} id={id} navId={2}></Header>
       <SectionsComponent
         models={legend ? legend : model}
         isLoading={isGraphLoading}

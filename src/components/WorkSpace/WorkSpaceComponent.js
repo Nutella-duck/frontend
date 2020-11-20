@@ -31,11 +31,12 @@ const WorkSpaceComponent = () => {
 
   const graph2 = useSelector(Selectors.getGraph2Results());
   console.log(model);
+  const haein = model;
   let system = [];
-  if ('system' in model) {
-    system = Object.keys(JSON.parse(model[0].system));
+  if (model.length > 0) {
+    system = Object.keys(JSON.parse(haein[0].system));
   }
-  console.log(system);
+  console.log(system, haein);
   let systemData = [];
 
   system.forEach((indi) => {
