@@ -1,0 +1,9 @@
+From node:10
+
+WORKDIR /src/app
+
+COPY . .
+
+RUN yarn install
+
+CMD ["yarn","run","start"]
