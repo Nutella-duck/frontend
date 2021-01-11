@@ -11,12 +11,8 @@ function isFirstColumn(params) {
   var thisIsFirstColumn = displayedColumns[0] === params.column;
   return thisIsFirstColumn;
 }
-// function getSelectedRows() {
-//   let rowsSelection = this.gridOptions.api.getSelectedRows();
-//   console.info(rowsSelection);
-// }
 
-class table extends PureComponent {
+class table extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -40,16 +36,11 @@ class table extends PureComponent {
         },
         {
           headerName: 'CREATEDBY',
-          field: 'created_by',
+          field: 'createdBy',
           sortable: true,
           filter: true,
         },
-        {
-          headerName: 'RUNTIME',
-          field: 'runTime',
-          sortable: true,
-          filter: true,
-        },
+
         {
           headerName: 'ACCURACY',
           field: 'accuracy',
@@ -62,12 +53,7 @@ class table extends PureComponent {
           sortable: true,
           filter: true,
         },
-        {
-          headerName: 'PRECISION',
-          field: 'precision',
-          sortable: true,
-          filter: true,
-        },
+
         {
           headerName: 'CPU',
           field: 'cpu',
@@ -75,8 +61,8 @@ class table extends PureComponent {
           filter: true,
         },
         {
-          headerName: 'GPU',
-          field: 'gpu',
+          headerName: 'MEMORY',
+          field: 'memory',
           sortable: true,
           filter: true,
         },
@@ -145,6 +131,24 @@ class table extends PureComponent {
       totalRuns,
       inputSelectedModel,
     } = this.props;
+    console.log(tableRows);
+    if (tableRows.length > 0) {
+      const indicator = Object.keys(JSON.parse(tableRows[0].indicator));
+      const system = Object.keys(JSON.parse(tableRows[0].system));
+
+      tableRows.forEach((v) => {
+        indicator.forEach((i) => {
+          let a = JSON.parse(v.indicator);
+          v[i] = a[i];
+          console.log(a[i], v, i);
+        });
+        system.forEach((i) => {
+          let a = JSON.parse(v.system);
+          v[i] = a[i];
+          console.log(a[i], v, i);
+        });
+      });
+    }
 
     return (
       <>

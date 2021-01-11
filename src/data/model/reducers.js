@@ -3,13 +3,14 @@ import * as Actions from './actionTypes';
 const initialState = {
   totalRun: [{ total_run: '0' }],
   index: 8,
-  graphData: [{ stepId: 1, runName: 'r1', stepNumber: 1, accuracy: 0.1 }],
-  chartIndicators: ['accuracy', 'loss'],
+  graphData: [],
+
   isGraphLoading: true,
   selectedModel: [],
   models: [],
   graph2Data: [],
   indicatorCard: [],
+  systemCard: [],
 };
 
 const ModelReducer = (state = initialState, action) => {
@@ -69,6 +70,8 @@ const ModelReducer = (state = initialState, action) => {
     }
 
     case '@Model/GET_MODEL_SUCCESS': {
+      console.log(action.payload.models);
+
       return {
         ...state,
         totalRun: action.payload.totalRun,
@@ -77,12 +80,14 @@ const ModelReducer = (state = initialState, action) => {
     }
     case Actions.GET_GRAPH_SUCCESS: {
       console.log('payload', action.payload);
+
       return { ...state, graphData: action.payload, isGraphLoading: false };
     }
     case Actions.GET_GRAPH2_SUCCESS: {
       const indicators = Object.keys(
         JSON.parse(action.payload[0][0].indicator),
       );
+      //const systems = Object.keys(JSON.parse(action.payload[0][0].system));
       console.log('payload2', action.payload, indicators);
 
       return {
@@ -90,6 +95,7 @@ const ModelReducer = (state = initialState, action) => {
         graph2Data: action.payload,
         isGraphLoading: false,
         indicatorCard: indicators,
+        // systemCard: systems,
       };
     }
     default: {

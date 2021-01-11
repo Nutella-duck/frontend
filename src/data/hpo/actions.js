@@ -35,11 +35,49 @@ export const getAllModelData = () => async (dispatch, getState) => {
   const model = await apis.hpoApi.getHPOProjectList();
   dispatch(fetchAllHpoData(model));
 };
-export const hpoConfig = () => async (dispatch, getState) => {
-  const model = await apis.hpoApi.getHPOResult(1);
-  dispatch(fetchHPOConfig(model));
+export const hpoConfig = (id) => async (dispatch, getState) => {
+  dispatch(HPOLoading);
+  try {
+    const model = await apis.hpoApi.getHPOResult(id);
+    console.log(model);
+    dispatch(fetchHPOConfig(model));
+  } catch (e) {
+    console.log(e);
+    dispatch(HPOFail(e));
+  }
 };
-
+export const getHPOImportance = (id) => async (dispatch, getState) => {
+  dispatch(HPOLoading);
+  try {
+    const model = await apis.hpoApi.getHPOImportance(id);
+    dispatch(fetchHPOImportance(model));
+  } catch (e) {
+    console.log(e);
+    dispatch(HPOFail(e));
+  }
+};
+export const getBestParameter = (id) => async (dispatch, getState) => {
+  dispatch(HPOLoading);
+  try {
+    const model = await apis.hpoApi.getBestParameter(id);
+    dispatch(fetchGetBestParameter(model));
+  } catch (e) {
+    console.log(e);
+    dispatch(HPOFail(e));
+  }
+};
+export const fetchGetBestParameter = (best) => {
+  return {
+    type: AT.FETCH_GET_BEST_PARAMETER,
+    best,
+  };
+};
+export const fetchHPOImportance = (hpoImportance) => {
+  return {
+    type: AT.FETCH_ALL_HPO_IMPORTANCE,
+    hpoImportance,
+  };
+};
 export const addHpo = (hpoData) => {
   return {
     type: AT.ADD_HPO_DATA,

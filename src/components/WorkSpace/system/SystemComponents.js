@@ -69,10 +69,7 @@ const SystemItemHead = ({ cards }) => {
         <Modal.Body>
           <p>Select the Indicator for Xais</p>
 
-          <DropdownButton
-            id="dropdown-basic-button"
-            title={title ? title : cards[0]}
-          >
+          <DropdownButton id="dropdown-basic-button" title={title ? title : ''}>
             {cards.map((v, index) => (
               <Dropdown.Item key={index} eventKey={v} onSelect={handleSelect}>
                 {v}
@@ -93,9 +90,14 @@ const SystemItemHead = ({ cards }) => {
   );
 };
 
-const SystemComponents = ({ models, graph, isLoading = true }) => {
-  console.log('2nd', graph);
-  const cards = useSelector((state) => state.model.indicatorCard);
+const SystemComponents = ({
+  cards = ['cpu'],
+  models,
+  graph,
+  isLoading = true,
+}) => {
+  // console.log('2nd', graph, cards);
+  //const cards = useSelector((state) => state.model.systemCard);
   return (
     <div style={{ borderRadius: '0.7rem' }}>
       <SystemItemHead cards={cards}></SystemItemHead>

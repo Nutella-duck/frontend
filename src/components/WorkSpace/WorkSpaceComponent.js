@@ -20,20 +20,52 @@ const WorkSpaceComponent = () => {
 
   const model = useSelector((state) => state.model.models);
   const runs = model.map((v) => v.runId);
-  console.log('runs!!!', runs);
-  console.log(
-    `model${JSON.stringify(model)}${JSON.stringify(modelOfTheProject)}`,
-  );
+
   const totalRun = modelOfTheProject[0].totalRun;
   const ProjectName = modelOfTheProject[0].projectName;
   //const chartIndicators = useSelector((state) => state.model.chartIndicators);
   const isGraphLoading = useSelector((state) => state.model.isGraphLoading);
 
+  //console.log(system);
   //const result = useSelector(Selectors.getResult(chartIndicators, totalRun));
-  const result = useSelector(Selectors.getGraphResults());
-  const graph2 = useSelector(Selectors.getGraph2Results(runs));
+
+  const graph2 = useSelector(Selectors.getGraph2Results());
+  console.log(model);
+  const haein = model;
+  let system = [];
+  if (model.length > 0) {
+    system = Object.keys(JSON.parse(haein[0].system));
+  }
+  console.log(system, haein);
+  let systemData = [];
+
+  system.forEach((indi) => {
+    let temp = [];
+    model.forEach((item, index) => {
+      console.log(item);
+      if (item.system) {
+        let a = JSON.parse(item.system);
+        let b = '';
+        console.log(Array.isArray(a[indi]), a[indi]);
+        if (Array.isArray(a[indi])) {
+          b = a[indi][0];
+          console.log(a[indi], a[indi][0]);
+        } else b = a[indi];
+        temp.push({
+          x: b,
+          y: index,
+        });
+        console.log(temp);
+      }
+
+      console.log(systemData);
+    });
+    //graph.push(result);
+    systemData.push(temp);
+  });
 
   //console.log(result[0].y.replace('"', ''));
+  const selected = useSelector((state) => state.model.selectedModel);
   const modelName = useSelector(Selectors.getSelectedModelName());
   useEffect(() => {
     dispatch(Actions.getResult(id));
@@ -48,15 +80,15 @@ const WorkSpaceComponent = () => {
     // }
     if (totalRun > 0) {
       // dispatch(Actions.getGraphs(id));
-      dispatch(Actions.testGraphs(runs));
+      dispatch(Actions.testGraphs(runs, selected));
       console.log('여기렌더링중');
       // const time = setInterval(function () {
       //   dispatch(Actions.getGraphs(id));
       //   dispatch(Actions.testGraphs(runs));
       // }, 10000);
     }
-  }, [dispatch, totalRun]);
-
+  }, [dispatch, totalRun, selected]);
+  console.log(systemData, graph2);
   return (
     <div>
       {/* <div>{graphdata2}</div> */}
@@ -74,7 +106,8 @@ const WorkSpaceComponent = () => {
       <SystemComponent
         models={modelName}
         isLoading={isGraphLoading}
-        graph={graph2}
+        graph={systemData}
+        cards={system}
       ></SystemComponent>
     </div>
   );

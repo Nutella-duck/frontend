@@ -22,7 +22,7 @@ class Graph extends Component {
     const Line = LineSeries;
 
     const { models, graph } = this.props;
-
+    console.log(graph);
     const model_name = models;
     const _onMouseLeave = () => {
       this.setState({ crosshairValues: [] });

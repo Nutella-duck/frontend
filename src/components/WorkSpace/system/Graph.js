@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 
 import 'react-vis/dist/style.css';
 import {
+  XYPlot,
   XAxis,
   YAxis,
-  HorizontalGridLines,
   VerticalGridLines,
-  FlexibleWidthXYPlot,
-  LineSeries,
-  Crosshair,
+  HorizontalGridLines,
+  HorizontalBarSeries,
+  HorizontalBarSeriesCanvas,
   DiscreteColorLegend,
+  FlexibleWidthXYPlot,
 } from 'react-vis';
 import { curveCatmullRom } from 'd3-shape';
 class Graph extends Component {
@@ -18,48 +19,38 @@ class Graph extends Component {
   };
 
   render() {
-    const Line = LineSeries;
+    const { useCanvas } = this.state;
+    const BarSeries = HorizontalBarSeries;
 
     const { models, graph } = this.props;
-    const model_name = models;
+    const yAxisLabel = models;
+    console.log(models, graph);
+
     const _onMouseLeave = () => {
       this.setState({ crosshairValues: [] });
     };
     const _onNearestX = (value, { index }) => {
       this.setState({ crosshairValues: graph.map((d) => d[index]) });
     };
-    console.log(`3rd${JSON.stringify(graph)}`);
-    const mapToComponent = (data) => {
-      return graph.map((data, i) => {
-        return (
-          <Line
-            curve={curveCatmullRom.alpha(0.5)}
-            key={i}
-            onNearestX={_onNearestX}
-            data={data}
-          />
-        );
-      });
-    };
+
     return (
       <div>
-        <FlexibleWidthXYPlot onMouseLeave={_onMouseLeave} height={250}>
-          <HorizontalGridLines />
+        <FlexibleWidthXYPlot
+          width={500}
+          height={300}
+          margin={{ left: 100 }}
+          stackBy="x"
+          onMouseLeave={() => this.setState({ value: false })}
+        >
           <VerticalGridLines />
-          <XAxis />
-          <YAxis />
-
-          {mapToComponent(this.state.graph)}
-          <DiscreteColorLegend orientation="horizontal" items={model_name} />
-          <Crosshair
-            values={this.state.crosshairValues}
-            className={'test-class-name'}
-            // itemsFormat={(d) => [
-            //   { title: model_name[0], value: d[0].y },
-            //   // { title: model_name[1], value: d[1].y },
-            //   // { title: model_name[2], value: d[2].y },
-            // ]}
+          <HorizontalGridLines />
+          <XAxis tickTotal={3} tickFormat={(v) => v} />
+          <YAxis
+            tickTotal={graph.length}
+            tickFormat={(v) => yAxisLabel[v]}
+            style={{ fontWeight: 'bold' }}
           />
+          <BarSeries data={graph} />
         </FlexibleWidthXYPlot>
       </div>
     );

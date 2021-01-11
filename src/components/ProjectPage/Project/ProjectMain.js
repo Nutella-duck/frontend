@@ -27,7 +27,7 @@ const Project = () => {
 
   const getKey = () => {
     axios
-      .get('localhost:7000/admin/project/key')
+      .get('http://localhost:7000/admin/project/key')
       .then((resonse) => {
         setApiKey(resonse.data);
       })
