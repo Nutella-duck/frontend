@@ -31,7 +31,7 @@ export const getAllPorject = (projectId) => async (dispatch, getState) => {
 };
 
 export const addProject = (projectData) => async (dispatch, getState) => {
-  // await apis.projectApi.fetchAllProject(projectData);
+ 
   dispatch(projectLoading());
   try {
     const product = await apis.projectApi.addProject(projectData);

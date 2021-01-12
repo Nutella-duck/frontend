@@ -15,7 +15,6 @@ const WorkSpaceComponent = () => {
   const model = useSelector((state) => state.model.models);
   const runs = model.map((v) => v.runId);
   const totalRun = useSelector((state) => state.model.totalRun);
-  const projectName = useSelector((state) => state.model.projectName);
   const isGraphLoading = useSelector((state) => state.model.isGraphLoading);
   const system = useSelector((state) => state.model.systemCard);
   const selected = useSelector((state) => state.model.selectedModel);
@@ -33,7 +32,7 @@ const WorkSpaceComponent = () => {
   return (
     <div>
     
-      <Header projectId={id} ProjectName={projectName}></Header>
+      <Header projectId={id} ></Header>
       <RunTableComponent
         totalRuns={totalRun}
         models={model}

@@ -11,23 +11,14 @@ import { useParams } from 'react-router-dom';
 
 const HPOListComponents = () => {
   const { id } = useParams(); 
-  console.log(id);
-
-  const dispatch = useDispatch();
-
-  const modelOfTheProject = useSelector((state) => state.model.totalRun);
-
   const model = useSelector((state) => state.model.models);
-
-  const totalRun = modelOfTheProject[0].totalRun;
-  const ProjectName = modelOfTheProject[0].projectName;
-  const chartIndicators = useSelector((state) => state.model.chartIndicators);
+  const totalRun = useSelector((state) => state.model.totalRun);
 
   useEffect(() => {}, []);
 
   return (
     <div>
-      <Header projectId={id} ProjectName={'nutella'}></Header>
+      <Header projectId={id} ></Header>
       <RunTableComponent
         totalRuns={totalRun}
         models={model}
