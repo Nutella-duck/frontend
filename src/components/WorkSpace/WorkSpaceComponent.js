@@ -12,17 +12,15 @@ import { useParams } from 'react-router-dom';
 
 const WorkSpaceComponent = () => {
   const { id } = useParams();
-  console.log('work', id);
   const dispatch = useDispatch();
 
-  const modelOfTheProject = useSelector((state) => state.model.totalRun);
-  const graphdata2 = useSelector((state) => state.model.graph2Data);
+  //const modelOfTheProject = useSelector((state) => state.model.totalRun);
 
   const model = useSelector((state) => state.model.models);
   const runs = model.map((v) => v.runId);
+  const totalRun = useSelector((state) => state.model.totalRun);
+  const projectName = useSelector((state) => state.model.projectName);
 
-  const totalRun = modelOfTheProject[0].totalRun;
-  const ProjectName = modelOfTheProject[0].projectName;
   //const chartIndicators = useSelector((state) => state.model.chartIndicators);
   const isGraphLoading = useSelector((state) => state.model.isGraphLoading);
 
@@ -68,8 +66,8 @@ const WorkSpaceComponent = () => {
   const selected = useSelector((state) => state.model.selectedModel);
   const modelName = useSelector(Selectors.getSelectedModelName());
   useEffect(() => {
-    dispatch(Actions.getResult(id));
-    // dispatch(Actions.getIndicators()); // 약간 의미없는거인듯..?
+    dispatch(Actions.getModelsInfo(id));
+    // dispatch(Actions.getIndicators()); // 약간 의미없는거R인듯..?
   }, [dispatch, id]);
   useEffect(() => {
     // if (totalRun > 0) {
@@ -80,7 +78,7 @@ const WorkSpaceComponent = () => {
     // }
     if (totalRun > 0) {
       // dispatch(Actions.getGraphs(id));
-      dispatch(Actions.testGraphs(runs, selected));
+      dispatch(Actions.getGraph(runs, selected));
       console.log('여기렌더링중');
       // const time = setInterval(function () {
       //   dispatch(Actions.getGraphs(id));
@@ -92,7 +90,7 @@ const WorkSpaceComponent = () => {
   return (
     <div>
       {/* <div>{graphdata2}</div> */}
-      <Header projectId={id} ProjectName={ProjectName}></Header>
+      <Header projectId={id} ProjectName={projectName}></Header>
       <RunTableComponent
         totalRuns={totalRun}
         models={model}

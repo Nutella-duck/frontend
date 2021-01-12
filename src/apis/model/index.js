@@ -2,7 +2,7 @@ import { apiClient } from '../clients';
 
 export const api = {
   //run/{projectid} projectid에 맞는 모든 run 가져옴 table 그릴때 쓰면 될듯? 
-  async getSelectedModelData(projectid) {
+  async getModelsThisProject(projectid) {
     const { data } = await apiClient.get(`/run/${projectid}`, { 
       params: {
         isNewArrival: true,
@@ -24,9 +24,8 @@ export const api = {
   },
 
   //runid별로 가져옴 stepNumber, indicator, system 이렇게 있다. 
-  async getGraphData(id) {
-    const { data } = await apiClient.get(`/graph/${id}`);
-    console.log(`getGraph${data}`);
+  async getGraphData(runId) {
+    const { data } = await apiClient.get(`/graph/${runId}`);
     return data;
   },
 };

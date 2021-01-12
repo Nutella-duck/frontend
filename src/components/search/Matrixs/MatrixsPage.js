@@ -20,8 +20,8 @@ const MatrixsPage = () => {
   const graph2 = useSelector(Selectors.getGraph2Results(runs));
   const selected = model.filter((v) => v.runId === id);
   useEffect(() => {
-    dispatch(Actions.getResult(id));
-    if (runs.length > 0) dispatch(Actions.testGraphs(runs, selected));
+    dispatch(Actions.getModelsInfo(id));
+    if (runs.length > 0) dispatch(Actions.getGraph(runs, selected));
     // const time = setInterval(function () {
     //   dispatch(Actions.getOneGraph(id, chartIndicators));
     // }, 30000);
