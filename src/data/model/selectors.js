@@ -1,18 +1,12 @@
-
-export const getGraph2Results = () => (state) => {
+export const getGraphResults = () => (state) => {
   const data = state.model.graphData;
   const selected = state.model.selectedModel;
-  console.log('data', data, selected);
   let result = [];
   let graph = [];
-  // if(selected.length>1)
-  // {
-  //   data.filter(v=>v)
-  // }
+  
   if (data.length > 0) {
     const indicators = Object.keys(JSON.parse(data[0][0].indicator));
 
-    //indicators : ['accuracy']
     indicators.forEach((indi) => {
       result = [];
       data.forEach((item) => {
@@ -32,7 +26,7 @@ export const getGraph2Results = () => (state) => {
       graph.push(result);
     });
   }
-  console.log('!!!!', graph);
+ 
   return graph;
 };
 
@@ -40,14 +34,38 @@ export const getGraph2Results = () => (state) => {
 export const getSelectedModelName = () => (state) => {
   const model = state.model.models;
   const selectedModel = state.model.selectedModel;
-  console.log(selectedModel);
   if (selectedModel.length > 0) {
     const result = selectedModel.map((v) => v.runName);
-    console.log('selec', result);
     return result;
   } else {
     const result = model.map((v) => v.runName);
-    console.log('total', result);
     return result;
   }
 };
+
+export const getSystemData = () =>(state)=>{
+  const model = state.model.models;
+  const system = state.model.systemCard;
+  let systemData = [];
+  system.forEach((indi) => {
+    let temp = [];
+    model.forEach((item, index) => {
+      
+      if (item.system) {
+        let a = JSON.parse(item.system);
+        let b = '';
+        if (Array.isArray(a[indi])) {
+          b = a[indi][0];
+    
+        } else b = a[indi];
+        temp.push({
+          x: b,
+          y: index,
+        });
+      }
+
+    });
+    systemData.push(temp);
+  });
+  return systemData
+}

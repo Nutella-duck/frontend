@@ -48,12 +48,15 @@ const ModelReducer = (state = initialState, action) => {
       const indicators = Object.keys(
         JSON.parse(action.payload[0][0].indicator),
       );
+      const system = Object.keys(
+        JSON.parse(action.payload[0][0].system),
+      );
          return {
         ...state,
         graphData: action.payload,
         isGraphLoading: false,
         indicatorCard: indicators,
-        // systemCard: systems,
+         systemCard: system,
       };
     }
     default: {

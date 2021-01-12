@@ -17,7 +17,7 @@ const MatrixsPage = () => {
 
   const chartIndicators = useSelector((state) => state.model.chartIndicators);
   const isGraphLoading = useSelector((state) => state.model.isGraphLoading);
-  const graph2 = useSelector(Selectors.getGraph2Results(runs));
+  const graph2 = useSelector(Selectors.getGraphResults(runs));
   const selected = model.filter((v) => v.runId === id);
   useEffect(() => {
     dispatch(Actions.getModelsInfo(id));
