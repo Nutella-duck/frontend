@@ -13,20 +13,11 @@ import { useParams } from 'react-router-dom';
 const WorkSpaceComponent = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-
-  //const modelOfTheProject = useSelector((state) => state.model.totalRun);
-
   const model = useSelector((state) => state.model.models);
   const runs = model.map((v) => v.runId);
   const totalRun = useSelector((state) => state.model.totalRun);
   const projectName = useSelector((state) => state.model.projectName);
-
-  //const chartIndicators = useSelector((state) => state.model.chartIndicators);
   const isGraphLoading = useSelector((state) => state.model.isGraphLoading);
-
-  //console.log(system);
-  //const result = useSelector(Selectors.getResult(chartIndicators, totalRun));
-
   const graph2 = useSelector(Selectors.getGraph2Results());
   console.log(model);
   const haein = model;
@@ -58,38 +49,25 @@ const WorkSpaceComponent = () => {
 
       console.log(systemData);
     });
-    //graph.push(result);
     systemData.push(temp);
   });
 
-  //console.log(result[0].y.replace('"', ''));
+  
   const selected = useSelector((state) => state.model.selectedModel);
   const modelName = useSelector(Selectors.getSelectedModelName());
   useEffect(() => {
     dispatch(Actions.getModelsInfo(id));
-    // dispatch(Actions.getIndicators()); // 약간 의미없는거R인듯..?
   }, [dispatch, id]);
   useEffect(() => {
-    // if (totalRun > 0) {
-    //   dispatch(Actions.getGraphs(id, chartIndicators, totalRun));
-    //   // const time = setInterval(function () {
-    //   //   dispatch(Actions.getGraphs(id, chartIndicators, totalRun));
-    //   // }, 5000);
-    // }
+  
     if (totalRun > 0) {
-      // dispatch(Actions.getGraphs(id));
       dispatch(Actions.getGraph(runs, selected));
-      console.log('여기렌더링중');
-      // const time = setInterval(function () {
-      //   dispatch(Actions.getGraphs(id));
-      //   dispatch(Actions.testGraphs(runs));
-      // }, 10000);
     }
   }, [dispatch, totalRun, selected]);
   console.log(systemData, graph2);
   return (
     <div>
-      {/* <div>{graphdata2}</div> */}
+    
       <Header projectId={id} ProjectName={projectName}></Header>
       <RunTableComponent
         totalRuns={totalRun}
@@ -98,7 +76,6 @@ const WorkSpaceComponent = () => {
       <SectionsComponent
         models={modelName}
         isLoading={isGraphLoading}
-        // graph={result.length >= chartIndicators.length ? result : sample}
         graph={graph2}
       ></SectionsComponent>
       <SystemComponent

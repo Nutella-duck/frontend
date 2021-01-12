@@ -9,6 +9,7 @@ const initialState = {
   models: [],
   indicatorCard: [],
   systemCard: [],
+  thisPageModels:[]
 };
 
 const ModelReducer = (state = initialState, action) => {
@@ -18,7 +19,7 @@ const ModelReducer = (state = initialState, action) => {
     case Actions.GET_ALL_MODEL_SUCCESS: {
       return {
         ...state,
-        models: action.modelData,
+        thisPageModels: action.payload,
       };
     }
 

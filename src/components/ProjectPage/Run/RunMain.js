@@ -8,7 +8,7 @@ import * as Actions from '../../../data/model/actions.js';
 import './Run.css';
 const Run = () => {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.model.models);
+  const state = useSelector((state) => state.model.thisPageModels);
   const model = state;
   console.log(model)
   useEffect(() => {
