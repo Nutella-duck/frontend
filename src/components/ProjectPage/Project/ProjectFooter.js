@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Pagination } from 'react-bootstrap';
-import * as Actions from '../../../store/actions';
+import * as Actions from '../../../data/project/actions.js';
 import { useDispatch } from 'react-redux';
 import '../Run/Run.css';
 const ProjectFooter = () => {

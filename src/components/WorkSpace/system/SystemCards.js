@@ -12,7 +12,7 @@ import {
   DropdownButton,
 } from 'react-bootstrap';
 import { BsGear } from 'react-icons/bs';
-import Graph from './Graph';
+import Graph from './SystemGraph';
 import 'react-vis/dist/style.css';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Actions from '../../../data/chartCards/actions.js';
@@ -91,13 +91,12 @@ const SystemItemHead = ({ cards }) => {
 };
 
 const SystemComponents = ({
-  cards = ['cpu'],
+  cards ,
   models,
   graph,
   isLoading = true,
 }) => {
-  // console.log('2nd', graph, cards);
-  //const cards = useSelector((state) => state.model.systemCard);
+  console.log(cards)
   return (
     <div style={{ borderRadius: '0.7rem' }}>
       <SystemItemHead cards={cards}></SystemItemHead>

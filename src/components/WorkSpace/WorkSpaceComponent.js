@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import RunTableComponent from './table/RunTableComponent';
 import Header from './WorkSpaceHeader';
-import SectionsComponent from './sections/SectionsComponent';
+import SectionsComponent from './indicators/IndicatorsComponent';
 import SystemComponent from './system/SystemComponent';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Actions from '../../data/model/actions.js';

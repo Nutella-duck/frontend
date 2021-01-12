@@ -12,7 +12,7 @@ import {
   DropdownButton,
 } from 'react-bootstrap';
 import { BsGear } from 'react-icons/bs';
-import Graph from './Graph';
+import Graph from './IndicatorsGraph';
 import { useSelector, useDispatch } from 'react-redux';
 import 'react-vis/dist/style.css';
 import * as Actions from '../../../data/chartCards/actions.js';
@@ -27,7 +27,6 @@ const ItemHead = ({ cards }) => {
     setShow(false);
     dispatch(Actions.addChartCard(title));
   };
-  console.log(cards, cards[0]);
   const handleSelect = (id) => {
     console.log('dropdown', id);
     setTitle(id);
