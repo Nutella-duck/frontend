@@ -1,11 +1,8 @@
 
-import React, { useEffect } from 'react';
-import TableHeadComponent from './TableHeadComponent';
+import React from 'react';
 import TableComponent from './TableComponent';
 import './TableComponent.css';
-import { useSelector, useDispatch } from 'react-redux';
 
-import * as Actions from '../../../store/actions';
 
 const RunTableComponent = ({ models, totalRuns }) => {
   return (
