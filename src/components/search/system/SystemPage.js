@@ -11,7 +11,7 @@ const MatrixsPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  const graph = useSelector((state) => state.model.graph2Data);
+  const graph = useSelector((state) => state.model.graphData);
   const model = useSelector((state) => state.model.models);
   const runs = model.map((v) => v.runId);
 

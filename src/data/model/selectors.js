@@ -41,7 +41,7 @@ export const getResult = (chartIndicators, totalRun) => (state) => {
   }
 };
 export const getGraph2Results = () => (state) => {
-  const data = state.model.graph2Data;
+  const data = state.model.graphData;
   const selected = state.model.selectedModel;
   console.log('data', data, selected);
   let result = [];
@@ -78,7 +78,7 @@ export const getGraph2Results = () => (state) => {
 };
 
 export const getSystemGraph = () => (state) => {
-  const data = state.model.graph2Data;
+  const data = state.model.graphData;
   const selected = state.model.selectedModel;
   console.log('여기들어오나요?');
   console.log('data', data, selected);

@@ -6,37 +6,21 @@ export const getmodelListLoading = () => ({
   type: AT.GET_MODEL_LIST_LOADING,
 });
 
-export const getmodelListSuccess = (data) => ({
-  type: AT.GET_MODEL_LIST_SUCCESS,
-  payload: data,
-});
-
 export const getmodelListFail = (error) => ({
   type: AT.GET_MODEL_LIST_FAIL,
   payload: error,
 });
+
 export const getModelsInfoSuccess = createAction(AT.GET_MODELS_INFO_SUCCESS);
 export const getGraphSuccess = createAction(AT.GET_GRAPH_SUCCESS);
-
 export const getAllModelSuccess = createAction(AT.GET_ALL_MODEL_SUCCESS);
 
 
-export const fetchNumberOfModel = (totalRun) => {
+
+export const getSelectedModel = (selectedModel) => {
   return {
-    type: AT.FETCH_NUMBER_OF_MODEL,
-    totalRun,
-  };  
-};
-export const fetchSelectedModel = (selectedModel) => {
-  return {
-    type: AT.FETCH_SELECTED_MODEL,
+    type: AT.GET_SELECTED_MODEL,
     selectedModel,
-  };
-};
-export const fetchGraphData = (graphData) => {
-  return {
-    type: AT.FETCH_GRAPH_DATA,
-    graphData,
   };
 };
 
@@ -46,7 +30,7 @@ export const getAllModel = (modelId) => async (dispatch) => {
     const model = await apis.modelApi.fetch10model(modelId);
 
     dispatch(getAllModelSuccess(model));
-  } catch (error) {}
+  } catch (error) {dispatch(getmodelListFail(error));}
 };
 
 
@@ -58,7 +42,7 @@ export const getModelsInfo = (proejectId) => async (dispatch) => {
       apis.modelApi.getModelsThisProject(proejectId), //models
     ]);
     dispatch(getModelsInfoSuccess({ projectInfo, models }));
-  } catch (error) {}
+  } catch (error) {dispatch(getmodelListFail(error));}
 };
 
 
@@ -77,7 +61,7 @@ export const getGraph = (runs, selected) => async (dispatch) => {
     }
     const graph = await Promise.all(graphPromise);
     dispatch(getGraphSuccess(graph));
-  } catch (error) {}
+  } catch (error) {dispatch(getmodelListFail(error));}
 };
 
 

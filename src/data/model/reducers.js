@@ -2,13 +2,11 @@ import * as Actions from './actionTypes';
 
 const initialState = {
   totalRun: 0,
-  index: 8,
   graphData: [],
   projectName:"",
   isGraphLoading: true,
   selectedModel: [],
   models: [],
-  graph2Data: [],
   indicatorCard: [],
   systemCard: [],
 };
@@ -23,14 +21,9 @@ const ModelReducer = (state = initialState, action) => {
         models: action.modelData,
       };
     }
-    case Actions.FETCH_NUMBER_OF_MODEL: {
-      return {
-        ...state,
-        totalRun: action.totalRun,
-      };
-    }
+
   
-    case Actions.FETCH_SELECTED_MODEL: {
+    case Actions.GET_SELECTED_MODEL: {
       const { selectedModel } = state;
       return {
         ...state,
@@ -38,7 +31,7 @@ const ModelReducer = (state = initialState, action) => {
       };
     }
 
-    case '@Model/GET_MODELS_INFO_SUCCESS': {
+    case Actions.GET_MODELS_INFO_SUCCESS: {
       
       return {
       
@@ -49,15 +42,14 @@ const ModelReducer = (state = initialState, action) => {
       };
     }
    
-    //이거사용 graph2Data, isGraphLoading,indicatorCard 
+    
     case Actions.GET_GRAPH_SUCCESS: {
       const indicators = Object.keys(
         JSON.parse(action.payload[0][0].indicator),
       );
-      //const systems = Object.keys(JSON.parse(action.payload[0][0].system));
-      return {
+         return {
         ...state,
-        graph2Data: action.payload,
+        graphData: action.payload,
         isGraphLoading: false,
         indicatorCard: indicators,
         // systemCard: systems,

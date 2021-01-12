@@ -195,7 +195,7 @@ class table extends Component {
   }
 }
 const mapDispatchToProps = (dispatch) => ({
-  inputSelectedModel: (model) => dispatch(Actions.fetchSelectedModel(model)),
+  inputSelectedModel: (model) => dispatch(Actions.getSelectedModel(model)),
 });
 const mapStateToProps = (state) => ({
   selectedModel: state.model.selectedModel,
