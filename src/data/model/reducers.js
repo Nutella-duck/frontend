@@ -25,7 +25,7 @@ const ModelReducer = (state = initialState, action) => {
 
   
     case Actions.GET_SELECTED_MODEL: {
-      const { selectedModel } = state;
+     
       return {
         ...state,
         selectedModel: action.selectedModel,

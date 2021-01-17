@@ -95,7 +95,6 @@ const ItemHead = ({ cards }) => {
 
 const SectionsComponents = ({ models, graph, isLoading = true }) => {
   const cards = useSelector((state) => state.cards.chartCardsName);
-  console.log('hit', cards, graph);
   return (
     <>
       <ItemHead cards={cards}></ItemHead>
