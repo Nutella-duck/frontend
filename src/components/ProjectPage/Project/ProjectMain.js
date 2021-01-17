@@ -11,7 +11,6 @@ import '../Run/Run.css';
 const Project = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.project.projects);
-  console.log(`state${state}`);
   const [apiKey, setApiKey] = useState(null);
   const [inputs, setInputs] = useState({
     projectName: '',
@@ -28,8 +27,8 @@ const Project = () => {
   const getKey = () => {
     axios
       .get('http://localhost:7000/admin/project/key')
-      .then((resonse) => {
-        setApiKey(resonse.data);
+      .then((response) => {
+        setApiKey(response.data);
       })
       .catch((error) => {
         console.log('error getKey');

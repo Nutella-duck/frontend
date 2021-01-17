@@ -9,6 +9,7 @@ import { Provider } from "react-redux";
 import rootReducer from "./data/rootReducer";
 import ReduxThunk from "redux-thunk";
 
+
 const composeEnhancer = window.__REDUX__DEVTOOLS_EXTENSION_COMPOSE || compose;
 const store = createStore(
   rootReducer,
