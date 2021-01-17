@@ -11,15 +11,23 @@ import PageRoot from './pageRoot';
 import SideMenu from './sideMenu';
 import Profile from './profile';
 import Importance from './importance';
+import * as Selectors from '../../data/hpo/selectors.js';
+
+import Best from './best';
 const HPOSpace = () => {
   const { id } = useParams();
   const rowData = useSelector((state) => state.hpo.hpoConfig);
-  console.log('잘옵니까?', rowData);
+  const importance = useSelector(Selectors.getHPOImportance());
+  const best = useSelector((state) => state.hpo.best);
+
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(Actions.hpoConfig());
+    dispatch(Actions.hpoConfig(id));
     dispatch(Actions.getHPOList());
+    dispatch(Actions.getHPOImportance(id));
+    dispatch(Actions.getBestParameter(id));
   }, [dispatch]);
+  console.log(importance);
   const iris = [
     {
       target: 0.3,
@@ -44,27 +52,7 @@ const HPOSpace = () => {
       },
     },
   ];
-  //let arr = JSON.parse(rowData);
 
-  //console.log(arr);
-
-  // const data = {
-
-  //   "epoch": {
-  //     "scope": [1, 10]
-  //   },
-  //   "learning_rate": {
-  //     "value": [0.1, 0.05, 0.01]
-  //   },
-  //   "max_depth": {
-  //     "value": [4, 5, 6, 7]
-  //   }
-  // }
-
-  // const jsondata = Object.keys(data)
-
-  // console.log(jsondata)
-  // rowData?console.log(rowData[0].config):console.log(rowData)
 
   let data = [];
   for (let i = 0; i < rowData.length; i++) {
@@ -97,13 +85,22 @@ const HPOSpace = () => {
             <div style={{ marginLeft: '70px' }}>
               parameter importance with respect to eval_loss
             </div>
-            <Importance className="importaceContents"></Importance>
+            <Importance
+              className="importaceContents"
+              data={importance}
+            ></Importance>
           </div>
-          <div className="graph">
-            <Parallel2
-              data={data ? data : iris}
-              className="grph-content"
-            ></Parallel2>
+          <div className="bestComponents">
+            <div className="best">
+              <Best best={best} data={data}></Best>
+            </div>
+
+            <div className="graph">
+              <Parallel2
+                data={data ? data : iris}
+                className="grph-content"
+              ></Parallel2>
+            </div>
           </div>
         </div>
       </div>

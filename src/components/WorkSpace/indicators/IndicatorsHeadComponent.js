@@ -11,15 +11,15 @@ import {
 } from 'react-bootstrap';
 import { BsGear } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
-import * as Actions from '../../../store/actions';
 
-const SectionHeadComponent = () => {
+
+const IndicatorsHeadComponent = () => {
   const dispatch = useDispatch();
-  const cards = useSelector((state) => state.section.cards);
+  const cards = useSelector((state) => state.model.indicatorCard);
   const addSectionsOnclick = () => {
     let len = cards.length;
     cards.push(len + 1);
-    dispatch(Actions.fectchCardData(cards));
+    //dispatch(Actions.fectchCardData(cards));
     console.log(cards);
   };
   const [show, setShow] = useState(false);
@@ -66,7 +66,7 @@ const SectionHeadComponent = () => {
         <Modal.Body>
           <p>Select the Indicator for Xais</p>
 
-          <NavDropdown title={cards[0]} id="nav-dropdown">
+          <NavDropdown title={cards[0]?cards[0]:"title"} id="nav-dropdown">
             {cards.map((v, index) => (
               <NavDropdown.Item key={index}>{v[index]}</NavDropdown.Item>
             ))}
@@ -85,4 +85,4 @@ const SectionHeadComponent = () => {
   );
 };
 
-export default SectionHeadComponent;
+export default IndicatorsHeadComponent;

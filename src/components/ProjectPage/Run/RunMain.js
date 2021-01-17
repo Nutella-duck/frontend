@@ -8,12 +8,13 @@ import * as Actions from '../../../data/model/actions.js';
 import './Run.css';
 const Run = () => {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.model.models);
-
+  const state = useSelector((state) => state.model.thisPageModels);
+  const model = state;
+  console.log(model)
   useEffect(() => {
-    dispatch(Actions.getAllModelData());
-  }, [dispatch]);
-
+    dispatch(Actions.getAllModel(1));
+  }, []);
+console.log("state",JSON.stringify(state))
   return (
     <>
       <div className="run">

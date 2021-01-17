@@ -41,3 +41,19 @@ export const getHPOTarget = () => (state) => {
   console.log('!!!!', result);
   return result;
 };
+export const getHPOImportance = () => (state) => {
+  const data = state.hpo.hpoImportance;
+  let result = [];
+  data.forEach((item, index) => {
+    let temp = new Object();
+    temp.y = index;
+    temp.x = item.importance;
+
+    result.push(temp);
+  });
+
+  const name = data.map((v) => v.configParameter);
+  const importance = [result, name];
+
+  return importance;
+};

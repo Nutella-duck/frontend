@@ -91,7 +91,9 @@
   border-radius: 50px;
 }
 .grph-content {
-  flex-grow: 1;
+  display: flex;
+
+  /* border: 1px solid black; */
 }
 .pageroot {
   display: flex;
@@ -120,4 +122,17 @@
 }
 .d {
   display: flex;
+}
+.bestComponents {
+  display: flex;
+}
+.best {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  width: 600px;
+  height: 414px;
+  background-color: beige;
+  border-radius: 50px;
 }

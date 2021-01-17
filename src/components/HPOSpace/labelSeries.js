@@ -88,8 +88,8 @@ export default class Example extends React.Component {
           <HorizontalGridLines />
           <XAxis />
           <YAxis />
-          {mode === 'canvas' && <MarkSeriesCanvas {...markSeriesProps} />}
-          {/* {this.state.value ? <Hint value={this.state.value} /> : null} */}
+          <MarkSeriesCanvas {...markSeriesProps} />
+          {this.state.value ? <Hint value={this.state.value} /> : null}
         </XYPlot>
       </div>
     );

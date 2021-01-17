@@ -2,9 +2,9 @@ import React from 'react';
 import HomeComponent from '../components/HomeComponent';
 import LoginPage from '../components/LoginPage/LoginPage';
 import ProjectPage from '../components/ProjectPage/ProjectPage';
-import TEST from '../components/search/main';
-import MATRIXS from '../components/search/Matrixs/MatrixsPage';
-import SYSTEM from '../components/search/system/SystemPage';
+import TEST from '../components/specificRunPage/main';
+import MATRIXS from '../components/specificRunPage/Matrixs/MatrixsPage';
+import SYSTEM from '../components/specificRunPage/system/SystemPage';
 import WorkSpaceComponent from '../components/WorkSpace/WorkSpaceComponent';
 import HPOList from '../components/WorkSpace/HPOPage';
 import HPOSpace from '../components/HPOSpace/hpopage';
@@ -39,26 +39,31 @@ export const RouterConfig = [
     exact: true,
     component: () => <MATRIXS></MATRIXS>,
   },
+
   {
     path: '/run/system/:id',
     exact: true,
     component: () => <SYSTEM></SYSTEM>,
   },
+
   {
     path: '/test',
     exact: true,
     component: () => <TEST></TEST>,
   },
+
   {
     path: '/hpolist/:id',
     exact: true,
     component: () => <HPOList></HPOList>,
   },
+
   {
     path: '/hpo/:id',
     exact: true,
     component: () => <HPOSpace></HPOSpace>,
   },
+
   {
     path: '/hpoOverview/:id',
     exact: true,

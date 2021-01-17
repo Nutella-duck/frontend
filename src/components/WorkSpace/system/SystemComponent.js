@@ -1,21 +1,20 @@
 import React from 'react';
+import SystemCards from './SystemCards';
 
-import SystemComponents from './SystemComponents';
-import { useSelector } from 'react-redux';
 
-const SystemComponent = ({ models, graph, isLoading }) => {
-  const systems = useSelector((state) => state.system.cards);
+const SystemComponent = ({ models, graph, isLoading, cards }) => {
+ 
 
   return (
     <div style={{ paddingBottom: '3rem' }}>
-      {systems.map((system, index) => (
-        <SystemComponents
-          key={index}
+      
+        <SystemCards
           models={models}
           graph={graph}
           isLoading={isLoading}
-        ></SystemComponents>
-      ))}
+          cards={cards}
+        ></SystemCards>
+    
     </div>
   );
 };

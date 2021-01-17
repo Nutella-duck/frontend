@@ -6,13 +6,12 @@ import profileImage from '../ProjectPage/profile.png';
 import './navbar.css';
 import { useSelector, useDispatch } from 'react-redux';
 import * as Actions from '../../data/project/actions.js';
-const WorkSpaceHeader = ({ projectId, projectName }) => {
+const WorkSpaceHeader = ({ projectId }) => {
   const dispatch = useDispatch();
   const menu = useSelector((state) => state.project.projects);
 
   const [id, setId] = useState(Number(projectId));
-  console.log('menu', menu);
-  console.log('nav id', id);
+ 
 
   const currentTitle =
     menu[menu.findIndex((v) => v.projectId === Number(projectId))]?.projectName;

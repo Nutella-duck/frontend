@@ -16,7 +16,25 @@ export const api = {
         isNewArrival: true,
       },
     });
-    console.log('rhdwn', data);
+
+    return data;
+  },
+  async getHPOImportance(id) {
+    const { data } = await apiClient.get(`/hpo/importances/${id}`, {
+      params: {
+        isNewArrival: true,
+      },
+    });
+
+    return data;
+  },
+  async getBestParameter(id) {
+    const { data } = await apiClient.get(`/hpo/bestResult/${id}`, {
+      params: {
+        isNewArrival: true,
+      },
+    });
+
     return data;
   },
   async addHPOProject(HPOProject) {

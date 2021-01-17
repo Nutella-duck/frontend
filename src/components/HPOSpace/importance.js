@@ -19,8 +19,10 @@ export default class Example extends React.Component {
   render() {
     const { useCanvas } = this.state;
     const BarSeries = HorizontalBarSeries;
-    const yAxisLabel = ['units', 'dropout', 'batchsize', 'optimizer'];
 
+    const { data } = this.props;
+    const yAxisLabel = data[1];
+    console.log(data[0]);
     return (
       <div>
         <FlexibleWidthXYPlot
@@ -28,31 +30,17 @@ export default class Example extends React.Component {
           height={300}
           margin={{ left: 100 }}
           stackBy="x"
+          onMouseLeave={() => this.setState({ value: false })}
         >
           <VerticalGridLines />
           <HorizontalGridLines />
-          <XAxis tickFormat={(v) => v * 100 + '%'} />
+          <XAxis tickTotal={3} tickFormat={(v) => v * 100 + '%'} />
           <YAxis
-            tickTotal={3}
+            tickTotal={data[0].length}
             tickFormat={(v) => yAxisLabel[v]}
             style={{ fontWeight: 'bold' }}
           />
-          <BarSeries
-            data={[
-              { y: 0, x: 0.1 },
-              { y: 1, x: 0.3 },
-              { y: 2, x: 0.5 },
-              { y: 3, x: 0.8 },
-            ]}
-          />
-          <BarSeries
-            data={[
-              { y: 0, x: 0.9 },
-              { y: 1, x: 0.7 },
-              { y: 2, x: 0.5 },
-              { y: 3, x: 0.2 },
-            ]}
-          />
+          <BarSeries data={data[0]} />
         </FlexibleWidthXYPlot>
       </div>
     );
