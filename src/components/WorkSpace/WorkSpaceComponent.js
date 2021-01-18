@@ -29,6 +29,7 @@ const WorkSpaceComponent = () => {
       dispatch(Actions.getGraph(runs, selected));
     }
   }, [dispatch, totalRun, selected]);
+  console.log(modelName,graph,systemData)
   return (
     <div>
     

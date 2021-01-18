@@ -12,9 +12,14 @@ export const getmodelListFail = (error) => ({
 });
 
 export const getModelsInfoSuccess = createAction(AT.GET_MODELS_INFO_SUCCESS);
-export const getGraphSuccess = createAction(AT.GET_GRAPH_SUCCESS);
+// export const getGraphSuccess = createAction(AT.GET_GRAPH_SUCCESS);
 export const getAllModelSuccess = createAction(AT.GET_ALL_MODEL_SUCCESS);
-
+export const getGraphSuccess = (graphData) => {
+  return {
+    type: AT.GET_GRAPH_SUCCESS,
+    graphData,
+  };
+};
 
 
 export const getSelectedModel = (selectedModel) => {

@@ -45,18 +45,20 @@ const ModelReducer = (state = initialState, action) => {
    
     
     case Actions.GET_GRAPH_SUCCESS: {
-      const indicators = Object.keys(
-        JSON.parse(action.payload[0][0].indicator),
-      );
-      const system = Object.keys(
-        JSON.parse(action.payload[0][0].system),
-      );
+      console.log("hellod",action.graphData)
+      console.log(Object.keys(JSON.parse(action.graphData[0][0].indicator)))
+      const indicators = Object.keys(JSON.parse(action.graphData[0][0].indicator));
+      console.log(indicators)
+      // const system = Object.keys(
+      //   JSON.parse(action.graphData[0][0].system),
+      // );
+      //console.log("hi",indicators,system,action.graphData)
          return {
         ...state,
-        graphData: action.payload,
+        graphData: action.graphData,
         isGraphLoading: false,
         indicatorCard: indicators,
-         systemCard: system,
+        // systemCard: system,
       };
     }
     default: {
