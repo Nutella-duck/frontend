@@ -19,7 +19,9 @@ const MatrixsPage = () => {
   const isGraphLoading = useSelector((state) => state.model.isGraphLoading);
   const selected = model.filter(v=>v.runId==id);
   console.log(id,runs,model,selected)
-  const modelName = useSelector(Selectors.getSelectedModelName());
+  let modelName = useSelector(Selectors.getSelectedModelName());
+  modelName = modelName.filter(v=>v==selected[0].runName);
+  console.log(id,runs,model,selected,modelName)
   const graph = useSelector(Selectors.getGraphResults());
   useEffect(() => {
     dispatch(Actions.getModelsInfo(1));
