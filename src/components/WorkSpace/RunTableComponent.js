@@ -102,9 +102,7 @@ const App = () => {
     //dispatch(Actions.addHPOConfig(HPOConfig));
   };
   const onChange = (e) => {
-    console.log(e.target);
     const { name, value } = e.target;
-    console.log(name);
     setInputs({
       ...inputs,
       [name]: value,

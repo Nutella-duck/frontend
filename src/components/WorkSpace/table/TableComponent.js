@@ -116,7 +116,7 @@ class table extends Component {
   };
   onCellClicked(event) {
     console.log('onCellClicked: ' + event.data.runName);
-    window.location.href = `/run/system/${event.data.runId}`;
+    window.location.href = `/run/matrixs/${event.data.runId}`;
   };
   render() {
     const {

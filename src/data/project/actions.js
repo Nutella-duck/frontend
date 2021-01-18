@@ -25,8 +25,6 @@ export const fetchAllProjectData = (projectData) => {
 
 export const getAllPorject = (projectId) => async (dispatch, getState) => {
   const project = await apis.projectApi.fetchAllProject(projectId);
-  console.log(`project${project}`);
-  console.log(project.length);
   dispatch(fetchAllProjectData(project));
 };
 

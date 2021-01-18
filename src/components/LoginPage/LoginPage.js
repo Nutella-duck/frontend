@@ -4,6 +4,7 @@ import logo from "./logo@3x.png";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Image,Button } from "react-bootstrap";
 import { apiClient } from "../../apis/clients";
+import { useCookies } from 'react-cookie';
 import axios from 'axios';
 const LoginPage = () => {
 
@@ -20,12 +21,15 @@ const LoginPage = () => {
     .then((res)=>{console.log(res)})
     .catch((error)=>console.log('error'));
   
+
   // axios
   //     .get('http://localhost:7000/admin/project/key')
   //     .then((response) => {
   //       console(response.data);
   //     })
   //     .catch((error) => {
+
+  
   //       console.log('error getKey');
   //     });
 }
