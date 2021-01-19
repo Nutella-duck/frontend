@@ -16,6 +16,7 @@ const HomeComponent = () => {
                 color: "#000000",
                 marginRight: "5rem",
               }}
+              href="signup"
             >
               SIGN UP
             </Nav.Link>

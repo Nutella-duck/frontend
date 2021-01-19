@@ -20,14 +20,6 @@ const LoginPage = () => {
     .then((res)=>{console.log(res)})
     .catch((error)=>console.log('error'));
   
-  // axios
-  //     .get('http://localhost:7000/admin/project/key')
-  //     .then((response) => {
-  //       console(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.log('error getKey');
-  //     });
 }
 
   return (

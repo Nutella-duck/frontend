@@ -13,6 +13,7 @@ const SystemComponent = ({ models, graph, isLoading, cards }) => {
           graph={graph}
           isLoading={isLoading}
           cards={cards}
+           
         ></SystemCards>
     
     </div>
