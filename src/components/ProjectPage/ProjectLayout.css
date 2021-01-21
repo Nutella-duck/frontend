@@ -7,6 +7,10 @@
 .Profile{
     background-color: #f5f6fa;
 }
+.projectMainLayout{
+    border : black 3px solid;
+  
+}
 .activityCard{
     font-weight: bold;
     font-size:x-large;
