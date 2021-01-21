@@ -31,7 +31,7 @@ const WorkSpaceHeader = ({ projectId }) => {
 
       <Image
         src={logo}
-        width="45rem"
+        width="30px"
         height="auto"
         className="d-inline-block align-top"
       />
@@ -87,7 +87,7 @@ const WorkSpaceHeader = ({ projectId }) => {
           >
             <Image
               src={profileImage}
-              width="40rem"
+              width="40px"
               height="auto"
               className="d-inline-block align-top"
             />
@@ -97,7 +97,7 @@ const WorkSpaceHeader = ({ projectId }) => {
             style={{
               fontWeight: 'bold',
               color: 'black',
-              marginTop: '0.7rem',
+              marginTop: '20px',
             }}
           >
             이해인{' '}
