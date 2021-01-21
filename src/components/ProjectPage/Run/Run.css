@@ -1,16 +1,12 @@
 .run {
-  display: flex;
-  flex-flow: column;
-  /* border: 3px solid red; */
-  justify-content: flex-end;
-  border :red 3px solid;
-  align-content: center;
+display: flex;
+
 }
-.RunFooter {
+.footer{
   display: flex;
-  /* border: 3px solid red; */
-  width: fit-content;
- justify-content: flex-end;
- border :blue 3px solid;
- flex-flow:row;
+  justify-content: flex-end;
+}
+.footerContents {
+ display: flex;
+
 }

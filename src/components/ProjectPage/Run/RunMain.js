@@ -47,10 +47,10 @@ console.log("state",JSON.stringify(state))
               </Navbar.Collapse>
             </Navbar>
           </div>
-          <RunTable tableRows={state}></RunTable>
+          <RunTable className ="table" tableRows={state}></RunTable>
         </div>
-        <div className="run">
-        <Footer className="RunFooter"></Footer>
+        <div className="footer">
+        <Footer></Footer>
       </div>
     </>
   );

@@ -24,6 +24,6 @@ const RunFooter = () => {
       </Pagination.Item>
     );
   }
-  return <Pagination className="RunFooter">{items}</Pagination>;
+  return <Pagination className = "footerContents">{items}</Pagination>;
 };
 export default RunFooter;
