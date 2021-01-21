@@ -26,7 +26,7 @@ class ProjectItemList extends Component {
 
     return (
       <div>
-        <Row style={{ }}>
+        <Row className="teamList">
           {projectList}
         </Row>
       </div>

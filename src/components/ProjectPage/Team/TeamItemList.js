@@ -17,11 +17,11 @@ class TeamItemList extends Component {
     ));
 
     return (
-      <div>
+      
         <Row className="teamList">
           {projectList}
         </Row>
-      </div>
+      
     );
   }
 }
