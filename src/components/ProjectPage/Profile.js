@@ -6,16 +6,16 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { GrMapLocation, GrMailOption } from "react-icons/gr";
 const Profile = () => {
   return (
-    <Media style={{ marginLeft: "16rem" }}>
+    <Media style={{ }}>
       <Image className="profileImage" src={profileImage} />
-      <Media.Body style={{ marginTop: "3rem" }}>
+      <Media.Body style={{ }}>
         <Container className="col-sm-6 nopadding">
           <Row className="nopadding">
             <Col
               className="col-sm-2 nopadding"
               style={{
                 width: "fit-content",
-                fontSize: "2.5rem",
+                fontSize: "26px",
                 fontWeight: "bold",
               }}
             >
@@ -48,7 +48,7 @@ const Profile = () => {
               >
                 <Col
                   className=" col-md-auto nopadding"
-                  style={{ marginRight: "2rem" }}
+                  // style={{ marginRight: "2rem" }}
                 >
                   <BsFillPersonFill style={{ marginRight: "0.3rem" }} />
                   Nutella

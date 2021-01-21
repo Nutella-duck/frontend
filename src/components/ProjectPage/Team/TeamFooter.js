@@ -16,7 +16,7 @@ const TeamFooter = () => {
         onClick={() => handleClick(number)}
       >
         {number}
-      </Pagination.Item>,
+      </Pagination.Item>
     );
   }
   return <Pagination className="RunFooter">{items}</Pagination>;

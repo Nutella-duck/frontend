@@ -11,6 +11,27 @@
     border : black 3px solid;
   
 }
+.projectHeader{
+    border: purple 3px solid;
+    
+}
+.projectProfile
+{
+    border : orange 3px solid;
+    padding : 4px 261px;
+}
+.projectCard{
+    border : green 3px solid;
+    padding : 4px 261px;
+}
+.teamCard{
+    border : blue 3px solid;
+    padding : 4px 261px;
+}
+.runCard{
+    border : red 3px solid;
+    padding : 4px 261px;
+}
 .activityCard{
     font-weight: bold;
     font-size:x-large;
@@ -22,7 +43,7 @@
     width: 7.6rem;
     height: 7.6rem;
    object-fit: contain;
-    margin:3rem;
+ 
 }
 .nopadding {
     padding: 0 ;

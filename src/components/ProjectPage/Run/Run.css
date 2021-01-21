@@ -3,12 +3,14 @@
   flex-flow: column;
   /* border: 3px solid red; */
   justify-content: flex-end;
+  border :red 3px solid;
   align-content: center;
 }
 .RunFooter {
   display: flex;
   /* border: 3px solid red; */
   width: fit-content;
-  margin-right: 256px;
-  margin-left: 1520px;
+ justify-content: flex-end;
+ border :blue 3px solid;
+ flex-flow:row;
 }
