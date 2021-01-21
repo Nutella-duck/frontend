@@ -26,7 +26,7 @@ class ProjectItemList extends Component {
 
     return (
       <div>
-        <Row style={{ marginLeft: '16rem', marginRight: '16rem' }}>
+        <Row style={{ }}>
           {projectList}
         </Row>
       </div>

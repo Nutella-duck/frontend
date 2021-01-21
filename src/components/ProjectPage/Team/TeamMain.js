@@ -48,7 +48,7 @@ class Team extends Component {
             />
           }
         >
-          <TeamItemList projects={projects} />
+          <TeamItemList className ="teamList" projects={projects} />
         </TeamListTemplate>
          <div className="footer">
         <TeamFooter></TeamFooter>

@@ -10,3 +10,8 @@ display: flex;
  display: flex;
 
 }
+.teamList{
+  display: flex;
+  border: red 3px solid;
+  justify-content: space-between;
+}

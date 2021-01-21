@@ -3,16 +3,14 @@ import "./TeamItem.css";
 import { Card, Table } from "react-bootstrap";
 
 class TeamItem extends Component {
-  shouldComponentUpdate(nextProps, nextState) {
-    return this.props.checked !== nextProps.checked;
-  }
+  
 
   render() {
     const { name, id } = this.props;
 
     return (
       <div>
-        <Card className="card">
+        <Card className="card" >
           <Card.Body>
             <Card.Title className="title">{name}</Card.Title>
 
