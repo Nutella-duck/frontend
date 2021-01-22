@@ -1,0 +1,20 @@
+.registerForm{
+    display: flex;
+    flex-direction: column;
+    width: 476px;
+  height: 498px;
+  margin : 311px auto;
+}
+.input{
+    display: flex;
+}
+
+.input div{
+    display: flex;
+    width: calc(100%/4)
+}
+.input input{
+    display: flex;
+}
+
+

@@ -1,9 +1,9 @@
 import Axios from "axios";
 import React,{useState} from "react";
-
+import './SignupPage.css'
 
 const SignupPage = () =>{
-    const [user,setUser] = useState({username:'',password:''});
+    const [user,setUser] = useState({username:'',password:'',nickname:'',email:'',location:'',company:'',introduction:''});
     const onClick= ()=>
     {
         Axios.post('http://localhost:7000/auth/register',{params:user})
@@ -11,14 +11,41 @@ const SignupPage = () =>{
         .catch((error)=>console.log('error'));
     }
     const onChange = (e)=>{
-        const {name,value} = e.target;
-        setUser({...user,[name]:value});
+        const {id,value} = e.target;
+       
+        setUser({...user,[id]:value});
+    }
+    const goToHome=()=>{
+        window.location=`/`
     }
     return(
-        <div>
-        <input placeholder="username" name="username"onChange={onChange}></input>
-        <input placeholder = "password" name ="password" onChange={onChange}></input>
+        <div className="registerForm">
+            <div className="input">
+                <div >ID : </div>
+                <input placeholder="username" id="username"onChange={onChange}></input>
+            </div>
+            <div className="input">
+                <div >password : </div>
+                <input placeholder="password" id="password"onChange={onChange}></input>
+            </div><div className="input">
+                <div >nickname : </div>
+                <input placeholder="nickname" id="nickname"onChange={onChange}></input>
+            </div><div className="input">
+                <div >email : </div>
+                <input placeholder="email" id="email"onChange={onChange}></input>
+            </div><div className="input">
+                <div >location : </div>
+                <input placeholder="location" id="location"onChange={onChange}></input>
+            </div><div className="input">
+                <div >company : </div>
+                <input placeholder="company" id="company"onChange={onChange}></input>
+            </div><div className="input">
+                <div >intoduction : </div>
+                <input placeholder="intoduction" id="intoduction"onChange={onChange}></input>
+            </div>
+
         <button onClick={onClick}>sign up</button>
+        <button onClick={goToHome}>홈화면으로</button>
         </div>
     )
 }

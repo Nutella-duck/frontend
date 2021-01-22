@@ -16,7 +16,7 @@ const LoginPage = () => {
   const handleLogin=()=>{
     console.log(user);
     axios
-    .post('http://localhost:7000/auth/login',{params:{username:user.username,password:user.password}})
+    .post('http://localhost:7000/auth/login',{params:{userId:user.username,password:user.password}})
     .then((res)=>{console.log(res)})
     .catch((error)=>console.log('error'));
   
