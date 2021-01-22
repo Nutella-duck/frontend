@@ -3,12 +3,13 @@ import React,{useState} from "react";
 import './SignupPage.css'
 
 const SignupPage = () =>{
-    const [user,setUser] = useState({username:'',password:'',nickname:'',email:'',location:'',company:'',introduction:''});
+    const [user,setUser] = useState({userId:'',password:'',nickname:'',email:null ,location:null,company:null,introduction:null});
     const onClick= ()=>
     {
+        console.log(user)
         Axios.post('http://localhost:7000/auth/register',{params:user})
         .then((res)=>console.log(res))
-        .catch((error)=>console.log('error'));
+        .catch((error)=>console.log(error));
     }
     const onChange = (e)=>{
         const {id,value} = e.target;
@@ -22,7 +23,7 @@ const SignupPage = () =>{
         <div className="registerForm">
             <div className="input">
                 <div >ID : </div>
-                <input placeholder="username" id="username"onChange={onChange}></input>
+                <input placeholder="username" id="userId"onChange={onChange}></input>
             </div>
             <div className="input">
                 <div >password : </div>

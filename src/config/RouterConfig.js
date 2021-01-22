@@ -23,7 +23,7 @@ export const RouterConfig = [
   },
   {
     path: '/login',
-    exact: true,
+    exact: true,                   
     component: () => <LoginPage></LoginPage>,
   },
 
