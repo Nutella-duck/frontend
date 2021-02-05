@@ -68,6 +68,7 @@ const SignupPage = () =>{
       profile_preview = <img className='profile_preview' src={img.previewURL}></img>
     }
     return(
+        
         <div className="registerForm">
           
         <input type='file' 
