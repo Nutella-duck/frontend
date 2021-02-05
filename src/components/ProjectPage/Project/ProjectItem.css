@@ -1,25 +1,35 @@
-.card {
-  position: left;
-  width: auto;
-  height: 12rem;
-  border-radius: 0.7rem;
-  margin-left: 0.7rem;
-  padding: 0.7rem;
-  margin-bottom: 0.7rem;
-  background-color: #ffffff;
+.projectList{
+  display: flex;
+  justify-content: space-between;
+ 
+  margin : 10px 5px;
 }
-.badge {
+.card{
+  display: flex;
+  width: 455px;
+  min-width:455px;
+  max-width: 455px;
+  height: 169px;
+  border-radius: 11px;
+   margin : 5px 0px;
+  padding: 20 23 65 25; 
+  background-color: #ffffff;
+ 
+
+
+}
+.badge{
   width: 5rem;
   height: 1.3rem;
   border-radius: 0.6rem;
   background-color: #268ef7;
   margin-left: 0;
-  padding: 0;
-  color: #ffffff;
+  padding : 0;
+  color :#ffffff;
   font-size: 1rem;
   font-family: Lato;
 }
-.title {
+.title{
   width: auto;
   height: 1.3rem;
   font-family: Lato;
@@ -30,16 +40,7 @@
   line-height: normal;
   letter-spacing: normal;
   color: #080808;
-  padding: 0;
+  padding : 0;
   margin-right: 1rem;
   margin-top: 0rem;
-}
-ProjectListTemplate {
-  border: 3px solid red;
-}
-ProjectFooter {
-  border: 3px solid black;
-}
-.template {
-  border: 3px solid red;
-}
+}  

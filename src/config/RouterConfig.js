@@ -9,16 +9,21 @@ import WorkSpaceComponent from '../components/WorkSpace/WorkSpaceComponent';
 import HPOList from '../components/WorkSpace/HPOPage';
 import HPOSpace from '../components/HPOSpace/hpopage';
 import HPOOverview from '../components/HPOSpace/overview';
+import SIGNUP from '../components/LoginPage/SingupPage';
 export const RouterConfig = [
   {
     path: '/',
     exact: true,
     component: () => <HomeComponent></HomeComponent>,
   },
-
+  {
+    path: '/signup',
+    exact: true,
+    component: () => <SIGNUP></SIGNUP>,
+  },
   {
     path: '/login',
-    exact: true,
+    exact: true,                   
     component: () => <LoginPage></LoginPage>,
   },
 

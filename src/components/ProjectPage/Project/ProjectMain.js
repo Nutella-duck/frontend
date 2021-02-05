@@ -66,7 +66,7 @@ const Project = () => {
   };
   return (
     <>
-      <div className="run">
+      
         <ProjectListTemplate
           className="template"
           form={
@@ -89,6 +89,7 @@ const Project = () => {
             }
           />
         </ProjectListTemplate>
+        <div className="footer">
         <ProjectFooter></ProjectFooter>
       </div>
     </>

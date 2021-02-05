@@ -1,10 +1,11 @@
 import { apiClient } from '../clients';
-
+let token = localStorage.getItem("token");
 export const api = {
 
 
   async fetchAllProject(projectId) {
-    const { data } = await apiClient.get(`/project?page=${projectId}`);
+    const { data } = await apiClient.get(`/project?page=${projectId}`)
+    
     return data;
   },
 

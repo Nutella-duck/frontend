@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Container, Row, Col, Image,Button } from "react-bootstrap";
 import { apiClient } from "../../apis/clients";
 import axios from 'axios';
+import { local } from "d3";
 const LoginPage = () => {
 
   const [user,setUser] = useState({username:'',password:''});
@@ -16,19 +17,21 @@ const LoginPage = () => {
   const handleLogin=()=>{
     console.log(user);
     axios
-    .post('http://localhost:7000/auth/login',{params:{username:user.username,password:user.password}})
-    .then((res)=>{console.log(res)})
+    .post('http://localhost:7000/auth/login',{params:{userId:user.username,password:user.password}})
+    .then((res)=>{console.log(res);
+      localStorage.setItem("token",res.data.token);
+    })
     .catch((error)=>console.log('error'));
   
-  // axios
-  //     .get('http://localhost:7000/admin/project/key')
-  //     .then((response) => {
-  //       console(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.log('error getKey');
-  //     });
 }
+
+// axios
+// .get('http://ws.audioscrobbler.com/2.0/?method=track.search&track=BTS&api_key=6490ca1fe58b94078039dafda832dedc&format=json')
+// .then((res)=>{console.log(res.data.results.trackmatches.track[0].url);
+//   window.location.href=res.data.results.trackmatches.track[0].url;
+//   console.log(document.getElementsByClassName('header-new-playlink'));
+// })
+// .catch((error)=>console.log('error'));
 
   return (
     <>
@@ -65,6 +68,7 @@ const LoginPage = () => {
               {" "}
               Sign in{" "}
             </Button>
+            
           </Link>
         </div>
       </div>

@@ -38,7 +38,7 @@ class Team extends Component {
     const { handleCreate, handleChange } = this;
 
     return (
-      <div className="run">
+     <>
         <TeamListTemplate
           form={
             <TeamForm
@@ -48,10 +48,12 @@ class Team extends Component {
             />
           }
         >
-          <TeamItemList projects={projects} />
+          <TeamItemList className ="teamList" projects={projects} />
         </TeamListTemplate>
+         <div className="footer">
         <TeamFooter></TeamFooter>
       </div>
+      </>
     );
   }
 }

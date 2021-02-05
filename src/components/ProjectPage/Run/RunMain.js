@@ -17,11 +17,10 @@ const Run = () => {
 console.log("state",JSON.stringify(state))
   return (
     <>
-      <div className="run">
+      
         <div
           style={{
-            marginLeft: '16rem',
-            marginRight: '16rem',
+            
             // paddingBottom: '7rem',
           }}
         >
@@ -48,9 +47,10 @@ console.log("state",JSON.stringify(state))
               </Navbar.Collapse>
             </Navbar>
           </div>
-          <RunTable tableRows={state}></RunTable>
+          <RunTable className ="table" tableRows={state}></RunTable>
         </div>
-        <Footer className="RunFooter"></Footer>
+        <div className="footer">
+        <Footer></Footer>
       </div>
     </>
   );
