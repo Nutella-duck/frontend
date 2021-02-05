@@ -20,6 +20,7 @@ const SignupPage = () =>{
         window.location=`/`
     }
     return(
+        
         <div className="registerForm">
             <div className="input">
                 <div >ID : </div>
