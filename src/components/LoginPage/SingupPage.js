@@ -1,9 +1,12 @@
 import Axios from "axios";
 import React,{useState} from "react";
 import './SignupPage.css'
+import S3 from "react-aws-s3";
 
 const SignupPage = () =>{
-    const [img ,setImage] = useState({file:null,previewURL:""})
+    const [img ,setImage] = useState({file:null,previewURL:""});
+    const [uploadStatus,setUploadStatus] = useState(false);
+    const [tempfile,setTempfile] = useState();
     const [user,setUser] = useState({userId:'',password:'',nickname:'',email:null ,location:null,company:null,introduction:null});
     const onClick= ()=>
     {
@@ -22,43 +25,57 @@ const SignupPage = () =>{
     }
     const handleFileOnChange = (event) => {
         event.preventDefault();
-        console.log(event)
+        setTempfile(event.target.files[0]);
         let reader = new FileReader();
         let file = event.target.files[0];
         reader.onloadend = () => {
           setImage({
             file : file,
-            previewURL : reader.result
+            previewURL : reader.result //file contents 
           })
-          console.log(img)
+        
         }
         
         reader.readAsDataURL(file);
-        console.log(reader)
+     
       }
     
       const ImageClick = async () => {
-        const formData = new FormData();
-        formData.append('file', img);
-        console.log(formData);
+        let formData = new FormData();
+        
+        formData.append('file',tempfile);
+        console.log(formData.get('file'),tempfile);
+        return Axios.post("http://localhost:7000/admin/upload", formData).then(res => {
+            console.log(res.data.Location)
+          }).catch(err => {
+            alert('실패')
+          })
+        // const config = {
+        //     bucketName: process.env.REACT_APP_BUCKET_NAME,
+        //     region: process.env.REACT_APP_REGION,
+        //     accessKeyId: process.env.REACT_APP_ACCESS_ID,
+        //     secretAccessKey: process.env.REACT_APP_ACCESS_KEY,};
+
+        // const ReactS3Client = new S3(config);
+        // ReactS3Client.uploadFile(file)
         // 서버의 upload API 호출
        // const res = await axios.post("/api/upload", formData);
         //console.log(res);
       }
       let profile_preview = null;
     if(img.file !== ''){
+        
       profile_preview = <img className='profile_preview' src={img.previewURL}></img>
     }
     return(
         <div className="registerForm">
-            {/* <input type="file" name="file" onChange={null} ref={ref => {
-                this.uploadInput = ref;
-              }}/> */}
-               <input type='file' 
-      accept='image/jpg,image/png,image/jpeg,image/gif' 
-      name='profile_img' 
-      onChange={handleFileOnChange}>
-  </input> {profile_preview}
+          
+        <input type='file' 
+                accept='image/jpg,image/png,image/jpeg,image/gif' 
+                name='profile_img' 
+                onChange={handleFileOnChange}>
+        </input> 
+        {profile_preview}
 
             <div className="input">
                 <div >ID : </div>
