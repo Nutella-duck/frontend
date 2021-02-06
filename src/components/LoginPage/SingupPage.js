@@ -49,8 +49,8 @@ const SignupPage = () =>{
         return Axios.post("http://localhost:7000/auth/register", formData).then(res => {
             
             //setUser({...user,imageUrl:res.data.Location})
-            user.imageUrl=res.data.Location;
-            
+            //user.imageUrl=res.data.Location;
+            console.log()
           }).catch(err => {
             alert('실패')
           })
@@ -75,7 +75,9 @@ const SignupPage = () =>{
         
         <div className="registerForm">
           
-        <input type='file' 
+        <input 
+        className="image"
+        type='file' 
                 accept='image/jpg,image/png,image/jpeg,image/gif' 
                 name='profile_img' 
                 onChange={handleFileOnChange}>
@@ -83,26 +85,26 @@ const SignupPage = () =>{
         {profile_preview}
 
             <div className="input">
-                <div >ID : </div>
+                <div className ="input_title">ID : </div>
                 <input placeholder="username" id="userId"onChange={onChange}></input>
             </div>
             <div className="input">
-                <div >password : </div>
+                <div className ="input_title">password : </div>
                 <input placeholder="password" id="password"onChange={onChange}></input>
             </div><div className="input">
-                <div >nickname : </div>
+                <div className ="input_title">nickname : </div>
                 <input placeholder="nickname" id="nickname"onChange={onChange}></input>
             </div><div className="input">
-                <div >email : </div>
+                <div className ="input_title">email : </div>
                 <input placeholder="email" id="email"onChange={onChange}></input>
             </div><div className="input">
-                <div >location : </div>
+                <div className ="input_title">location : </div>
                 <input placeholder="location" id="location"onChange={onChange}></input>
             </div><div className="input">
-                <div >company : </div>
+                <div className ="input_title">company : </div>
                 <input placeholder="company" id="company"onChange={onChange}></input>
             </div><div className="input">
-                <div >intoduction : </div>
+                <div className ="input_title">intoduction : </div>
                 <input placeholder="intoduction" id="intoduction"onChange={onChange}></input>
             </div>
 
