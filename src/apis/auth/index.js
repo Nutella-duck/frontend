@@ -10,4 +10,13 @@ export const api = {
     const { data } = await apiClient.post(`/hpo/config`, HPOConfig);
     return data;
   },
+  async getUserInfo() {
+    const { data } = await apiClient.get(`/admin/user`);
+    return data;
+  },
+  async fetchAllProject(projectId) {
+    const { data } = await apiClient.get(`/project?page=${projectId}`)
+    
+    return data;
+  },
 };

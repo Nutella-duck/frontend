@@ -7,10 +7,11 @@ const SignupPage = () =>{
     const [img ,setImage] = useState({file:null,previewURL:""});
     const [uploadStatus,setUploadStatus] = useState(false);
     const [tempfile,setTempfile] = useState();
-    const [user,setUser] = useState({userId:'',password:'',nickname:'',email:null ,location:null,company:null,introduction:null});
+    let user = {userId:'',password:'',nickname:'',email:null ,location:null,company:null,introduction:null,imageUrl:""}
+    //const [user,setUser] = useState({userId:'',password:'',nickname:'',email:null ,location:null,company:null,introduction:null,imageUrl:""});
     const onClick= ()=>
     {
-        console.log(user)
+       console.log(user);
         Axios.post('http://localhost:7000/auth/register',{params:user})
         .then((res)=>console.log(res))
         .catch((error)=>console.log(error));
@@ -18,7 +19,7 @@ const SignupPage = () =>{
     const onChange = (e)=>{
         const {id,value} = e.target;
        
-        setUser({...user,[id]:value});
+        user[id] = value;
     }
     const goToHome=()=>{
         window.location=`/`
@@ -46,7 +47,10 @@ const SignupPage = () =>{
         formData.append('file',tempfile);
         console.log(formData.get('file'),tempfile);
         return Axios.post("http://localhost:7000/admin/upload", formData).then(res => {
-            console.log(res.data.Location)
+            console.log(res.data.Location);
+            //setUser({...user,imageUrl:res.data.Location})
+            user.imageUrl=res.data.Location
+            onClick();
           }).catch(err => {
             alert('실패')
           })

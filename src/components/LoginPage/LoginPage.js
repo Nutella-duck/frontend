@@ -20,6 +20,7 @@ const LoginPage = () => {
     .post('http://localhost:7000/auth/login',{params:{userId:user.username,password:user.password}})
     .then((res)=>{console.log(res);
       localStorage.setItem("token",res.data.token);
+      window.location.href = '/project'
     })
     .catch((error)=>console.log('error'));
   

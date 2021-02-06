@@ -4,6 +4,7 @@
     width: 476px;
   height: 498px;
   margin : 311px auto;
+  border: black 3px solid;
 }
 .input{
     display: flex;
