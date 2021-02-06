@@ -45,12 +45,12 @@ const SignupPage = () =>{
         let formData = new FormData();
         
         formData.append('file',tempfile);
-        console.log(formData.get('file'),tempfile);
-        return Axios.post("http://localhost:7000/admin/upload", formData).then(res => {
-            console.log(res.data.Location);
+        Object.keys(user).forEach(key=>formData.append(`${key}`,user[key]))
+        return Axios.post("http://localhost:7000/auth/register", formData).then(res => {
+            
             //setUser({...user,imageUrl:res.data.Location})
-            user.imageUrl=res.data.Location
-            onClick();
+            user.imageUrl=res.data.Location;
+            
           }).catch(err => {
             alert('실패')
           })
