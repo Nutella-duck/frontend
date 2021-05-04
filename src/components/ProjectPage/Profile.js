@@ -1,75 +1,71 @@
-import React from "react";
+import React, { useEffect } from "react";
 import profileImage from "./profile.png";
 import "./ProjectLayout.css";
+import Axios from "axios";
 import { Col, Image, Row, Container, Media } from "react-bootstrap";
 import { BsFillPersonFill } from "react-icons/bs";
 import { GrMapLocation, GrMailOption } from "react-icons/gr";
+import apis from '../../apis/index';
 const Profile = () => {
+  let user ={
+    userId: "string",
+    nickname: "string",
+    email: "string",
+    company: "string",
+    location: "string",
+    introduction: "string"
+  }
+  let token = localStorage.getItem("token");
+  useEffect(() => {
+    
+    Axios.get("http://localhost:7000/admin/user",{
+      
+        headers:{'access-token':token}
+       }).then(res => {
+      user = res.data[0]
+    }).catch(err => {
+      console.log(token)
+      alert('실패')
+    })
+     console.log(user)
+  }, []);
   return (
-    <Media style={{ marginLeft: "16rem" }}>
-      <Image className="profileImage" src={profileImage} />
-      <Media.Body style={{ marginTop: "3rem" }}>
-        <Container className="col-sm-6 nopadding">
-          <Row className="nopadding">
-            <Col
-              className="col-sm-2 nopadding"
-              style={{
-                width: "fit-content",
-                fontSize: "2.5rem",
-                fontWeight: "bold",
-              }}
-            >
-              이해인
-            </Col>
-            <Col
-              className="col-sm-1 nopadding"
-              style={{
-                fontSize: "1.5rem",
-                paddingTop: "1.2rem",
-                paddingLeft: "0rem",
-              }}
-            >
-              @leehaeina
-            </Col>
-          </Row>
-          <Row>
-            <p className="text" style={{ marginTop: "0.3rem" }}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit!{" "}
-            </p>
-          </Row>
-          <Row>
-            <Container>
-              <Row
-                style={{
-                  marginTop: "0rem",
-                  padding: "0",
-                  justifyContent: "flex-start ",
-                }}
-              >
-                <Col
-                  className=" col-md-auto nopadding"
-                  style={{ marginRight: "2rem" }}
-                >
-                  <BsFillPersonFill style={{ marginRight: "0.3rem" }} />
-                  Nutella
-                </Col>
-                <Col
-                  className="col-md-auto nopadding"
-                  style={{ marginRight: "2rem" }}
-                >
-                  <GrMapLocation style={{ marginRight: "0.3rem" }} />
-                  Korea
-                </Col>
-                <Col className="nopadding">
-                  <GrMailOption style={{ marginRight: "0.3rem" }} />
-                  leehaein0164@gmail.com
-                </Col>
-              </Row>
-            </Container>
-          </Row>
-        </Container>
-      </Media.Body>
-    </Media>
+    
+
+    <div className="profileContainer">
+      <div className="imageContainer">
+      <Image className="profileImage"src={profileImage} />
+      </div>
+      <div className="profileContents">
+        <div className="profileName">
+          <div className="hiname">
+            {user.nickname}
+          </div>
+          <div className="hiid">
+            {user.userId}
+          </div>
+        </div>
+        <div className="profileDescription">
+        {user.introduction}
+        </div>
+        <div className="profileContact">
+        
+                <div style={{display:"flex", marginRight:"20px"}}>
+                  <BsFillPersonFill style={{ marginRight: "7px" ,marginTop:"5px" }} />
+                  {user.company}
+                </div>
+                <div style={{display:"flex",marginRight:"20px"}}>
+                  <GrMapLocation style={{ marginRight: "7px" ,marginTop:"5px"}} />
+                  {user.location}
+                </div>
+                <div style={{display:"flex"}}>
+                  <GrMailOption style={{ marginRight: "7px"  ,marginTop:"5px"}} />
+                  {user.email}
+                </div>
+              
+        </div>
+      </div>
+    </div>
   );
 };
 

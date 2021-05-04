@@ -40,7 +40,7 @@ const ProjectForm = ({
   return (
     <>
       <Navbar
-        style={{ marginLeft: '16rem', marginRight: '16rem', padding: 'x0' }}
+        style={{ padding : "0px" }}
       >
         <Navbar.Brand style={{ fontWeight: 'bold', fontSize: '2rem' }}>
           Project

@@ -23,14 +23,14 @@ const ProjectPageHeader = () => {
             style={{
               fontWeight: "bold",
               color: "#000000",
-              marginRight: "0.2rem",
+             
             }}
           >
             <Image
               src={profileImage}
               width="40rem"
               height="auto"
-              className="d-inline-block align-top"
+              //className="d-inline-block align-top"
             />
           </Nav.Link>
           <Nav.Link
@@ -38,7 +38,7 @@ const ProjectPageHeader = () => {
             style={{
               fontWeight: "bold",
               color: "black",
-              marginTop: "0.7rem",
+           
             }}
           >
             이해인{" "}

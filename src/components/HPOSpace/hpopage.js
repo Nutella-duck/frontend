@@ -12,7 +12,7 @@ import SideMenu from './sideMenu';
 import Profile from './profile';
 import Importance from './importance';
 import * as Selectors from '../../data/hpo/selectors.js';
-import { selector } from 'd3';
+
 import Best from './best';
 const HPOSpace = () => {
   const { id } = useParams();
@@ -52,27 +52,7 @@ const HPOSpace = () => {
       },
     },
   ];
-  //let arr = JSON.parse(rowData);
 
-  //console.log(arr);
-
-  // const data = {
-
-  //   "epoch": {
-  //     "scope": [1, 10]
-  //   },
-  //   "learning_rate": {
-  //     "value": [0.1, 0.05, 0.01]
-  //   },
-  //   "max_depth": {
-  //     "value": [4, 5, 6, 7]
-  //   }
-  // }
-
-  // const jsondata = Object.keys(data)
-
-  // console.log(jsondata)
-  // rowData?console.log(rowData[0].config):console.log(rowData)
 
   let data = [];
   for (let i = 0; i < rowData.length; i++) {

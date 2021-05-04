@@ -13,10 +13,10 @@ import {
 } from 'react-bootstrap';
 import { BsGear } from 'react-icons/bs';
 import Graph from './Graph';
+import { useSelector, useDispatch } from 'react-redux';
 import 'react-vis/dist/style.css';
-import { useDispatch, useSelector } from 'react-redux';
 import * as Actions from '../../../data/chartCards/actions.js';
-const SystemItemHead = ({ cards }) => {
+const ItemHead = ({ cards }) => {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
@@ -24,7 +24,7 @@ const SystemItemHead = ({ cards }) => {
   const dispatch = useDispatch();
   const handleCreate = () => {
     setShow(false);
-    dispatch(Actions.addSystemChart(title));
+    dispatch(Actions.addChartCard(title));
   };
 
   const handleSelect = (id) => {
@@ -43,7 +43,7 @@ const SystemItemHead = ({ cards }) => {
           borderTopLeftRadius: '0.7rem',
         }}
       >
-        <Navbar.Brand style={{ fontWeight: 'bold' }}>SYSTEMS</Navbar.Brand>
+        <Navbar.Brand style={{ fontWeight: 'bold' }}>CHARTS</Navbar.Brand>
         <Button variant="light">
           <BsGear />
         </Button>
@@ -69,7 +69,10 @@ const SystemItemHead = ({ cards }) => {
         <Modal.Body>
           <p>Select the Indicator for Xais</p>
 
-          <DropdownButton id="dropdown-basic-button" title={title ? title : ''}>
+          <DropdownButton
+            id="dropdown-basic-button"
+            title={title ? title : cards[0]}
+          >
             {cards.map((v, index) => (
               <Dropdown.Item key={index} eventKey={v} onSelect={handleSelect}>
                 {v}
@@ -90,17 +93,11 @@ const SystemItemHead = ({ cards }) => {
   );
 };
 
-const SystemComponents = ({
-  cards = ['cpu'],
-  models,
-  graph,
-  isLoading = true,
-}) => {
-  // console.log('2nd', graph, cards);
-  //const cards = useSelector((state) => state.model.systemCard);
+const SectionsComponents = ({ models, graph, isLoading = true }) => {
+  const cards = useSelector((state) => state.cards.chartCardsName);
   return (
-    <div style={{ borderRadius: '0.7rem' }}>
-      <SystemItemHead cards={cards}></SystemItemHead>
+    <>
+      <ItemHead cards={cards}></ItemHead>
       <Row
         style={{
           marginLeft: '2rem',
@@ -120,16 +117,16 @@ const SystemComponents = ({
               style={{ height: '20rem', width: 'auto', borderColor: 'white' }}
             >
               <h5>{card}</h5>
+              {isLoading && <p>loading...</p>}
               {!isLoading && (
                 <Graph index={index} models={models} graph={graph[index]} />
               )}
-              {isLoading && <p>로딩중..</p>}
             </Card>
           </Col>
         ))}
       </Row>
-    </div>
+    </>
   );
 };
 
-export default SystemComponents;
+export default SectionsComponents;

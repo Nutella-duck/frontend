@@ -1,14 +1,18 @@
 .run {
-  display: flex;
-  flex-flow: column;
-  /* border: 3px solid red; */
-  justify-content: flex-end;
-  align-content: center;
+display: flex;
+
 }
-.RunFooter {
+.footer{
   display: flex;
-  /* border: 3px solid red; */
-  width: fit-content;
-  margin-right: 256px;
-  margin-left: 1520px;
+  justify-content: flex-end;
+}
+.footerContents {
+ display: flex;
+
+}
+.teamList{
+  display: flex;
+  justify-content: space-between;
+
+  margin : 10px 5px;
 }

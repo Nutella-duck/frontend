@@ -11,7 +11,7 @@ import {
 } from 'react-bootstrap';
 import { BsGear } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
-import * as Actions from '../../../store/actions';
+//import * as Actions from '../../../store/actions';
 
 const SectionHeadComponent = () => {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const SectionHeadComponent = () => {
   const addSectionsOnclick = () => {
     let len = cards.length;
     cards.push(len + 1);
-    dispatch(Actions.fectchCardData(cards));
+    //dispatch(Actions.fectchCardData(cards));
   };
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);

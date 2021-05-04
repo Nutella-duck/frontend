@@ -1,0 +1,35 @@
+.registerForm{
+    display: flex;
+    flex-direction: column;
+    width: 476px;
+  
+  margin : 311px auto;
+  border: black 3px solid;
+  overflow: visible;
+}
+.image{
+    display:flex;
+    border: black 3px solid;
+    width: 476px;
+  height: 100px;
+}
+.input{
+    display: flex;
+    flex-direction: column;
+    border:green 3px solid
+}
+
+.input div{
+    display: flex;
+    width: calc(100%/4);
+    
+}
+.input input{
+    display: flex;
+}
+.input_title{
+    display:flex;
+    border: red 3px solid;
+}
+
+

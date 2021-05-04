@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Pagination } from 'react-bootstrap';
-import * as Actions from '../../../store/actions';
+import * as Actions from '../../../data/project/actions.js';
 import { useDispatch } from 'react-redux';
 import './Run.css';
 const RunFooter = () => {
@@ -8,7 +8,7 @@ const RunFooter = () => {
 
   const [select, setSelect] = useState(1);
   const handleClick = (id) => {
-    dispatch(Actions.getAllModelData(id));
+    dispatch(Actions.getAllPorject(id));
     setSelect(id);
   };
 
@@ -21,9 +21,9 @@ const RunFooter = () => {
         onClick={() => handleClick(number)}
       >
         {number}
-      </Pagination.Item>,
+      </Pagination.Item>
     );
   }
-  return <Pagination className="RunFooter">{items}</Pagination>;
+  return <Pagination className = "footerContents">{items}</Pagination>;
 };
 export default RunFooter;

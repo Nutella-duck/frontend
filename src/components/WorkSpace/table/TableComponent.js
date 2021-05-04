@@ -21,7 +21,6 @@ class table extends Component {
       columnDefs: [
         {
           headerName: '#',
-
           sortable: true,
           filter: true,
           checkboxSelection: true,
@@ -87,7 +86,6 @@ class table extends Component {
         minWidth: 100,
         resizable: true,
         headerCheckboxSelection: isFirstColumn,
-        // checkboxSelection: isFirstColumn,
       },
     };
     this.gridOptions = {
@@ -101,8 +99,6 @@ class table extends Component {
       floatingFilter: true,
     };
     this.onGridReady = this.onGridReady.bind(this);
-    // this.onRowSelected = this.onRowSelected.bind(this);
-    // this.onCellClicked = this.onCellClicked.bind(this);
   }
 
   onGridReady(params) {
@@ -114,8 +110,6 @@ class table extends Component {
   };
 
   onSelectionChanged = ({ event, inputSelectedModel }) => {
-    // var rowCount = event.api.getSelectedNodes()
-    // var selectedRows = this.mgrid.ag.this.gridOptions.getSelectedRows();
     const selectedRows = this.gridApi.getSelectedRows();
     console.log(selectedRows);
     inputSelectedModel(selectedRows);
@@ -123,7 +117,7 @@ class table extends Component {
   onCellClicked(event) {
     console.log('onCellClicked: ' + event.data.runName);
     window.location.href = `/run/system/${event.data.runId}`;
-  }
+  };
   render() {
     const {
       selectedModel,
@@ -131,7 +125,6 @@ class table extends Component {
       totalRuns,
       inputSelectedModel,
     } = this.props;
-    console.log(tableRows);
     if (tableRows.length > 0) {
       const indicator = Object.keys(JSON.parse(tableRows[0].indicator));
       const system = Object.keys(JSON.parse(tableRows[0].system));
@@ -140,12 +133,10 @@ class table extends Component {
         indicator.forEach((i) => {
           let a = JSON.parse(v.indicator);
           v[i] = a[i];
-          console.log(a[i], v, i);
         });
         system.forEach((i) => {
           let a = JSON.parse(v.system);
           v[i] = a[i];
-          console.log(a[i], v, i);
         });
       });
     }
@@ -185,9 +176,6 @@ class table extends Component {
             onCellClicked={this.onCellClicked}
             rowData={tableRows}
             selectAll={false}
-            // enableColResize={true}
-            // angularCompileRows={true}
-            // angularCompileHeaders={true}
           ></AgGridReact>
         </div>
       </>
@@ -195,7 +183,7 @@ class table extends Component {
   }
 }
 const mapDispatchToProps = (dispatch) => ({
-  inputSelectedModel: (model) => dispatch(Actions.fetchSelectedModel(model)),
+  inputSelectedModel: (model) => dispatch(Actions.getSelectedModel(model)),
 });
 const mapStateToProps = (state) => ({
   selectedModel: state.model.selectedModel,

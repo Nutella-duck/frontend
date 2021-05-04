@@ -186,7 +186,6 @@ const App = () => {
     setGridColumnApi(params.columnApi);
   }
   function onCellClicked(event) {
-    console.log(event.data);
     window.location.href = `/hpo/${event.data.hpoProjectId}`;
   }
 
@@ -238,11 +237,7 @@ const App = () => {
   };
 
   const onChange2 = (e, index) => {
-    console.log('hi');
-    console.log(e.target, index);
-    console.log(configs, configs[index]);
     configs[index][e.target.name] = e.target.value;
-    console.log(configs);
     setConfigs([...configs]);
   };
 

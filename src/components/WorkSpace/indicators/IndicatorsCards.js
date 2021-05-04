@@ -12,23 +12,23 @@ import {
   DropdownButton,
 } from 'react-bootstrap';
 import { BsGear } from 'react-icons/bs';
-import Graph from './Graph';
+import Graph from './IndicatorsGraph';
 import { useSelector, useDispatch } from 'react-redux';
 import 'react-vis/dist/style.css';
 import * as Actions from '../../../data/chartCards/actions.js';
+
 const ItemHead = ({ cards }) => {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
-  const [title, setTitle] = useState(cards[0]);
+  const [title, setTitle] = useState(cards[0] ? cards[0] : '');
   const dispatch = useDispatch();
   const handleCreate = () => {
     setShow(false);
     dispatch(Actions.addChartCard(title));
   };
-
   const handleSelect = (id) => {
-    console.log(id);
+    console.log('dropdown', id);
     setTitle(id);
   };
   return (
@@ -69,10 +69,7 @@ const ItemHead = ({ cards }) => {
         <Modal.Body>
           <p>Select the Indicator for Xais</p>
 
-          <DropdownButton
-            id="dropdown-basic-button"
-            title={title ? title : cards[0]}
-          >
+          <DropdownButton id="dropdown-basic-button" title={title ? title : ''}>
             {cards.map((v, index) => (
               <Dropdown.Item key={index} eventKey={v} onSelect={handleSelect}>
                 {v}
@@ -94,8 +91,8 @@ const ItemHead = ({ cards }) => {
 };
 
 const SectionsComponents = ({ models, graph, isLoading = true }) => {
-  const cards = useSelector((state) => state.cards.chartCardsName);
-  console.log('hit', cards, graph);
+  const cards = useSelector((state) => state.model.indicatorCard);
+  console.log(cards);
   return (
     <>
       <ItemHead cards={cards}></ItemHead>

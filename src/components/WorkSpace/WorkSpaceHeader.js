@@ -6,13 +6,12 @@ import profileImage from '../ProjectPage/profile.png';
 import './navbar.css';
 import { useSelector, useDispatch } from 'react-redux';
 import * as Actions from '../../data/project/actions.js';
-const WorkSpaceHeader = ({ projectId, projectName }) => {
+const WorkSpaceHeader = ({ projectId }) => {
   const dispatch = useDispatch();
   const menu = useSelector((state) => state.project.projects);
 
   const [id, setId] = useState(Number(projectId));
-  console.log('menu', menu);
-  console.log('nav id', id);
+ 
 
   const currentTitle =
     menu[menu.findIndex((v) => v.projectId === Number(projectId))]?.projectName;
@@ -32,7 +31,7 @@ const WorkSpaceHeader = ({ projectId, projectName }) => {
 
       <Image
         src={logo}
-        width="45rem"
+        width="30px"
         height="auto"
         className="d-inline-block align-top"
       />
@@ -88,7 +87,7 @@ const WorkSpaceHeader = ({ projectId, projectName }) => {
           >
             <Image
               src={profileImage}
-              width="40rem"
+              width="40px"
               height="auto"
               className="d-inline-block align-top"
             />
@@ -98,7 +97,7 @@ const WorkSpaceHeader = ({ projectId, projectName }) => {
             style={{
               fontWeight: 'bold',
               color: 'black',
-              marginTop: '0.7rem',
+              marginTop: '20px',
             }}
           >
             이해인{' '}

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import 'react-vis/dist/style.css';
 import {
   XAxis,
@@ -19,7 +18,7 @@ class Graph extends Component {
   };
 
   render() {
-    const Line = LineSeries;
+    
 
     const { models, graph } = this.props;
     console.log(graph);
@@ -34,7 +33,7 @@ class Graph extends Component {
     const mapToComponent = (data) => {
       return graph.map((data, i) => {
         return (
-          <Line
+          <LineSeries
             curve={curveCatmullRom.alpha(0.5)}
             key={i}
             onNearestX={_onNearestX}

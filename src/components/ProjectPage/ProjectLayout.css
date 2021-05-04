@@ -7,18 +7,89 @@
 .Profile{
     background-color: #f5f6fa;
 }
+.projectMainLayout{
+    
+  
+}
+.projectHeader{
+
+    
+}
+.projectProfile
+{
+   
+    padding : 4px 261px;
+}
+.projectCard{
+    
+    padding : 4px 261px;
+}
+.teamCard{
+   
+    padding : 4px 261px;
+}
+.runCard{
+   
+    padding : 4px 261px;
+}
 .activityCard{
     font-weight: bold;
     font-size:x-large;
    position: relative;
    line-height: 3;
 }
+.profileContainer{
+    display: flex;
+    margin-top: 43px;
+}
+.imageContainer{
+    display: flex;
+    
+}
 .profileImage{
     
-    width: 7.6rem;
-    height: 7.6rem;
+    width: 123px;
+    height: 123px;
    object-fit: contain;
-    margin:3rem;
+   
+   margin: 0 42px 0 0 ;
+}
+.profileContents{
+    display: flex;
+
+    flex-direction: column;
+    
+}
+
+.profileName{
+display: flex;
+
+
+}
+.hiname{
+    display: flex;
+    
+    font-size: 26px;
+    font-weight: bold;
+    
+}
+.hiid{
+    display: flex;
+    
+    font-size: 15px;
+    margin-top: 11px;
+}
+.profileDescription{
+    display: flex;
+   
+    margin-top: 19px;
+    font-size: 15px;
+    color: gray;
+}
+.profileContact{
+    display: flex;
+    margin-top: 19px;
+    
 }
 .nopadding {
     padding: 0 ;
